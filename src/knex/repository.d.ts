@@ -16,7 +16,7 @@ export abstract class PersonalRepositoryI {
 }
 
 export abstract class PermissionRepositoryI {
-    createAluno(user: UserE): Promise<void> 
-    createPersonal(user: UserE): Promise<void>
-    createAdmin(user: UserE): Promise<void>
+    createAluno(user: UserE): Promise<any> 
+    createPersonal(user: UserE): Promise<any>
+    createAdmin(user: UserE): Promise<any>
 }

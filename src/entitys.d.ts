@@ -1,5 +1,7 @@
 type table = {
     id: number
+    createdAt: Date
+    updatedAt: Date
 }
 
 export type UserE = table & {
@@ -8,6 +10,10 @@ export type UserE = table & {
     email: string
     password: string
     cellphone: string
+}
+
+export type Permission = table & {
+    title: "aluno" | "personal" | "admin"
 }
 
 export type UserFindByArgs = {

@@ -3,6 +3,7 @@ import { Knex } from "knex";
 import { UserE } from "src/entitys";
 import { KnexRepository } from "./knex.repository";
 import { PermissionRepositoryI } from "./repository";
+import enums from '../enums'
 
 @Injectable()
 export class PermissionRepository 
@@ -10,21 +11,35 @@ export class PermissionRepository
     implements PermissionRepositoryI 
 {
     public table:string
-
     constructor(@Inject('KnexConnection') private knex:Knex){
         super()
-        this.table = "users"
+        this.table = "users_permissions"
     }
 
-    createAluno(user: UserE): Promise<void> {
-        throw new Error("Method not implemented.")
+    createAluno(user: UserE): Promise<any> {
+        return this
+                .knex(this.table)
+                .insert({
+                    user_id: user.id,
+                    permission_id: enums.permission.ALUNO
+                })
     }
 
-    createPersonal(user: UserE): Promise<void> {
-        throw new Error("Method not implemented.");
+    createPersonal(user: UserE): Promise<any> {
+        return this
+                .knex(this.table)
+                .insert({
+                    user_id: user.id,
+                    permission_id: enums.permission.PERSONAL
+                })
     }
 
-    createAdmin(user: UserE): Promise<void> {
-        throw new Error("Method not implemented.");
+    createAdmin(user: UserE): Promise<any> {
+        return this
+                .knex(this.table)
+                .insert({
+                    user_id: user.id,
+                    permission_id: enums.permission.ADMIN
+                })
     }
 }

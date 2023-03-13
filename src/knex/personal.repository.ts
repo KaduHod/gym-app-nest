@@ -12,7 +12,9 @@ export default
     implements PersonalRepositoryI
 {
     public table:string
-    constructor(@Inject('KnexConnection') private knex:Knex){
+    constructor(
+        @Inject('KnexConnection') private knex:Knex
+    ){
         super()
         this.table = "users"
     }
