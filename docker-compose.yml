@@ -1,0 +1,32 @@
+version: '3.8'
+services: 
+  app: 
+    container_name: nest-app
+    working_dir: /usr/src/app
+    volumes: 
+      - ./:/usr/src/app
+    networks:
+      - app
+    hostname: gym-nest
+    build: .
+  gym-db:
+    image: mysql:latest
+    env_file:
+      - ./.env
+    container_name: gym-db
+    hostname: gym-db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PWD}
+      MYSQL_DATABASE: ${GYM_DATABASE_NAME}
+      MYSQL_USERNAME: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PWD}
+    volumes:
+      - ./database/:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    networks:
+      - app
+networks:
+  app: 
+    driver: bridge
