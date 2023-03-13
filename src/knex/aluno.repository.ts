@@ -1,23 +1,22 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { PersonalE, AlunoE, UserFindByArgs } from "src/entitys";
+import { AlunoE, PersonalE, UserFindByArgs } from "src/entitys";
 import { KnexRepository } from "./knex.repository";
-import { PersonalRepositoryI } from "./repository";
+import { AlunoRepositoryI } from "./repository";
 import enums from '../enums'
 import { Knex } from "knex";
 
 @Injectable()
 export default 
-    class PersonalRepository 
+    class AlunoRepository 
     extends KnexRepository
-    implements PersonalRepositoryI
+    implements AlunoRepositoryI
 {
     public table:string
     constructor(@Inject('KnexConnection') private knex:Knex){
         super()
         this.table = "users"
     }
-
-    findAll(): Promise<PersonalE[]> {
+    findAll(): Promise<AlunoE[]> {
         return this
                 .knex(this.table)
                 .select("users.*")
@@ -27,11 +26,11 @@ export default
                     "users.id"
                 ).where(
                     "users_permissions.permission_id",
-                    enums.permission.PERSONAL
+                    enums.permission.ALUNO
                 )
     }
 
-    findBy(args:UserFindByArgs): Promise<PersonalE[]> {       
+    findBy(args:UserFindByArgs): Promise<AlunoE[]> {
         return this
                 .setWhereClauses( 
                     this.knex(this.table)
@@ -43,15 +42,15 @@ export default
                     "users.id"
                 ).where(
                     "users_permissions.permission_id", 
-                    enums.permission.PERSONAL
+                    enums.permission.ALUNO
                 );
     }
 
-    first(args:UserFindByArgs): Promise<PersonalE> {
+    first(args:UserFindByArgs): Promise<AlunoE> {
         throw new Error("Method not implemented.");
     }
 
-    findAlunos(personal: PersonalE): Promise<AlunoE[]> {
+    findPersonalOff(user: AlunoE): Promise<PersonalE> {
         throw new Error("Method not implemented.");
     }
 }

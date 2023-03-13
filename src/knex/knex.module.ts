@@ -28,6 +28,7 @@ import { KnexRepository } from './knex.repository';
             },
             inject: [ConfigService]
         }
-    ]
+    ],
+    exports:['KnexConnection', KnexRepository]
 })
 export class KnexModule {}
