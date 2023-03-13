@@ -9,6 +9,8 @@ services:
       - app
     hostname: gym-nest
     build: .
+    ports:
+      - 3000:3000
   gym-db:
     image: mysql:latest
     env_file:

@@ -5,8 +5,9 @@ import UserRepository from 'src/knex/user.repository';
 import { UserController } from './user.controller';
 
 @Module({
-    imports:[KnexModule, ConfigModule.forRoot()],
+    imports:[ConfigModule.forRoot(), KnexModule],
     controllers: [UserController],
-    providers: [UserRepository]
+    providers: [],
+   
 })
 export class UserModule {}

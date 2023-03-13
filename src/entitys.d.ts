@@ -10,6 +10,15 @@ export type UserE = table & {
     cellphone: string
 }
 
+export type UserFindByArgs = {
+    id: number | number[],
+    name: string | string[]
+    nickname: string | string[]
+    email: string | string[]
+    password: string | string[]
+    cellphone: string | string[]
+}
+
 export type AlunoE = table & UserE & {
     personal: PersonalE
 }
