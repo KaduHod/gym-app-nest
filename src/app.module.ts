@@ -6,6 +6,7 @@ import { KnexModule } from './knex/knex.module';
 import { ConfigModule } from '@nestjs/config';
 import { PersonalModule } from './personal/personal.module';
 import { PersonalController } from './personal/personal.controller';
+import { MuscleRepository } from './knex/muscleGroup.repository';
 
 @Module({
   imports: [
@@ -17,6 +18,6 @@ import { PersonalController } from './personal/personal.controller';
     })
   ],
   controllers: [AppController, PersonalController],
-  providers: [AppService],
+  providers: [AppService, MuscleRepository],
 })
 export class AppModule {}

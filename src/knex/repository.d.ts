@@ -1,3 +1,4 @@
+import { MuscleGroupE } from "src/domain/entitys";
 import { PersonalE, AlunoE, UserE } from "src/entitys";
 
 export abstract class AlunoRepositoryI {
@@ -25,4 +26,9 @@ export abstract class PermissionRepositoryI {
     createAluno(user: UserE): Promise<any> 
     createPersonal(user: UserE): Promise<any>
     createAdmin(user: UserE): Promise<any>
+}
+
+export abstract class MuscleRepositoryI {
+    findBy(args: Partial<MuscleGroupE>)
+    first(args: Partial<MuscleGroupE>)
 }
