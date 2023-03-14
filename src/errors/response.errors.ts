@@ -15,3 +15,12 @@ export class HttpUnhandledError extends HttpException {
         )
     }
 } 
+
+export class HttpInvalidCreateUserRequest extends HttpException {
+    constructor(message: any) {
+        super(
+            {message},
+            HttpStatus.BAD_REQUEST
+        )
+    }
+}

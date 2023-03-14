@@ -19,8 +19,23 @@ export default
         const [id] = await this
                             .knex(this.table)
                             .insert(userArgs)
-                            .on('query-error', this.checkError)
+                            .on('query-error', this.handleError)
         userArgs.id = id;
         return userArgs;   
+    }
+
+    async first(userArgs: UserE): Promise<UserE | null> {
+        return this
+                .knex(this.table)
+                .where(userArgs)
+                .first()
+    }
+
+    async exists({nickname, email}): Promise<UserE | null> {
+        return this
+                .knex(this.table)
+                .where("email", email)
+                .orWhere("nickname", nickname)
+                .first();
     }
 }

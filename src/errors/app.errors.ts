@@ -16,9 +16,9 @@ export class AdminAlreadyRegistered extends Error {
     }
 }
 
-export class DuplicatedUsername extends Error {
+export class DuplicatedNickname extends Error {
     constructor() {
-        super("Username unavailable at the moment!")
+        super("Nickname unavailable at the moment!")
     }
 }
 
@@ -35,5 +35,5 @@ export class DuplicatedData extends Error {
 }
 
 export const UnhandledError = (error:Error) => {
-    throw  new Error(error.message)
+    throw new Error(error.message)
 }

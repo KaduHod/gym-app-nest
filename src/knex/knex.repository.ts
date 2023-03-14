@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Knex } from "knex";
 import { findByArgsResult } from "./knex";
 import enums from '../utils/enums'
-import { DuplicatedData, DuplicatedEmail, DuplicatedUsername } from "src/errors/app.errors";
+import { DuplicatedData, UnhandledError } from "src/errors/app.errors";
 
 @Injectable()
 export class KnexRepository {
@@ -22,7 +22,7 @@ export class KnexRepository {
         return query
     }
 
-    checkError(error: Error | any, obj:any): void{
+    handleError(error: Error | any, obj:any): void {
         if (enums.mysqlErrors.DUPLICATED_DATA === error.code) {
             const duplicateErrorText = error.message.split('for key')[1].trim()
             if (duplicateErrorText.indexOf('users.users_nickname_unique') > -1) {
@@ -32,5 +32,6 @@ export class KnexRepository {
                 throw new DuplicatedData("Email")
             }
         }
+        UnhandledError(error)
     }
 }

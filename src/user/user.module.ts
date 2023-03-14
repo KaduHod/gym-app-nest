@@ -7,6 +7,7 @@ import { UserController } from './user.controller';
 @Module({
     imports:[ConfigModule, KnexModule],
     controllers: [UserController],
-    providers: [UserRepository]
+    providers: [UserRepository],
+    exports:[UserRepository]
 })
 export class UserModule {}
