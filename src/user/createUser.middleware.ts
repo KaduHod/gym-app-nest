@@ -6,6 +6,7 @@ import { CreateUserDto } from "./user.validator";
 import { validate } from 'class-validator'
 import UserRepository from "src/knex/user.repository";
 import { DuplicatedEmail, DuplicatedNickname } from "src/errors/app.errors";
+import { errorMapper } from "src/utils/validator.helper";
 
 @Injectable()
 export class CrateUserMiddleware implements NestMiddleware {
@@ -14,16 +15,11 @@ export class CrateUserMiddleware implements NestMiddleware {
     ){}
 
     async use(req: Request, res:Request, next: NextFunction) {
-        await this.handleValidation(req.body)
-        next()
-    }
-
-    async handleValidation(body: any): Promise<void> 
-    {
         await Promise.all([
-            this.validateFields(body),
-            this.checkNicknameAndEmail(body.nickname, body.email)
+            this.validateFields(req.body),
+            this.checkNicknameAndEmail(req.body.nickname, req.body.email)
         ])
+        next()
     }
 
     async validateFields(userArgs: UserE): Promise<void> {
@@ -36,13 +32,9 @@ export class CrateUserMiddleware implements NestMiddleware {
         const errors = await validate(userDto)
         
         if (errors.length) {
-            let formatedErrors = errors.map( err => {
-                return {
-                    field: err.property,
-                    errors: Object.values(err.constraints)
-                }
-            })
-            throw new HttpInvalidCreateUserRequest(formatedErrors)
+            throw new HttpInvalidCreateUserRequest(
+                errorMapper(errors)
+            )
         }
     }
 
@@ -54,7 +46,7 @@ export class CrateUserMiddleware implements NestMiddleware {
                     new DuplicatedEmail()
                 )
             }
-    
+
             if (user.nickname === nickname) {
                 throw new HttpDuplicatedData(
                     new DuplicatedNickname()

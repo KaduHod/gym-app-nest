@@ -3,11 +3,13 @@ import { ConfigService } from "@nestjs/config";
 import { Knex } from "knex";
 import { UserE } from "src/domain/entitys";
 import { KnexRepository } from "./knex.repository";
+import { UserRepositoryI } from "./repository";
 
 @Injectable()
 export default 
     class UserRepository 
     extends KnexRepository
+    implements UserRepositoryI
 {
     public table:string
     constructor( @Inject('KnexConnection') private knex:Knex  ){
@@ -24,7 +26,7 @@ export default
         return userArgs;   
     }
 
-    async first(userArgs: UserE): Promise<UserE | null> {
+    async first(userArgs: Partial<UserE>): Promise<UserE | null> {
         return this
                 .knex(this.table)
                 .where(userArgs)
@@ -37,5 +39,14 @@ export default
                 .where("email", email)
                 .orWhere("nickname", nickname)
                 .first();
+    }
+
+    async update(args:UserE): Promise<any> {
+        const {id, ...rest} = args
+        return this 
+                .knex(this.table)
+                .where("id", id)
+                .update(rest)
+                .on('query-error', this.handleError)
     }
 }

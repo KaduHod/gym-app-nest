@@ -18,6 +18,12 @@ export class AdminAlreadyRegistered extends Error {
     }
 }
 
+export class UserNotFound extends Error {
+    constructor() {
+        super("User not found")
+    }
+}
+
 export class InvalidUserError extends Error {
     constructor(errors: errorFormated | errorFormated[]) {
         super(errors.toString())

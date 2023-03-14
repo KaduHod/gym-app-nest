@@ -2,7 +2,7 @@ import { UserE } from "src/domain/entitys";
 import UserRepository from "src/knex/user.repository";
 import { UpdateUserDto } from "../user.validator";
 import { validate } from 'class-validator'
-import { InvalidUserError } from "src/errors/app.errors";
+import { InvalidUserError, UserNotFound } from "src/errors/app.errors";
 import { errorMapper } from "src/utils/validator.helper";
 import { Injectable } from "@nestjs/common";
 
@@ -13,14 +13,28 @@ export class UpdateUserService {
         private UserRepository: UserRepository
     ){}
 
-    async main(){
-        await this.validate()
+    async main(): Promise<UserE> {
+        const [_,userDb] = await Promise.all([
+            this.validate(),
+            this.exists()  
+        ])
+
+        const updateResult = await this.updateUser(this.user)
+        console.log({updateResult})
+
+        return {...userDb,...this.user} as UserE;
     }
 
+    /**
+     * Seta novos valores
+     */
     setUser(user: UserE): void {
         this.user = user
     }
 
+    /**
+     * Valida os parametros que serão so novos valores do usuario no banco
+     */
     async validate() {
         if(!this.user){
             throw new Error("User not setted.")
@@ -41,5 +55,23 @@ export class UpdateUserService {
                 errorMapper(errors)
             )
         }
+    }
+
+    /**
+     * Verifica se o usuario existe
+     */
+    async exists(): Promise<UserE> {
+        const user = await this.UserRepository.first({id:this.user.id} as UserE)
+        if(!user) {
+            throw new UserNotFound()
+        }
+        return user
+    }
+
+    /**
+     * Atualiza o usuario
+     */
+    async updateUser(user: UserE): Promise<any> {
+        return this.UserRepository.update(user)
     }
 }

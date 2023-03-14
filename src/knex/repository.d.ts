@@ -7,6 +7,12 @@ export abstract class AlunoRepositoryI {
     findPersonalOff(user: AlunoE): Promise<PersonalE | null>
 }
 
+export abstract class UserRepositoryI {
+    update(args:UserE): Promise<any>
+    first(args:Partial<UserE>): Promise<any>
+    createUser(args:UserE): Promise<any>
+    exists(args:any): Promise<any>
+}
 
 export abstract class PersonalRepositoryI {
     findAll(): Promise<PersonalE[]>

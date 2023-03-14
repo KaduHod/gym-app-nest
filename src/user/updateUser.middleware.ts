@@ -4,20 +4,14 @@ import { UserE } from "src/domain/entitys";
 import { HttpInvalidUpdateUserRequest } from "src/errors/response.errors";
 import { UpdateUserDto } from "./user.validator";
 import { validate } from 'class-validator'
+import { errorMapper } from "src/utils/validator.helper";
+import { pruneUndefineds } from "src/utils/object.helper";
 
 @Injectable()
 export class UpdateUserMiddleware implements NestMiddleware {
     async use(req: Request, res:Request, next: NextFunction) {
         const userDto = await this.validateFields(req.body)
-        req.body = Object.keys(userDto).reduce( (user:UserE,prop:string) => {
-            if(userDto[prop]) {
-                return {
-                    ...user,
-                    [prop]: userDto[prop]
-                }
-            }
-            return user
-        },{} as UserE)
+        req.body = pruneUndefineds(userDto)
         next()
     }
 
@@ -32,12 +26,9 @@ export class UpdateUserMiddleware implements NestMiddleware {
         const errors = await validate(userDto)
         
         if (errors.length) {
-            throw new HttpInvalidUpdateUserRequest(errors.map( err => {
-                return {
-                    field: err.property,
-                    errors: Object.values(err.constraints)
-                }
-            }))
+            throw new HttpInvalidUpdateUserRequest(
+                errorMapper(errors)
+            )
         }
 
         return userDto
