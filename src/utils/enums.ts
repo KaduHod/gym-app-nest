@@ -4,6 +4,11 @@ enum permission {
     ADMIN=3
 }
 
+enum mysqlErrors {
+    DUPLICATED_DATA = 'ER_DUP_ENTRY'
+}
+
 export default {
-    permission
+    permission,
+    mysqlErrors
 }

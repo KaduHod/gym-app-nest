@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { Knex } from "knex";
-import { UserE } from "src/entitys";
+import { UserE } from "src/domain/entitys";
 import { KnexRepository } from "./knex.repository";
 
 @Injectable()
@@ -16,8 +16,11 @@ export default
     }
 
     async createUser(userArgs: UserE): Promise<UserE> {
-        const [id] = await this.knex(this.table).insert(userArgs)
+        const [id] = await this
+                            .knex(this.table)
+                            .insert(userArgs)
+                            .on('query-error', this.checkError)
         userArgs.id = id;
-        return userArgs;
+        return userArgs;   
     }
 }
