@@ -40,3 +40,12 @@ export class HttpUserNotFoundError extends HttpException {
         super(error.message, HttpStatus.BAD_REQUEST, {cause: error})
     }
 }
+
+export class HttpInvalidUserParams extends HttpException {
+    constructor(message:any) {
+        super({
+            message: 'Invalid query param!',
+            ...message
+        }, HttpStatus.BAD_REQUEST)
+    }
+}

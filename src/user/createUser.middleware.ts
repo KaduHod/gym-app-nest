@@ -15,14 +15,15 @@ export class CrateUserMiddleware implements NestMiddleware {
     ){}
 
     async use(req: Request, res:Request, next: NextFunction) {
-        await Promise.all([
+        const [userDto] = await Promise.all([
             this.validateFields(req.body),
             this.checkNicknameAndEmail(req.body.nickname, req.body.email)
         ])
+        req.body = userDto
         next()
     }
 
-    async validateFields(userArgs: UserE): Promise<void> {
+    async validateFields(userArgs: UserE): Promise<UserE> {
         const userDto = new CreateUserDto() 
         userDto.name = userArgs.name
         userDto.email = userArgs.email
@@ -36,6 +37,8 @@ export class CrateUserMiddleware implements NestMiddleware {
                 errorMapper(errors)
             )
         }
+
+        return userDto as UserE
     }
 
     async checkNicknameAndEmail(nickname:string, email: string): Promise<void> {

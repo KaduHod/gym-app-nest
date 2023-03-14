@@ -14,14 +14,8 @@ export class UpdateUserService {
     ){}
 
     async main(): Promise<UserE> {
-        const [_,userDb] = await Promise.all([
-            this.validate(),
-            this.exists()  
-        ])
-
-        const updateResult = await this.updateUser(this.user)
-        console.log({updateResult})
-
+        const [_,userDb] = await Promise.all([this.validate(), this.exists()])
+        await this.updateUser(this.user)
         return {...userDb,...this.user} as UserE;
     }
 

@@ -1,10 +1,11 @@
-import { forwardRef, MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { KnexModule } from 'src/knex/knex.module';
 import UserRepository from 'src/knex/user.repository';
 import { UpdateUserService } from './services/updateUser.service';
 import { UpdateUserMiddleware } from './updateUser.middleware';
 import { UserController } from './user.controller';
+import { ValidateUserQueryMiddleware } from './validateQuery.middleware';
 
 @Module({
     imports:[ConfigModule, KnexModule],
@@ -18,6 +19,8 @@ export class UserModule {
             {path:'personal', method: RequestMethod.PUT},
             {path:'user', method: RequestMethod.PUT},
             {path:'aluno', method: RequestMethod.PUT},
+        ).apply(ValidateUserQueryMiddleware).forRoutes(
+            {path:'user', method: RequestMethod.GET}
         )
     }
 }

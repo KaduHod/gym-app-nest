@@ -22,11 +22,11 @@ export class PersonalController {
 
     @Post('/') 
     async create(
-        @Body() userArgs: UserE, 
+        @Body() body: UserE, 
         @Res() response: Response
     ) {
         try {
-            this.CreatePersonalSerivce.setUser(userArgs)
+            this.CreatePersonalSerivce.setUser(body)
             await this.CreatePersonalSerivce.main()
             return response
                     .status(201)

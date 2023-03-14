@@ -21,7 +21,7 @@ export default
         const [id] = await this
                             .knex(this.table)
                             .insert(userArgs)
-                            .on('query-error', this.handleError)
+                            .on('query-error', this.handleError);
         userArgs.id = id;
         return userArgs;   
     }
@@ -31,6 +31,7 @@ export default
                 .knex(this.table)
                 .where(userArgs)
                 .first()
+                .on('query-error', this.handleError);
     }
 
     async exists({nickname, email}): Promise<UserE | null> {
@@ -38,7 +39,15 @@ export default
                 .knex(this.table)
                 .where("email", email)
                 .orWhere("nickname", nickname)
-                .first();
+                .first()
+                .on('query-error', this.handleError);
+    }
+
+    async findBy(args:Partial<UserE>): Promise<any> {
+        return this 
+                .knex(this.table)
+                .where(args)
+                .on('query-error', this.handleError);
     }
 
     async update(args:UserE): Promise<any> {
@@ -47,6 +56,6 @@ export default
                 .knex(this.table)
                 .where("id", id)
                 .update(rest)
-                .on('query-error', this.handleError)
+                .on('query-error', this.handleError);
     }
 }
