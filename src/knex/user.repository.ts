@@ -15,7 +15,9 @@ export default
         this.table = "users"
     }
 
-    async createUser(userArgs: UserE): Promise<any> {
-        return this.knex(this.table).insert(userArgs);
+    async createUser(userArgs: UserE): Promise<UserE> {
+        const [id] = await this.knex(this.table).insert(userArgs)
+        userArgs.id = id;
+        return userArgs;
     }
 }

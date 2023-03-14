@@ -17,20 +17,21 @@ export class CreatePersonalService {
     }
 
     async main(): Promise<any> {
-        const [id] = await this.saveUser();
-        this.user.id = id
-        await this.setPermission();
+        this.user = await this.saveUser();
+        await this.setUserPermission();
     }
 
     getUser(): UserE {
         return this.user;
     }
 
-    async saveUser(): Promise<any> {
+    /* Register user in database */
+    async saveUser(): Promise<UserE> {
         return this.UserRepository.createUser(this.user)
     }
 
-    async setPermission(): Promise<any> {
+    /* Register user permission of personal in database */
+    async setUserPermission(): Promise<any> {
         return this.PermissionRepository.createPersonal(this.user)
     }
 }

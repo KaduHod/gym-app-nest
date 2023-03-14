@@ -1,8 +1,8 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { AlunoE, PersonalE, UserFindByArgs } from "src/entitys";
+import { AlunoE, PersonalE, UserFindByArgs } from "src/domain/entitys";
 import { KnexRepository } from "./knex.repository";
 import { AlunoRepositoryI } from "./repository";
-import enums from '../enums'
+import enums from '../utils/enums'
 import { Knex } from "knex";
 
 @Injectable()
@@ -33,8 +33,7 @@ export default
     findBy(args:UserFindByArgs): Promise<AlunoE[]> {
         return this
                 .setWhereClauses( 
-                    this.knex(this.table)
-                        .select("users.*"), 
+                    this.knex(this.table).select("users.*"), 
                     this.setFindByArguments<UserFindByArgs>(args, this.table) 
                 ).innerJoin(
                     "users_permissions", 

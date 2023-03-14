@@ -1,8 +1,8 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { PersonalE, AlunoE, UserFindByArgs } from "src/entitys";
+import { PersonalE, AlunoE, UserFindByArgs } from "src/domain/entitys";
 import { KnexRepository } from "./knex.repository";
 import { PersonalRepositoryI } from "./repository";
-import enums from '../enums'
+import enums from '../utils/enums'
 import { Knex } from "knex";
 
 @Injectable()
