@@ -1,3 +1,5 @@
+import { errorFormated } from "src/utils/validator.helper"
+
 export class PersonalAlreadyRegistered extends Error {
     constructor(id: number) {
         super(`Id ${id} already registered as personal!`)
@@ -13,6 +15,12 @@ export class AlunoAlreadyRegistered extends Error {
 export class AdminAlreadyRegistered extends Error {
     constructor(id: number) {
         super(`Id ${id} already registered as admin!`)
+    }
+}
+
+export class InvalidUserError extends Error {
+    constructor(errors: errorFormated | errorFormated[]) {
+        super(errors.toString())
     }
 }
 

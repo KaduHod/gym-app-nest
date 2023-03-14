@@ -24,3 +24,12 @@ export class HttpInvalidCreateUserRequest extends HttpException {
         )
     }
 }
+
+export class HttpInvalidUpdateUserRequest extends HttpException {
+    constructor(message: any) {
+        super(
+            {message},
+            HttpStatus.BAD_REQUEST
+        )
+    }
+}

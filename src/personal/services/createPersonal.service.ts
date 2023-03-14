@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { UserE } from "src/domain/entitys";
 import { PermissionRepository } from "src/knex/permission.repository";
-import PersonalRepository from "src/knex/personal.repository";
+import { CreateUserDto } from "src/user/user.validator";
 import UserRepository from "src/knex/user.repository";
 
 @Injectable()

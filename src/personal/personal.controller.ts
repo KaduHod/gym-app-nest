@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res } from "@nestjs/common";
+import { Body, Controller, Get, Post, Put, Res } from "@nestjs/common";
 import { Response } from "express";
 import { UserE } from "src/domain/entitys";
 import { DuplicatedData } from "src/errors/app.errors";
