@@ -1,16 +1,23 @@
 version: '3.8'
 services: 
-  app: 
-    container_name: nest-app
-    working_dir: /usr/src/app
-    volumes: 
-      - ./:/usr/src/app
-    networks:
-      - app
+  gym-nest: 
+    image: node:latest
+    env_file:
+      - ./.env
+    container_name: gym-nest
     hostname: gym-nest
-    build: .
     ports:
       - 3000:3000
+    working_dir: /usr/src/app
+    volumes: 
+      - ./:/usr/src/app    
+    command: >
+      sh -c "npm install &&
+            npm run start:dev"
+    depends_on:
+      - gym-db
+    networks:
+      - app
   gym-db:
     image: mysql:latest
     env_file:
