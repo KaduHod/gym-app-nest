@@ -1,20 +1,6 @@
-could you provided a JSON list of at least 5 exercises for each muscle that i provide to you. Each exercise includes the muscle's number as well as information about the agonist, synergist, and antagonist.
+could you provided a JSON list of at least 5 exercises for each muscle big muscle that i provide to you. Each exercise includes the muscle's number as well as information about the agonist, synergist, and antagonist.
 
-the muscles that i want are:
-
-
-1 is muscle Upper Major Chest,
-2 is muscle Medial Major Chest,
-3 is muscle Lower Major Chest,
-4 is muscle Minor Chest,
-5 is muscle Anterior Serratus,
-6 is muscle Subclavio,
-7 is muscle Latisimus dorsi,
-8 is muscle Posterior Serratus,
-9 is muscle Lumbar,
-10 is muscle Upper Trapezius
-
-and the total list of muscle are : 
+list of available muscles and his numbers are : 
 
 1 is muscle Upper Major Chest,
 2 is muscle Medial Major Chest,
@@ -87,4 +73,16 @@ and the total list of muscle are :
 69 is muscle Tibialis Anterior,
 70 is muscle Subscapularis,
 71 is muscle Iliopsoas,
-72 is muscle Popliteus 
+72 is muscle Popliteus.
+
+the muscles that i want are: 3,4,5. Dont forgot to write it in json format.
+
+
+
+
+1 - could you give a list of weight lifthing from these muscles? At least 3 for each of then (barbell, dumbell and cable exercise)
+
+1 is muscle Upper Major Chest,
+2 is muscle Medial Major Chest,
+3 is muscle Lower Major Chest,
+4 is muscle Minor Chest, 

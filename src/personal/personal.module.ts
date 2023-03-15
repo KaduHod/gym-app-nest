@@ -26,6 +26,5 @@ export class PersonalModule {
         consumer 
             .apply(CrateUserMiddleware)
             .forRoutes({path:"personal", method: RequestMethod.POST})
-            
     }
 } 
