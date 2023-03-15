@@ -44,11 +44,12 @@ export type ExercicioE = table & {
 export type MuscleGroupE = table & {
     name: string
     image: string
-    portions: MusclePortionE[]
+    portions?: MusclePortionE[]
 }
 
 export type MusclePortionE = table & {
     name: string
     image: string
+    muscleGroup_id: number
     muscleGroup: MuscleGroupE
 }

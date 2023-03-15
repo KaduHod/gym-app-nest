@@ -1,4 +1,4 @@
-import { MuscleGroupE } from "src/domain/entitys";
+import { MuscleGroupE, MusclePortionE } from "src/domain/entitys";
 import { PersonalE, AlunoE, UserE } from "src/entitys";
 
 export abstract class AlunoRepositoryI {
@@ -28,7 +28,13 @@ export abstract class PermissionRepositoryI {
     createAdmin(user: UserE): Promise<any>
 }
 
-export abstract class MuscleRepositoryI {
+export abstract class MuscleGroupRepositoryI {
     findBy(args: Partial<MuscleGroupE>)
     first(args: Partial<MuscleGroupE>)
+    findAll(): Promise<MuscleGroupE[]>
+}
+
+export abstract class MusclePortionRepositoryI {
+    findByMuscleGroupId(muscleGroupIds: number | number[])
+    findAll(): Promise<MusclePortionE[]>
 }

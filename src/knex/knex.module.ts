@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import knex, { Knex } from 'knex';
-import { KnexRepository } from './knex.repository';
+import KnexRepository from './knex.repository';
 
 @Module({
     imports:[ConfigModule],
@@ -19,7 +19,7 @@ import { KnexRepository } from './knex.repository';
                         password : configService.get<string>('DATABASE_PWD'),
                         database : configService.get<string>('GYM_DATABASE_NAME')
                     },
-                    debug: true,
+                    debug: false,
                     pool: {
                       min: 2,
                       max: 10,
@@ -31,4 +31,4 @@ import { KnexRepository } from './knex.repository';
     ],
     exports:['KnexConnection', KnexRepository]
 })
-export class KnexModule {}
+export default class KnexModule {}

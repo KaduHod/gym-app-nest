@@ -7,7 +7,7 @@ import { errorMapper } from "src/utils/validator.helper";
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
-export class UpdateUserService {
+export default class UpdateUserService {
     private user:UserE
     constructor(
         private UserRepository: UserRepository

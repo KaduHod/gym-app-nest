@@ -3,10 +3,10 @@ import { UserE } from 'src/domain/entitys';
 import { DuplicatedData, UserNotFound } from 'src/errors/app.errors';
 import { HttpDuplicatedData, HttpUserNotFoundError } from 'src/errors/response.errors';
 import UserRepository from 'src/knex/user.repository';
-import { UpdateUserService } from './services/updateUser.service';
+import UpdateUserService from './services/updateUser.service';
 
 @Controller('user')
-export class UserController {
+export default class UserController {
     constructor(
         private UpdateUserService: UpdateUserService,
         private UserRepository: UserRepository

@@ -2,7 +2,7 @@ import { Inject, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { Knex } from "knex";
 import { UserE } from "src/domain/entitys";
-import { KnexRepository } from "./knex.repository";
+import KnexRepository from "./knex.repository";
 import { UserRepositoryI } from "./repository";
 
 @Injectable()

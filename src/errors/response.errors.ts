@@ -49,3 +49,22 @@ export class HttpInvalidUserParams extends HttpException {
         }, HttpStatus.BAD_REQUEST)
     }
 }
+
+export class HttpInvalidMuscleQueryParams extends HttpException {
+    constructor(message:any) {
+        super({
+            message: 'Invalid query param!',
+            ...message
+        }, HttpStatus.BAD_REQUEST)
+    }
+}
+
+
+export class HttpInvalidQueryParams extends HttpException {
+    constructor(message:any) {
+        super({
+            message: 'Invalid query param!',
+            ...message
+        }, HttpStatus.BAD_REQUEST)
+    } 
+}

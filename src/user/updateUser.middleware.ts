@@ -8,14 +8,13 @@ import { errorMapper } from "src/utils/validator.helper";
 import { pruneUndefineds } from "src/utils/object.helper";
 
 @Injectable()
-export class UpdateUserMiddleware implements NestMiddleware {
+export default class UpdateUserMiddleware implements NestMiddleware {
     async use(req: Request, res:Request, next: NextFunction) {
-        const userDto = await this.validateFields(req.body)
-        req.body = pruneUndefineds(userDto)
+        req.body = await this.validateFields(req.body)
         next()
     }
 
-    async validateFields(userArgs: UserE): Promise<UpdateUserDto> {
+    async validateFields(userArgs: UserE): Promise<Partial<UpdateUserDto>> {
         const userDto = new UpdateUserDto()
         userDto.id = userArgs.id 
         userDto.name = userArgs.name
@@ -31,6 +30,6 @@ export class UpdateUserMiddleware implements NestMiddleware {
             )
         }
 
-        return userDto
+        return pruneUndefineds(userDto)
     }
 }

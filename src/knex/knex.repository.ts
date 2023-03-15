@@ -5,7 +5,7 @@ import enums from '../utils/enums'
 import { DuplicatedData, UnhandledError } from "src/errors/app.errors";
 
 @Injectable()
-export class KnexRepository {
+export default class KnexRepository {
     constructor(){}
 
     setFindByArguments<T>(args:T, tableName: string): findByArgsResult {

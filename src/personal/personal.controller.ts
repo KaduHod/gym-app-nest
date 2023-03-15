@@ -4,7 +4,7 @@ import { UserE } from "src/domain/entitys";
 import { DuplicatedData } from "src/errors/app.errors";
 import { HttpDuplicatedData, HttpUnhandledError } from "src/errors/response.errors";
 import PersonalRepository from "src/knex/personal.repository";
-import { CreatePersonalService } from "./services/createPersonal.service";
+import CreatePersonalService from "./services/createPersonal.service";
 
 
 

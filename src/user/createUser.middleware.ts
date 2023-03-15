@@ -9,7 +9,7 @@ import { DuplicatedEmail, DuplicatedNickname } from "src/errors/app.errors";
 import { errorMapper } from "src/utils/validator.helper";
 
 @Injectable()
-export class CrateUserMiddleware implements NestMiddleware {
+export default class CrateUserMiddleware implements NestMiddleware {
     constructor(
         private UserRepository:UserRepository
     ){}

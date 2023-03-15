@@ -1,12 +1,12 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { Knex } from "knex";
 import { UserE } from "src/domain/entitys";
-import { KnexRepository } from "./knex.repository";
+import KnexRepository from "./knex.repository";
 import { PermissionRepositoryI } from "./repository";
 import enums from '../utils/enums'
 
 @Injectable()
-export class PermissionRepository 
+export default class PermissionRepository 
     extends KnexRepository 
     implements PermissionRepositoryI 
 {

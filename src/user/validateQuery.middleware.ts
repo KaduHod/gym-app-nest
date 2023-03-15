@@ -7,7 +7,7 @@ import { pruneUndefineds } from "src/utils/object.helper";
 import { HttpInvalidUserParams } from "src/errors/response.errors";
 import { errorMapper } from "src/utils/validator.helper";
 
-export class ValidateUserQueryMiddleware implements NestMiddleware {
+export default class ValidateUserQueryMiddleware implements NestMiddleware {
     async use(req: Request, res:Response, next: NextFunction) {
         req.body.query = await this.validate(req.query)
         req.query = {}
