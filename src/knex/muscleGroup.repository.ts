@@ -9,7 +9,9 @@ export default class MuscleGroupRepository
         implements MuscleGroupRepositoryI 
 {
     public table:string
-    constructor(@Inject('KnexConnection') private knex:Knex){
+    constructor(
+        @Inject('KnexConnection') private knex:Knex
+    ){
         super()
         this.table = "muscle_group"
     }

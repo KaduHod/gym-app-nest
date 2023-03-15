@@ -48,6 +48,8 @@ export class DuplicatedData extends Error {
     }
 }
 
-export const UnhandledError = (error:Error) => {
-    throw new Error(error.message)
+export class UnhandledError extends Error {
+    constructor(err: Error) {
+        super(err.message)
+    }
 }

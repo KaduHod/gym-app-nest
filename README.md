@@ -152,7 +152,7 @@ Esta será una herramienta en la que la aplicación creará uno o más entrenami
 #### **Administrador**
   - Podrá ver todo lo disponible en la API.
 
-#### **Estudiante**
+#### **Aluno**
  - Generar entrenamientos
  - Guardar entrenamientos
  - Crear un calendario con rutina/periodización.
@@ -167,3 +167,7 @@ Esta será una herramienta en la que la aplicación creará uno o más entrenami
  - Generar un Excel o PDF que contenga sus entrenamientos.
 
 ***
+
+
+trl + shift + p  pegar "json" clar linha abaixo
+"material-icon-theme.activeIconPack": "nest",

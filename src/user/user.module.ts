@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import KnexModule from 'src/knex/knex.module';
+import { UserRepositoryI } from 'src/knex/repository';
 import UserRepository from 'src/knex/user.repository';
 import UpdateUserService  from './services/updateUser.service';
 import UpdateUserMiddleware  from './updateUser.middleware';
@@ -10,7 +11,12 @@ import ValidateUserQueryMiddleware from './validateQuery.middleware';
 @Module({
     imports:[ConfigModule, KnexModule],
     controllers: [UserController],
-    providers: [UserRepository, UpdateUserService],
+    providers: [ 
+        {
+            provide:UserRepositoryI,
+            useClass: UserRepository
+        }
+        ,UserRepository, UpdateUserService],
     exports:[UserRepository]
 })
 export class UserModule {

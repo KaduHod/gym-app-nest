@@ -26,7 +26,7 @@ export class PersonalController {
         @Res() response: Response
     ) {
         try {
-            this.CreatePersonalSerivce.setUser(body)
+            await this.CreatePersonalSerivce.setUser(body)
             await this.CreatePersonalSerivce.main()
             return response
                     .status(201)

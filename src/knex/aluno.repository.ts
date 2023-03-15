@@ -46,10 +46,21 @@ export default
     }
 
     first(args:UserFindByArgs): Promise<AlunoE> {
-        throw new Error("Method not implemented.");
+        return this 
+                .setWhereClauses( 
+                    this.knex<AlunoE>(this.table).select("users.*"), 
+                    this.setFindByArguments<UserFindByArgs>(args, this.table) 
+                ).innerJoin(
+                    "users_permissions", 
+                    "users_permissions.user_id",
+                    "users.id"
+                ).where(
+                    "users_permissions.permission_id", 
+                    enums.permission.ALUNO
+                ).first();
     }
 
-    findPersonalOff(user: AlunoE): Promise<PersonalE> {
+    findPersonalOff(user: AlunoE): Promise<AlunoE> {
         throw new Error("Method not implemented.");
     }
 }

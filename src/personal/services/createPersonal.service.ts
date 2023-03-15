@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { UserE } from "src/domain/entitys";
 import PermissionRepository from "src/knex/permission.repository";
 import UserRepository from "src/knex/user.repository";
+import ValidateUser from "src/user/services/validateUser.service";
 
 @Injectable()
 export default class CreatePersonalService {
@@ -11,8 +12,8 @@ export default class CreatePersonalService {
         private PermissionRepository: PermissionRepository,
     ){}
 
-    setUser(user:UserE): void {
-        this.user = user
+    async setUser(user:UserE): Promise<void> {
+        this.user = (await ValidateUser(user)) as UserE
     }
 
     async main(): Promise<any> {

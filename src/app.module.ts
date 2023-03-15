@@ -8,6 +8,8 @@ import { PersonalModule } from './personal/personal.module';
 import { PersonalController } from './personal/personal.controller';
 import MuscleController from './muscles/muscle.controller';
 import MusclesModule from './muscles/muscle.module';
+import AlunoModule from './aluno/aluno.module';
+import AlunoController from './aluno/aluno.controller';
 
 @Module({
   imports: [
@@ -15,6 +17,7 @@ import MusclesModule from './muscles/muscle.module';
     KnexModule, 
     MusclesModule,
     PersonalModule,
+    AlunoModule,
     ConfigModule.forRoot({
       isGlobal: true,
     })
@@ -22,6 +25,7 @@ import MusclesModule from './muscles/muscle.module';
   controllers: [
     AppController, 
     PersonalController,
+    AlunoController,
     MuscleController
   ],
   providers: [AppService],
