@@ -1,312 +1,67 @@
-{
-    "Chest":{
-        "Upper Major Chest": [
-            "Barbell Bench Press",
-            "Incline Dumbbell Press",
-            "Incline Barbell Press",
-            "Low-Incline Dumbbell Press",
-            "Close-Grip Bench Press",
-            "Cable Flyes",
-            "Push-ups",
-            "Dumbbell Pullover",
-            "Machine Fly",
-            "Decline Bench Press"
-        ],
-        "Medial Major Chest": [
-            "Dumbbell Bench Press",
-            "Barbell Bench Press",
-            "Incline Dumbbell Flyes",
-            "Incline Barbell Flyes",
-            "Dumbbell Flyes",
-            "Cable Crossover",
-            "Machine Chest Press",
-            "Push-ups with hands close",
-            "Decline Dumbbell Press",
-            "Standing Chest Press"
-        ],
-        "Lower Major Chest": [
-            "Decline Bench Press",
-            "Barbell Bench Press with Wide Grip",
-            "Incline Barbell Press with Reverse Grip",
-            "Incline Dumbbell Flyes with Reverse Grip",
-            "Reverse Grip Dumbbell Press",
-            "Smith Machine Decline Press",
-            "Dumbbell Decline Flyes",
-            "Cable Crossover with Low Pulleys",
-            "Decline Cable Flyes",
-            "Machine Chest Press with Low Grip"
-        ],
-        "Minor Chest": [
-            "Dumbbell Flyes",
-            "Cable Crossover",
-            "Machine Chest Press",
-            "Incline Dumbbell Flyes",
-            "Incline Cable Flyes",
-            "Incline Bench Press",
-            "Cable Flyes",
-            "Decline Cable Flyes",
-            "Pec Deck Machine",
-            "Chest Dips"
-        ],
-        "Anterior Serratus": [
-            "Push-up Plus" ,
-            "Standing Cable Punches",
-            "Dumbbell Punches",
-            "Medicine Ball Push-ups",
-            "One-Arm Dumbbell Bench Press",
-            "Alternating Dumbbell Bench Press",
-            "Cable Crossover with High Pulleys",
-            "Incline Dumbbell Flyes with Rotation",
-            "Reverse-Grip Bench Press",
-            "Alternating Incline Dumbbell Bench Press" 
-        ],
-        "Subclavio": [
-    
-        ]
-    },
-    "back": {
-        "Latisimus dorsi": [
-          "Pull-ups",
-          "Lat pull-downs",
-          "Bent-over barbell rows",
-          "T-bar rows",
-          "Seated cable rows",
-          "Chin-ups",
-          "Straight-arm pull-downs",
-          "Single-arm dumbbell rows",
-          "Inverted rows",
-          "Pullovers"
-        ],
-        "Posterior Serratus": [
-          "Band pull-aparts",
-          "Scapular wall slides",
-          "Scapular retraction push-ups",
-          "Scapular push-ups",
-          "Cable face pulls",
-          "Inverted rows",
-          "Dumbbell reverse flyes",
-          "Barbell shrugs",
-          "Dumbbell shrugs",
-          "Overhead shrugs"
-        ],
-        "Lumbar": [
-          "Deadlifts",
-          "Good mornings",
-          "Back extensions",
-          "Reverse hyperextensions",
-          "Seated rows",
-          "Bent-over rows",
-          "Pull-downs",
-          "T-bar rows",
-          "Hyperextensions",
-          "Single-leg deadlifts"
-        ],
-        "Upper Trapezius": [
-          "Barbell shrugs",
-          "Dumbbell shrugs",
-          "Upright rows",
-          "Cable shrugs",
-          "Overhead presses",
-          "Push presses",
-          "Arnold presses",
-          "Dumbbell overhead presses",
-          "Barbell overhead presses",
-          "Handstand push-ups"
-        ],
-        "Medial Trapezius": [
-          "Face pulls",
-          "Band pull-aparts",
-          "Scapular wall slides",
-          "Scapular retraction push-ups",
-          "Scapular push-ups",
-          "Cable rows",
-          "Inverted rows",
-          "Single-arm dumbbell rows",
-          "Seated rows",
-          "Bent-over rows"
-        ],
-        "Lower Trapezius": [
-          "Prone Y-raises",
-          "Band pull-aparts",
-          "Scapular wall slides",
-          "Scapular retraction push-ups",
-          "Scapular push-ups",
-          "Face pulls",
-          "Inverted rows",
-          "Single-arm dumbbell rows",
-          "Seated rows",
-          "Bent-over rows"
-        ],
-        "Minor Rhomboid": [
-          "Band pull-aparts",
-          "Scapular wall slides",
-          "Scapular retraction push-ups",
-          "Scapular push-ups",
-          "Face pulls",
-          "Inverted rows",
-          "Single-arm dumbbell rows",
-          "Seated rows",
-          "Bent-over rows",
-          "Cable rows"
-        ],
-        "Major Rhomboid": [
-          "Band pull-aparts",
-          "Scapular wall slides",
-          "Scapular retraction push-ups",
-          "Scapular push-ups",
-          "Face pulls",
-          "Inverted rows",
-          "Single-arm dumbbell rows",
-          "Seated rows",
-          "Bent-over rows",
-          "Cable rows"
-        ],
-        "Levator Scapulae": [
-            "Barbell Shrug",
-            "Upright Barbell Row",
-            "Dumbbell Shrug",
-            "Smith Machine Shrug",
-            "Cable Shrug",
-            "Single Arm Cable Row",
-            "Bent Over Barbell Row",
-            "Seated Cable Row",
-            "Lat Pulldown",
-            "Pull Ups"
-        ],
-        "Supraspinatus": [
-            "Barbell Overhead Press",
-            "Dumbbell Overhead Press",
-            "Arnold Press",
-            "Seated Dumbbell Press",
-            "Smith Machine Overhead Press",
-            "Cable Lateral Raise",
-            "Machine Lateral Raise",
-            "Dumbbell Lateral Raise",
-            "Barbell Front Raise",
-            "Cable Front Raise"
-        ],
-        "Infraspinatus": [
-            "Dumbbell Reverse Fly",
-            "Cable Reverse Fly",
-            "Face Pulls",
-            "Dumbbell Lateral Raise",
-            "Cable Lateral Raise",
-            "Machine Lateral Raise",
-            "Seated Cable Row",
-            "Bent Over Barbell Row",
-            "Single Arm Cable Row",
-            "Lat Pulldown"
-        ],
-        "Teres Minor": [
-            "Dumbbell Reverse Fly",
-            "Cable Reverse Fly",
-            "Face Pulls",
-            "Cable Lateral Raise",
-            "Machine Lateral Raise",
-            "Dumbbell Lateral Raise",
-            "Barbell Front Raise",
-            "Cable Front Raise",
-            "Seated Cable Row",
-            "Bent Over Barbell Row"
-        ],
-        "Teres Major": [
-            "Incline Dumbbell Press",
-            "Incline Barbell Press",
-            "Close Grip Bench Press",
-            "Dumbbell Flyes",
-            "Cable Crossover",
-            "Machine Fly" ,
-            "Decline Bench Press",
-            "Flat Bench Dumbbell Press",
-            "Flat Bench Barbell Press",
-            "Cable Fly"
-        ],
-        "Subscapularis": [
-            "Close Grip Bench Press",
-            "Barbell Incline Bench Press",
-            "Dumbbell Incline Bench Press",
-            "Dumbbell Flyes",
-            "Machine Fly",
-            "Cable Crossover",
-            "Decline Bench Press",
-            "Flat Bench Dumbbell Press",
-            "Flat Bench Barbell Press",
-            "Cable Fly"
-        ]
-    }
-    
-}
-
-
-1 is muscleUpper Major Chest,
-2 is muscleMedial Major Chest,
-3 is muscleLower Major Chest,
-4 is muscleMinor Chest,
-5 is muscleAnterior Serratus,
-6 is muscleSubclavio,
-7 is muscleLatisimus dorsi,
-8 is musclePosterior Serratus,
-9 is muscleLumbar,
-10 is muscle	Upper Trapezius,
-11 is muscle	Medial Trapezius,
-12 is muscle	Lower Trapezius,
-13 is muscle	Minor Rhomboid,
-14 is muscle	Major Rhomboid,
-15 is muscle	Levator Scapulae,
-16 is muscle	Long head,
-17 is muscle	Short head,
-18 is muscle	Brachialis,
-19 is muscle	Long head,
-20 is muscle	Short head,
-21 is muscle	Lateral head,
-22 is muscle	Pronator teres,
-23 is muscle	FLexor carpi radials,
-24 is muscle	FLexor carpi ulnaris,
-25 is muscle	Palmaris longus,
-26 is muscle	Glúteos medius,
-27 is muscle	Glúteos minimus,
-28 is muscle	Glúteos maximus,
-29 is muscle	Pelvic floor,
-30 is muscle	Transversus Abdominis,
-31 is muscle	Multifidus,
-32 is muscle	Internal Obliques,
-33 is muscle	External Obliques,
-34 is muscle	Rectus Abdominis,
-35 is muscle	Erector spinae,
-36 is muscle	Bíceps Femoris,
-37 is muscle	Semitendinosus,
-38 is muscle	Semimembranosus,
-39 is muscle	Vastus lateralis,
-40 is muscle	Vastus medials,
-41 is muscle	Vastus intermedius,
-42 is muscle	Rectus Femoris,
-43 is muscle	Gastrocnemius,
-44 is muscle	Soleos,
-45 is muscle	Anterior,
-46 is muscle	Medium,
-47 is muscle	Lateral,
-48 is muscle	Sternocleidomastoid,
-49 is muscle	Splenius,
-50 is muscle	Tensor Fasciae Latae,
-51 is muscle	Sartorius,
-52 is muscle	Supraspinatus,
-53 is muscle	Extensor Carpi Radialis Longus,
-54 is muscle	Extensor Carpi Radialis Brevis,
-55 is muscle	Extensor Carpi Ulnaris,
-56 is muscle	Adductor longus,
-57 is muscle	Adductor brevis,
-58 is muscle	Adductor magnus,
-59 is muscle	Gracillis,
-60 is muscle	Infraspinatus,
-61 is muscle	Teres Minor,
-62 is muscle	Teres Major,
-63 is muscle	Pectineus,
-64 is muscle	Piriformis,
-65 is muscle	Quadratus Femoris,
-66 is muscle	Obturator externus,
-67 is muscle	Obturator internus,
-68 is muscle	Superior Gemellus,
-69 is muscle	Tibialis Anterior,
-70 is muscle	Subscapularis,
-71 is muscle	Iliopsoas,
-72 is muscle	Popliteus 
+[
+  {
+    "1": [
+        {
+            "exercise_name": "Barbell Bench Press",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Dumbbell Fly",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Incline Bench Press",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Push-Ups",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Chest Dips",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        }
+    ],
+    "2": [
+        {
+            "exercise_name": "Incline Dumbbell Fly",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Incline Bench Press",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Dumbbell Bench Press",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Push-Ups",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Cable Crossover",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        }
+    ]
+]

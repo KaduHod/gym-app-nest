@@ -16,8 +16,8 @@ export default class MuscleGroupRepository
 
     async findAll(): Promise<MuscleGroupE[]>  {
         return this 
-                    .knex<MuscleGroupE>(this.table)
-                    .on('query-error', this.handleError);
+                .knex<MuscleGroupE>(this.table)
+                .on('query-error', this.handleError);
     }
     
     async findBy(args: Partial<MuscleGroupE>): Promise<MuscleGroupE[]> {

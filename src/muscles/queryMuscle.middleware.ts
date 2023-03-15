@@ -1,4 +1,4 @@
-import { HttpException, NestMiddleware } from "@nestjs/common";
+import { NestMiddleware } from "@nestjs/common";
 import { NextFunction, Request, Response } from "express";
 import QueryMuscleGroupDto from "./muscle.validator";
 import { validate } from 'class-validator'
