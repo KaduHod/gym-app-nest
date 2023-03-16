@@ -4,6 +4,8 @@ type table = {
     updatedAt: Date
 }
 
+export type UserType = UserE | PersonalE | AlunoE
+
 export type UserE = table & {
     name: string
     nickname: string

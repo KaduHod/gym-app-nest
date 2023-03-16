@@ -5,16 +5,25 @@ import { InvalidUserError, UserNotFound } from "src/errors/app.errors";
 import { errorMapper } from "src/utils/validator.helper";
 import { Injectable } from "@nestjs/common";
 import { UserRepositoryI } from "src/knex/repository";
+import ValidateUserDtoService from './validateUserDto.service'
 
 @Injectable()
 export default class UpdateUserService {
     private user:UserE
     constructor(
-        private UserRepository: UserRepositoryI
+        private UserRepository: UserRepositoryI,
+        private ValidateUserDtoService: ValidateUserDtoService,
+        private UpdateUserDto: UpdateUserDto
     ){}
 
     async main(): Promise<UserE> {
-        const [_,userDb] = await Promise.all([this.validate(), this.exists()])
+        const [_,userDb] = await Promise.all([
+            this.ValidateUserDtoService
+                .setDto<UpdateUserDto>(this.UpdateUserDto)
+                .setArgs(this.user)
+                .validate(), 
+            this.exists()
+        ])
         await this.updateUser(this.user)
         return {...userDb,...this.user} as UserE;
     }
@@ -24,31 +33,6 @@ export default class UpdateUserService {
      */
     setUser(user: UserE): void {
         this.user = user
-    }
-
-    /**
-     * Valida os parametros que serão so novos valores do usuario no banco
-     */
-    async validate() {
-        if(!this.user){
-            throw new Error("User not setted.")
-        }
-
-        const user = new UpdateUserDto()
-        user.id = this.user.id
-        user.name = this.user.name
-        user.nickname = this.user.nickname
-        user.email = this.user.email
-        user.password = this.user.password
-        user.cellphone = this.user.cellphone
-
-        const errors = await validate(user)
-
-        if (errors.length) {
-            throw new InvalidUserError(
-                errorMapper(errors)
-            )
-        }
     }
 
     /**

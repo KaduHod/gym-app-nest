@@ -1,7 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { UserE } from "src/domain/entitys";
 import { PermissionRepositoryI, UserRepositoryI } from "src/knex/repository";
-import ValidateCreateUserArgs from "src/user/services/validateCreateUserArgs.service";
+import ValidateUserDtoService from "src/user/services/validateUserDto.service";
+import { CreateUserDto } from "src/user/user.validator";
 
 @Injectable()
 export default class CreatePersonalService {
@@ -9,15 +10,17 @@ export default class CreatePersonalService {
     constructor(
         private UserRepository: UserRepositoryI,
         private PermissionRepository: PermissionRepositoryI,
-        private ValidateUserService: ValidateCreateUserArgs
+        private ValidateUserDtoService: ValidateUserDtoService,
+        private CreateUserDto: CreateUserDto
     ){}
 
     async setUser(user:UserE): Promise<void> {
         this.user = (await this
-                            .ValidateUserService
-                            .setUserArgs(user)
+                            .ValidateUserDtoService
+                            .setDto(this.CreateUserDto)
+                            .setArgs(user)
                             .validate()
-                    ).getValidatedUser()
+                    ).getValidatedArgs()
     }
 
     async main(): Promise<any> {

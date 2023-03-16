@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
@@ -10,6 +10,10 @@ import MuscleController from './muscles/muscle.controller';
 import MusclesModule from './muscles/muscle.module';
 import AlunoModule from './aluno/aluno.module';
 import AlunoController from './aluno/aluno.controller';
+import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
+import CrateUserMiddleware from './user/createUser.middleware';
+import CreatePersonalService from './personal/services/createPersonal.service';
+import ValidateUserDtoService from './user/services/validateUserDto.service';
 
 @Module({
   imports: [
@@ -25,9 +29,26 @@ import AlunoController from './aluno/aluno.controller';
   controllers: [
     AppController, 
     PersonalController,
-    AlunoController,
+    // AlunoController,
     MuscleController
   ],
-  providers: [AppService],
+  providers: [
+    AppService, 
+    CreatePersonalService, 
+    ValidateUserDtoService,
+    
+  ],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer:MiddlewareConsumer){
+    consumer.apply(NotEmptyBodyMiddleware).forRoutes(
+      {path:"*", method: RequestMethod.POST},
+      {path:"*", method: RequestMethod.PUT},
+      {path:"*", method: RequestMethod.PATCH}
+    ).apply(CrateUserMiddleware).forRoutes(
+      {path:"aluno", method: RequestMethod.POST},
+      {path:"personal", method: RequestMethod.POST},
+      {path:"user", method: RequestMethod.POST}
+    )
+  }
+}

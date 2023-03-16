@@ -25,8 +25,9 @@ export class UserNotFound extends Error {
 }
 
 export class InvalidUserError extends Error {
-    constructor(errors: errorFormated | errorFormated[]) {
-        super(errors.toString())
+    constructor(public errors: errorFormated | errorFormated[]) {
+        super()
+        this.message = 'Invalid user'
     }
 }
 

@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus } from "@nestjs/common";
-import { DuplicatedData, UserNotFound } from "./app.errors";
+import { DuplicatedData, InvalidUserError, UserNotFound } from "./app.errors";
 
 export class HttpDuplicatedData extends HttpException {
     constructor(error: DuplicatedData){
@@ -18,20 +18,24 @@ export class HttpUnhandledError extends HttpException {
 } 
 
 export class HttpInvalidCreateUserRequest extends HttpException {
-    constructor(message: any) {
+    constructor(error: InvalidUserError) {
         super(
-            {message},
-            HttpStatus.BAD_REQUEST
+            error.message,
+            HttpStatus.BAD_REQUEST,
+            {cause: error}
         )
     }
 }
 
 export class HttpInvalidUpdateUserRequest extends HttpException {
-    constructor(message: any) {
+    constructor(error: InvalidUserError) {
         super(
-            {message},
-            HttpStatus.BAD_REQUEST
+            error.errors,
+            HttpStatus.BAD_REQUEST,
+            {cause: error}
         )
+        this.name = "Invalid create user request"
+        this.message = 'Invalid user'
     }
 }
 

@@ -3,7 +3,7 @@ import { Expose } from 'class-transformer'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()
-export class CreateUserDto {
+export class CreateUserDto{
     @Length(5, 20)
     @IsNotEmpty()
     @IsString()
@@ -106,3 +106,5 @@ export class QueryUserDto {
     @Expose()
     cellphone?: string = undefined
 }
+
+

@@ -22,7 +22,10 @@ export default class UserController {
         try {
             this.UpdateUserService.setUser(body)
             const updatedUser = await this.UpdateUserService.main()
-            return updatedUser
+            return {
+                message:"Updated",
+                user:updatedUser
+            }
         } catch (error) {
             if (error instanceof UserNotFound) {
                 throw new HttpUserNotFoundError(error)

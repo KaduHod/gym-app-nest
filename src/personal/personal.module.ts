@@ -6,12 +6,11 @@ import PersonalRepository from 'src/knex/personal.repository';
 import UserRepository from 'src/knex/user.repository';
 import CreatePersonalService from './services/createPersonal.service';
 import { PermissionRepositoryI, PersonalRepositoryI, UserRepositoryI } from 'src/knex/repository';
-import ValidateCreateUserArgsService from 'src/user/services/validateCreateUserArgs.service';
 import { CreateUserDto } from 'src/user/user.validator';
+import ValidateUserDtoService from 'src/user/services/validateUserDto.service';
 
 @Module({
     imports:[KnexModule],
-    controllers:[],
     providers:[
         {
             provide:PersonalRepositoryI,
@@ -25,23 +24,20 @@ import { CreateUserDto } from 'src/user/user.validator';
             provide:PermissionRepositoryI,
             useClass:PermissionRepository,
         }, 
+        CreateUserDto,
         CreatePersonalService,
-        ValidateCreateUserArgsService,
-        CreateUserDto
+        ValidateUserDtoService,
     ],
     exports:[
         CreateUserDto,
-        ValidateCreateUserArgsService,
         PermissionRepositoryI,
         UserRepositoryI,
         PersonalRepositoryI, 
-        CreatePersonalService
+        CreatePersonalService,
     ]
 })
 export class PersonalModule {
     configure(consumer: MiddlewareConsumer) {
-        consumer 
-            .apply(CrateUserMiddleware)
-            .forRoutes({path:"personal", method: RequestMethod.POST})
+        
     }
 } 
