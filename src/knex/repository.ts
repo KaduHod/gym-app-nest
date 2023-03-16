@@ -14,6 +14,8 @@ export abstract class AlunoRepositoryI extends RepositoryI<AlunoE> {
 
 export abstract class UserRepositoryI extends RepositoryI<UserE> {
     abstract exists(args:any): Promise<any>
+    abstract create(args:UserE): Promise<any>
+    abstract update(args:UserE): Promise<any>
 }
 
 export abstract class PersonalRepositoryI extends RepositoryI<PersonalE> {

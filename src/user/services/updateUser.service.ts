@@ -1,16 +1,16 @@
 import { UserE } from "src/domain/entitys";
-import UserRepository from "src/knex/user.repository";
 import { UpdateUserDto } from "../user.validator";
 import { validate } from 'class-validator'
 import { InvalidUserError, UserNotFound } from "src/errors/app.errors";
 import { errorMapper } from "src/utils/validator.helper";
 import { Injectable } from "@nestjs/common";
+import { UserRepositoryI } from "src/knex/repository";
 
 @Injectable()
 export default class UpdateUserService {
     private user:UserE
     constructor(
-        private UserRepository: UserRepository
+        private UserRepository: UserRepositoryI
     ){}
 
     async main(): Promise<UserE> {

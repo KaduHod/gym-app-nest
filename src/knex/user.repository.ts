@@ -16,8 +16,11 @@ export default
         super()
         this.table = "users"
     }
+    findAll(): Promise<UserE[]> {
+        throw new Error("Method not implemented.");
+    }
 
-    async createUser(userArgs: UserE): Promise<UserE> {
+    async create(userArgs: UserE): Promise<UserE> {
         const [id] = await this
                             .knex(this.table)
                             .insert(userArgs)

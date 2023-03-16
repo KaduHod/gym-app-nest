@@ -1,28 +1,28 @@
 import { Injectable } from "@nestjs/common";
-import PermissionRepository from "src/knex/permission.repository";
-import UserRepository from "src/knex/user.repository";
-import { AlunoE, UserE } from "src/domain/entitys";
-import { CreateUserDto } from "src/user/user.validator";
+import { AlunoE } from "src/domain/entitys";
+import { PermissionRepositoryI, UserRepositoryI } from "src/knex/repository";
+import ValidateCreateUserArgs from "src/user/services/validateCreateUserArgs.service";
 
 @Injectable()
 export default class CreateAlunoService {
     private aluno: AlunoE
     constructor(
-        private UserRepository: UserRepository,
-        private PermissionRepository: PermissionRepository
+        private UserRepository: UserRepositoryI,
+        private PermissionRepository: PermissionRepositoryI,
+        private ValidateCreateUserArgs: ValidateCreateUserArgs
     ){}
 
     async main() {
         if (!this.aluno) {
-            throw new Error('Unset user(aluno) to CreateAlunoService')
+            throw new Error('Unset aluno to CreateAlunoService')
         }
     }
 
-    async setAluno(aluno: UserE) {
-
-    }
-
-    async validateAluno() {
-        const alunoValidated = new CreateUserDto()
+    async setAluno(aluno: AlunoE) {
+        this.aluno = (await this
+                        .ValidateCreateUserArgs
+                        .setUserArgs(aluno)
+                        .validate()
+                    ).getValidatedUser() as AlunoE
     }
 }

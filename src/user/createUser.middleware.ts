@@ -1,44 +1,24 @@
-import { Body, Injectable, NestMiddleware, Req } from "@nestjs/common";
+import { Injectable, NestMiddleware } from "@nestjs/common";
 import { NextFunction, Request } from "express";
-import { UserE } from "src/domain/entitys";
-import { HttpDuplicatedData, HttpInvalidCreateUserRequest } from "src/errors/response.errors";
-import { CreateUserDto } from "./user.validator";
-import { validate } from 'class-validator'
-import UserRepository from "src/knex/user.repository";
+import { HttpDuplicatedData } from "src/errors/response.errors";
 import { DuplicatedEmail, DuplicatedNickname } from "src/errors/app.errors";
-import { errorMapper } from "src/utils/validator.helper";
+import { UserRepositoryI } from "src/knex/repository";
+import ValidateCreateUserArgs from "./services/validateCreateUserArgs.service";
 
 @Injectable()
 export default class CrateUserMiddleware implements NestMiddleware {
     constructor(
-        private UserRepository:UserRepository
+        private UserRepository: UserRepositoryI,
+        private ValidateCreateUserArgs: ValidateCreateUserArgs
     ){}
 
     async use(req: Request, res:Request, next: NextFunction) {
-        const [userDto] = await Promise.all([
-            this.validateFields(req.body),
+        await Promise.all([
+            this.ValidateCreateUserArgs.setUserArgs(req.body).validate(),
             this.checkNicknameAndEmail(req.body.nickname, req.body.email)
         ])
-        req.body = userDto
+        req.body = this.ValidateCreateUserArgs.getValidatedUser()
         next()
-    }
-
-    async validateFields(userArgs: UserE): Promise<UserE> {
-        const userDto = new CreateUserDto() 
-        userDto.name = userArgs.name
-        userDto.email = userArgs.email
-        userDto.password = userArgs.password
-        userDto.cellphone = userArgs.cellphone
-        userDto.nickname = userArgs.nickname
-        const errors = await validate(userDto)
-        
-        if (errors.length) {
-            throw new HttpInvalidCreateUserRequest(
-                errorMapper(errors)
-            )
-        }
-
-        return userDto as UserE
     }
 
     async checkNicknameAndEmail(nickname:string, email: string): Promise<void> {
@@ -49,7 +29,6 @@ export default class CrateUserMiddleware implements NestMiddleware {
                     new DuplicatedEmail()
                 )
             }
-
             if (user.nickname === nickname) {
                 throw new HttpDuplicatedData(
                     new DuplicatedNickname()

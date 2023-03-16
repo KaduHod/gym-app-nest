@@ -5,19 +5,36 @@ import CrateUserMiddleware from '../user/createUser.middleware'
 import PersonalRepository from 'src/knex/personal.repository';
 import UserRepository from 'src/knex/user.repository';
 import CreatePersonalService from './services/createPersonal.service';
+import { PermissionRepositoryI, PersonalRepositoryI, UserRepositoryI } from 'src/knex/repository';
+import ValidateCreateUserArgsService from 'src/user/services/validateCreateUserArgs.service';
+import { CreateUserDto } from 'src/user/user.validator';
 
 @Module({
     imports:[KnexModule],
     controllers:[],
     providers:[
-        PersonalRepository, 
-        UserRepository, 
-        PermissionRepository, 
-        CreatePersonalService
+        {
+            provide:PersonalRepositoryI,
+            useClass:PersonalRepository
+        },
+        {
+            provide: UserRepositoryI,
+            useClass: UserRepository
+        }, 
+        {
+            provide:PermissionRepositoryI,
+            useClass:PermissionRepository,
+        }, 
+        CreatePersonalService,
+        ValidateCreateUserArgsService,
+        CreateUserDto
     ],
     exports:[
-        UserRepository,
-        PersonalRepository, 
+        CreateUserDto,
+        ValidateCreateUserArgsService,
+        PermissionRepositoryI,
+        UserRepositoryI,
+        PersonalRepositoryI, 
         CreatePersonalService
     ]
 })

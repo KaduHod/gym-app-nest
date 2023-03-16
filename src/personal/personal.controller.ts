@@ -3,7 +3,7 @@ import { Response } from "express";
 import { UserE } from "src/domain/entitys";
 import { DuplicatedData } from "src/errors/app.errors";
 import { HttpDuplicatedData, HttpUnhandledError } from "src/errors/response.errors";
-import PersonalRepository from "src/knex/personal.repository";
+import { PersonalRepositoryI } from "src/knex/repository";
 import CreatePersonalService from "./services/createPersonal.service";
 
 
@@ -11,7 +11,7 @@ import CreatePersonalService from "./services/createPersonal.service";
 @Controller("personal")
 export class PersonalController {
     constructor(
-        private PersonalRepository: PersonalRepository,
+        private PersonalRepository: PersonalRepositoryI,
         private CreatePersonalSerivce: CreatePersonalService,
     ) {}
 

@@ -6,20 +6,36 @@ import AlunoController from "./aluno.controller";
 import UserRepository from "src/knex/user.repository";
 import CreateAlunoService from "./services/createAluno.service";
 import PermissionRepository from "src/knex/permission.repository";
+import { AlunoRepositoryI, PermissionRepositoryI, UserRepositoryI } from "src/knex/repository";
+import ValidateCreateUserArgs from "src/user/services/validateCreateUserArgs.service";
+import { CreateUserDto } from "src/user/user.validator";
 
 @Module({
     imports:[KnexModule],
     controllers:[AlunoController],
     providers:[
-        AlunoRepository, 
-        UserRepository, 
-        PermissionRepository, 
-        CreateAlunoService
+        {
+            provide:AlunoRepositoryI,
+            useClass:AlunoRepository
+        },
+        {
+            provide: UserRepositoryI,
+            useClass: UserRepository
+        }, 
+        {
+            provide:PermissionRepositoryI,
+            useClass:PermissionRepository,
+        },  
+        CreateAlunoService,
+        ValidateCreateUserArgs,
+        CreateUserDto
     ],
     exports:[
-        AlunoRepository, 
-        UserRepository, 
-        PermissionRepository, 
+        CreateUserDto,
+        ValidateCreateUserArgs,
+        AlunoRepositoryI, 
+        UserRepositoryI, 
+        PermissionRepositoryI, 
         CreateAlunoService
     ]
 })

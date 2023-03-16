@@ -1,5 +1,8 @@
 import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber } from 'class-validator'
 import { Expose } from 'class-transformer'
+import { Injectable } from '@nestjs/common'
+
+@Injectable()
 export class CreateUserDto {
     @Length(5, 20)
     @IsNotEmpty()
@@ -31,6 +34,7 @@ export class CreateUserDto {
     cellphone: string
 }
 
+@Injectable()
 export class UpdateUserDto {
     @IsNumber()
     @IsNotEmpty()
@@ -71,7 +75,7 @@ export class UpdateUserDto {
     cellphone?: string = undefined
 }
 
-
+@Injectable()
 export class QueryUserDto {
     @IsNumber()
     @IsNotEmpty()

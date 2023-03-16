@@ -4,8 +4,10 @@ import KnexModule from 'src/knex/knex.module';
 import { UserRepositoryI } from 'src/knex/repository';
 import UserRepository from 'src/knex/user.repository';
 import UpdateUserService  from './services/updateUser.service';
+import ValidateCreateUserArgs from './services/validateCreateUserArgs.service';
 import UpdateUserMiddleware  from './updateUser.middleware';
 import UserController  from './user.controller';
+import { CreateUserDto } from './user.validator';
 import ValidateUserQueryMiddleware from './validateQuery.middleware';
 
 @Module({
@@ -15,9 +17,16 @@ import ValidateUserQueryMiddleware from './validateQuery.middleware';
         {
             provide:UserRepositoryI,
             useClass: UserRepository
-        }
-        ,UserRepository, UpdateUserService],
-    exports:[UserRepository]
+        },
+        CreateUserDto,
+        ValidateCreateUserArgs,
+        UpdateUserService
+    ],
+    exports:[
+        UserRepositoryI, 
+        ValidateCreateUserArgs, 
+        CreateUserDto
+    ]
 })
 export class UserModule {
     configure(consumer: MiddlewareConsumer) {
