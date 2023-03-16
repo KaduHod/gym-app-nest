@@ -1,17 +1,14 @@
-import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus } from "@nestjs/common";
-import { InvalidUserError, UnhandledError } from "./app.errors";
+import { ArgumentsHost, Catch, ExceptionFilter } from "@nestjs/common";
+import { UnhandledError } from "./app.errors";
 import { Response } from "express";
 
 
 @Catch()
 export default class GlobalErrorHandler implements ExceptionFilter {
     catch(exception: Error, host: ArgumentsHost) {
+        this.log(exception)
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
-        console.log('\n\n');
-        
-        console.error("aquiiiiiii",exception)
-        console.log('\n\n');
         if (exception instanceof UnhandledError) {
             return response.status(500).send(exception.message)
         }
@@ -19,5 +16,9 @@ export default class GlobalErrorHandler implements ExceptionFilter {
             message: exception.message,
             ...exception
         })
+    }
+
+    log(exception:any) {
+        console.error(exception)
     }
 }

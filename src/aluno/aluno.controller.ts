@@ -1,5 +1,4 @@
-import { Body, Controller, Get, Post, Res } from "@nestjs/common";
-import { Response } from "express";
+import { Body, Controller, Header, HttpCode, Post } from "@nestjs/common";
 import { CreateUserDto } from "src/user/user.validator";
 import CreateAlunoService from "./services/createAluno.service";
 
@@ -10,8 +9,9 @@ export default class AlunoController {
     ){}
 
     @Post()
-    async create(@Body() args: CreateUserDto, @Res() res:Response) {
-        
-        return res.status(200).send("hello")
+    @HttpCode(201)
+    @Header('Content-Type', 'application/json')
+    async create(@Body() args: CreateUserDto) {
+        return {message:"created", aluno:{}}
     }
 }

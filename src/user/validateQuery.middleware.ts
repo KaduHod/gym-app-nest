@@ -6,31 +6,20 @@ import { validate } from 'class-validator'
 import { pruneUndefineds } from "src/utils/object.helper";
 import { HttpInvalidUserParams } from "src/errors/response.errors";
 import { errorMapper } from "src/utils/validator.helper";
+import ValidateUserDtoService from "./services/validateUserDto.service";
 
 export default class ValidateUserQueryMiddleware implements NestMiddleware {
+    constructor(
+        private ValidateUserDtoService: ValidateUserDtoService,
+        private QueryUserDto: QueryUserDto
+    ){}
     async use(req: Request, res:Response, next: NextFunction) {
-        req.body.query = await this.validate(req.query)
+        req.body.query = (await this
+                                    .ValidateUserDtoService
+                                    .setDto(this.QueryUserDto)
+                                    .setArgs(req.query).validate()
+                                ).getValidatedArgs();
         req.query = {}
         next()
-    }
-
-    async validate(query:any) {
-        query as UserE
-        const queryUserDto = new QueryUserDto()
-        queryUserDto.id = query.id
-        queryUserDto.name = query.name
-        queryUserDto.nickname = query.nickname
-        queryUserDto.email = query.email
-        queryUserDto.cellphone = query.cellphone
-
-        const errors = await validate(queryUserDto)
-
-        if (errors.length) {
-            throw new HttpInvalidUserParams(
-                errorMapper(errors)
-            )
-        }
-        
-        return pruneUndefineds(queryUserDto);
     }
 }

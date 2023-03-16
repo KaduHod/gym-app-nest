@@ -13,7 +13,6 @@ export default class CreateUserService {
         private ValidateUserDtoService: ValidateUserDtoService
     ) {}
 
-
     async main(userArgs:UserE) {
         await this.setUser(userArgs)
         await this.saveUser()
