@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class CreateUserDto{
-    @Length(5, 20)
+    @Length(5, 100)
     @IsNotEmpty()
     @IsString()
     @Expose()
@@ -42,7 +42,7 @@ export class UpdateUserDto {
     @Expose()
     id: number
 
-    @Length(5, 20)
+    @Length(5, 100)
     @IsNotEmpty()
     @IsString()
     @IsOptional()
@@ -85,7 +85,7 @@ export class QueryUserDto {
     @IsOptional()
     id?: number = undefined
 
-    @Length(5, 20)
+    @Length(5, 100)
     @IsString()
     @IsOptional()
     @Expose()

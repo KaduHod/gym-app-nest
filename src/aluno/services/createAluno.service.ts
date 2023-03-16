@@ -9,7 +9,6 @@ export default class CreateAlunoService {
     constructor(
         private CreateUserService: CreateUserService,
         private PermissionRepository: PermissionRepositoryI,
-        
     ){}
 
     async main(alunoArgs:AlunoE): Promise<AlunoE> {
