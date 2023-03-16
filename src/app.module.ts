@@ -14,6 +14,7 @@ import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
 import CrateUserMiddleware from './user/createUser.middleware';
 import CreatePersonalService from './personal/services/createPersonal.service';
 import ValidateUserDtoService from './user/services/validateUserDto.service';
+import ErrorModule from './errors/error.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import ValidateUserDtoService from './user/services/validateUserDto.service';
     KnexModule, 
     MusclesModule,
     PersonalModule,
+    ErrorModule,
     AlunoModule,
     ConfigModule.forRoot({
       isGlobal: true,
@@ -29,15 +31,14 @@ import ValidateUserDtoService from './user/services/validateUserDto.service';
   controllers: [
     AppController, 
     PersonalController,
-    // AlunoController,
+    AlunoController,
     MuscleController
   ],
   providers: [
     AppService, 
     CreatePersonalService, 
-    ValidateUserDtoService,
-    
-  ],
+    ValidateUserDtoService
+  ]
 })
 export class AppModule {
   configure(consumer:MiddlewareConsumer){

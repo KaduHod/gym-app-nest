@@ -11,17 +11,12 @@ export default class UpdateUserMiddleware implements NestMiddleware {
         private UpdateUserDto: UpdateUserDto
     ){}
     async use(req: Request, res:Request, next: NextFunction) {
-        try {
-            req.body = (await this
-                .ValidateUserDtoService
-                .setDto<UpdateUserDto>(this.UpdateUserDto)
-                .setArgs(req.body as UserType)
-                .validate()
-            ).getValidatedArgs()
-            next()
-        } catch (error) {
-            console.log(error);
-            
-        }
+        req.body = (await this
+            .ValidateUserDtoService
+            .setDto<UpdateUserDto>(this.UpdateUserDto)
+            .setArgs(req.body as UserType)
+            .validate()
+        ).getValidatedArgs()
+        next()
     }
 }

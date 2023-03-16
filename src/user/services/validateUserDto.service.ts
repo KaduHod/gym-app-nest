@@ -40,7 +40,6 @@ export default class ValidateUserDtoService {
         this.userDto.cellphone = this.args.cellphone
 
         const errors = await validate(this.userDto)
-
         if (errors.length) {
             throw new InvalidUserError(
                 errorMapper(errors)

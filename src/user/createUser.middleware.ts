@@ -16,28 +16,15 @@ export default class CrateUserMiddleware implements NestMiddleware {
     ){}
 
     async use(req: Request, res:Request, next: NextFunction) {
-        try {
-            await Promise.all([
-                this.ValidateUserDtoService
-                    .setDto(this.CreateUserDto)
-                    .setArgs(req.body as  UserType)
-                    .validate(),
-                this.checkNicknameAndEmail(req.body.nickname, req.body.email)
-            ])
-            req.body = this.ValidateUserDtoService.getValidatedArgs()
-            next()
-            
-        } catch (error) {
-            if( error instanceof InvalidUserError) {
-                throw new HttpInvalidUpdateUserRequest(error);
-            }
-
-            if (error instanceof DuplicatedEmail || error instanceof DuplicatedNickname)  {
-                throw new HttpDuplicatedData(error)
-            }
-
-            throw new UnhandledError(error)
-        }        
+        await Promise.all([
+            this.ValidateUserDtoService
+                .setDto(this.CreateUserDto)
+                .setArgs(req.body as  UserType)
+                .validate(),
+            this.checkNicknameAndEmail(req.body.nickname, req.body.email)
+        ])
+        req.body = this.ValidateUserDtoService.getValidatedArgs()
+        next()       
     }
 
     async checkNicknameAndEmail(nickname:string, email: string): Promise<void> {

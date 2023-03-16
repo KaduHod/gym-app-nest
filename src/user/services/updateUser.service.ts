@@ -1,8 +1,6 @@
 import { UserE } from "src/domain/entitys";
 import { UpdateUserDto } from "../user.validator";
-import { validate } from 'class-validator'
-import { InvalidUserError, UserNotFound } from "src/errors/app.errors";
-import { errorMapper } from "src/utils/validator.helper";
+import { UserNotFound } from "src/errors/app.errors";
 import { Injectable } from "@nestjs/common";
 import { UserRepositoryI } from "src/knex/repository";
 import ValidateUserDtoService from './validateUserDto.service'
