@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Put, Res } from "@nestjs/common";
+import { Body, Controller, Get, Header, HttpCode, Post, Put, Res } from "@nestjs/common";
 import { Response } from "express";
 import { UserE } from "src/domain/entitys";
 import { DuplicatedData } from "src/errors/app.errors";
@@ -12,7 +12,7 @@ import CreatePersonalService from "./services/createPersonal.service";
 export class PersonalController {
     constructor(
         private PersonalRepository: PersonalRepositoryI,
-        private CreatePersonalSerivce: CreatePersonalService,
+        private CreatePersonalService: CreatePersonalService,
     ) {}
 
     @Get('/')
@@ -21,23 +21,15 @@ export class PersonalController {
     }
 
     @Post('/') 
+    @HttpCode(201)
+    @Header('Content-Type', 'application/json')
     async create(
         @Body() body: UserE, 
-        @Res() response: Response
     ) {
-        try {
-            await this.CreatePersonalSerivce.setUser(body)
-            await this.CreatePersonalSerivce.main()
-            return response
-                    .status(201)
-                    .json(this.CreatePersonalSerivce.getUser());
-
-        } catch (error) {
-            if (error instanceof DuplicatedData) {
-                throw new HttpDuplicatedData(error)
-            }
-
-            throw new HttpUnhandledError(error)
-        }
+        await this.CreatePersonalService.main(body)
+        return {
+            message:"created",
+            personal:this.CreatePersonalService.getUser()
+        };
     }
 }

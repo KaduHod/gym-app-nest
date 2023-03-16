@@ -8,6 +8,7 @@ import CreatePersonalService from './services/createPersonal.service';
 import { PermissionRepositoryI, PersonalRepositoryI, UserRepositoryI } from 'src/knex/repository';
 import { CreateUserDto } from 'src/user/user.validator';
 import ValidateUserDtoService from 'src/user/services/validateUserDto.service';
+import CreateUserService from 'src/user/services/createUser.service';
 
 @Module({
     imports:[KnexModule],
@@ -27,6 +28,7 @@ import ValidateUserDtoService from 'src/user/services/validateUserDto.service';
         CreateUserDto,
         CreatePersonalService,
         ValidateUserDtoService,
+        CreateUserService
     ],
     exports:[
         CreateUserDto,
@@ -36,8 +38,4 @@ import ValidateUserDtoService from 'src/user/services/validateUserDto.service';
         CreatePersonalService,
     ]
 })
-export class PersonalModule {
-    configure(consumer: MiddlewareConsumer) {
-        
-    }
-} 
+export class PersonalModule {} 

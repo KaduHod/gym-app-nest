@@ -14,6 +14,7 @@ import UserController  from './user.controller';
 import { CreateUserDto, UpdateUserDto } from './user.validator';
 import ValidateUserQueryMiddleware from './validateQuery.middleware';
 import CrateUserMiddleware  from './createUser.middleware'
+import CreateUserService from './services/createUser.service';
 
 @Module({
     imports:[
@@ -35,13 +36,15 @@ import CrateUserMiddleware  from './createUser.middleware'
         CreateUserDto,
         UpdateUserDto,
         ValidateUserDtoService,
-        UpdateUserService
+        UpdateUserService,
+        CreateUserService
     ],
     exports:[
         UserRepositoryI,
         CreateUserDto,
         UpdateUserDto, 
-        ValidateUserDtoService
+        ValidateUserDtoService,
+        CreateUserService
     ]
 })
 export class UserModule {
