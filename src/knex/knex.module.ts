@@ -1,8 +1,12 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import knex, { Knex } from 'knex';
 import KnexRepository from './knex.repository';
+import PermissionRepository from './permission.repository';
+import { PermissionRepositoryI, PersonalRepositoryI, UserRepositoryI } from './repository';
+import UserRepository from './user.repository';
 
+@Global()
 @Module({
     imports:[ConfigModule],
     providers:[

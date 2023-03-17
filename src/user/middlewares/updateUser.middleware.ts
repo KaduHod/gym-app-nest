@@ -1,8 +1,8 @@
 import { Injectable, NestMiddleware } from "@nestjs/common";
 import { NextFunction, Request } from "express";
 import { UserType } from "src/domain/entitys";
-import ValidateUserDtoService from "./services/validateUserDto.service";
-import { UpdateUserDto } from "./user.validator";
+import ValidateUserDtoService from "../services/validateUserDto.service";
+import { UpdateUserDto } from "../user.validator";
 
 @Injectable()
 export default class UpdateUserMiddleware implements NestMiddleware {

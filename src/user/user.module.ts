@@ -1,50 +1,43 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import AlunoController from 'src/aluno/aluno.controller';
-import AlunoModule from 'src/aluno/aluno.module';
 import KnexModule from 'src/knex/knex.module';
 import { UserRepositoryI } from 'src/knex/repository';
 import UserRepository from 'src/knex/user.repository';
-import { PersonalController } from 'src/personal/personal.controller';
-import { PersonalModule } from 'src/personal/personal.module';
 import UpdateUserService  from './services/updateUser.service';
 import ValidateUserDtoService from './services/validateUserDto.service';
-import UpdateUserMiddleware  from './updateUser.middleware';
+import UpdateUserMiddleware  from './middlewares/updateUser.middleware';
 import UserController  from './user.controller';
 import { CreateUserDto, UpdateUserDto } from './user.validator';
-import ValidateUserQueryMiddleware from './validateQuery.middleware';
-import CrateUserMiddleware  from './createUser.middleware'
+import ValidateUserQueryMiddleware from './middlewares/validateQuery.middleware';
+import CrateUserMiddleware  from './middlewares/createUser.middleware'
 import CreateUserService from './services/createUser.service';
 
 @Module({
     imports:[
         ConfigModule, 
-        KnexModule, 
-        PersonalModule, 
-        AlunoModule
+        KnexModule,  
     ],
     controllers: [
-        UserController, 
-        PersonalController, 
-        AlunoController
+        UserController,
     ],
     providers: [ 
         {
             provide:UserRepositoryI,
             useClass: UserRepository
         },
-        CreateUserDto,
-        UpdateUserDto,
         ValidateUserDtoService,
         UpdateUserService,
-        CreateUserService
+        CreateUserService,
+        UpdateUserDto,
+        CreateUserDto
     ],
     exports:[
-        UserRepositoryI,
-        CreateUserDto,
+        UserRepositoryI, 
         UpdateUserDto, 
-        ValidateUserDtoService,
-        CreateUserService
+        CreateUserDto, 
+        ValidateUserDtoService, 
+        CreateUserService,
+        UpdateUserService,
     ]
 })
 export class UserModule {

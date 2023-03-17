@@ -1,6 +1,6 @@
 import { NestMiddleware } from "@nestjs/common";
 import { NextFunction, Request, Response } from "express";
-import QueryMuscleGroupDto from "./muscle.validator";
+import QueryMuscleGroupDto from "../muscle.validator";
 import { validate } from 'class-validator'
 import { HttpInvalidQueryParams } from "src/errors/response.errors";
 import { errorMapper } from "src/utils/validator.helper";

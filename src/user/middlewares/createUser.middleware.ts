@@ -1,10 +1,9 @@
 import { Injectable, NestMiddleware } from "@nestjs/common";
 import { NextFunction, Request } from "express";
-import { HttpDuplicatedData, HttpInvalidUpdateUserRequest } from "src/errors/response.errors";
-import { DuplicatedEmail, DuplicatedNickname, InvalidUserError, UnhandledError } from "src/errors/app.errors";
+import { DuplicatedEmail, DuplicatedNickname } from "src/errors/app.errors";
 import { UserRepositoryI } from "src/knex/repository";
-import ValidateUserDtoService from "./services/validateUserDto.service";
-import { CreateUserDto } from "./user.validator";
+import ValidateUserDtoService from "../services/validateUserDto.service";
+import { CreateUserDto } from "../user.validator";
 import { UserType } from "src/domain/entitys";
 
 @Injectable()

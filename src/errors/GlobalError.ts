@@ -1,4 +1,4 @@
-import { ArgumentsHost, Catch, ExceptionFilter } from "@nestjs/common";
+import { ArgumentsHost, Catch, ExceptionFilter, NotFoundException } from "@nestjs/common";
 import { UnhandledError } from "./app.errors";
 import { Response } from "express";
 
@@ -11,6 +11,13 @@ export default class GlobalErrorHandler implements ExceptionFilter {
         const response = ctx.getResponse<Response>();
         if (exception instanceof UnhandledError) {
             return response.status(500).send(exception.message)
+        }
+
+        if (exception instanceof NotFoundException) {
+            return response.status(404).json({
+                stack: exception.stack,
+                message: exception.message,
+            })
         }
         response.status(400).json({
             message: exception.message,

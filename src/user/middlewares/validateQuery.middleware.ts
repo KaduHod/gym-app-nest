@@ -1,12 +1,7 @@
-import { NestMiddleware, Query } from "@nestjs/common";
+import { NestMiddleware } from "@nestjs/common";
 import { NextFunction, Request, Response } from "express";
-import { UserE } from "src/domain/entitys";
-import { QueryUserDto } from "./user.validator";
-import { validate } from 'class-validator'
-import { pruneUndefineds } from "src/utils/object.helper";
-import { HttpInvalidUserParams } from "src/errors/response.errors";
-import { errorMapper } from "src/utils/validator.helper";
-import ValidateUserDtoService from "./services/validateUserDto.service";
+import { QueryUserDto } from "../user.validator";
+import ValidateUserDtoService from "../services/validateUserDto.service";
 
 export default class ValidateUserQueryMiddleware implements NestMiddleware {
     constructor(

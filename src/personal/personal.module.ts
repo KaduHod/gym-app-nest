@@ -1,41 +1,25 @@
-import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
-import KnexModule from 'src/knex/knex.module';
+import { Module } from '@nestjs/common';
 import PermissionRepository from 'src/knex/permission.repository';
-import CrateUserMiddleware from '../user/createUser.middleware'
 import PersonalRepository from 'src/knex/personal.repository';
-import UserRepository from 'src/knex/user.repository';
 import CreatePersonalService from './services/createPersonal.service';
-import { PermissionRepositoryI, PersonalRepositoryI, UserRepositoryI } from 'src/knex/repository';
-import { CreateUserDto } from 'src/user/user.validator';
-import ValidateUserDtoService from 'src/user/services/validateUserDto.service';
-import CreateUserService from 'src/user/services/createUser.service';
+import { PermissionRepositoryI, PersonalRepositoryI } from 'src/knex/repository';
+import { PersonalController } from './personal.controller';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
-    imports:[KnexModule],
+    imports:[UserModule],
+    controllers:[PersonalController],
     providers:[
         {
-            provide:PersonalRepositoryI,
-            useClass:PersonalRepository
+            provide: PersonalRepositoryI,
+            useClass: PersonalRepository
         },
         {
-            provide: UserRepositoryI,
-            useClass: UserRepository
-        }, 
-        {
-            provide:PermissionRepositoryI,
-            useClass:PermissionRepository,
-        }, 
-        CreateUserDto,
+            provide: PermissionRepositoryI,
+            useClass: PermissionRepository
+        },
         CreatePersonalService,
-        ValidateUserDtoService,
-        CreateUserService
     ],
-    exports:[
-        CreateUserDto,
-        PermissionRepositoryI,
-        UserRepositoryI,
-        PersonalRepositoryI, 
-        CreatePersonalService,
-    ]
+    exports:[]
 })
 export class PersonalModule {} 
