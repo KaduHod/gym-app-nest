@@ -1,134 +1,73 @@
-{
-    "Upper Major Chest": {
-        "Articulations": [20, 22, 2],
-        "Function": "Flexion, horizontal adduction, internal rotation of the humerus"
-    },
-    "Medial Major Chest": {
-        "Articulations": [20, 21],
-        "Function": "Adduction, internal rotation of the humerus"
-    },
-    "Lower Major Chest": {
-        "Articulations": [20, 21],
-        "Function": "Adduction, internal rotation of the humerus"
-    },
-    "Minor Chest": {
-        "Articulations": [23],
-        "Function": "Protraction and stabilization of the scapula"
-    },
-    "Anterior Serratus": {
-        "Articulations": [23],
-        "Function": "Protraction and upward rotation of the scapula"
-    },
-    "Subclavius": {
-        "Articulations": [20],
-        "Function": "Depression and stabilization of the clavicle"
-    },
-    "Latissimus Dorsi": {
-        "Articulations": [2, 24, 25],
-        "Function": "Extension, adduction, and internal rotation of the humerus"
-    },
-    "Posterior Serratus": {
-        "Articulations": [23],
-        "Function": "Retraction and downward rotation of the scapula"
-    },
-    "Lumbar": {
-        "Articulations": [13, 26],
-        "Function": "Extension and lateral flexion of the spine"
-    },
-    "Upper Trapezius": {
-        "Articulations": [23, 12],
-        "Function": "Elevation, upward rotation, and adduction of the scapula"
-    },
-    "Medial Trapezius": {
-        "Articulations": [23],
-        "Function": "Retraction and adduction of the scapula"
-    },
-    "Lower Trapezius": {
-        "Articulations": [23],
-        "Function": "Depression, upward rotation, and adduction of the scapula"
-    },
-    "Minor Rhomboid": {
-        "Articulations": [23],
-        "Function": "Retraction and downward rotation of the scapula"
-    },
-    "Major Rhomboid": {
-        "Articulations": [23],
-        "Function": "Retraction and downward rotation of the scapula"
-    },
-    "Levator Scapulae": {
-        "Articulations": [23, 12],
-        "Function": "Elevation and downward rotation of the scapula"
-    },
-    "Biceps Long Head": {
-        "Articulations": [2, 4],
-        "Function": "Flexion and supination of the forearm, flexion of the arm"
-    },
-    "Biceps Short Head": {
-        "Articulations": [2, 4],
-        "Function": "Flexion and supination of the forearm, flexion of the arm"
-    },
-    "Biceps Brachialis": {
-        "Articulations": [3, 4],
-        "Function": "Flexion of the forearm, weak supination of the forearm"
-    },
-    "Triceps Long Head": {
-        "Articulations": [2, 3],
-        "Function": "Extension of the arm, adduction and extension of the shoulder"
-    },
-    "Triceps Short Head": {
-        "Articulations": [3],
-        "Function": "Extension of the forearm"
-    },
-    "Triceps Lateral Head": {
-        "Articulations": [3],
-        "Function": "Extension of the forearm"
-    },
-    "Forearms Pronator Teres": {
-        "Articulations": [3, 4],
-        "Function": "Pronation of the forearm"
-    },
-    "Forearms Flexor Carpi Radialis": {
-        "Articulations": [5],
-        "Function": "Flexion and radial deviation of the wrist"
-    },
-    "Forearms Flexor Carpi Ulnaris": {
-        "Articulations": [5],
-        "Function": "Flexion and ulnar deviation of the wrist"
-    },
-    "Forearms Palmaris Longus": {
-        "Articulations": [5],
-        "Function": "Weak wrist flexion"
-    },
-    "Gluteus Medius": {
-        "Articulations": [14],
-        "Function": "Abduction, medial rotation, and flexion of the hip joint"
-    },
-    "Gluteus Minimus": {
-        "Articulations": [14],
-        "Function": "Abduction, medial rotation, and flexion of the hip joint"
-    },
-    "Gluteus Maximus": {
-        "Articulations": [14, 27],
-        "Function": "Extension, lateral rotation, and adduction of the hip joint"
-    },
-    "Pelvic Floor": {
-        "Articulations": [26],
-        "Function": "Supports pelvic organs and helps control urination and defecation"
-    },
-    "Transversus Abdominis": {
-        "Articulations": [24, 25, 28],
-        "Function": "Compresses the abdomen, aids in forced expiration, and stabilizes the spine"
-    },
-    "Multifidus": {
-        "Articulations": [29],
-        "Function": "Stabilizes the spine and assists in extension, lateral flexion, and rotation of the spine"
-    },
-    "Internal Obliques": {
-        "Articulations": [24, 25, "Inguinal ligament", "Cartilage of the lower three ribs"],
-        "Function": "Compresses the abdomen, aids in forced expiration, and aids in rotation and lateral flexion of the trunk"
-    },
-    "External Obliques": {
-        "Articulations": [30, 25, "Inguinal ligament"],
-        "Function": "Compresses the abdomen, aids in forced expiration, and aids in rotation and lateral flexion of the trunk"
-    }
+{   "1": [20, 22, 2],
+    "2": [20, 21],
+    "3": [20, 21],
+    "Minor Chest": [23],
+    "Anterior Serratus": [23],
+    "Subclavius": [20],
+    "Latissimus Dorsi": [2, 24, 25],
+    "Posterior Serratus": [23],
+    "Lumbar":[13, 26],
+    "Upper Trapezius":[23, 12],
+    "Medial Trapezius":[23],
+    "Lower Trapezius":[23],
+    "Minor Rhomboid":[23],
+    "Major Rhomboid":[23],
+    "Levator Scapulae":[23, 12],
+    "Biceps Long Head":[2, 4],
+    "Biceps Short Head":[2, 4],
+    "Biceps Brachialis":[3, 4],
+    "Triceps Long Head":[2, 3],
+    "Triceps Short Head":[3],
+    "Triceps Lateral Head":[3],
+    "Forearms Pronator Teres":[3, 4],
+    "Forearms Flexor Carpi Radialis":[5],
+    "Forearms Flexor Carpi Ulnaris":[5],
+    "Forearms Palmaris Longus":[5],
+    "Gluteus Medius":[14],
+    "Gluteus Minimus":[14],
+    "Gluteus Maximus":[14, 27],
+    "Pelvic Floor":[26],
+    "Transversus Abdominis":[24, 25, 28],
+    "Multifidus": [29],
+    "Internal Obliques":[24, 25],
+    "External Obliques":[30, 25],
+    "Rectus Abdominis": [28, 31, 30],
+    "Erector spinae": [29, 30],
+    "Bíceps": [3, 2],
+    "Semitendinosus": [15],
+    "Semimembranosus": [15],
+    "Vastus lateralis": [15],
+    "Vastus medials": [15],
+    "Vastus intermedius": [15],
+    "Rectus Femoris": [14, 15],
+    "Gastrocnemius": [16],
+    "Soleus": [16],
+    "deltoid Anterior": [2],
+    "deltoid Medium": [2],
+    "deltoid Lateral": [2],
+    "Sternocleidomastoid": [12, 32],
+    "Splenius": [12],
+    "Tensor Fasciae Latae": [14, 15],
+    "Sartorius": [14, 15],
+    "Supraspinatus": [2],
+    "Extensor Carpi Radialis Longus": [5],
+    "Extensor Carpi Radialis Brevis": [5],
+    "Extensor Carpi Ulnaris": [5],
+    "Adductor longus": [14, 15],
+    "Adductor brevis": [14],
+    "Adductor magnus": [14, 15],
+    "Gracillis": [14, 15],
+    "Infraspinatus": [2],
+    "Teres Minor": [2],
+    "Teres Major": [2],
+    "Pectineus": [14],
+    "Piriformis": [14],
+    "Quadratus Femoris": [14],
+    "Obturator externus": [14],
+    "Obturator internus": [14],
+    "Superior Gemellus": [14],
+    "Tibialis Anterior": [16],
+    "Subscapularis": [2],
+    "Iliopsoas": [14],
+    "Popliteus": [15]
 }
