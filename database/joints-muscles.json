@@ -98,5 +98,37 @@
     "Forearms Palmaris Longus": {
         "Articulations": [5],
         "Function": "Weak wrist flexion"
+    },
+    "Gluteus Medius": {
+        "Articulations": [14],
+        "Function": "Abduction, medial rotation, and flexion of the hip joint"
+    },
+    "Gluteus Minimus": {
+        "Articulations": [14],
+        "Function": "Abduction, medial rotation, and flexion of the hip joint"
+    },
+    "Gluteus Maximus": {
+        "Articulations": [14, 27],
+        "Function": "Extension, lateral rotation, and adduction of the hip joint"
+    },
+    "Pelvic Floor": {
+        "Articulations": [26],
+        "Function": "Supports pelvic organs and helps control urination and defecation"
+    },
+    "Transversus Abdominis": {
+        "Articulations": [24, 25, 28],
+        "Function": "Compresses the abdomen, aids in forced expiration, and stabilizes the spine"
+    },
+    "Multifidus": {
+        "Articulations": [29],
+        "Function": "Stabilizes the spine and assists in extension, lateral flexion, and rotation of the spine"
+    },
+    "Internal Obliques": {
+        "Articulations": [24, 25, "Inguinal ligament", "Cartilage of the lower three ribs"],
+        "Function": "Compresses the abdomen, aids in forced expiration, and aids in rotation and lateral flexion of the trunk"
+    },
+    "External Obliques": {
+        "Articulations": [30, 25, "Inguinal ligament"],
+        "Function": "Compresses the abdomen, aids in forced expiration, and aids in rotation and lateral flexion of the trunk"
     }
 }
