@@ -55,3 +55,8 @@ export type MusclePortionE = table & {
     muscleGroup_id: number
     muscleGroup: MuscleGroupE
 }
+
+
+export type ArticulationE = table & {
+    name: string
+}

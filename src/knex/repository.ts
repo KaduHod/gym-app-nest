@@ -38,3 +38,7 @@ export abstract class MusclePortionRepositoryI {
     abstract findByMuscleGroupId(muscleGroupIds: number | number[])
     abstract findAll(): Promise<MusclePortionE[]>
 }
+
+export abstract class ArticulationRepositoryI {
+
+}

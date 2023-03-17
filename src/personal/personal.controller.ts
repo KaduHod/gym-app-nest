@@ -1,9 +1,8 @@
-import { Body, Controller, Get, Header, HttpCode, Post, Put, Res } from "@nestjs/common";
-import { Response } from "express";
+import { Body, Controller, Get, Header, HttpCode, Post, Put } from "@nestjs/common";
 import { UserE } from "src/domain/entitys";
-import { DuplicatedData } from "src/errors/app.errors";
-import { HttpDuplicatedData, HttpUnhandledError } from "src/errors/response.errors";
 import { PersonalRepositoryI } from "src/knex/repository";
+import UpdateUserService from "src/user/services/updateUser.service";
+import { CreateUserDto, UpdateUserDto } from "src/user/user.validator";
 import CreatePersonalService from "./services/createPersonal.service";
 
 
@@ -13,6 +12,7 @@ export class PersonalController {
     constructor(
         private PersonalRepository: PersonalRepositoryI,
         private CreatePersonalService: CreatePersonalService,
+        private UpdateUserService: UpdateUserService
     ) {}
 
     @Get('/')
@@ -23,13 +23,22 @@ export class PersonalController {
     @Post('/') 
     @HttpCode(201)
     @Header('Content-Type', 'application/json')
-    async create(
-        @Body() body: UserE, 
-    ) {
-        await this.CreatePersonalService.main(body)
+    async create(@Body() body: CreateUserDto) {
+        await this.CreatePersonalService.main(body as UserE)
         return {
             message:"created",
             personal:this.CreatePersonalService.getUser()
         };
+    }
+
+    @Put()
+    @HttpCode(200)
+    @Header('Content-Type', 'application/json')
+    async update(@Body() args: UpdateUserDto) {
+        this.UpdateUserService.setUser(args as UserE)
+        return {
+            message:"updated", 
+            personal: await this.UpdateUserService.main()
+        }
     }
 }

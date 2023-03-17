@@ -1,5 +1,7 @@
 import { IsOptional } from 'class-validator'
 import { Expose } from 'class-transformer'
+import PortionBool from './validators/queryPortions.validator'
+import { Validate } from 'class-validator';
 
 export default class QueryMuscleGroupDto {
     @IsOptional()
@@ -16,5 +18,6 @@ export default class QueryMuscleGroupDto {
 
     @IsOptional()
     @Expose()
+    @Validate(PortionBool)
     portions?: boolean = false
 }

@@ -11,7 +11,6 @@ export class PersonalAlreadyRegistered extends Error {
 
 
 export class AlunoAlreadyRegistered extends Error {
-    
     public message: string
     constructor(id:number) {
         super(`Id: ${id} already registered as aluno!`)
@@ -31,7 +30,7 @@ export class AdminAlreadyRegistered extends Error {
 
 
 export class UserNotFound extends Error {
-        constructor() {
+    constructor() {
         super("User not found")
         this.message = "User not found"
     }
@@ -39,7 +38,7 @@ export class UserNotFound extends Error {
 
 
 export class InvalidUserError extends Error {
-        constructor(public errors: errorFormated | errorFormated[]) {
+    constructor(public errors: errorFormated | errorFormated[]) {
         super()
         this.message = 'Invalid user'
     }
@@ -72,5 +71,12 @@ export class UnhandledError extends Error {
     constructor(err: Error) {
         super(err.message)
         this.message = err.message
+    }
+}
+
+
+export class InvalidMuscleError extends Error {
+    constructor(public errors: errorFormated | errorFormated[]) {
+        super()
     }
 }

@@ -5,6 +5,8 @@ import MuscleGroupRepository from "src/knex/muscleGroup.repository";
 import QueryMuscleMiddleware from "./middlewares/queryMuscle.middleware";
 import ListMuscleGroupService from "./services/listMuscleGroups.service";
 import MusclePortionRepository from "src/knex/musclePortion.repository";
+import ValidateMuscleGroupDto from "./services/validateMuscleDto.service";
+import QueryMuscleGroupDto from "./muscle.validator";
 
 @Module({
     imports:[KnexModule],
@@ -12,7 +14,9 @@ import MusclePortionRepository from "src/knex/musclePortion.repository";
     providers: [
         MuscleGroupRepository, 
         MusclePortionRepository, 
-        ListMuscleGroupService
+        ListMuscleGroupService,
+        ValidateMuscleGroupDto,
+        QueryMuscleGroupDto
     ],
     exports: []
 })

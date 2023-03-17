@@ -1,0 +1,102 @@
+{
+    "Upper Major Chest": {
+        "Articulations": [20, 22, 2],
+        "Function": "Flexion, horizontal adduction, internal rotation of the humerus"
+    },
+    "Medial Major Chest": {
+        "Articulations": [20, 21],
+        "Function": "Adduction, internal rotation of the humerus"
+    },
+    "Lower Major Chest": {
+        "Articulations": [20, 21],
+        "Function": "Adduction, internal rotation of the humerus"
+    },
+    "Minor Chest": {
+        "Articulations": [23],
+        "Function": "Protraction and stabilization of the scapula"
+    },
+    "Anterior Serratus": {
+        "Articulations": [23],
+        "Function": "Protraction and upward rotation of the scapula"
+    },
+    "Subclavius": {
+        "Articulations": [20],
+        "Function": "Depression and stabilization of the clavicle"
+    },
+    "Latissimus Dorsi": {
+        "Articulations": [2, 24, 25],
+        "Function": "Extension, adduction, and internal rotation of the humerus"
+    },
+    "Posterior Serratus": {
+        "Articulations": [23],
+        "Function": "Retraction and downward rotation of the scapula"
+    },
+    "Lumbar": {
+        "Articulations": [13, 26],
+        "Function": "Extension and lateral flexion of the spine"
+    },
+    "Upper Trapezius": {
+        "Articulations": [23, 12],
+        "Function": "Elevation, upward rotation, and adduction of the scapula"
+    },
+    "Medial Trapezius": {
+        "Articulations": [23],
+        "Function": "Retraction and adduction of the scapula"
+    },
+    "Lower Trapezius": {
+        "Articulations": [23],
+        "Function": "Depression, upward rotation, and adduction of the scapula"
+    },
+    "Minor Rhomboid": {
+        "Articulations": [23],
+        "Function": "Retraction and downward rotation of the scapula"
+    },
+    "Major Rhomboid": {
+        "Articulations": [23],
+        "Function": "Retraction and downward rotation of the scapula"
+    },
+    "Levator Scapulae": {
+        "Articulations": [23, 12],
+        "Function": "Elevation and downward rotation of the scapula"
+    },
+    "Biceps Long Head": {
+        "Articulations": [2, 4],
+        "Function": "Flexion and supination of the forearm, flexion of the arm"
+    },
+    "Biceps Short Head": {
+        "Articulations": [2, 4],
+        "Function": "Flexion and supination of the forearm, flexion of the arm"
+    },
+    "Biceps Brachialis": {
+        "Articulations": [3, 4],
+        "Function": "Flexion of the forearm, weak supination of the forearm"
+    },
+    "Triceps Long Head": {
+        "Articulations": [2, 3],
+        "Function": "Extension of the arm, adduction and extension of the shoulder"
+    },
+    "Triceps Short Head": {
+        "Articulations": [3],
+        "Function": "Extension of the forearm"
+    },
+    "Triceps Lateral Head": {
+        "Articulations": [3],
+        "Function": "Extension of the forearm"
+    },
+    "Forearms Pronator Teres": {
+        "Articulations": [3, 4],
+        "Function": "Pronation of the forearm"
+    },
+    "Forearms Flexor Carpi Radialis": {
+        "Articulations": [5],
+        "Function": "Flexion and radial deviation of the wrist"
+    },
+    "Forearms Flexor Carpi Ulnaris": {
+        "Articulations": [5],
+        "Function": "Flexion and ulnar deviation of the wrist"
+    },
+    "Forearms Palmaris Longus": {
+        "Articulations": [5],
+        "Function": "Weak wrist flexion"
+    }
+}

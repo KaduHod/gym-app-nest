@@ -8,19 +8,26 @@ import { errorMapper } from "src/utils/validator.helper";
 import { isString } from "src/utils/string.helper";
 import { isNumber } from "src/utils/number.helper";
 import { MuscleGroupE } from "src/domain/entitys";
+import ValidateMuscleGroupDto from "./validateMuscleDto.service";
 
 @Injectable()
 export default class ListMuscleGroupService {
     private query:QueryMuscleGroupDto
     constructor(
         private MuscleGroupRepository: MuscleGroupRepository,
-        private MusclePortionRepository: MusclePortionRepository
+        private MusclePortionRepository: MusclePortionRepository,
+        private ValidateMuscleDtoService: ValidateMuscleGroupDto,
+        private QueryMuscleGroupDto: QueryMuscleGroupDto
     ){}
 
-    async main(): Promise<MuscleGroupE[]> {
-        if(!this.query) {
-            throw new Error('Must set query property for ListMuscleGroupService')
-        }
+    async main(query: QueryMuscleGroupDto): Promise<MuscleGroupE[]> {
+        this.query = (await this
+                                .ValidateMuscleDtoService
+                                .setArgs(query as any)
+                                .setDto(this.QueryMuscleGroupDto)
+                                .validate()
+                    ).getValidatedArgs<QueryMuscleGroupDto>();
+
         if(this.query.portions) {
             return this.getMusclesWithPortions()
         } else {
@@ -52,35 +59,5 @@ export default class ListMuscleGroupService {
             }
             return group
         })
-    }
-
-    async setQuery(query: QueryMuscleGroupDto): Promise<void> {
-        let validatedQuery = await this.validateQuery(query)
-        this.query = validatedQuery
-    }
-
-    async validateQuery(query:QueryMuscleGroupDto): Promise<Partial<QueryMuscleGroupDto>>{
-        const validateDto = new QueryMuscleGroupDto()
-        validateDto.id = query.id
-        validateDto.name = query.name
-        validateDto.portions = query.portions
-
-        if (isNumber(query.portions)) {
-            validateDto.portions = query.portions === 1
-        } else if (isString(query.portions)) {
-            validateDto.portions = query.portions === "1" || query.portions === "true"
-        } else {
-            validateDto.portions = false
-        }
-
-        const errors = await validate(validateDto)
-
-        if (errors.length) {
-            throw new Error(
-                errorMapper(errors).toString()
-            )
-        }
-
-        return pruneUndefineds(validateDto)
     }
 }
