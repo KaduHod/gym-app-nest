@@ -3,7 +3,7 @@ import QueryMuscleGroupDto from "../muscle.validator";
 
 export default class ValidateMuscleGroupQueryDto {
     private dto: QueryMuscleGroupDto
-    private args: MuscleGroupE | Partial<MuscleGroupE>
+    private args: MuscleGroupE | Partial<MuscleGroupE | any>
     constructor(){}
 
     setArgs(args:MuscleGroupE | Partial<MuscleGroupE>): this{
