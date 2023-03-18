@@ -6,7 +6,7 @@ type table = {
 
 export type UserType = UserE | PersonalE | AlunoE
 
-export type UserE = table & {
+export type UserE =  {
     name: string
     nickname: string
     email: string
@@ -14,7 +14,7 @@ export type UserE = table & {
     cellphone: string
 }
 
-export type Permission = table & {
+export type Permission = {
     title: "aluno" | "personal" | "admin"
 }
 
@@ -27,15 +27,15 @@ export type UserFindByArgs = {
     cellphone: string | string[]
 }
 
-export type AlunoE = table & UserE & {
+export type AlunoE =  UserE & {
     personal: PersonalE
 }
 
-export type PersonalE = table & UserE & {
+export type PersonalE =  UserE & {
     alunos: UserE[]
 }
 
-export type ExercicioE = table & {
+export type ExercicioE =  {
     name: string
     force: string
     link: string
@@ -43,13 +43,13 @@ export type ExercicioE = table & {
     mechanic: string
 }
 
-export type MuscleGroupE = table & {
+export type MuscleGroupE =  {
     name: string
     image: string
     portions?: MusclePortionE[]
 }
 
-export type MusclePortionE = table & {
+export type MusclePortionE =  {
     name: string
     image: string
     muscleGroup_id: number
@@ -57,6 +57,6 @@ export type MusclePortionE = table & {
 }
 
 
-export type ArticulationE = table & {
+export type ArticulationE =  {
     name: string
 }
