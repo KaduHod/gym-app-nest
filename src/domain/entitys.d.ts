@@ -54,6 +54,7 @@ export type MusclePortionE =  table & {
     image: string
     muscleGroup_id: number
     muscleGroup: MuscleGroupE
+    articulations: ArticulationE[]
 }
 
 

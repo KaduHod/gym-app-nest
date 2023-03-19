@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ArticulationE, MuscleGroupE, MusclePortionE } from "src/domain/entitys";
+import MusclePortion from "src/domain/MusclePortion.entity";
 import { ArticulationRepositoryI, MuscleGroupRepositoryI, MusclePortionRepositoryI } from "src/knex/repository";
 import { QueryMusclePortionDto } from "../muscle.validator";
 import ValidateMuscleDto from "./validateMuscleDto.service";
@@ -27,7 +28,7 @@ export default class ListMusclePortionService {
                             .validate())
                             .getValidatedArgs();
 
-        await this.setPortions()
+        await this.setPortions()      
 
         const promises = [];
         
@@ -40,8 +41,6 @@ export default class ListMusclePortionService {
         }
 
         await Promise.all(promises)
-        
-        this.adapter()
 
         return this.portions
     }
@@ -49,30 +48,24 @@ export default class ListMusclePortionService {
     async setPortions(): Promise<void> {
         const {articulations, group, image,...query} = this.query
         
-        this.portions = await this.MusclePortionRepository.findBy(query)
+        this.portions = (await this.MusclePortionRepository.findBy(query)).map((portion:MusclePortionE) => new MusclePortion(portion))
     }
 
     async setArticulations(): Promise<void> {
-        this.articulations = await this
-                                    .ArticulationRepository
-                                    .findByPortion({}, this.portions.map(({id}) => id))
+        const promises = []
+        for (const portion of this.portions) {
+            promises.push(portion.getArticulations(this.ArticulationRepository))
+        }
+
+        await Promise.all(promises)
     }
 
     async setGroups() {
-        const query = {
-            id: this.portions.map(({muscleGroup_id}) => muscleGroup_id )
-        }
-        this.groups = await this.MuscleGroupRepository.findBy(query)
-    }
-
-    adapter() {
+        const promises = []
         for (const portion of this.portions) {
-            if(this.query.group) {
-                portion.muscleGroup = this.groups.find( ({id}) => id === portion.muscleGroup_id )
-            }
-            if(this.query.articulations) {
-                portion.articulations = this.articulations.filter(({portion_id}) => portion_id = portion.id)
-            }
+            promises.push(portion.getMuscleGroup(this.MuscleGroupRepository))
         }
+
+        await Promise.all(promises)
     }
 }
