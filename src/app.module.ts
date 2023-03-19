@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import MusclesModule from './muscles/muscle.module';
 import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
 import ErrorModule from './errors/error.module';
+import DomainModule from './domain/domain.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import ErrorModule from './errors/error.module';
     KnexModule, 
     MusclesModule,
     ErrorModule,
+    DomainModule,
     ConfigModule.forRoot({
       isGlobal: true,
     })

@@ -3,10 +3,12 @@ import { QueryMuscleGroupDto } from "../muscle.validator";
 import { MuscleGroupE } from "src/domain/entitys";
 import ValidateMuscleDto from "./validateMuscleDto.service";
 import { MuscleGroupRepositoryI, MusclePortionRepositoryI } from "src/knex/repository";
+import MuscleGroup from "src/domain/MuscleGroup.entity";
 
 @Injectable()
 export default class ListMuscleGroupService {
     private query:QueryMuscleGroupDto
+    private groups: MuscleGroup | MuscleGroup[]
     constructor(
         private MuscleGroupRepository: MuscleGroupRepositoryI,
         private MusclePortionRepository: MusclePortionRepositoryI,
@@ -14,7 +16,7 @@ export default class ListMuscleGroupService {
         private QueryMuscleGroupDto: QueryMuscleGroupDto
     ){}
 
-    async main(query: QueryMuscleGroupDto): Promise<MuscleGroupE[]> {
+    async main(query: QueryMuscleGroupDto): Promise<MuscleGroup | MuscleGroup[]> {
         this.query = (await this
                                 .ValidateMuscleDtoService
                                 .setArgs(query as any)
@@ -22,36 +24,32 @@ export default class ListMuscleGroupService {
                                 .validate()
                     ).getValidatedArgs<QueryMuscleGroupDto>();
 
+        await this.getMuscles()
+
         if(this.query.portions) {
-            return this.getMusclesWithPortions()
-        } else {
-            return this.getMuscles()
+            await this.getPortions()
         }
+
+        return this.groups
     }
 
-    async getMuscles(): Promise<MuscleGroupE[]> {
+    async getMuscles(): Promise<void> {
         const {portions, ...q} = this.query
-        return this.MuscleGroupRepository.findBy(q as Partial<MuscleGroupE>)
+        this.groups = (await this
+                            .MuscleGroupRepository
+                            .findBy(q as Partial<MuscleGroupE>))
+                            .map((group:MuscleGroupE) => new MuscleGroup(group))
     }
 
-    async getMusclesWithPortions(): Promise<MuscleGroupE[]> {
-        const {portions, ...q} = this.query
-        let [ muscleGroups,musclePortions ] = await Promise.all([
-            this.MuscleGroupRepository.findBy(q as Partial<MuscleGroupE>),
-            q.id ? this.MusclePortionRepository.findByMuscleGroupId(q.id) : this.MusclePortionRepository.findAll()
-        ])
-
-        return muscleGroups.map( (group) => {
-            group.portions = []
-            for (let index = 0; index < musclePortions.length; index++){
-                if(musclePortions[index].muscleGroup_id !== group.id) {
-                    continue;
-                }
-                const [portion] = musclePortions.splice(index,1)
-                group.portions.push(portion)
-                index--
+    async getPortions(): Promise<void>{
+        if(Array.isArray(this.groups)){
+            const promises = []
+            for (const group of this.groups) {
+                promises.push(group.getPortions(this.MusclePortionRepository))
             }
-            return group
-        })
+            await Promise.all(promises)
+        } else {
+            await this.groups.getPortions(this.MusclePortionRepository)
+        }
     }
 }
