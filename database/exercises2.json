@@ -322,21 +322,694 @@
     ]
   },
   {
-    "exercise": "Shrugs",
-    "agonist": "Levator Scapulae",
-    "antagonist": "Lower Trapezius, Rhomboids",
-    "synergist": "Upper Trapezius"
+    "muscle": "Levator Scapulae",
+    "exercises" : [
+        {
+            "exercise": "Shrugs",
+            "agonist": "Levator Scapulae",
+            "antagonist": "Lower Trapezius, Rhomboids",
+            "synergist": "Upper Trapezius"
+        },
+        {
+          "exercise": "Upright Rows",
+          "agonist": "Levator Scapulae",
+          "antagonist": "Deltoids",
+          "synergist": "Upper Trapezius, Rhomboids"
+        },
+        {
+          "exercise": "Barbell Rows",
+          "agonist": "Levator Scapulae",
+          "antagonist": "Lower Trapezius, Rhomboids",
+          "synergist": "Upper Trapezius, Deltoids"
+        }
+    ]
   },
   {
-    "exercise": "Upright Rows",
-    "agonist": "Levator Scapulae",
-    "antagonist": "Deltoids",
-    "synergist": "Upper Trapezius, Rhomboids"
+    "muscle": "Bíceps Long head",
+    "exercises": [
+      {
+        "exercise": "Barbell Curl",
+        "agonist": "Bíceps Long head",
+        "antagonist": "Tríceps",
+        "synergist": "Brachialis"
+      },
+      {
+        "exercise": "Chin-up",
+        "agonist": "Bíceps Long head",
+        "antagonist": "Latissimus Dorsi",
+        "synergist": "Brachialis"
+      },
+      {
+        "exercise": "Incline Dumbbell Curl",
+        "agonist": "Bíceps Long head",
+        "antagonist": "Tríceps",
+        "synergist": "Brachialis"
+      }
+    ]
   },
   {
-    "exercise": "Barbell Rows",
-    "agonist": "Levator Scapulae",
-    "antagonist": "Lower Trapezius, Rhomboids",
-    "synergist": "Upper Trapezius, Deltoids"
-  }
+    "muscle": "Bíceps Short head",
+    "exercises": [
+      {
+        "exercise": "Hammer Curl",
+        "agonist": "Bíceps Short head",
+        "antagonist": "Brachioradialis",
+        "synergist": "Brachialis"
+      },
+      {
+        "exercise": "Preacher Curl",
+        "agonist": "Bíceps Short head",
+        "antagonist": "Tríceps",
+        "synergist": "Brachialis"
+      },
+      {
+        "exercise": "Concentration Curl",
+        "agonist": "Bíceps Short head",
+        "antagonist": "Tríceps",
+        "synergist": "Brachialis"
+      }
+    ]
+  },
+  {
+    "muscle": "Bíceps Brachialis",
+    "exercises": [
+      {
+        "exercise": "Close-Grip Chin-up",
+        "agonist": "Bíceps Brachialis",
+        "antagonist": "Latissimus Dorsi",
+        "synergist": "Bíceps Long head"
+      },
+      {
+        "exercise": "Reverse Curl",
+        "agonist": "Bíceps Brachialis",
+        "antagonist": "Tríceps",
+        "synergist": "Bíceps Long head"
+      },
+      {
+        "exercise": "Zottman Curl",
+        "agonist": "Bíceps Brachialis",
+        "antagonist": "Tríceps",
+        "synergist": "Bíceps Long head"
+      }
+    ]
+  },
+  {
+    "muscle": "Tríceps Long head",
+    "exercises": [
+      {
+        "exercise": "Overhead Triceps Extension",
+        "agonist": "Tríceps Long head",
+        "antagonist": "Bíceps",
+        "synergist": "Deltoids"
+      },
+      {
+        "exercise": "Close-Grip Bench Press",
+        "agonist": "Tríceps Long head",
+        "antagonist": "Pectorals",
+        "synergist": "Deltoids"
+      },
+      {
+        "exercise": "Skull Crusher",
+        "agonist": "Tríceps Long head",
+        "antagonist": "Bíceps",
+        "synergist": "Deltoids"
+      }
+    ]
+  },
+  {        
+    "muscle": "Tríceps Short head",        
+    "exercises": [            
+        {                
+            "name": "Tricep Pushdown",                
+            "agonist": "Triceps",                
+            "antagonist": "Biceps",                
+            "synergist": "Shoulder girdle"            
+        },            
+        {                
+            "name": "Close-grip Bench Press",                
+            "agonist": "Triceps",                
+            "antagonist": "Pectoralis major",                
+            "synergist": "Deltoid"            
+        },            
+        {                
+            "name": "Dumbbell Kickback",                
+            "agonist": "Triceps",                
+            "antagonist": "Biceps",                
+            "synergist": "Shoulder girdle"            
+        }        
+    ]
+    },
+    {
+        "muscle": "Tríceps Lateral head",
+        "exercises": [
+            {
+                "name": "Overhead Dumbbell Extension",
+                "agonist": "Triceps",
+                "antagonist": "Biceps",
+                "synergist": "Shoulder girdle"
+            },
+            {
+                "name": "Skullcrusher",
+                "agonist": "Triceps",
+                "antagonist": "Biceps",
+                "synergist": "Shoulder girdle"
+            },
+            {
+                "name": "Dips",
+                "agonist": "Triceps",
+                "antagonist": "Pectoralis major",
+                "synergist": "Deltoid"
+            }
+        ]
+    },
+    {
+        "muscle": "Forearm Pronator teres",
+        "exercises": [
+          {
+            "name": "Barbell pronate wrist curl",
+            "agonist": "Pronator teres",
+            "antagonist": "Supinator",
+            "synergist": "Flexor carpi radialis, Palmaris longus"
+          },
+          {
+            "name": "Dumbbell pronate wrist curl",
+            "agonist": "Pronator teres",
+            "antagonist": "Supinator",
+            "synergist": "Flexor carpi radialis, Palmaris longus"
+          },
+          {
+            "name": "Reverse dumbbell curl",
+            "agonist": "Brachioradialis, Extensor carpi radialis longus",
+            "antagonist": "Flexor carpi radialis, Palmaris longus",
+            "synergist": "Pronator teres"
+          }
+        ]
+      },
+      {
+        "muscle": "Forearm Flexor carpi radialis",
+        "exercises": [
+          {
+            "name": "Hammer curls",
+            "agonist": "Brachioradialis",
+            "antagonist": "Triceps brachii",
+            "synergist": "Forearm flexors"
+          },
+          {
+            "name": "Wrist curls",
+            "agonist": "Flexor carpi radialis",
+            "antagonist": "Extensor carpi radialis",
+            "synergist": "Flexor carpi ulnaris, Palmaris longus"
+          },
+          {
+            "name": "Reverse wrist curls",
+            "agonist": "Extensor carpi radialis",
+            "antagonist": "Flexor carpi radialis",
+            "synergist": "Flexor carpi ulnaris, Palmaris longus"
+          }
+        ]
+      },
+      {
+        "muscle": "Forearm Flexor carpi ulnaris",
+        "exercises": [
+          {
+            "name": "Reverse grip barbell curls",
+            "agonist": "Brachioradialis, Biceps brachii",
+            "antagonist": "Triceps brachii",
+            "synergist": "Forearm flexors"
+          },
+          {
+            "name": "Wrist curls",
+            "agonist": "Flexor carpi ulnaris",
+            "antagonist": "Extensor carpi radialis",
+            "synergist": "Flexor carpi radialis, Palmaris longus"
+          },
+          {
+            "name": "Reverse wrist curls",
+            "agonist": "Extensor carpi radialis",
+            "antagonist": "Flexor carpi ulnaris",
+            "synergist": "Flexor carpi radialis, Palmaris longus"
+          }
+        ]
+    },
+    {
+        "muscle": "Forearm Palmaris longus",
+        "exercises": [
+          {
+            "name": "Wrist curls",
+            "agonist": "Forearm Flexors",
+            "antagonist": "Forearm Extensors",
+            "synergist": "Forearm Brachioradialis"
+          },
+          {
+            "name": "Reverse wrist curls",
+            "agonist": "Forearm Extensors",
+            "antagonist": "Forearm Flexors",
+            "synergist": "Forearm Brachioradialis"
+          },
+          {
+            "name": "Grip strengtheners",
+            "agonist": "Forearm Flexors",
+            "antagonist": "Forearm Extensors",
+            "synergist": "Forearm Brachioradialis"
+          }
+        ]
+    },
+    {
+        "muscle": "Glúteos medius",
+        "exercises": [
+            {
+                "name": "Side lying leg lift",
+                "agonist": "Glúteos medius",
+                "antagonist": "Adductor muscles",
+                "synergist": "Tensor fasciae latae"
+            },
+            {
+                "name": "Standing cable hip abduction",
+                "agonist": "Glúteos medius",
+                "antagonist": "Adductor muscles",
+                "synergist": "Tensor fasciae latae"
+            },
+            {
+                "name": "Bulgarian split squat",
+                "agonist": "Glúteos medius",
+                "antagonist": "Quadriceps",
+                "synergist": "Hamstrings"
+            }
+        ]
+    },
+    {
+        "muscle": "Glúteos minimus",
+        "exercises": [
+            {
+                "name": "Clamshell",
+                "agonist": "Glúteos minimus",
+                "antagonist": "Adductor muscles",
+                "synergist": "Tensor fasciae latae"
+            },
+            {
+                "name": "Side plank with leg lift",
+                "agonist": "Glúteos minimus",
+                "antagonist": "Adductor muscles",
+                "synergist": "Tensor fasciae latae"
+            },
+            {
+                "name": "Banded hip abduction",
+                "agonist": "Glúteos minimus",
+                "antagonist": "Adductor muscles",
+                "synergist": "Tensor fasciae latae"
+            }
+        ]
+    },
+    {
+        "muscle": "Glúteos maximus",
+        "exercises": [
+            {
+                "name": "Barbell hip thrust",
+                "agonist": "Glúteos maximus",
+                "antagonist": "Hip flexors",
+                "synergist": "Hamstrings"
+            },
+            {
+                "name": "Deadlift",
+                "agonist": "Glúteos maximus",
+                "antagonist": "Quadriceps",
+                "synergist": "Hamstrings"
+            },
+            {
+                "name": "Walking lunge",
+                "agonist": "Glúteos maximus",
+                "antagonist": "Quadriceps",
+                "synergist": "Hamstrings"
+            }
+        ]
+    },
+    {
+        "muscle": "Pelvic floor",
+        "exercises": [
+            {
+                "name": "Kegel exercise",
+                "agonist": "Pelvic floor",
+                "antagonist": "",
+                "synergist": ""
+            },
+            {
+                "name": "Bridge",
+                "agonist": "Pelvic floor",
+                "antagonist": "Hip extensors",
+                "synergist": "Glúteos maximus"
+            },
+            {
+                "name": "Squats",
+                "agonist": "Pelvic floor",
+                "antagonist": "Quadriceps",
+                "synergist": "Glúteos maximus"
+            }
+        ]
+    },
+    {    
+        "muscle": "Transversus Abdominis",    
+        "exercises": [      
+            {        
+                "name": "Plank",        
+                "agonist": "Transversus Abdominis",        
+                "antagonist": "Erector Spinae",        
+                "synergist": "Rectus Abdominis, Obliques, Multifidus"      
+            },      
+            {        
+                "name": "Dead Bug",        
+                "agonist": "Transversus Abdominis",        
+                "antagonist": "Rectus Femoris",        
+                "synergist": "Hip Flexors, Obliques"      
+            },      {        
+                "name": "Bird Dog",        
+                "agonist": "Transversus Abdominis",        
+                "antagonist": "Rectus Femoris",        
+                "synergist": "Obliques, Multifidus"      
+                }    
+        ]
+    },
+    {
+        "muscle": "Multifidus",
+        "exercises": [
+          {
+            "name": "Superman",
+            "agonist": "Multifidus",
+            "antagonist": "Rectus Abdominis",
+            "synergist": "Erector Spinae, Glutes"
+          },
+          {
+            "name": "Bird Dog",
+            "agonist": "Multifidus",
+            "antagonist": "Rectus Femoris",
+            "synergist": "Transversus Abdominis, Obliques"
+          },
+          {
+            "name": "Bridging",
+            "agonist": "Multifidus",
+            "antagonist": "Rectus Abdominis",
+            "synergist": "Erector Spinae, Glutes"
+          }
+        ]
+    },    
+    { 
+        "muscle": "Internal Obliques",
+        "exercises": [
+          {
+            "name": "Russian Twist",
+            "agonist": "Internal Obliques",
+            "antagonist": "Erector Spinae",
+            "synergist": "Rectus Abdominis, External Obliques"
+          },
+          {
+            "name": "Side Plank",
+            "agonist": "Internal Obliques",
+            "antagonist": "Gluteus Medius",
+            "synergist": "External Obliques, Transversus Abdominis"
+          },
+          {
+            "name": "Bicycle Crunches",
+            "agonist": "Internal Obliques",
+            "antagonist": "Erector Spinae",
+            "synergist": "Rectus Abdominis, External Obliques"
+          }
+        ]
+    },
+    {
+        "muscle": "External Obliques",
+        "exercises": [
+            {
+                "name": "Russian Twist",
+                "agonist": "External Obliques",
+                "antagonist": "Internal Obliques",
+                "synergist": "Rectus Abdominis"
+            },
+            {
+                "name": "Side Plank",
+                "agonist": "External Obliques",
+                "antagonist": "Internal Obliques",
+                "synergist": "Transversus Abdominis"
+            },
+            {
+                "name": "Wood Chop",
+                "agonist": "External Obliques",
+                "antagonist": "Internal Obliques",
+                "synergist": "Rectus Abdominis"
+            }
+        ]
+    },
+    {
+        "muscle": "Rectus Abdominis",
+        "exercises": [
+            {
+                "name": "Sit-Ups",
+                "agonist": "Rectus Abdominis",
+                "antagonist": "Erector Spinae",
+                "synergist": "Hip Flexors"
+            },
+            {
+                "name": "Leg Raises",
+                "agonist": "Rectus Abdominis",
+                "antagonist": "Erector Spinae",
+                "synergist": "Hip Flexors"
+            },
+            {
+                "name": "Crunches",
+                "agonist": "Rectus Abdominis",
+                "antagonist": "Erector Spinae",
+                "synergist": "Hip Flexors"
+            }
+        ]
+    },
+    {
+        "muscle": "Erector Spinae",
+        "exercises": [
+            {
+                "name": "Deadlifts",
+                "agonist": "Erector Spinae",
+                "antagonist": "Rectus Abdominis",
+                "synergist": "Glutes"
+            },
+            {
+                "name": "Back Extensions",
+                "agonist": "Erector Spinae",
+                "antagonist": "Rectus Abdominis",
+                "synergist": "Glutes"
+            },
+            {
+                "name": "Good Mornings",
+                "agonist": "Erector Spinae",
+                "antagonist": "Rectus Abdominis",
+                "synergist": "Glutes"
+            }
+        ]
+    },
+    {
+        "muscle": "Bíceps Femoris",
+        "exercises": [
+            {
+                "name": "Deadlifts",
+                "agonist": "Bíceps Femoris",
+                "antagonist": "Rectus Femoris",
+                "synergist": "Glutes"
+            },
+            {
+                "name": "Lunges",
+                "agonist": "Bíceps Femoris",
+                "antagonist": "Rectus Femoris",
+                "synergist": "Quadriceps"
+            },
+            {
+                "name": "Good Mornings",
+                "agonist": "Bíceps Femoris",
+                "antagonist": "Rectus Femoris",
+                "synergist": "Glutes"
+            }
+        ]
+    },
+    {    
+        "muscle": "Semitendinosus",    
+        "exercises": [      
+            {        
+                "name": "Romanian Deadlift",        
+                "agonist": "Semitendinosus",        
+                "antagonist": "Quadriceps",        
+                "synergist": "Gluteus Maximus, Erector Spinae"      
+            },      
+            {        
+                "name": "Standing Leg Curl",        
+                "agonist": "Semitendinosus",        
+                "antagonist": "Quadriceps",        
+                "synergist": "Biceps Femoris, Gastrocnemius"      
+            },      
+            {        
+                "name": "Glute-Ham Raise",        
+                "agonist": "Semitendinosus",        
+                "antagonist": "Quadriceps",        
+                "synergist": "Biceps Femoris, Gluteus Maximus"      
+            }    
+        ]
+    },
+    {
+        "muscle": "Semimembranosus",
+        "exercises": [
+          {
+            "name": "Stiff-Leg Deadlift",
+            "agonist": "Semimembranosus",
+            "antagonist": "Quadriceps",
+            "synergist": "Gluteus Maximus, Erector Spinae"
+          },
+          {
+            "name": "Lying Leg Curl",
+            "agonist": "Semimembranosus",
+            "antagonist": "Quadriceps",
+            "synergist": "Biceps Femoris, Gastrocnemius"
+          },
+          {
+            "name": "Back Extension",
+            "agonist": "Semimembranosus",
+            "antagonist": "Abdominal muscles",
+            "synergist": "Erector Spinae, Gluteus Maximus"
+          }
+        ]
+    },
+    {
+        "muscle": "Vastus lateralis",
+        "exercises": [
+          {
+            "name": "Barbell squats",
+            "agonist": "Vastus lateralis",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          },
+          {
+            "name": "Leg press",
+            "agonist": "Vastus lateralis",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          },
+          {
+            "name": "Lunges",
+            "agonist": "Vastus lateralis",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          }
+        ]
+      },
+      {
+        "muscle": "Vastus medialis",
+        "exercises": [
+          {
+            "name": "Leg extensions",
+            "agonist": "Vastus medialis",
+            "antagonist": "Hamstrings",
+            "synergist": "Quadriceps"
+          },
+          {
+            "name": "Hack squats",
+            "agonist": "Vastus medialis",
+            "antagonist": "Hamstrings",
+            "synergist": "Quadriceps"
+          },
+          {
+            "name": "Step-ups",
+            "agonist": "Vastus medialis",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          }
+        ]
+      },
+      {
+        "muscle": "Vastus intermedius",
+        "exercises": [
+          {
+            "name": "Squats",
+            "agonist": "Vastus intermedius",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          },
+          {
+            "name": "Leg press",
+            "agonist": "Vastus intermedius",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          },
+          {
+            "name": "Lunges",
+            "agonist": "Vastus intermedius",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          }
+        ]
+      },
+      {
+        "muscle": "Rectus Femoris",
+        "exercises": [
+          {
+            "name": "Squats",
+            "agonist": "Rectus Femoris",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          },
+          {
+            "name": "Leg extensions",
+            "agonist": "Rectus Femoris",
+            "antagonist": "Hamstrings",
+            "synergist": "Quadriceps"
+          },
+          {
+            "name": "Lunges",
+            "agonist": "Rectus Femoris",
+            "antagonist": "Hamstrings",
+            "synergist": "Glutes"
+          }
+        ]
+    },
+    {    
+        "muscle": "Gastrocnemius",    
+        "exercises": [      
+            {        
+                "name": "Standing Calf Raises",        
+                "agonist": "Gastrocnemius",        
+                "antagonist": "Tibialis anterior",        
+                "synergist": "Soleus"      
+            },      
+            {        
+                "name": "Seated Calf Raises",        
+                "agonist": "Gastrocnemius",        
+                "antagonist": "Tibialis anterior",        
+                "synergist": "Soleus"      
+            },      
+            {        
+                "name": "Donkey Calf Raises",        
+                "agonist": "Gastrocnemius",        
+                "antagonist": "Tibialis anterior",        
+                "synergist": "Soleus"      
+            }    
+        ]
+    },
+    {
+      "muscle": "Soleus",
+      "exercises": [
+        {
+          "name": "Standing Calf Raises",
+          "agonist": "Soleus",
+          "antagonist": "Tibialis anterior",
+          "synergist": "Gastrocnemius"
+        },
+        {
+          "name": "Seated Calf Raises",
+          "agonist": "Soleus",
+          "antagonist": "Tibialis anterior",
+          "synergist": "Gastrocnemius"
+        },
+        {
+          "name": "Donkey Calf Raises",
+          "agonist": "Soleus",
+          "antagonist": "Tibialis anterior",
+          "synergist": "Gastrocnemius"
+        }
+      ]
+    }
 ]
+
+
