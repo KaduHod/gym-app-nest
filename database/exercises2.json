@@ -1,0 +1,342 @@
+[
+    {
+      "muscle": "Upper Major Chest",
+      "exercises": [
+        {
+          "name": "Bench Press",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        },
+        {
+          "name": "Incline Bench Press",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        },
+        {
+          "name": "Dumbbell Fly",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        }
+      ]
+    },
+    {
+      "muscle": "Medial Major Chest",
+      "exercises": [
+        {
+          "name": "Incline Dumbbell Press",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        },
+        {
+          "name": "Chest Dip",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        },
+        {
+          "name": "Cable Crossover",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        }
+      ]
+    },
+    {
+      "muscle": "Lower Major Chest",
+      "exercises": [
+        {
+          "name": "Decline Bench Press",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        },
+        {
+          "name": "Decline Dumbbell Fly",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        },
+        {
+          "name": "Push-Up",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        }
+      ]
+    },
+    {
+      "muscle": "Minor Chest",
+      "exercises": [
+        {
+          "name": "Dumbbell Pullover",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Latissimus Dorsi"
+        },
+        {
+          "name": "Incline Dumbbell Fly",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        },
+        {
+          "name": "Dumbbell Bench Press with Neutral Grip",
+          "agonist": "Pectoralis Major",
+          "antagonist": "Triceps Brachii",
+          "synergist": "Anterior Deltoids"
+        }
+      ]
+    },
+    {    
+    "muscle": "Anterior Serratus",    
+    "exercises": [      
+        {        
+        "name": "Push-Up with Serratus Focus",        
+        "agonist": "Anterior Serratus",        
+        "antagonist": "Triceps Brachii",        
+        "synergist": "Pectoralis Major"      
+        },      
+        {        
+            "name": "Dumbbell Punches",        
+            "agonist": "Anterior Serratus",        
+            "antagonist": "Triceps Brachii",        
+            "synergist": "Pectoralis Major"      
+        },      
+        {        
+            "name": "Scapular Protraction on Cable Machine",        
+            "agonist": "Anterior Serratus",        
+            "antagonist": "Rhomboids",        
+            "synergist": "Trapezius"      
+        }    
+    ]
+  },
+  {
+    "muscle": "Subclavius",
+    "exercises": [
+      {
+        "name": "Barbell Shrugs",
+        "agonist": "Trapezius",
+        "antagonist": "Levator Scapulae",
+        "synergist": "Subclavius"
+      },
+      {
+        "name": "Cable Cross-Over",
+        "agonist": "Pectoralis Major",
+        "antagonist": "Triceps Brachii",
+        "synergist": "Subclavius"
+      },
+      {
+        "name": "Incline Dumbbell Fly",
+        "agonist": "Pectoralis Major",
+        "antagonist": "Triceps Brachii",
+        "synergist": "Subclavius"
+      }
+    ]
+  },
+  {
+    "muscle": "Latisimus dorsi",
+    "exercises": [
+      {
+        "name": "Pull-Up",
+        "agonist": "Latisimus dorsi",
+        "antagonist": "Biceps Brachii",
+        "synergist": "Trapezius"
+      },
+      {
+        "name": "Bent-Over Barbell Row",
+        "agonist": "Latisimus dorsi",
+        "antagonist": "Erector Spinae",
+        "synergist": "Trapezius"
+      },
+      {
+        "name": "Seated Cable Row",
+        "agonist": "Latisimus dorsi",
+        "antagonist": "Biceps Brachii",
+        "synergist": "Trapezius"
+      }
+    ]
+  },
+  {
+    "muscle": "Posterior Serratus",
+    "exercises": [
+      {
+        "name": "Band Pull-Apart",
+        "agonist": "Posterior Serratus",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Rhomboids"
+      },
+      {
+        "name": "Dumbbell Reverse Fly",
+        "agonist": "Posterior Serratus",
+        "antagonist": "Anterior Deltoids",
+        "synergist": "Rhomboids"
+      },
+      {
+        "name": "Face Pull",
+        "agonist": "Posterior Serratus",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Rhomboids"
+      }
+    ]
+  },
+  {
+    "muscle": "Lumbar",
+    "exercises": [
+      {
+        "name": "Deadlift",
+        "agonist": "Erector Spinae",
+        "antagonist": "Rectus Abdominis",
+        "synergist": "Glutes"
+      },
+      {
+        "name": "Hyperextension",
+        "agonist": "Erector Spinae",
+        "antagonist": "Rectus Abdominis",
+        "synergist": "Glutes"
+      },
+      {
+        "name": "Good Morning",
+        "agonist": "Erector Spinae",
+        "antagonist": "Rectus Abdominis",
+        "synergist": "Glutes"
+      }
+    ]
+  },
+  {
+    "muscle": "Upper Trapezius",
+    "exercises": [
+      {
+        "name": "Barbell Shrug",
+        "agonist": "Upper Trapezius",
+        "antagonist": "Levator Scapulae",
+        "synergist": "Rhomboids"
+      },
+      {
+        "name": "Upright Row",
+        "agonist": "Upper Trapezius",
+        "antagonist": "Rotator Cuff",
+        "synergist": "Deltoids"
+      },
+      {
+        "name": "Clean and Press",
+        "agonist": "Upper Trapezius",
+        "antagonist": "Rotator Cuff",
+        "synergist": "Deltoids"
+      }
+    ]
+  },
+  {
+    "muscle": "Medial Trapezius",
+    "exercises": [
+      {
+        "name": "Dumbbell Shrug",
+        "agonist": "Medial Trapezius",
+        "antagonist": "Lower Trapezius",
+        "synergist": "Upper Trapezius"
+      },
+      {
+        "name": "Face Pull",
+        "agonist": "Medial Trapezius",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Posterior Deltoid"
+      },
+      {
+        "name": "Inverted Row",
+        "agonist": "Medial Trapezius",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Rhomboids"
+      }
+    ]
+  },
+  {
+    "muscle": "Lower Trapezius",
+    "exercises": [
+      {
+        "name": "Prone Y",
+        "agonist": "Lower Trapezius",
+        "antagonist": "Upper Trapezius",
+        "synergist": "Rhomboids"
+      },
+      {
+        "name": "Bent Over Dumbbell Row",
+        "agonist": "Lower Trapezius",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Latissimus Dorsi"
+      },
+      {
+        "name": "Scapular Wall Slide",
+        "agonist": "Lower Trapezius",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Rhomboids"
+      }
+    ]
+  },
+  {
+    "muscle": "Minor Rhomboid",
+    "exercises": [
+      {
+        "name": "Prone T",
+        "agonist": "Minor Rhomboid",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Lower Trapezius"
+      },
+      {
+        "name": "Seated Row",
+        "agonist": "Minor Rhomboid",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Latissimus Dorsi"
+      },
+      {
+        "name": "Dumbbell Reverse Fly",
+        "agonist": "Minor Rhomboid",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Posterior Deltoid"
+      }
+    ]
+  },
+  {
+    "muscle": "Major Rhomboid",
+    "exercises": [
+      {
+        "name": "Standing Cable Row",
+        "agonist": "Major Rhomboid",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Latissimus Dorsi"
+      },
+      {
+        "name": "Dumbbell Pullover",
+        "agonist": "Major Rhomboid",
+        "antagonist": "Pectoralis Major",
+        "synergist": "Latissimus Dorsi"
+      },
+      {
+        "name": "Barbell Shrug",
+        "agonist": "Major Rhomboid",
+        "antagonist": "Lower Trapezius",
+        "synergist": "Upper Trapezius"
+      }
+    ]
+  },
+  {
+    "exercise": "Shrugs",
+    "agonist": "Levator Scapulae",
+    "antagonist": "Lower Trapezius, Rhomboids",
+    "synergist": "Upper Trapezius"
+  },
+  {
+    "exercise": "Upright Rows",
+    "agonist": "Levator Scapulae",
+    "antagonist": "Deltoids",
+    "synergist": "Upper Trapezius, Rhomboids"
+  },
+  {
+    "exercise": "Barbell Rows",
+    "agonist": "Levator Scapulae",
+    "antagonist": "Lower Trapezius, Rhomboids",
+    "synergist": "Upper Trapezius, Deltoids"
+  }
+]
