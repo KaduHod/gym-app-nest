@@ -41,7 +41,7 @@ export default class AttachAlunoService {
 
     async setAluno(id:number):Promise<void> {
         const alunoDB = await this.AlunoRepository.first({id}) as AlunoE;
-        console.log({alunoDB})
+        
         if(!alunoDB) {
             throw new AlunoNotFound()
         }
@@ -50,7 +50,7 @@ export default class AttachAlunoService {
 
     async setPersonal(id:number) {
         const personalDB = await this.PersonalRepository.first({id}) as PersonalE;
-        console.log({personalDB})
+        
         if(!personalDB) {
             throw new PersonalNotFound()
         }

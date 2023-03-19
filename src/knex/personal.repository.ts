@@ -49,7 +49,7 @@ export default
     }
 
     first(args:UserFindByArgs): Promise<PersonalE> {
-        return this 
+        const query = this 
                 .knex<PersonalE>(this.table)
                 .select("users.*")
                 .innerJoin(
@@ -63,6 +63,7 @@ export default
                     enums.permission.PERSONAL
                 ).first()
                 .on('query-error', this.handleError);
+        return query
     }
 
     findAlunos(personal: PersonalE): Promise<PersonalE[]> {
