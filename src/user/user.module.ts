@@ -7,7 +7,7 @@ import UpdateUserService  from './services/updateUser.service';
 import ValidateUserDtoService from './services/validateUserDto.service';
 import UpdateUserMiddleware  from './middlewares/updateUser.middleware';
 import UserController  from './user.controller';
-import { CreateUserDto, UpdateUserDto } from './user.validator';
+import { CreateUserDto, QueryUserDto, UpdateUserDto } from './user.validator';
 import ValidateUserQueryMiddleware from './middlewares/validateQuery.middleware';
 import CrateUserMiddleware  from './middlewares/createUser.middleware'
 import CreateUserService from './services/createUser.service';
@@ -29,7 +29,8 @@ import CreateUserService from './services/createUser.service';
         UpdateUserService,
         CreateUserService,
         UpdateUserDto,
-        CreateUserDto
+        CreateUserDto,
+        QueryUserDto
     ],
     exports:[
         UserRepositoryI, 
@@ -37,7 +38,7 @@ import CreateUserService from './services/createUser.service';
         CreateUserDto, 
         ValidateUserDtoService, 
         CreateUserService,
-        UpdateUserService,
+        UpdateUserService
     ]
 })
 export class UserModule {

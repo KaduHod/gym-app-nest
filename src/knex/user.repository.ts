@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { Knex } from "knex";
 import { UserE } from "src/domain/entitys";
+import User from "src/domain/User.entity";
 import KnexRepository from "./knex.repository";
 import { UserRepositoryI } from "./repository";
 
@@ -20,7 +20,7 @@ export default
         throw new Error("Method not implemented.");
     }
 
-    async create(userArgs: UserE): Promise<UserE> {
+    async create(userArgs: User): Promise<User> {
         const [id] = await this
                             .knex(this.table)
                             .insert(userArgs)

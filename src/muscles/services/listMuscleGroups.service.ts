@@ -1,22 +1,16 @@
 import { Injectable } from "@nestjs/common";
-import MuscleGroupRepository from "src/knex/muscleGroup.repository";
-import MusclePortionRepository from "src/knex/musclePortion.repository";
-import QueryMuscleGroupDto from "../muscle.validator";
-import { validate } from 'class-validator'
-import { pruneUndefineds } from "src/utils/object.helper";
-import { errorMapper } from "src/utils/validator.helper";
-import { isString } from "src/utils/string.helper";
-import { isNumber } from "src/utils/number.helper";
+import { QueryMuscleGroupDto } from "../muscle.validator";
 import { MuscleGroupE } from "src/domain/entitys";
-import ValidateMuscleGroupDto from "./validateMuscleDto.service";
+import ValidateMuscleDto from "./validateMuscleDto.service";
+import { MuscleGroupRepositoryI, MusclePortionRepositoryI } from "src/knex/repository";
 
 @Injectable()
 export default class ListMuscleGroupService {
     private query:QueryMuscleGroupDto
     constructor(
-        private MuscleGroupRepository: MuscleGroupRepository,
-        private MusclePortionRepository: MusclePortionRepository,
-        private ValidateMuscleDtoService: ValidateMuscleGroupDto,
+        private MuscleGroupRepository: MuscleGroupRepositoryI,
+        private MusclePortionRepository: MusclePortionRepositoryI,
+        private ValidateMuscleDtoService: ValidateMuscleDto,
         private QueryMuscleGroupDto: QueryMuscleGroupDto
     ){}
 

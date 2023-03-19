@@ -1,5 +1,6 @@
 import { ValidationError } from 'class-validator'
-
+import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator';
+import { isString } from './string.helper';
 export type errorFormated = {
     field: string,
     errors: string[]
@@ -12,4 +13,45 @@ export function errorMapper(errors:ValidationError[]): errorFormated[] {
             errors: Object.values(err.constraints)
         }
     })
+}
+
+@ValidatorConstraint({name:'boolValidator', async: false})
+export class Bool implements ValidatorConstraintInterface  {
+    validate(value: any, validationArguments?: ValidationArguments): boolean {
+        if(  typeof value === 'string') {
+           
+            return value === '1' || value === '0' || value === "true" || value === 'false'
+        }
+
+        if (typeof value === 'boolean') {
+            return true
+        }
+
+        return false
+    }
+    defaultMessage?(validationArguments?: ValidationArguments): string {
+        return 'Portions must be <string>`true | false`, <string>`1 | 0` or <boolean> '
+    }
+
+}
+
+@ValidatorConstraint({name:'arrStringOrString', async: false})
+export class IsStringOrArrayOfStrings implements ValidatorConstraintInterface  {
+    validate(value: any, validationArguments?: ValidationArguments): boolean {
+        if (!isString(value) && !Array.isArray(value)) {
+            return false;
+        }
+
+        if(Array.isArray(value)) {
+            value.forEach( item => {
+                if (!isString(item)) return false;
+            })
+        }
+
+        return true
+    }
+    defaultMessage?(validationArguments?: ValidationArguments): string {
+        return 'must be string or string[]'
+    }
+
 }

@@ -1,12 +1,12 @@
-import { Entity, Table } from "./entity.decorator";
 import { UserE } from "./entitys";
-import { Length, IsNotEmpty, IsString, IsEmail, IsOptional, IsPhoneNumber, validate } from 'class-validator'
+import { IsNumber, Length, IsNotEmpty, IsString, IsEmail, IsOptional, IsPhoneNumber, validate } from 'class-validator'
 import { Expose } from 'class-transformer'
+import Model from "./Entity";
 
+export default class User extends Model implements UserE  {
+    @IsNumber()
+    public id:number
 
-@Entity()
-@Table("users")
-export default class User implements UserE {
     @Length(5, 100)
     @IsNotEmpty()
     @IsString()
@@ -37,18 +37,13 @@ export default class User implements UserE {
     @IsPhoneNumber("BR")
     public cellphone: string
      
-
     constructor(args:UserE){
+        super()
+        this.id = args.id
         this.name = args.name
         this.nickname = args.nickname
         this.email = args.email
         this.password = args.password
         this.cellphone = args.cellphone
-    }
-
-    public async validate(): Promise<this> {
-        await validate(this)
-        return this
-    }
-    
+    } 
 }

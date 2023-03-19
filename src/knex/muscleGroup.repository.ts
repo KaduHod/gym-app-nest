@@ -15,7 +15,7 @@ export default class MuscleGroupRepository
         super()
         this.table = "muscle_group"
     }
-
+    
     async findAll(): Promise<MuscleGroupE[]>  {
         return this 
                 .knex<MuscleGroupE>(this.table)
@@ -23,10 +23,11 @@ export default class MuscleGroupRepository
     }
     
     async findBy(args: Partial<MuscleGroupE>): Promise<MuscleGroupE[]> {
-        return this 
-                .knex<MuscleGroupE>(this.table)
-                .where(args)
-                .on('query-error', this.handleError);
+        return this
+                .setWhereClauses(
+                    this.knex<MuscleGroupE>(this.table),
+                    args
+                ).on('query-error', this.handleError);
     }
 
     async first(args: Partial<MuscleGroupE>): Promise<any> {

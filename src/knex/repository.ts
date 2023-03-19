@@ -1,5 +1,7 @@
-import { MuscleGroupE, MusclePortionE } from "src/domain/entitys";
+import { ArticulationE, MuscleGroupE, MusclePortionE } from "src/domain/entitys";
 import { PersonalE, AlunoE, UserE } from "src/domain/entitys";
+import User from "src/domain/User.entity";
+import { QueryMusclePortionDto } from "src/muscles/muscle.validator";
 
 
 export abstract class RepositoryI<T> {
@@ -13,9 +15,9 @@ export abstract class AlunoRepositoryI extends RepositoryI<AlunoE> {
 }
 
 export abstract class UserRepositoryI extends RepositoryI<UserE> {
-    abstract exists(args:any): Promise<any>
-    abstract create(args:UserE): Promise<any>
-    abstract update(args:UserE): Promise<any>
+    abstract exists(args:UserE): Promise<UserE>
+    abstract create(args:UserE): Promise<UserE>
+    abstract update(args:UserE): Promise<UserE>
 }
 
 export abstract class PersonalRepositoryI extends RepositoryI<PersonalE> {
@@ -37,8 +39,10 @@ export abstract class MuscleGroupRepositoryI {
 export abstract class MusclePortionRepositoryI {
     abstract findByMuscleGroupId(muscleGroupIds: number | number[])
     abstract findAll(): Promise<MusclePortionE[]>
+    abstract findBy(args: Omit<QueryMusclePortionDto, "articulations" | "group" | "image">): Promise<MusclePortionE[]>
 }
 
 export abstract class ArticulationRepositoryI {
-
+    abstract findBy(args:any)
+    abstract findByPortion(args: Partial<ArticulationE>, portionId: number | number[])
 }
