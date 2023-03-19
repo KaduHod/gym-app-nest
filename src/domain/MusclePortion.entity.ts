@@ -1,13 +1,13 @@
 import { Entity } from "./entity.decorator";
 import { IsString, IsNumber } from 'class-validator'
 import { ArticulationE, MuscleGroupE, MusclePortionE } from "./entitys";
-import Model from "./Entity";
+import Model, { Mapped } from "./Entity";
 import { Inject } from "@nestjs/common";
 import { Knex } from "knex";
 import { ArticulationRepositoryI, MuscleGroupRepositoryI } from "src/knex/repository";
 import MuscleGroupRepository from "src/knex/muscleGroup.repository";
 
-export default class MusclePortion extends Model implements MusclePortionE {
+export default class MusclePortion extends Model implements MusclePortionE, Mapped {
     
     @IsNumber()
     public id:number
@@ -45,14 +45,23 @@ export default class MusclePortion extends Model implements MusclePortionE {
         this.articulationRepository = articulationRepository
     }
 
-    async getMuscleGroup(): Promise<this> {
+    async getMuscleGroup(): Promise<MuscleGroupE> {
         this.muscleGroup = await this.muscleGroupRepository
                             .findBy({id: this.muscleGroup_id})
-        return this;
+        return this.muscleGroup;
     }
 
-    async getArticulations(): Promise<this> {
+    async getArticulations(): Promise<ArticulationE[] | ArticulationE> {
         this.articulations = await this.articulationRepository.findByPortion({}, this.id)
-        return this;
+        return this.articulations;
+    }
+
+    mapToHttp() {
+        const {
+            muscleGroupRepository,
+            articulationRepository,
+            ...rest 
+        } = this
+        return rest
     }
 }

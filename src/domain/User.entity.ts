@@ -1,7 +1,7 @@
 import { UserE } from "./entitys";
 import { IsNumber, Length, IsNotEmpty, IsString, IsEmail, IsOptional, IsPhoneNumber, validate } from 'class-validator'
 import { Expose } from 'class-transformer'
-import Model from "./Entity";
+import Model, { Mapped } from "./Entity";
 
 export default class User extends Model implements UserE  {
     @IsNumber()

@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Header, HttpCode } from "@nestjs/common";
-import { HttpUnhandledError } from "src/errors/response.errors";
-import { QueryMuscleGroupDto, QueryMusclePortionDto } from "./muscle.validator";
+import { Mapper } from "src/utils/mappers.helper";
+import { QueryMuscleGroupDto } from "./muscle.validator";
 import ListMuscleGroupService from "./services/listMuscleGroups.service";
 import ListMusclePortionService from "./services/listMusclePortion.service";
 
@@ -16,13 +16,15 @@ export default class MuscleController {
     @HttpCode(200)
     @Header('Content-Type', 'application/json')
     async listGroup(@Body() query:QueryMuscleGroupDto){
-        return await this.ListMuscleGroupsService.main(query)
+        const groups = await this.ListMuscleGroupsService.main(query) 
+        return Mapper.mapToHttp(groups)
     }
 
     @Get('/portion')
     @HttpCode(200)
     @Header('Content-Type', 'application/json')
     async listPortion(@Body() query:QueryMuscleGroupDto){
-        return await this.ListMusclePortionService.main(query)
+        const portions = await this.ListMusclePortionService.main(query)
+        return Mapper.mapToHttp(portions)
     }
 }

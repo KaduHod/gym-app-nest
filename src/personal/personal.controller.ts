@@ -3,6 +3,7 @@ import { UserE } from "src/domain/entitys";
 import { PersonalRepositoryI } from "src/knex/repository";
 import UpdateUserService from "src/user/services/updateUser.service";
 import AttachAlunoDto, { CreateUserDto, UpdateUserDto } from "src/user/user.validator";
+import { Mapper } from "src/utils/mappers.helper";
 import AttachAlunoService from "./services/attachAluno.service";
 import CreatePersonalService from "./services/createPersonal.service";
 
@@ -30,7 +31,9 @@ export class PersonalController {
         await this.CreatePersonalService.main(body as UserE)
         return {
             message:"created",
-            personal:this.CreatePersonalService.getUser()
+            personal: Mapper.mapToHttp(
+                this.CreatePersonalService.getUser()
+            ) 
         };
     }
 
@@ -50,6 +53,10 @@ export class PersonalController {
     @Header('Content-Type', 'application/json')
     async attachAluno(@Body() args:AttachAlunoDto) {
         await this.AttachAlunoService.main(args.aluno_id, args.personal_id)
-        return this.AttachAlunoService.getAluno()
+        const aluno = this.AttachAlunoService.getAluno()
+        return {
+            message: 'attached',
+            aluno: Mapper.mapToHttp(aluno)
+        }
     }
 }

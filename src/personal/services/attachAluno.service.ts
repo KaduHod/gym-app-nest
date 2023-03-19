@@ -15,7 +15,6 @@ export default class AttachAlunoService {
     ){}
 
     async main(alunoId:number, personalId:number) {
-        console.log(alunoId, personalId)
         await Promise.all([
             this.setAluno(alunoId),
             this.setPersonal(personalId)
@@ -25,8 +24,6 @@ export default class AttachAlunoService {
         this.personal.setPersonalRepository(this.PersonalRepository)
 
         await this.aluno.getPersonal()
-
-        console.log(this.aluno)
         
         if(this.aluno.personal) {
             throw new AlunoAlreadyBelongsToPersonal(this.aluno.personal)

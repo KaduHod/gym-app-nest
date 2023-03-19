@@ -9,3 +9,7 @@ export default class Model {
         return validate(this)
     }
 }
+
+export abstract class Mapped {
+    abstract mapToHttp()
+}

@@ -1,10 +1,10 @@
 import {IsNumber, IsString} from 'class-validator'
 import { MusclePortionRepositoryI } from 'src/knex/repository';
-import Model from "./Entity";
+import Model, { Mapped } from "./Entity";
 import { MuscleGroupE, MusclePortionE } from "./entitys";
 import MusclePortion from './MusclePortion.entity';
 
-export default class MuscleGroup extends Model implements MuscleGroupE {
+export default class MuscleGroup extends Model implements MuscleGroupE, Mapped {
     @IsNumber()
     public id:number
 
@@ -35,5 +35,14 @@ export default class MuscleGroup extends Model implements MuscleGroupE {
         this.portions = (await this.musclePortionRepository
                             .findByMuscleGroupId(this.id))
                             .map((portion:MusclePortionE) => new MusclePortion(portion))
+        return this.portions;
+    }
+
+    mapToHttp() {
+        const {
+            musclePortionRepository, ...rest
+        } = this
+
+        return rest
     }
 }
