@@ -45,11 +45,13 @@ export default class ListMuscleGroupService {
         if(Array.isArray(this.groups)){
             const promises = []
             for (const group of this.groups) {
-                promises.push(group.getPortions(this.MusclePortionRepository))
+                group.setMusclePortionRepository(this.MusclePortionRepository)
+                promises.push(group.getPortions())
             }
             await Promise.all(promises)
         } else {
-            await this.groups.getPortions(this.MusclePortionRepository)
+            this.groups.setMusclePortionRepository(this.MusclePortionRepository)
+            await this.groups.getPortions()
         }
     }
 }

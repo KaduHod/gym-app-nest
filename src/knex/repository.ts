@@ -1,6 +1,5 @@
 import { ArticulationE, MuscleGroupE, MusclePortionE } from "src/domain/entitys";
 import { PersonalE, AlunoE, UserE } from "src/domain/entitys";
-import User from "src/domain/User.entity";
 import { QueryMusclePortionDto } from "src/muscles/muscle.validator";
 
 
@@ -22,6 +21,7 @@ export abstract class UserRepositoryI extends RepositoryI<UserE> {
 
 export abstract class PersonalRepositoryI extends RepositoryI<PersonalE> {
     abstract findAlunos(personal: PersonalE): Promise<PersonalE[]>
+    abstract attachAluno(personal:PersonalE, aluno:AlunoE)
 }
 
 export abstract class PermissionRepositoryI {

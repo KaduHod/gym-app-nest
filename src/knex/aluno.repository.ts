@@ -27,7 +27,7 @@ export default
                 ).where(
                     "users_permissions.permission_id",
                     enums.permission.ALUNO
-                )
+                ).on('query-error', this.handleError);
     }
 
     findBy(args:UserFindByArgs): Promise<AlunoE[]> {
@@ -42,25 +42,35 @@ export default
                 ).where(
                     "users_permissions.permission_id", 
                     enums.permission.ALUNO
-                );
+                ).on('query-error', this.handleError);;
     }
 
     first(args:UserFindByArgs): Promise<AlunoE> {
         return this 
-                .setWhereClauses( 
-                    this.knex<AlunoE>(this.table).select("users.*"), 
-                    this.setFindByArguments<UserFindByArgs>(args, this.table) 
-                ).innerJoin(
+                .knex<AlunoE>(this.table)
+                .select("users.*")
+                .innerJoin(
                     "users_permissions", 
                     "users_permissions.user_id",
                     "users.id"
                 ).where(
                     "users_permissions.permission_id", 
                     enums.permission.ALUNO
-                ).first();
+                ).where(
+                    this.setFindByArguments<UserFindByArgs>(args, this.table)
+                ).first()
+                .on('query-error', this.handleError);;
     }
 
-    findPersonalOff(user: AlunoE): Promise<AlunoE> {
-        throw new Error("Method not implemented.");
+    async findPersonalOff(aluno: AlunoE): Promise<PersonalE> {
+        return this
+                .knex(this.table)
+                .select('users.*')
+                .first()
+                .innerJoin('personal_aluno','personal_aluno.personal_id','users.id')
+                .innerJoin("users_permissions",'users_permissions.user_id','users.id')
+                .where('personal_aluno.aluno_id', aluno.id)
+                .where('users_permissions.permission_id', enums.permission.PERSONAL)
+                .on('query-error', this.handleError);
     }
 }

@@ -7,6 +7,7 @@ INSERT INTO `movements` VALUES (1,'Abduction (Protraction)','2022-11-20 22:12:06
 
 INSERT INTO `muscle_group` VALUES (1,'Chest',NULL,'2023-02-18 19:56:28',NULL),(2,'Back',NULL,'2023-02-18 19:56:28',NULL),(3,'Bíceps',NULL,'2023-02-18 19:56:28',NULL),(4,'Tríceps',NULL,'2023-02-18 19:56:28',NULL),(5,'Forearms',NULL,'2023-02-18 19:56:28',NULL),(6,'Glúteos',NULL,'2023-02-18 19:56:28',NULL),(7,'Core',NULL,'2023-02-18 19:56:28',NULL),(8,'Isquiotibials',NULL,'2023-02-18 19:56:28',NULL),(9,'Quadríceps',NULL,'2023-02-18 19:56:28',NULL),(10,'Calf',NULL,'2023-02-18 19:56:28',NULL),(11,'Deltoids',NULL,'2023-02-18 20:08:02',NULL),(12,'Neck',NULL,'2023-02-19 21:25:38',NULL),(13,'Hip',NULL,'2023-02-19 21:25:38',NULL);
 
+INSERT INTO `permissions` VALUES (1,'aluno','2023-01-18 11:28:11',NULL),(2,'personal','2023-01-18 11:28:11',NULL),(3,'admin','2023-01-18 11:28:11',NULL);
 
 INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VALUES
 	 ('Upper Major Chest',NULL,1,'2023-02-18 20:13:01','2023-02-18 20:42:50'),

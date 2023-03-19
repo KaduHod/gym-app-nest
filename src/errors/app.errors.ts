@@ -1,3 +1,4 @@
+import { PersonalE } from "src/domain/entitys"
 import { errorFormated } from "src/utils/validator.helper"
 
 
@@ -33,6 +34,20 @@ export class UserNotFound extends Error {
     constructor() {
         super("User not found")
         this.message = "User not found"
+    }
+}
+
+export class AlunoNotFound extends Error {
+    constructor() {
+        super("Aluno not found")
+        this.message = "Aluno not found"
+    }
+}
+
+export class PersonalNotFound extends Error {
+    constructor() {
+        super("Personal not found")
+        this.message = "Personal not found"
     }
 }
 
@@ -74,8 +89,20 @@ export class UnhandledError extends Error {
     }
 }
 
-
 export class InvalidMuscleError extends Error {
+    constructor(public errors: errorFormated | errorFormated[]) {
+        super()
+    }
+}
+
+export class AlunoAlreadyBelongsToPersonal extends Error {
+    constructor(personal:PersonalE){
+        super(`Aluno already belongs to personal ${personal.name}`)
+    }
+}
+
+
+export default class InvalidAttachAlunoParams extends Error {
     constructor(public errors: errorFormated | errorFormated[]) {
         super()
     }

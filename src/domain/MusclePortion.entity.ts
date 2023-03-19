@@ -25,6 +25,9 @@ export default class MusclePortion extends Model implements MusclePortionE {
     
     public muscleGroup: MuscleGroupE
 
+    private muscleGroupRepository: MuscleGroupRepositoryI
+    private articulationRepository: ArticulationRepositoryI
+
     constructor(args:MusclePortionE){
         super()
         this.id = args.id
@@ -34,14 +37,22 @@ export default class MusclePortion extends Model implements MusclePortionE {
         this.muscleGroup = args.muscleGroup
     }
 
-    async getMuscleGroup(MuscleGroupRepository:MuscleGroupRepositoryI): Promise<this> {
-        this.muscleGroup = await MuscleGroupRepository
+    setMuscleGroupRepository(muscleGroupRepository:MuscleGroupRepositoryI) {
+        this.muscleGroupRepository = muscleGroupRepository
+    }
+
+    setArticulationRepository(articulationRepository:ArticulationRepositoryI) {
+        this.articulationRepository = articulationRepository
+    }
+
+    async getMuscleGroup(): Promise<this> {
+        this.muscleGroup = await this.muscleGroupRepository
                             .findBy({id: this.muscleGroup_id})
         return this;
     }
 
-    async getArticulations(ArticulationRepository:ArticulationRepositoryI): Promise<this> {
-        this.articulations = await ArticulationRepository.findByPortion({}, this.id)
+    async getArticulations(): Promise<this> {
+        this.articulations = await this.articulationRepository.findByPortion({}, this.id)
         return this;
     }
 }

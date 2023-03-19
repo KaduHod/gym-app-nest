@@ -1,5 +1,5 @@
 import {IsNumber, IsString} from 'class-validator'
-import { MuscleGroupRepositoryI, MusclePortionRepositoryI } from 'src/knex/repository';
+import { MusclePortionRepositoryI } from 'src/knex/repository';
 import Model from "./Entity";
 import { MuscleGroupE, MusclePortionE } from "./entitys";
 import MusclePortion from './MusclePortion.entity';
@@ -16,6 +16,8 @@ export default class MuscleGroup extends Model implements MuscleGroupE {
 
     public portions?: MusclePortionE[]
 
+    private musclePortionRepository:MusclePortionRepositoryI
+
     constructor(args:MuscleGroupE){
         super()
         this.id = args.id
@@ -24,8 +26,13 @@ export default class MuscleGroup extends Model implements MuscleGroupE {
         this.portions = args.portions
     }
 
-    async getPortions(MusclePortionRepository:MusclePortionRepositoryI) {
-        this.portions = (await MusclePortionRepository
+
+    setMusclePortionRepository(musclePortionRepository:MusclePortionRepositoryI) {
+        this.musclePortionRepository = musclePortionRepository 
+    }
+
+    async getPortions() {
+        this.portions = (await this.musclePortionRepository
                             .findByMuscleGroupId(this.id))
                             .map((portion:MusclePortionE) => new MusclePortion(portion))
     }

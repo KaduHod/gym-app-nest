@@ -1,22 +1,21 @@
 import { Module } from "@nestjs/common";
-import ArticulationRepository from "src/knex/articulation.repository";
-import MuscleGroupRepository from "src/knex/muscleGroup.repository";
-import { ArticulationRepositoryI, MuscleGroupRepositoryI } from "src/knex/repository";
-import MusclePortion from "./MusclePortion.entity";
+import AlunoRepository from "src/knex/aluno.repository";
+import KnexModule from "src/knex/knex.module";
+import PersonalRepository from "src/knex/personal.repository";
+import { AlunoRepositoryI, PersonalRepositoryI } from "src/knex/repository";
 
 @Module({
+    imports:[KnexModule],
     providers:[
         {
-            provide:MuscleGroupRepositoryI,
-            useClass: MuscleGroupRepository  
+            provide: PersonalRepositoryI,
+            useClass: PersonalRepository
         },
         {
-            provide: ArticulationRepositoryI,
-            useClass: ArticulationRepository
-        },
-        // MusclePortion
+            provide: AlunoRepositoryI,
+            useClass: AlunoRepository
+        }
     ],
-    // exports:[MusclePortion]
 })
 export default class DomainModule {
 

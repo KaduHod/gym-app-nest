@@ -48,13 +48,16 @@ export default class ListMusclePortionService {
     async setPortions(): Promise<void> {
         const {articulations, group, image,...query} = this.query
         
-        this.portions = (await this.MusclePortionRepository.findBy(query)).map((portion:MusclePortionE) => new MusclePortion(portion))
+        this.portions = (await this.MusclePortionRepository
+                                .findBy(query))
+                                .map((portion:MusclePortionE) => new MusclePortion(portion))
     }
 
     async setArticulations(): Promise<void> {
         const promises = []
         for (const portion of this.portions) {
-            promises.push(portion.getArticulations(this.ArticulationRepository))
+            portion.setArticulationRepository(this.ArticulationRepository)
+            promises.push(portion.getArticulations())
         }
 
         await Promise.all(promises)
@@ -63,7 +66,8 @@ export default class ListMusclePortionService {
     async setGroups() {
         const promises = []
         for (const portion of this.portions) {
-            promises.push(portion.getMuscleGroup(this.MuscleGroupRepository))
+            portion.setMuscleGroupRepository(this.MuscleGroupRepository)
+            promises.push(portion.getMuscleGroup())
         }
 
         await Promise.all(promises)

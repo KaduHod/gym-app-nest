@@ -2,8 +2,10 @@ import { Body, Controller, Get, Header, HttpCode, Post, Put } from "@nestjs/comm
 import { UserE } from "src/domain/entitys";
 import { PersonalRepositoryI } from "src/knex/repository";
 import UpdateUserService from "src/user/services/updateUser.service";
-import { CreateUserDto, UpdateUserDto } from "src/user/user.validator";
+import AttachAlunoDto, { CreateUserDto, UpdateUserDto } from "src/user/user.validator";
+import AttachAlunoService from "./services/attachAluno.service";
 import CreatePersonalService from "./services/createPersonal.service";
+
 
 
 
@@ -12,7 +14,8 @@ export class PersonalController {
     constructor(
         private PersonalRepository: PersonalRepositoryI,
         private CreatePersonalService: CreatePersonalService,
-        private UpdateUserService: UpdateUserService
+        private UpdateUserService: UpdateUserService,
+        private AttachAlunoService: AttachAlunoService
     ) {}
 
     @Get('/')
@@ -40,5 +43,13 @@ export class PersonalController {
             message:"updated", 
             personal: await this.UpdateUserService.main()
         }
+    }
+
+    @Post("/attach-aluno")
+    @HttpCode(200)
+    @Header('Content-Type', 'application/json')
+    async attachAluno(@Body() args:AttachAlunoDto) {
+        await this.AttachAlunoService.main(args.aluno_id, args.personal_id)
+        return this.AttachAlunoService.getAluno()
     }
 }
