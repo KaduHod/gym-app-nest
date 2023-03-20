@@ -4,21 +4,21 @@
       "exercises": [
         {
           "name": "Bench Press",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         },
         {
           "name": "Incline Bench Press",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         },
         {
           "name": "Dumbbell Fly",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         }
       ]
     },
@@ -27,21 +27,21 @@
       "exercises": [
         {
           "name": "Incline Dumbbell Press",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         },
         {
           "name": "Chest Dip",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         },
         {
           "name": "Cable Crossover",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         }
       ]
     },
@@ -50,21 +50,21 @@
       "exercises": [
         {
           "name": "Decline Bench Press",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         },
         {
           "name": "Decline Dumbbell Fly",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         },
         {
           "name": "Push-Up",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         }
       ]
     },
@@ -73,136 +73,136 @@
       "exercises": [
         {
           "name": "Dumbbell Pullover",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[7]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [7]
         },
         {
           "name": "Incline Dumbbell Fly",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         },
         {
           "name": "Dumbbell Bench Press with Neutral Grip",
-          "agonist": "[1,2,3]",
-          "antagonist": "[19,20,21]",
-          "synergist": "[45]"
+          "agonist": [1,2,3],
+          "antagonist": [19,20,21],
+          "synergist": [45]
         }
       ]
     },
     {    
-    "muscle": "[5]",    
+    "muscle": [5],    
     "exercises": [      
         {        
         "name": "Push-Up with Serratus Focus",        
-        "agonist": "[5]",        
-        "antagonist": "[19,20,21]",        
-        "synergist": "[1,2,3]"      
+        "agonist": [5],        
+        "antagonist": [19,20,21],        
+        "synergist": [1,2,3]      
         },      
         {        
             "name": "Dumbbell Punches",        
-            "agonist": "[5]",        
-            "antagonist": "[19,20,21]",        
-            "synergist": "[1,2,3]"      
+            "agonist": [5],        
+            "antagonist": [19,20,21],        
+            "synergist": [1,2,3]      
         },      
         {        
             "name": "Scapular Protraction on Cable Machine",        
-            "agonist": "[5]",        
-            "antagonist": "[13,14]",        
-            "synergist": "Trapezius"      
+            "agonist": [5],        
+            "antagonist": [13,14],        
+            "synergist": [10, 11, 12]      
         }    
     ]
   },
   {
-    "muscle": "[6]",
+    "muscle": [6],
     "exercises": [
       {
         "name": "Barbell Shrugs",
-        "agonist": "Trapezius",
-        "antagonist": "[15]",
-        "synergist": "[6]"
+        "agonist": [10, 11, 12],
+        "antagonist": [15],
+        "synergist": [6]
       },
       {
         "name": "Cable Cross-Over",
-        "agonist": "[1,2,3]",
-        "antagonist": "[19,20,21]",
-        "synergist": "[6]"
+        "agonist": [1,2,3],
+        "antagonist": [19,20,21],
+        "synergist": [6]
       },
       {
         "name": "Incline Dumbbell Fly",
-        "agonist": "[1,2,3]",
-        "antagonist": "[19,20,21]",
-        "synergist": "[6]"
+        "agonist": [1,2,3],
+        "antagonist": [19,20,21],
+        "synergist": [6]
       }
     ]
   },
   {
-    "muscle": "[7]",
+    "muscle": [7],
     "exercises": [
       {
         "name": "Pull-Up",
-        "agonist": "[7]",
-        "antagonist": "[16,17,18]",
-        "synergist": "Trapezius"
+        "agonist": [7],
+        "antagonist": [16,17,18],
+        "synergist": [10, 11, 12]
       },
       {
         "name": "Bent-Over Barbell Row",
-        "agonist": "[7]",
-        "antagonist": "[35]",
-        "synergist": "Trapezius"
+        "agonist": [7],
+        "antagonist": [35],
+        "synergist": [10, 11, 12]
       },
       {
         "name": "Seated Cable Row",
-        "agonist": "[7]",
-        "antagonist": "[16,17,18]",
-        "synergist": "Trapezius"
+        "agonist": [7],
+        "antagonist": [16,17,18],
+        "synergist": [10, 11, 12]
       }
     ]
   },
   {
-    "muscle": "[8]",
+    "muscle": [8],
     "exercises": [
       {
         "name": "Band Pull-Apart",
-        "agonist": "[8]",
-        "antagonist": "[1,2,3]",
-        "synergist": "[13,14]"
+        "agonist": [8],
+        "antagonist": [1,2,3],
+        "synergist": [13,14]
       },
       {
         "name": "Dumbbell Reverse Fly",
-        "agonist": "[8]",
-        "antagonist": "[45]",
-        "synergist": "[13,14]"
+        "agonist": [8],
+        "antagonist": [45],
+        "synergist": [13,14]
       },
       {
         "name": "Face Pull",
-        "agonist": "[8]",
-        "antagonist": "[1,2,3]",
-        "synergist": "[13,14]"
+        "agonist": [8],
+        "antagonist": [1,2,3],
+        "synergist": [13,14]
       }
     ]
   },
   {
-    "muscle": "[9]",
+    "muscle": [9],
     "exercises": [
       {
         "name": "Deadlift",
-        "agonist": "[35]",
-        "antagonist": "[34]",
-        "synergist": "[26,27,28]"
+        "agonist": [35],
+        "antagonist": [34],
+        "synergist": [26,27,28]
       },
       {
         "name": "Hyperextension",
-        "agonist": "[35]",
-        "antagonist": "[34]",
-        "synergist": "[26,27,28]"
+        "agonist": [35],
+        "antagonist": [34],
+        "synergist": [26,27,28]
       },
       {
         "name": "Good Morning",
-        "agonist": "[35]",
-        "antagonist": "[34]",
-        "synergist": "[26,27,28]"
+        "agonist": [35],
+        "antagonist": [34],
+        "synergist": [26,27,28]
       }
     ]
   },
@@ -212,8 +212,8 @@
       {
         "name": "Barbell Shrug",
         "agonist": 10,
-        "antagonist": "[15]",
-        "synergist": "[13,14]"
+        "antagonist": [15],
+        "synergist": [13,14]
       },
       {
         "name": "Upright Row",
@@ -241,14 +241,14 @@
       {
         "name": "Face Pull",
         "agonist": 11,
-        "antagonist": "[1,2,3]",
+        "antagonist": [1,2,3],
         "synergist": [73]
       },
       {
         "name": "Inverted Row",
         "agonist": 11,
-        "antagonist": "[1,2,3]",
-        "synergist": "[13,14]"
+        "antagonist": [1,2,3],
+        "synergist": [13,14]
       }
     ]
   },
@@ -259,19 +259,19 @@
         "name": "Prone Y",
         "agonist": 12,
         "antagonist": 10,
-        "synergist": "[13,14]"
+        "synergist": [13,14]
       },
       {
         "name": "Bent Over Dumbbell Row",
         "agonist": 12,
-        "antagonist": "[1,2,3]",
-        "synergist": "[7]"
+        "antagonist": [1,2,3],
+        "synergist": [7]
       },
       {
         "name": "Scapular Wall Slide",
         "agonist": 12,
-        "antagonist": "[1,2,3]",
-        "synergist": "[13,14]"
+        "antagonist": [1,2,3],
+        "synergist": [13,14]
       }
     ]
   },
@@ -281,19 +281,19 @@
       {
         "name": "Prone T",
         "agonist": [13],
-        "antagonist": "[1,2,3]",
+        "antagonist": [1,2,3],
         "synergist": 12
       },
       {
         "name": "Seated Row",
         "agonist": [13],
-        "antagonist": "[1,2,3]",
-        "synergist": "[7]"
+        "antagonist": [1,2,3],
+        "synergist": [7]
       },
       {
         "name": "Dumbbell Reverse Fly",
         "agonist": [13],
-        "antagonist": "[1,2,3]",
+        "antagonist": [1,2,3],
         "synergist": [73]
       }
     ]
@@ -304,14 +304,14 @@
       {
         "name": "Standing Cable Row",
         "agonist": [14],
-        "antagonist": "[1,2,3]",
-        "synergist": "[7]"
+        "antagonist": [1,2,3],
+        "synergist": [7]
       },
       {
         "name": "Dumbbell Pullover",
         "agonist": [14],
-        "antagonist": "[1,2,3]",
-        "synergist": "[7]"
+        "antagonist": [1,2,3],
+        "synergist": [7]
       },
       {
         "name": "Barbell Shrug",
@@ -332,15 +332,15 @@
         },
         {
           "exercise": "Upright Rows",
-          "agonist": "[15]",
+          "agonist": [15],
           "antagonist": [45,46,47],
-          "synergist": "[10, 13,14]"
+          "synergist": [10, 13,14]
         },
         {
           "exercise": "Barbell Rows",
           "agonist": [15, 73],
           "antagonist": [12, 13, 14],
-          "synergist": "[10, 45,46,47,73]"
+          "synergist": [10, 45,46,47,73]
         }
     ]
   },
@@ -448,7 +448,7 @@
         {                
             "name": "Close-grip Bench Press",                
             "agonist": [19, 20, 21],                
-            "antagonist": "[1,2,3]",                
+            "antagonist": [1,2,3],                
             "synergist": [45, 46, 47]           
         },            
         {                
@@ -483,806 +483,806 @@
         ]
     },
     {
-        "muscle": "Forearm Pronator teres",
+        "muscle": 22,
         "exercises": [
           {
             "name": "Barbell pronate wrist curl",
-            "agonist": "Pronator teres",
+            "agonist": [22],
             "antagonist": "Supinator",
-            "synergist": "Flexor carpi radialis, Palmaris longus"
+            "synergist": "23, 25"
           },
           {
             "name": "Dumbbell pronate wrist curl",
-            "agonist": "Pronator teres",
+            "agonist": [22],
             "antagonist": "Supinator",
-            "synergist": "Flexor carpi radialis, Palmaris longus"
+            "synergist": "23, 25"
           },
           {
             "name": "Reverse dumbbell curl",
-            "agonist": "Brachioradialis, Extensor carpi radialis longus",
-            "antagonist": "Flexor carpi radialis, Palmaris longus",
-            "synergist": "Pronator teres"
+            "agonist": "74, 53",
+            "antagonist": "23, 25",
+            "synergist": [22]
           }
         ]
       },
       {
-        "muscle": "Forearm Flexor carpi radialis",
+        "muscle": 23,
         "exercises": [
           {
             "name": "Hammer curls",
             "agonist": [74],
-            "antagonist": "[19,20,21]",
-            "synergist": "Forearm flexors"
+            "antagonist": [19,20,21],
+            "synergist": [23,24]
           },
           {
             "name": "Wrist curls",
-            "agonist": "Flexor carpi radialis",
-            "antagonist": "Extensor carpi radialis",
-            "synergist": "Flexor carpi ulnaris, Palmaris longus"
+            "agonist": "23",
+            "antagonist": 54,
+            "synergist": "24, 25"
           },
           {
             "name": "Reverse wrist curls",
-            "agonist": "Extensor carpi radialis",
-            "antagonist": "Flexor carpi radialis",
-            "synergist": "Flexor carpi ulnaris, Palmaris longus"
+            "agonist": 54,
+            "antagonist": "23",
+            "synergist": "24, 25"
           }
         ]
       },
       {
-        "muscle": "Forearm Flexor carpi ulnaris",
+        "muscle": "Forearm 24",
         "exercises": [
           {
             "name": "Reverse grip barbell curls",
-            "agonist": "Brachioradialis, [16,17,18]",
-            "antagonist": "[19,20,21]",
-            "synergist": "Forearm flexors"
+            "agonist": "74 [16,17,18]",
+            "antagonist": [19,20,21],
+            "synergist": [23,24]
           },
           {
             "name": "Wrist curls",
-            "agonist": "Flexor carpi ulnaris",
-            "antagonist": "Extensor carpi radialis",
-            "synergist": "Flexor carpi radialis, Palmaris longus"
+            "agonist": "24",
+            "antagonist": 54,
+            "synergist": "23, 25"
           },
           {
             "name": "Reverse wrist curls",
-            "agonist": "Extensor carpi radialis",
-            "antagonist": "Flexor carpi ulnaris",
-            "synergist": "Flexor carpi radialis, Palmaris longus"
+            "agonist": 54,
+            "antagonist": "24",
+            "synergist": "23, 25"
           }
         ]
     },
     {
-        "muscle": "Forearm Palmaris longus",
+        "muscle": "Forearm 25",
         "exercises": [
           {
             "name": "Wrist curls",
-            "agonist": "Forearm Flexors",
+            "agonist": [23,24],
             "antagonist": "Forearm Extensors",
-            "synergist": "Forearm Brachioradialis"
+            "synergist": 74
           },
           {
             "name": "Reverse wrist curls",
             "agonist": "Forearm Extensors",
-            "antagonist": "Forearm Flexors",
-            "synergist": "Forearm Brachioradialis"
+            "antagonist": [23,24],
+            "synergist": 74
           },
           {
             "name": "Grip strengtheners",
-            "agonist": "Forearm Flexors",
+            "agonist": [23,24],
             "antagonist": "Forearm Extensors",
-            "synergist": "Forearm Brachioradialis"
+            "synergist": 74
           }
         ]
     },
     {
-        "muscle": "Glúteos medius",
+        "muscle": 26,
         "exercises": [
             {
                 "name": "Side lying leg lift",
-                "agonist": "Glúteos medius",
+                "agonist": 26,
                 "antagonist": "Adductor muscles",
-                "synergist": "Tensor fasciae latae"
+                "synergist": 50
             },
             {
                 "name": "Standing cable hip abduction",
-                "agonist": "Glúteos medius",
+                "agonist": 26,
                 "antagonist": "Adductor muscles",
-                "synergist": "Tensor fasciae latae"
+                "synergist": 50
             },
             {
                 "name": "Bulgarian split squat",
-                "agonist": "Glúteos medius",
-                "antagonist": "Quadriceps",
-                "synergist": "Hamstrings"
+                "agonist": 26,
+                "antagonist": [50, 51,38,39,40,41,42],
+                "synergist": [36, 37, 38]
             }
         ]
     },
     {
-        "muscle": "Glúteos minimus",
+        "muscle": [27],
         "exercises": [
             {
                 "name": "Clamshell",
-                "agonist": "Glúteos minimus",
+                "agonist": [27],
                 "antagonist": "Adductor muscles",
-                "synergist": "Tensor fasciae latae"
+                "synergist": 50
             },
             {
                 "name": "Side plank with leg lift",
-                "agonist": "Glúteos minimus",
+                "agonist": [27],
                 "antagonist": "Adductor muscles",
-                "synergist": "Tensor fasciae latae"
+                "synergist": 50
             },
             {
                 "name": "Banded hip abduction",
-                "agonist": "Glúteos minimus",
+                "agonist": [27],
                 "antagonist": "Adductor muscles",
-                "synergist": "Tensor fasciae latae"
+                "synergist": 50
             }
         ]
     },
     {
-        "muscle": "Glúteos maximus",
+        "muscle": [28],
         "exercises": [
             {
                 "name": "Barbell hip thrust",
-                "agonist": "Glúteos maximus",
+                "agonist": [28],
                 "antagonist": "Hip flexors",
-                "synergist": "Hamstrings"
+                "synergist": [36, 37, 38]
             },
             {
                 "name": "Deadlift",
-                "agonist": "Glúteos maximus",
-                "antagonist": "Quadriceps",
-                "synergist": "Hamstrings"
+                "agonist": [28],
+                "antagonist": [50, 51,38,39,40,41,42],
+                "synergist": [36, 37, 38]
             },
             {
                 "name": "Walking lunge",
-                "agonist": "Glúteos maximus",
-                "antagonist": "Quadriceps",
-                "synergist": "Hamstrings"
+                "agonist": [28],
+                "antagonist": [50, 51,38,39,40,41,42],
+                "synergist": [36, 37, 38]
             }
         ]
     },
     {
-        "muscle": "Pelvic floor",
+        "muscle": [29],
         "exercises": [
             {
                 "name": "Kegel exercise",
-                "agonist": "Pelvic floor",
+                "agonist": [29],
                 "antagonist": "",
                 "synergist": ""
             },
             {
                 "name": "Bridge",
-                "agonist": "Pelvic floor",
+                "agonist": [29],
                 "antagonist": "Hip extensors",
-                "synergist": "Glúteos maximus"
+                "synergist": [28]
             },
             {
                 "name": "Squats",
-                "agonist": "Pelvic floor",
-                "antagonist": "Quadriceps",
-                "synergist": "Glúteos maximus"
+                "agonist": [29],
+                "antagonist": [50, 51,38,39,40,41,42],
+                "synergist": [28]
             }
         ]
     },
     {    
-        "muscle": "Transversus Abdominis",    
+        "muscle": [30],    
         "exercises": [      
             {        
                 "name": "Plank",        
-                "agonist": "Transversus Abdominis",        
-                "antagonist": "[35]",        
-                "synergist": "[34], Obliques, Multifidus"      
+                "agonist": [30],        
+                "antagonist": [35],        
+                "synergist": [34, 32, 33, "31"]      
             },      
             {        
                 "name": "Dead Bug",        
-                "agonist": "Transversus Abdominis",        
-                "antagonist": "Rectus Femoris",        
-                "synergist": "Hip Flexors, Obliques"      
+                "agonist": [30],        
+                "antagonist": "34",        
+                "synergist": "Hip Flexors, 32, 33"      
             },      {        
                 "name": "Bird Dog",        
-                "agonist": "Transversus Abdominis",        
-                "antagonist": "Rectus Femoris",        
-                "synergist": "Obliques, Multifidus"      
+                "agonist": [30],        
+                "antagonist": "34",        
+                "synergist": "[32, 33, 31]"      
                 }    
         ]
     },
     {
-        "muscle": "Multifidus",
+        "muscle": "31",
         "exercises": [
           {
             "name": "Superman",
-            "agonist": "Multifidus",
-            "antagonist": "[34]",
-            "synergist": "[35], [26,27,28]"
+            "agonist": "31",
+            "antagonist": [34],
+            "synergist": [35, 26,27,28]
           },
           {
             "name": "Bird Dog",
-            "agonist": "Multifidus",
-            "antagonist": "Rectus Femoris",
-            "synergist": "Transversus Abdominis, Obliques"
+            "agonist": "31",
+            "antagonist": "34",
+            "synergist": "30, 33, 32"
           },
           {
             "name": "Bridging",
-            "agonist": "Multifidus",
-            "antagonist": "[34]",
-            "synergist": "[35], [26,27,28]"
+            "agonist": "31",
+            "antagonist": [34],
+            "synergist": [35, 26,27,28]
           }
         ]
     },    
     { 
-        "muscle": "Internal Obliques",
+        "muscle": "32",
         "exercises": [
           {
             "name": "Russian Twist",
-            "agonist": "Internal Obliques",
-            "antagonist": "[35]",
-            "synergist": "[34], External Obliques"
+            "agonist": "32",
+            "antagonist": [35],
+            "synergist": [34, 33]
           },
           {
             "name": "Side Plank",
-            "agonist": "Internal Obliques",
-            "antagonist": "Gluteus Medius",
-            "synergist": "External Obliques, Transversus Abdominis"
+            "agonist": "32",
+            "antagonist": "26",
+            "synergist": "33, 30"
           },
           {
             "name": "Bicycle Crunches",
-            "agonist": "Internal Obliques",
-            "antagonist": "[35]",
-            "synergist": "[34], External Obliques"
+            "agonist": "32",
+            "antagonist": [35],
+            "synergist": [34, 33]
           }
         ]
     },
     {
-        "muscle": "External Obliques",
+        "muscle": "33",
         "exercises": [
             {
                 "name": "Russian Twist",
-                "agonist": "External Obliques",
-                "antagonist": "Internal Obliques",
-                "synergist": "[34]"
+                "agonist": "33",
+                "antagonist": "32",
+                "synergist": [34]
             },
             {
                 "name": "Side Plank",
-                "agonist": "External Obliques",
-                "antagonist": "Internal Obliques",
-                "synergist": "Transversus Abdominis"
+                "agonist": "33",
+                "antagonist": "32",
+                "synergist": [30]
             },
             {
                 "name": "Wood Chop",
-                "agonist": "External Obliques",
-                "antagonist": "Internal Obliques",
-                "synergist": "[34]"
+                "agonist": "33",
+                "antagonist": "32",
+                "synergist": [34]
             }
         ]
     },
     {
-        "muscle": "[34]",
+        "muscle": [34],
         "exercises": [
             {
                 "name": "Sit-Ups",
-                "agonist": "[34]",
-                "antagonist": "[35]",
+                "agonist": [34],
+                "antagonist": [35],
                 "synergist": "Hip Flexors"
             },
             {
                 "name": "Leg Raises",
-                "agonist": "[34]",
-                "antagonist": "[35]",
+                "agonist": [34],
+                "antagonist": [35],
                 "synergist": "Hip Flexors"
             },
             {
                 "name": "Crunches",
-                "agonist": "[34]",
-                "antagonist": "[35]",
+                "agonist": [34],
+                "antagonist": [35],
                 "synergist": "Hip Flexors"
             }
         ]
     },
     {
-        "muscle": "[35]",
+        "muscle": [35],
         "exercises": [
             {
                 "name": "Deadlifts",
-                "agonist": "[35]",
-                "antagonist": "[34]",
-                "synergist": "[26,27,28]"
+                "agonist": [35],
+                "antagonist": [34],
+                "synergist": [26,27,28]
             },
             {
                 "name": "Back Extensions",
-                "agonist": "[35]",
-                "antagonist": "[34]",
-                "synergist": "[26,27,28]"
+                "agonist": [35],
+                "antagonist": [34],
+                "synergist": [26,27,28]
             },
             {
                 "name": "Good Mornings",
-                "agonist": "[35]",
-                "antagonist": "[34]",
-                "synergist": "[26,27,28]"
+                "agonist": [35],
+                "antagonist": [34],
+                "synergist": [26,27,28]
             }
         ]
     },
     {
-        "muscle": "Bíceps Femoris",
+        "muscle": "36",
         "exercises": [
             {
                 "name": "Deadlifts",
-                "agonist": "Bíceps Femoris",
-                "antagonist": "Rectus Femoris",
-                "synergist": "[26,27,28]"
+                "agonist": "36",
+                "antagonist": "34",
+                "synergist": [26,27,28]
             },
             {
                 "name": "Lunges",
-                "agonist": "Bíceps Femoris",
-                "antagonist": "Rectus Femoris",
-                "synergist": "Quadriceps"
+                "agonist": "36",
+                "antagonist": "34",
+                "synergist": [50, 51,38,39,40,41,42]
             },
             {
                 "name": "Good Mornings",
-                "agonist": "Bíceps Femoris",
-                "antagonist": "Rectus Femoris",
-                "synergist": "[26,27,28]"
+                "agonist": "36",
+                "antagonist": "34",
+                "synergist": [26,27,28]
             }
         ]
     },
     {    
-        "muscle": "Semitendinosus",    
+        "muscle": "37",    
         "exercises": [      
             {        
                 "name": "Romanian Deadlift",        
-                "agonist": "Semitendinosus",        
-                "antagonist": "Quadriceps",        
-                "synergist": "Gluteus Maximus, [35]"      
+                "agonist": "37",        
+                "antagonist": [50, 51,38,39,40,41,42],        
+                "synergist": [28, 35]     
             },      
             {        
                 "name": "Standing Leg Curl",        
-                "agonist": "Semitendinosus",        
-                "antagonist": "Quadriceps",        
-                "synergist": "Biceps Femoris, Gastrocnemius"      
+                "agonist": "37",        
+                "antagonist": [50, 51,38,39,40,41,42],        
+                "synergist": "36, 43"      
             },      
             {        
                 "name": "Glute-Ham Raise",        
-                "agonist": "Semitendinosus",        
-                "antagonist": "Quadriceps",        
-                "synergist": "Biceps Femoris, Gluteus Maximus"      
+                "agonist": "37",        
+                "antagonist": [50, 51,38,39,40,41,42],        
+                "synergist": [36, 28]     
             }    
         ]
     },
     {
-        "muscle": "Semimembranosus",
+        "muscle": "38",
         "exercises": [
           {
             "name": "Stiff-Leg Deadlift",
-            "agonist": "Semimembranosus",
-            "antagonist": "Quadriceps",
-            "synergist": "Gluteus Maximus, [35]"
+            "agonist": "38",
+            "antagonist": [50, 51,38,39,40,41,42],
+            "synergist": [28, 35]
           },
           {
             "name": "Lying Leg Curl",
-            "agonist": "Semimembranosus",
-            "antagonist": "Quadriceps",
-            "synergist": "Biceps Femoris, Gastrocnemius"
+            "agonist": "38",
+            "antagonist": [50, 51,38,39,40,41,42],
+            "synergist": "36, 43"
           },
           {
             "name": "Back Extension",
-            "agonist": "Semimembranosus",
-            "antagonist": "Abdominal muscles",
-            "synergist": "[35], Gluteus Maximus"
+            "agonist": "38",
+            "antagonist": [30, 34],
+            "synergist": [35, 28]
           }
         ]
     },
     {
-        "muscle": "Vastus lateralis",
+        "muscle": 39,
         "exercises": [
           {
             "name": "Barbell squats",
-            "agonist": "Vastus lateralis",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": 39,
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           },
           {
             "name": "Leg press",
-            "agonist": "Vastus lateralis",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": 39,
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           },
           {
             "name": "Lunges",
-            "agonist": "Vastus lateralis",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": 39,
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           }
         ]
       },
       {
-        "muscle": "Vastus medialis",
+        "muscle": 40,
         "exercises": [
           {
             "name": "Leg extensions",
-            "agonist": "Vastus medialis",
-            "antagonist": "Hamstrings",
-            "synergist": "Quadriceps"
+            "agonist": 40,
+            "antagonist": [36, 37, 38],
+            "synergist": [50, 51,38,39,40,41,42]
           },
           {
             "name": "Hack squats",
-            "agonist": "Vastus medialis",
-            "antagonist": "Hamstrings",
-            "synergist": "Quadriceps"
+            "agonist": 40,
+            "antagonist": [36, 37, 38],
+            "synergist": [50, 51,38,39,40,41,42]
           },
           {
             "name": "Step-ups",
-            "agonist": "Vastus medialis",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": 40,
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           }
         ]
       },
       {
-        "muscle": "Vastus intermedius",
+        "muscle": [41],
         "exercises": [
           {
             "name": "Squats",
-            "agonist": "Vastus intermedius",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": [41],
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           },
           {
             "name": "Leg press",
-            "agonist": "Vastus intermedius",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": [41],
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           },
           {
             "name": "Lunges",
-            "agonist": "Vastus intermedius",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": [41],
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           }
         ]
       },
       {
-        "muscle": "Rectus Femoris",
+        "muscle": "34",
         "exercises": [
           {
             "name": "Squats",
-            "agonist": "Rectus Femoris",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": "34",
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           },
           {
             "name": "Leg extensions",
-            "agonist": "Rectus Femoris",
-            "antagonist": "Hamstrings",
-            "synergist": "Quadriceps"
+            "agonist": "34",
+            "antagonist": [36, 37, 38],
+            "synergist": [50, 51,38,39,40,41,42]
           },
           {
             "name": "Lunges",
-            "agonist": "Rectus Femoris",
-            "antagonist": "Hamstrings",
-            "synergist": "[26,27,28]"
+            "agonist": "34",
+            "antagonist": [36, 37, 38],
+            "synergist": [26,27,28]
           }
         ]
     },
     {    
-        "muscle": "Gastrocnemius",    
+        "muscle": [43],    
         "exercises": [      
             {        
                 "name": "Standing Calf Raises",        
-                "agonist": "Gastrocnemius",        
-                "antagonist": "Tibialis anterior",        
-                "synergist": "Soleus"      
+                "agonist": [43],        
+                "antagonist": [69],        
+                "synergist": [44]     
             },      
             {        
                 "name": "Seated Calf Raises",        
-                "agonist": "Gastrocnemius",        
-                "antagonist": "Tibialis anterior",        
-                "synergist": "Soleus"      
+                "agonist": [43],        
+                "antagonist": [69],        
+                "synergist": [44]     
             },      
             {        
                 "name": "Donkey Calf Raises",        
-                "agonist": "Gastrocnemius",        
-                "antagonist": "Tibialis anterior",        
-                "synergist": "Soleus"      
+                "agonist": [43],        
+                "antagonist": [69],        
+                "synergist": [44]     
             }    
         ]
     },
     {
-      "muscle": "Soleus",
+      "muscle": [44],
       "exercises": [
         {
           "name": "Standing Calf Raises",
-          "agonist": "Soleus",
-          "antagonist": "Tibialis anterior",
-          "synergist": "Gastrocnemius"
+          "agonist": [44],
+          "antagonist": [69],
+          "synergist": [43]
         },
         {
           "name": "Seated Calf Raises",
-          "agonist": "Soleus",
-          "antagonist": "Tibialis anterior",
-          "synergist": "Gastrocnemius"
+          "agonist": [44],
+          "antagonist": [69],
+          "synergist": [43]
         },
         {
           "name": "Donkey Calf Raises",
-          "agonist": "Soleus",
-          "antagonist": "Tibialis anterior",
-          "synergist": "Gastrocnemius"
+          "agonist": [44],
+          "antagonist": [69],
+          "synergist": [43]
         }
       ]
     },
     {
-        "muscle": "Deltoid Anterior",
+        "muscle": [45],
         "exercises": [
             {
                 "name": "Barbell Shoulder Press",
-                "agonist": "Deltoid Anterior",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "[19,20,21]"
+                "agonist": [45],
+                "antagonist": [73],
+                "synergist": [19,20,21]
             },
             {
                 "name": "Arnold Press",
-                "agonist": "Deltoid Anterior",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "[19,20,21]"
+                "agonist": [45],
+                "antagonist": [73],
+                "synergist": [19,20,21]
             },
             {
                 "name": "Lateral Raises",
-                "agonist": "Deltoid Anterior",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "Supraspinatus"
+                "agonist": [45],
+                "antagonist": [73],
+                "synergist": [52]
             }
         ]
     },
     {
-        "muscle": "Deltoid Medium",
+        "muscle": [46],
         "exercises": [
             {
                 "name": "Standing Military Press",
-                "agonist": "Deltoid Medium",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "[19,20,21]"
+                "agonist": [46],
+                "antagonist": [73],
+                "synergist": [19,20,21]
             },
             {
                 "name": "Dumbbell Lateral Raise",
-                "agonist": "Deltoid Medium",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "Supraspinatus"
+                "agonist": [46],
+                "antagonist": [73],
+                "synergist": [52]
             },
             {
                 "name": "Cable Lateral Raise",
-                "agonist": "Deltoid Medium",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "Supraspinatus"
+                "agonist": [46],
+                "antagonist": [73],
+                "synergist": [52]
             }
         ]
     },
     {
-        "muscle": "Deltoid Lateral",
+        "muscle": [47],
         "exercises": [
             {
                 "name": "Barbell Upright Row",
-                "agonist": "Deltoid Lateral",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "[19,20,21]"
+                "agonist": [47],
+                "antagonist": [73],
+                "synergist": [19,20,21]
             },
             {
                 "name": "Seated Dumbbell Press",
-                "agonist": "Deltoid Lateral",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "[19,20,21]"
+                "agonist": [47],
+                "antagonist": [73],
+                "synergist": [19,20,21]
             },
             {
                 "name": "Cable Face Pull",
-                "agonist": "Deltoid Lateral",
-                "antagonist": "Deltoid Posterior",
-                "synergist": "Rear [45,46,47,73]
+                "agonist": [47],
+                "antagonist": [73],
+                "synergist": ["Rear", 45,46,47,73]
             }
         ]
     },
     {
-        "muscle": "Sternocleidomastoid",
+        "muscle": [48],
         "exercises": [
             {
                 "name": "Barbell Shrugs",
-                "agonist": "Sternocleidomastoid",
-                "antagonist": "Trapezius",
-                "synergist": "[15]"
+                "agonist": [48],
+                "antagonist": [10, 11, 12],
+                "synergist": [15]
             },
             {
                 "name": "Dumbbell Shrugs",
-                "agonist": "Sternocleidomastoid",
-                "antagonist": "Trapezius",
-                "synergist": "[15]"
+                "agonist": [48],
+                "antagonist": [10, 11, 12],
+                "synergist": [15]
             },
             {
                 "name": "Upright Cable Row",
-                "agonist": "Sternocleidomastoid",
-                "antagonist": "Trapezius",
-                "synergist": "Deltoid Posterior"
+                "agonist": [48],
+                "antagonist": [10, 11, 12],
+                "synergist": [73]
             }
         ]
     },
     {
-        "muscle": "Splenius",
+        "muscle": [49],
         "exercises": [
           {
             "name": "Barbell Shrugs",
             "agonist": 10,
-            "antagonist": "[15]",
-            "synergist": "Middle Trapezius"
+            "antagonist": [15],
+            "synergist": [11]
           },
           {
             "name": "Upright Rows",
-            "agonist": "Lateral [45,46,47,73],
-            "antagonist": "Rear [45,46,47,73],
+            "agonist": ["Lateral" ,45,46,47,73],
+            "antagonist": ["Rear" ,45,46,47,73],
             "synergist": 10
           },
           {
             "name": "Reverse Flyes",
-            "agonist": "Rear [45,46,47,73],
-            "antagonist": "Lateral [45,46,47,73],
+            "agonist": ["Rear",45,46,47,73],
+            "antagonist": ["Lateral",45,46,47,73],
             "synergist": 10
           }
         ]
       },
       {
-        "muscle": "Tensor Fasciae Latae",
+        "muscle": 50,
         "exercises": [
           {
             "name": "Lateral Lunges",
-            "agonist": "Tensor Fasciae Latae",
-            "antagonist": "Gluteus Medius",
-            "synergist": "Adductor Longus"
+            "agonist": 50,
+            "antagonist": "26",
+            "synergist": [56]
           },
           {
             "name": "Lateral Band Walks",
-            "agonist": "Gluteus Medius",
-            "antagonist": "Tensor Fasciae Latae",
-            "synergist": "Adductor Longus"
+            "agonist": "26",
+            "antagonist": 50,
+            "synergist": [56]
           },
           {
             "name": "Step-ups",
-            "agonist": "Quadriceps",
-            "antagonist": "Hamstrings",
-            "synergist": "Tensor Fasciae Latae"
+            "agonist": [50, 51,38,39,40,41,42],
+            "antagonist": [36, 37, 38],
+            "synergist": 50
           }
         ]
       },
       {
-        "muscle": "Sartorius",
+        "muscle": [51],
         "exercises": [
           {
             "name": "Bulgarian Split Squats",
-            "agonist": "Quadriceps",
-            "antagonist": "Hamstrings",
-            "synergist": "Sartorius"
+            "agonist": [50, 51,38,39,40,41,42],
+            "antagonist": [36, 37, 38],
+            "synergist": [51]
           },
           {
             "name": "Leg Curls",
-            "agonist": "Hamstrings",
-            "antagonist": "Quadriceps",
-            "synergist": "Gastrocnemius"
+            "agonist": [36, 37, 38],
+            "antagonist": [50, 51,38,39,40,41,42],
+            "synergist": [43]
           },
           {
             "name": "Lateral Lunges",
-            "agonist": "Adductor Magnus",
+            "agonist": 58,
             "antagonist": "Abductor Magnus",
-            "synergist": "Sartorius"
+            "synergist": [51]
           }
         ]
       },
       {    
-        "muscle": "Supraspinatus",    
+        "muscle": [52],    
         "exercises": [      
             {        
                 "name": "Seated Dumbbell Shoulder Press",        
-                "agonist": "Supraspinatus",        
-                "antagonist": "[1,2,3]",        
-                "synergist": "Deltoid Anterior"      
+                "agonist": [52],        
+                "antagonist": [1,2,3],        
+                "synergist": [45]      
             },      
             {        
                 "name": "Lateral Raise",        
-                "agonist": "Supraspinatus",        
-                "antagonist": "[1,2,3]",        
-                "synergist": "Deltoid Lateral"      
+                "agonist": [52],        
+                "antagonist": [1,2,3],        
+                "synergist": [47]      
             },      
             {        
                 "name": "Face Pulls",        
-                "agonist": "Supraspinatus",        
-                "antagonist": "[1,2,3]",        
-                "synergist": "[13,14]"      
+                "agonist": [52],        
+                "antagonist": [1,2,3],        
+                "synergist": [13,14]      
             }    
         ]
   },
   {
-    "muscle": "Extensor Carpi Radialis Longus",
+    "muscle": "53",
     "exercises": [
       {
         "name": "Reverse Barbell Curls",
-        "agonist": "Extensor Carpi Radialis Longus",
-        "antagonist": "Flexor Carpi Radialis",
+        "agonist": "53",
+        "antagonist": "23",
         "synergist": [74]
       },
       {
         "name": "Wrist Curls",
-        "agonist": "Extensor Carpi Radialis Longus",
-        "antagonist": "Flexor Carpi Radialis",
+        "agonist": "53",
+        "antagonist": "23",
         "synergist": [74]
       },
       {
         "name": "Hammer Curls",
         "agonist": [74],
-        "antagonist": "[16,17,18]",
-        "synergist": "Extensor Carpi Radialis Longus"
+        "antagonist": [16,17,18],
+        "synergist": "53"
       }
     ]
   },
   {
-    "muscle": "Extensor Carpi Radialis Brevis",
+    "muscle": [54],
     "exercises": [
       {
         "name": "Reverse Barbell Curls",
-        "agonist": "Extensor Carpi Radialis Brevis",
-        "antagonist": "Flexor Carpi Radialis",
+        "agonist": [54],
+        "antagonist": "23",
         "synergist": [74]
       },
       {
         "name": "Wrist Curls",
-        "agonist": "Extensor Carpi Radialis Brevis",
-        "antagonist": "Flexor Carpi Radialis",
+        "agonist": [54],
+        "antagonist": "23",
         "synergist": [74]
       },
       {
         "name": "Hammer Curls",
         "agonist": [74],
-        "antagonist": "[16,17,18]",
-        "synergist": "Extensor Carpi Radialis Brevis"
+        "antagonist": [16,17,18],
+        "synergist": [54]
       }
     ]
   },
   {
-    "muscle": "Extensor Carpi Ulnaris",
+    "muscle": [55],
     "exercises": [
       {
         "name": "Wrist extension with dumbbell",
-        "agonist": "Extensor Carpi Ulnaris",
-        "antagonist": "Flexor Carpi Ulnaris",
-        "synergist": "Extensor Carpi Radialis, Flexor Carpi Radialis"
+        "agonist": [55],
+        "antagonist": [24],
+        "synergist": [53, 54, 23]
       },
       {
         "name": "Reverse curls",
         "agonist": [74],
-        "antagonist": "[16,17,18]",
-        "synergist": "Brachialis, Pronator Teres"
+        "antagonist": [16,17,18],
+        "synergist": [18, 22]
       },
       {
         "name": "Barbell wrist curls",
-        "agonist": "Flexor Carpi Radialis, Flexor Carpi Ulnaris",
-        "antagonist": "Extensor Carpi Radialis, Extensor Carpi Ulnaris",
-        "synergist": "Brachioradialis, Palmaris Longus"
+        "agonist": [23, 24],
+        "antagonist": [53, 54, 55],
+        "synergist": [74 ,25]
       }
     ]
   },
   {
-    "muscle": "Adductor longus",
+    "muscle": [56],
     "exercises": [
       {
         "name": "Barbell squats",
-        "agonist": "Quadriceps",
-        "antagonist": "Hamstrings",
-        "synergist": "[26,27,28], Adductor Magnus"
+        "agonist": [50, 51,38,39,40,41,42],
+        "antagonist": [36, 37, 38],
+        "synergist": [26,27,28, 58]
       },
       {
         "name": "Lunges",
-        "agonist": "[26,27,28]",
+        "agonist": [26,27,28],
         "antagonist": "Hip Flexors",
-        "synergist": "Quadriceps, Adductor Magnus"
+        "synergist": [39, 40, 41, 42, 58]
       },
       {
         "name": "Seated leg press",
-        "agonist": "Quadriceps",
-        "antagonist": "Hamstrings",
-        "synergist": "[26,27,28], Adductor Magnus"
+        "agonist": [50, 51,38,39,40,41,42],
+        "antagonist": [36, 37, 38],
+        "synergist": [26,27,28, 58]
       }
     ]
   },
@@ -1291,182 +1291,182 @@
     "exercises": [
       {
         "name": "Single-leg squat",
-        "agonist": "[26,27,28]",
+        "agonist": [26,27,28],
         "antagonist": "Hip Flexors",
-        "synergist": "Adductor Magnus, Quadriceps"
+        "synergist": [58, 39, 40, 41, 42]
       },
       {
         "name": "Seated hip abduction",
-        "agonist": "Gluteus Medius",
-        "antagonist": "Adductor Magnus",
-        "synergist": "Gluteus Minimus, Tensor Fasciae Latae"
+        "agonist": "26",
+        "antagonist": 58,
+        "synergist": [27, 50]
       },
       {
         "name": "Lateral lunges",
-        "agonist": "[26,27,28]",
+        "agonist": [26,27,28],
         "antagonist": "Hip Flexors",
-        "synergist": "Adductor Magnus, Quadriceps"
+        "synergist": [58, 39, 40, 41, 42]
       }
     ]
   },
   {
-    "muscle": "Adductor magnus",
+    "muscle": 58,
     "exercises": [
         {
             "name": "Sumo Deadlift",
-            "agonist": "Adductor magnus",
-            "antagonist": "Gluteus maximus",
-            "synergist": "Quadriceps femoris"
+            "agonist": [58],
+            "antagonist": 28,
+            "synergist": [39, 40, 41, 42]
         },
         {
             "name": "Bulgarian Split Squat",
-            "agonist": "Adductor magnus",
-            "antagonist": "Gluteus maximus",
-            "synergist": "Quadriceps femoris"
+            "agonist": [58],
+            "antagonist": 28,
+            "synergist": [39, 40, 41, 42]
         },
         {
             "name": "Seated Leg Curl",
-            "agonist": "Adductor magnus",
-            "antagonist": "Quadriceps femoris",
-            "synergist": "Hamstrings"
+            "agonist": [58],
+            "antagonist": [39, 40, 41, 42],
+            "synergist": [36, 37, 38]
         }
     ]
 },
 {
-    "muscle": "Gracilis",
+    "muscle": [],
     "exercises": [
         {
             "name": "Narrow Stance Barbell Squat",
-            "agonist": "Quadriceps femoris",
-            "antagonist": "Hamstrings",
-            "synergist": "Adductor magnus"
+            "agonist": [39, 40, 41, 42],
+            "antagonist": [36, 37, 38],
+            "synergist": [58]
         },
         {
             "name": "Seated Leg Curl",
-            "agonist": "Hamstrings",
-            "antagonist": "Quadriceps femoris",
-            "synergist": "Adductor magnus"
+            "agonist": [36, 37, 38],
+            "antagonist": [39, 40, 41, 42],
+            "synergist": [58]
         },
         {
             "name": "Inner Thigh Adductor Machine",
-            "agonist": "Adductor magnus",
+            "agonist": 58,
             "antagonist": "Abductor muscles",
-            "synergist": "Gracilis"
+            "synergist": []
         }
     ]
 },
 {
-    "muscle": "Infraspinatus",
+    "muscle": [60],
     "exercises": [
         {
             "name": "Dumbbell External Rotation",
-            "agonist": "Infraspinatus",
-            "antagonist": "Subscapularis",
-            "synergist": "Teres minor"
+            "agonist": [60],
+            "antagonist": [70],
+            "synergist": [61]
         },
         {
             "name": "Barbell Shoulder Press",
-            "agonist": "Deltoid (posterior)",
-            "antagonist": "Deltoid (anterior)",
-            "synergist": "Infraspinatus"
+            "agonist": [73],
+            "antagonist": [45],
+            "synergist": [60]
         },
         {
             "name": "Bent Over Barbell Row",
-            "agonist": "[7]",
-            "antagonist": "Trapezius (upper)",
-            "synergist": "Infraspinatus"
+            "agonist": [7],
+            "antagonist": [10],
+            "synergist": [60]
         }
     ]
 },
 {
-    "muscle": "Teres Minor",
+    "muscle": [61],
     "exercises": [
         {
             "name": "Face Pulls",
             "agonist": "Rotator cuff",
-            "antagonist": "[1,2,3]",
-            "synergist": "Teres minor"
+            "antagonist": [1,2,3],
+            "synergist": [61]
         },
         {
             "name": "Dumbbell External Rotation",
-            "agonist": "Infraspinatus",
-            "antagonist": "Subscapularis",
-            "synergist": "Teres minor"
+            "agonist": [60],
+            "antagonist": [70],
+            "synergist": [61]
         },
         {
             "name": "Incline Bench Dumbbell Press",
-            "agonist": "[1,2,3]",
-            "antagonist": "[7]",
-            "synergist": "Teres minor"
+            "agonist": [1,2,3],
+            "antagonist": [7],
+            "synergist": [61]
         }
     ]
     },
     {    
-        "muscle": "Teres Major",    
+        "muscle": [62],    
         "exercises": [      
             {        
                 "name": "Close-grip lat pulldown",        
-                "agonist": "Teres Major",        
-                "antagonist": "[1,2,3]",        
-                "synergist": "[7]"      
+                "agonist": [62],        
+                "antagonist": [1,2,3],        
+                "synergist": [7]      
             },      
             {        
                 "name": "Bent-over rows",        
-                "agonist": "Teres Major",        
-                "antagonist": "[1,2,3]",        
-                "synergist": "[7]"      
+                "agonist": [62],        
+                "antagonist": [1,2,3],        
+                "synergist": [7]      
             },      
             {        
                 "name": "Seated cable row",        
-                "agonist": "Teres Major",        
-                "antagonist": "[1,2,3]",        
-                "synergist": "[7]"      
+                "agonist": [62],        
+                "antagonist": [1,2,3],        
+                "synergist": [7]      
             }    
         ]
     },
     {
-      "muscle": "Pectineus",
+      "muscle": [63],
       "exercises": [
         {
           "name": "Barbell squats",
-          "agonist": "Pectineus",
-          "antagonist": "Gluteus Maximus",
-          "synergist": "Quadriceps"
+          "agonist": [63],
+          "antagonist": 28,
+          "synergist": [50, 51,38,39,40,41,42]
         },
         {
           "name": "Lunges",
-          "agonist": "Pectineus",
-          "antagonist": "Gluteus Maximus",
-          "synergist": "Quadriceps"
+          "agonist": [63],
+          "antagonist": 28,
+          "synergist": [50, 51,38,39,40,41,42]
         },
         {
           "name": "Leg press",
-          "agonist": "Pectineus",
-          "antagonist": "Gluteus Maximus",
-          "synergist": "Quadriceps"
+          "agonist": [63],
+          "antagonist": 28,
+          "synergist": [50, 51,38,39,40,41,42]
         }
       ]
     },
     {
-      "muscle": "Piriformis",
+      "muscle": [64],
       "exercises": [
         {
           "name": "Glute bridge",
-          "agonist": "Piriformis",
+          "agonist": [64],
           "antagonist": "Hip flexors",
-          "synergist": "Gluteus Maximus"
+          "synergist": 28
         },
         {
           "name": "Single-leg deadlift",
-          "agonist": "Piriformis",
+          "agonist": [64],
           "antagonist": "Hip flexors",
-          "synergist": "Gluteus Maximus"
+          "synergist": 28
         },
         {
           "name": "Side-lying leg lift",
-          "agonist": "Piriformis",
+          "agonist": [64],
           "antagonist": "Hip flexors",
-          "synergist": "Gluteus Maximus"
+          "synergist": 28
         }
       ]
     },
@@ -1475,21 +1475,21 @@
         "exercises": [
             {
                 "name": "Hip Thrust",
-                "agonist": "Gluteus Maximus",
+                "agonist": 28,
                 "antagonist": "Hip flexors",
-                "synergist": "Hamstrings"
+                "synergist": [36, 37, 38]
             },
             {
                 "name": "Barbell Squat",
-                "agonist": "Quadriceps",
-                "antagonist": "Hamstrings",
-                "synergist": "Gluteus Maximus"
+                "agonist": [50, 51,38,39,40,41,42],
+                "antagonist": [36, 37, 38],
+                "synergist": 28
             },
             {
                 "name": "Deadlift",
-                "agonist": "[35]",
-                "antagonist": "Abdominals",
-                "synergist": "Quadriceps"
+                "agonist": [35],
+                "antagonist": [30, 32, 33, 34],
+                "synergist": [50, 51,38,39,40,41,42]
             }
         ]
     },
@@ -1498,19 +1498,19 @@
         "exercises": [
             {
                 "name": "Single Leg Deadlift",
-                "agonist": "Hamstrings",
-                "antagonist": "Quadriceps",
-                "synergist": "Gluteus Maximus"
+                "agonist": [36, 37, 38],
+                "antagonist": [50, 51,38,39,40,41,42],
+                "synergist": 28
             },
             {
                 "name": "Leg Press",
-                "agonist": "Quadriceps",
-                "antagonist": "Hamstrings",
-                "synergist": "Gluteus Maximus"
+                "agonist": [50, 51,38,39,40,41,42],
+                "antagonist": [36, 37, 38],
+                "synergist": 28
             },
             {
                 "name": "Lateral Band Walk",
-                "agonist": "Gluteus Medius",
+                "agonist": [26],
                 "antagonist": "Adductors",
                 "synergist": "Hip abductors"
             }
@@ -1521,21 +1521,21 @@
         "exercises": [
             {
                 "name": "Bulgarian Split Squat",
-                "agonist": "Quadriceps",
-                "antagonist": "Hamstrings",
-                "synergist": "Gluteus Maximus"
+                "agonist": [50, 51,38,39,40,41,42],
+                "antagonist": [36, 37, 38],
+                "synergist": 28
             },
             {
                 "name": "Deadlift",
-                "agonist": "[35]",
-                "antagonist": "Abdominals",
-                "synergist": "Quadriceps"
+                "agonist": [35],
+                "antagonist": [30, 32, 33, 34],
+                "synergist": [50, 51,38,39,40,41,42]
             },
             {
                 "name": "Step Up",
-                "agonist": "Quadriceps",
-                "antagonist": "Hamstrings",
-                "synergist": "Gluteus Maximus"
+                "agonist": [50, 51,38,39,40,41,42],
+                "antagonist": [36, 37, 38],
+                "synergist": [28]
             }
         ]
     },
@@ -1544,113 +1544,113 @@
         "exercises": [
             {
                 "name": "Lateral Band Walk",
-                "agonist": "Gluteus Medius",
+                "agonist": "26",
                 "antagonist": "Adductors",
                 "synergist": "Hip abductors"
             },
             {
                 "name": "Hip Thrust",
-                "agonist": "Gluteus Maximus",
+                "agonist": 28,
                 "antagonist": "Hip flexors",
-                "synergist": "Hamstrings"
+                "synergist": [36, 37, 38]
             },
             {
                 "name": "Single Leg Deadlift",
-                "agonist": "Hamstrings",
-                "antagonist": "Quadriceps",
-                "synergist": "Gluteus Maximus"
+                "agonist": [36, 37, 38],
+                "antagonist": [50, 51,38,39,40,41,42],
+                "synergist": [28]
             }
         ]
     },
     {
-        "muscle": "Tibialis Anterior",
+        "muscle": [69],
         "exercises": [
           {
             "name": "Seated Calf Raise",
-            "agonist": "Tibialis Anterior",
-            "antagonist": "Gastrocnemius",
-            "synergist": "Soleus"
+            "agonist": [69],
+            "antagonist": [43],
+            "synergist": [44]
           },
           {
             "name": "Dumbbell Front Raise",
-            "agonist": "Tibialis Anterior",
-            "antagonist": "Deltoid Anterior",
-            "synergist": "Supraspinatus"
+            "agonist": [69],
+            "antagonist": [45],
+            "synergist": [52]
           },
           {
             "name": "Toe Raises",
-            "agonist": "Tibialis Anterior",
-            "antagonist": "Soleus",
-            "synergist": "Gastrocnemius"
+            "agonist": [69],
+            "antagonist": [44],
+            "synergist": [43]
           }
         ]
     },
     {
-      "muscle": "Subscapularis",
+      "muscle": [70],
       "exercises": [
         {
           "name": "Dumbbell Shoulder External Rotation",
-          "agonist": "Subscapularis",
-          "antagonist": "Infraspinatus",
-          "synergist": "Teres Minor"
+          "agonist": [70],
+          "antagonist": [60],
+          "synergist": [61]
         },
         {
           "name": "Seated Cable Row",
-          "agonist": "[7]",
-          "antagonist": "Subscapularis",
-          "synergist": "Teres Major"
+          "agonist": [7],
+          "antagonist": [70],
+          "synergist": [62]
         },
         {
           "name": "Bent-Over Lateral Raise",
-          "agonist": "Deltoid Posterior",
-          "antagonist": "Subscapularis",
-          "synergist": "Infraspinatus"
+          "agonist": [73],
+          "antagonist": [70],
+          "synergist": [60]
         }
       ]
     },
     {        
-        "muscle": "Iliopsoas",        
+        "muscle": [71],        
         "exercises": [            
             {                
                 "name": "Barbell Squat",                
-                "agonist": "Iliopsoas",                
-                "antagonist": "Gluteus Maximus",                
-                "synergist": "Rectus Femoris"            
+                "agonist": [71],                
+                "antagonist": 28,                
+                "synergist": [34]           
             },            
             {                
                 "name": "Leg Raise",                
-                "agonist": "Iliopsoas",                
-                "antagonist": "[35]",                
-                "synergist": "[34]"            
+                "agonist": [71],                
+                "antagonist": [35],                
+                "synergist": [34]            
             },            
             {                
                 "name": "Lunge",                
-                "agonist": "Iliopsoas",                
-                "antagonist": "Gluteus Maximus",                
-                "synergist": "Rectus Femoris"            
+                "agonist": [71],                
+                "antagonist": 28,                
+                "synergist": [34]           
             }        
     ]
 },
 {
-    "muscle": "Popliteus",
+    "muscle": [72],
     "exercises": [
         {
             "name": "Standing Calf Raise",
-            "agonist": "Gastrocnemius",
-            "antagonist": "Tibialis Anterior",
-            "synergist": "Soleus"
+            "agonist": [43],
+            "antagonist": [69],
+            "synergist": [44]
         },
         {
             "name": "Seated Leg Curl",
-            "agonist": "Hamstrings",
-            "antagonist": "Quadriceps",
-            "synergist": "Gastrocnemius"
+            "agonist": [36, 37, 38],
+            "antagonist": [50, 51,38,39,40,41,42],
+            "synergist": [43]
         },
         {
             "name": "Reverse Lunge",
-            "agonist": "Quadriceps",
-            "antagonist": "Hamstrings",
-            "synergist": "Popliteus"
+            "agonist": [50, 51,38,39,40,41,42],
+            "antagonist": [36, 37, 38],
+            "synergist": [72]
         }
     ]
 }
