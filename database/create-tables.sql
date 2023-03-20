@@ -189,18 +189,19 @@ CREATE TABLE `personal_aluno` (
   CONSTRAINT `personal_aluno_ibfk_2` FOREIGN KEY (`aluno_id`) REFERENCES `users` (`id`)
 )
 
-CREATE TABLE `users_permissions` (
-  `id` int  NOT NULL AUTO_INCREMENT,
-  `user_id` int  NOT NULL,
-  `permission_id` int  NOT NULL,
-  `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `permission_id` (`permission_id`),
-  CONSTRAINT `users_permissions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `users_permissions_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`)
-);
+CREATE TABLE `exercicios_muscle_portion` (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `muscle_portion_id` int NOT NULL,
+    `exercise_id` int NOT NULL,
+    `createdAt` datetime DEFAULT CURRENT_TIMESTAMP,
+    `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    `role` enum('agonist','synergist','stabilizer','antagonist','antagonist stabilizer','dynamic stabilizer') DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `exercise_muscle_muscle_id_foreign` (`muscle_portion_id`),
+    KEY `exercise_muscle_exercise_id_foreign` (`exercise_id`),
+    CONSTRAINT `exercise_muscle_portion_exercise_id_foreign` FOREIGN KEY (`exercise_id`) REFERENCES `exercicios` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `exercise_muscle_muscle_portion_id_foreign` FOREIGN KEY (`muscle_portion_id`) REFERENCES `muscle_portion` (`id`) ON DELETE CASCADE
+  ) 
 
 
 
