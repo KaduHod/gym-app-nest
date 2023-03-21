@@ -51,12 +51,13 @@ export class UserModule {
             {path:'user', method: RequestMethod.PUT},
             {path:'aluno', method: RequestMethod.PUT},
         ).apply(ValidateUserQueryMiddleware).forRoutes(
-            {path:'user', method: RequestMethod.GET}
-        ).apply(CrateUserMiddleware).forRoutes(
-            {path:'personal', method: RequestMethod.POST},
-            {path:'user', method: RequestMethod.POST},
-            {path:'aluno', method: RequestMethod.POST},
-        ).apply(AttachAlunoMiddleware).forRoutes(
+            {path:'user', method: RequestMethod.GET})
+        // ).apply(CrateUserMiddleware).forRoutes(
+            // {path:'personal', method: RequestMethod.POST},
+            // {path:'user', method: RequestMethod.POST},
+            // {path:'aluno', method: RequestMethod.POST},
+        // )
+        .apply(AttachAlunoMiddleware).forRoutes(
             {path:'personal/attach-aluno', method: RequestMethod.POST}
         )
     }
