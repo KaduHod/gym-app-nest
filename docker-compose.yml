@@ -25,7 +25,7 @@ services:
     container_name: gym-db
     hostname: gym-db
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
       MYSQL_ROOT_PASSWORD: ${DATABASE_PWD}
       MYSQL_DATABASE: ${GYM_DATABASE_NAME}
