@@ -7,18 +7,19 @@ import UpdateUserService  from './services/updateUser.service';
 import ValidateUserDtoService from './services/validateUserDto.service';
 import UpdateUserMiddleware  from './middlewares/updateUser.middleware';
 import UserController  from './user.controller';
-import { CreateUserDto, UpdateUserDto } from './user.validator';
+import AttachAlunoDto, { CreateUserDto, QueryUserDto, UpdateUserDto } from './user.validator';
 import ValidateUserQueryMiddleware from './middlewares/validateQuery.middleware';
 import CrateUserMiddleware  from './middlewares/createUser.middleware'
 import CreateUserService from './services/createUser.service';
+import AttachAlunoMiddleware from './middlewares/attachAluno.middleware';
 
 @Module({
     imports:[
         ConfigModule, 
-        KnexModule,  
+        KnexModule,
     ],
     controllers: [
-        UserController,
+        UserController
     ],
     providers: [ 
         {
@@ -29,15 +30,18 @@ import CreateUserService from './services/createUser.service';
         UpdateUserService,
         CreateUserService,
         UpdateUserDto,
-        CreateUserDto
+        CreateUserDto,
+        QueryUserDto,
+        AttachAlunoDto
     ],
     exports:[
         UserRepositoryI, 
         UpdateUserDto, 
         CreateUserDto, 
+        AttachAlunoDto,
         ValidateUserDtoService, 
         CreateUserService,
-        UpdateUserService,
+        UpdateUserService
     ]
 })
 export class UserModule {
@@ -52,6 +56,8 @@ export class UserModule {
             {path:'personal', method: RequestMethod.POST},
             {path:'user', method: RequestMethod.POST},
             {path:'aluno', method: RequestMethod.POST},
+        ).apply(AttachAlunoMiddleware).forRoutes(
+            {path:'personal/attach-aluno', method: RequestMethod.POST}
         )
     }
 }

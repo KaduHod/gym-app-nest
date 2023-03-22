@@ -1,9 +1,8 @@
-import { IsOptional } from 'class-validator'
+import { IsOptional, IsString, Validate } from 'class-validator'
 import { Expose } from 'class-transformer'
-import PortionBool from './validators/queryPortions.validator'
-import { Validate } from 'class-validator';
+import { Bool, IsStringOrArrayOfStrings } from 'src/utils/validator.helper'
 
-export default class QueryMuscleGroupDto {
+export class QueryMuscleGroupDto {
     @IsOptional()
     @Expose()
     id?:number
@@ -18,6 +17,33 @@ export default class QueryMuscleGroupDto {
 
     @IsOptional()
     @Expose()
-    @Validate(PortionBool)
+    @Validate(Bool)
     portions?: boolean = false
+}
+
+export class QueryMusclePortionDto {
+    @IsOptional()
+    @Expose()
+    id?:number
+
+    @IsOptional()
+    @Validate(IsStringOrArrayOfStrings)
+    @Expose()
+    name?: string | string[]
+
+    @IsOptional()
+    @IsString()
+    @Expose()
+    image?: string
+
+    @IsOptional()
+    @Expose()
+    @Validate(Bool)
+    articulations?: boolean
+
+    @IsOptional()
+    @Expose()
+    @Validate(Bool)
+    group?: boolean
+
 }

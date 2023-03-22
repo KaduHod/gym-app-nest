@@ -14,7 +14,8 @@ export default class UserController {
     @Get("/")
     async index(@Body() body){
         const {query} = body
-        return await this.UserRepository.findBy(query)
+        const users = await this.UserRepository.findBy(query) 
+        return users
     }
 
     @Put('/')

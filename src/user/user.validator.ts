@@ -110,4 +110,15 @@ export class QueryUserDto {
     cellphone?: string = undefined
 }
 
-
+@Injectable()
+export default class AttachAlunoDto {
+    @IsNumber()
+    @IsNotEmpty()
+    @Expose()
+    aluno_id:number 
+    
+    @IsNumber()
+    @IsNotEmpty()
+    @Expose()
+    personal_id:number
+}

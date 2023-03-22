@@ -5,9 +5,11 @@ import CreateAlunoService from "./services/createAluno.service";
 import PermissionRepository from "src/knex/permission.repository";
 import { AlunoRepositoryI, PermissionRepositoryI } from "src/knex/repository";
 import { UserModule } from "src/user/user.module";
+import AlunoController from "./aluno.controller";
 
 @Module({
     imports:[KnexModule, UserModule],
+    controllers:[AlunoController],
     providers:[
         {
             provide: AlunoRepositoryI,

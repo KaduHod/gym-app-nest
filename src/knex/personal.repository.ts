@@ -30,7 +30,7 @@ export default
                 ).where(
                     "users_permissions.permission_id",
                     enums.permission.PERSONAL
-                )
+                ).on('query-error', this.handleError);
     }
 
     findBy(args:UserFindByArgs): Promise<PersonalE[]> {       
@@ -45,26 +45,41 @@ export default
                 ).where(
                     "users_permissions.permission_id", 
                     enums.permission.PERSONAL
-                );
+                ).on('query-error', this.handleError);;
     }
 
     first(args:UserFindByArgs): Promise<PersonalE> {
-        return this 
-                .setWhereClauses( 
-                    this.knex<PersonalE>(this.table).select("users.*"), 
-                    this.setFindByArguments<UserFindByArgs>(args, this.table) 
-                )
+        const query = this 
+                .knex<PersonalE>(this.table)
+                .select("users.*")
                 .innerJoin(
                     "users_permissions", 
                     "users_permissions.user_id",
                     "users.id"
                 ).where(
+                    this.setFindByArguments<UserFindByArgs>(args, this.table)
+                ).where(
                     "users_permissions.permission_id", 
                     enums.permission.PERSONAL
-                ).first();
+                ).first()
+                .on('query-error', this.handleError);
+        return query
     }
 
     findAlunos(personal: PersonalE): Promise<PersonalE[]> {
-        throw new Error("Method not implemented.");
+        return this 
+                .knex(this.table)
+                .select('users.*')
+                .innerJoin('personal_aluno', 'personal_aluno.personal_id','users.id')
+                .where('personal_aluno.personal_id', personal.id)
+                .on('query-error', this.handleError);
+
+    }
+
+    async attachAluno(personal:PersonalE, aluno:AlunoE) {
+        return this
+            .knex('personal_aluno')
+            .insert({aluno_id:aluno.id, personal_id:personal.id})
+            .on('query-error', this.handleError);
     }
 }
