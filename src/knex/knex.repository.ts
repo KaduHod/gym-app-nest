@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Knex } from "knex";
 import { findByArgsResult } from "./knex";
-import enums from '../utils/enums'
+import * as enums from '../utils/enums'
 import { DuplicatedData, UnhandledError } from "src/errors/app.errors";
 
 @Injectable()

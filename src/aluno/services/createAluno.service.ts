@@ -1,28 +1,18 @@
 import { Injectable } from "@nestjs/common";
-import { AlunoE, UserE } from "src/domain/entitys";
-import { PermissionRepositoryI, UserRepositoryI } from "src/knex/repository";
+import { User } from "@prisma/client";
 import CreateUserService from "src/user/services/createUser.service";
+import { permission } from "src/utils/enums";
 
 @Injectable()
-export default class CreateAlunoService {
-    private alunoArgs: AlunoE
+export default class CreateAlunoServiceV2 {
+    private aluno: User
     constructor(
-        private CreateUserService: CreateUserService,
-        private PermissionRepository: PermissionRepositoryI,
+        private CreateUserService: CreateUserService
     ){}
 
-    async main(alunoArgs:AlunoE): Promise<AlunoE> {
-        this.alunoArgs = alunoArgs
-        await this.createAluno()
-        await this.createPermission()
-        return this.alunoArgs;
-    }
-
-    async createAluno() {
-        this.alunoArgs = (await this.CreateUserService.main(this.alunoArgs)) as AlunoE
-    }
-
-    async createPermission() {
-        await this.PermissionRepository.createAluno(this.alunoArgs)
-    }
+    async main(aluno:User): Promise<User> {
+        this.aluno = await this.CreateUserService.main(aluno)
+        await this.CreateUserService.setPermission(permission.ALUNO)
+        return this.aluno;
+    }    
 }

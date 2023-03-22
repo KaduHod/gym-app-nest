@@ -5,13 +5,13 @@ import { UserRepositoryI } from 'src/knex/repository';
 import UserRepository from 'src/knex/user.repository';
 import UpdateUserService  from './services/updateUser.service';
 import ValidateUserDtoService from './services/validateUserDto.service';
-import UpdateUserMiddleware  from './middlewares/updateUser.middleware';
 import UserController  from './user.controller';
 import AttachAlunoDto, { CreateUserDto, QueryUserDto, UpdateUserDto } from './user.validator';
 import ValidateUserQueryMiddleware from './middlewares/validateQuery.middleware';
 import CrateUserMiddleware  from './middlewares/createUser.middleware'
 import CreateUserService from './services/createUser.service';
 import AttachAlunoMiddleware from './middlewares/attachAluno.middleware';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Module({
     imports:[
@@ -32,7 +32,8 @@ import AttachAlunoMiddleware from './middlewares/attachAluno.middleware';
         UpdateUserDto,
         CreateUserDto,
         QueryUserDto,
-        AttachAlunoDto
+        AttachAlunoDto,
+        PrismaService
     ],
     exports:[
         UserRepositoryI, 
@@ -41,16 +42,13 @@ import AttachAlunoMiddleware from './middlewares/attachAluno.middleware';
         AttachAlunoDto,
         ValidateUserDtoService, 
         CreateUserService,
-        UpdateUserService
+        UpdateUserService,
+        PrismaService
     ]
 })
 export class UserModule {
     configure(consumer: MiddlewareConsumer) {
-        consumer.apply(UpdateUserMiddleware).forRoutes(
-            {path:'personal', method: RequestMethod.PUT},
-            {path:'user', method: RequestMethod.PUT},
-            {path:'aluno', method: RequestMethod.PUT},
-        ).apply(ValidateUserQueryMiddleware).forRoutes(
+        consumer.apply(ValidateUserQueryMiddleware).forRoutes(
             {path:'user', method: RequestMethod.GET}
         ).apply(CrateUserMiddleware).forRoutes(
             {path:'personal', method: RequestMethod.POST},

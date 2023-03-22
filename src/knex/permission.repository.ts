@@ -2,7 +2,7 @@ import { Inject, Injectable } from "@nestjs/common";
 import { Knex } from "knex";
 import { UserE } from "src/domain/entitys";
 import KnexRepository from "./knex.repository";
-import enums from '../utils/enums'
+import * as enums from '../utils/enums'
 import { PermissionRepositoryI } from "./repository";
 
 @Injectable()

@@ -1,57 +1,28 @@
 import { Injectable } from "@nestjs/common";
 import { QueryMuscleGroupDto } from "../muscle.validator";
-import { MuscleGroupE } from "src/domain/entitys";
-import ValidateMuscleDto from "./validateMuscleDto.service";
-import { MuscleGroupRepositoryI, MusclePortionRepositoryI } from "src/knex/repository";
-import MuscleGroup from "src/domain/MuscleGroup.entity";
+import { PrismaService } from "src/prisma/prisma.service";
+import { MuscleGroup } from "@prisma/client";
 
 @Injectable()
 export default class ListMuscleGroupService {
     private query:QueryMuscleGroupDto
-    private groups: MuscleGroup | MuscleGroup[]
+    private groups: MuscleGroup[] 
     constructor(
-        private MuscleGroupRepository: MuscleGroupRepositoryI,
-        private MusclePortionRepository: MusclePortionRepositoryI,
-        private ValidateMuscleDtoService: ValidateMuscleDto,
-        private QueryMuscleGroupDto: QueryMuscleGroupDto
+        private PrismaService: PrismaService,
     ){}
 
     async main(query: QueryMuscleGroupDto): Promise<MuscleGroup | MuscleGroup[]> {
-        this.query = (await this
-                                .ValidateMuscleDtoService
-                                .setArgs(query as any)
-                                .setDto(this.QueryMuscleGroupDto)
-                                .validate()
-                    ).getValidatedArgs<QueryMuscleGroupDto>();
-
-        await this.getMuscles()
-
-        if(this.query.portions) {
-            await this.getPortions()
-        }
+        console.log(query)
+        const {portions, ...q} = query
+        console.log(portions);
+        
+        this.groups = await this.PrismaService.muscleGroup.findMany({
+            where: q,
+            include: {
+                MusclePortion: !!portions
+            }
+        })
 
         return this.groups
-    }
-
-    async getMuscles(): Promise<void> {
-        const {portions, ...q} = this.query
-        this.groups = (await this
-                            .MuscleGroupRepository
-                            .findBy(q as Partial<MuscleGroupE>))
-                            .map((group:MuscleGroupE) => new MuscleGroup(group))
-    }
-
-    async getPortions(): Promise<void>{
-        if(Array.isArray(this.groups)){
-            const promises = []
-            for (const group of this.groups) {
-                group.setMusclePortionRepository(this.MusclePortionRepository)
-                promises.push(group.getPortions())
-            }
-            await Promise.all(promises)
-        } else {
-            this.groups.setMusclePortionRepository(this.MusclePortionRepository)
-            await this.groups.getPortions()
-        }
     }
 }

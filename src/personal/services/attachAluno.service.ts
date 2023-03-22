@@ -1,17 +1,15 @@
 import { Injectable } from "@nestjs/common";
-import Aluno from "src/domain/aluno.entity";
-import { AlunoE, PersonalE } from "src/domain/entitys";
-import Personal from "src/domain/Personal.entity";
+import { User } from "@prisma/client";
 import { AlunoAlreadyBelongsToPersonal, AlunoNotFound, PersonalNotFound } from "src/errors/app.errors";
-import { AlunoRepositoryI, PersonalRepositoryI } from "src/knex/repository";
+import { PrismaService } from "src/prisma/prisma.service";
+import { permission } from "src/utils/enums";
 
 @Injectable()
 export default class AttachAlunoService {
-    private aluno:Aluno
-    private personal:Personal
+    private aluno:User
+    private personal:User
     constructor(
-        private PersonalRepository: PersonalRepositoryI,
-        private AlunoRepository: AlunoRepositoryI
+        private PrismaService: PrismaService
     ){}
 
     async main(alunoId:number, personalId:number) {
@@ -19,42 +17,65 @@ export default class AttachAlunoService {
             this.setAluno(alunoId),
             this.setPersonal(personalId)
         ])
-
-        this.aluno.setAlunoRepository(this.AlunoRepository)
-        this.personal.setPersonalRepository(this.PersonalRepository)
-
-        await this.aluno.getPersonal()
-        
-        if(this.aluno.personal) {
-            throw new AlunoAlreadyBelongsToPersonal(this.aluno.personal)
-        }
-
-        await this.personal.attachAluno(this.aluno)
-
-        await this.aluno.getPersonal()
-
-        return this.getAluno()
+        await this.alunoHasPersonal()
+        await this.attach()
     }
 
     async setAluno(id:number):Promise<void> {
-        const alunoDB = await this.AlunoRepository.first({id}) as AlunoE;
+        this.aluno = await this.PrismaService.user.findFirst({
+            where: {
+                id,
+                users_permissions: {
+                    every: {
+                        permission_id: permission.ALUNO
+                    }
+                }
+            }
+        })
         
-        if(!alunoDB) {
+        if(!this.aluno) {
             throw new AlunoNotFound()
         }
-        this.aluno = new Aluno(alunoDB)
     }
 
     async setPersonal(id:number) {
-        const personalDB = await this.PersonalRepository.first({id}) as PersonalE;
+        this.personal = await this.PrismaService.user.findFirst({
+            where: {
+                id,
+                users_permissions: {
+                    every: {
+                        permission_id: permission.PERSONAL
+                    }
+                }
+            }
+        })
         
-        if(!personalDB) {
+        if(!this.personal) {
             throw new PersonalNotFound()
         }
-        this.personal = new Personal( personalDB )
     }
 
-    getAluno(){
-        return this.aluno
+    async alunoHasPersonal() {
+        if(!this.personal){
+            throw new Error("Must set personal before search for aluno personal")
+        }
+        const personalIdFinded = await this.PrismaService.personal_aluno.findFirst({
+            select:{personal_id: true},
+            where: {
+                personal_id: this.personal.id
+            }
+        })
+        if (personalIdFinded) {
+            throw new AlunoAlreadyBelongsToPersonal(personalIdFinded)
+        }
+    }
+
+    async attach() {
+        await this.PrismaService.personal_aluno.create({
+            data: {
+                aluno_id: this.aluno.id,
+                personal_id: this.personal.id
+            }
+        })
     }
 }

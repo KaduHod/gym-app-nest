@@ -1,9 +1,10 @@
 import { Body, Controller, Get, Header, HttpCode, Post, Put } from "@nestjs/common";
+import { User } from "@prisma/client";
 import { UserE } from "src/domain/entitys";
-import { PersonalRepositoryI } from "src/knex/repository";
+import { PrismaService } from "src/prisma/prisma.service";
 import UpdateUserService from "src/user/services/updateUser.service";
 import AttachAlunoDto, { CreateUserDto, UpdateUserDto } from "src/user/user.validator";
-import { Mapper } from "src/utils/mappers.helper";
+import { permission } from "src/utils/enums";
 import AttachAlunoService from "./services/attachAluno.service";
 import CreatePersonalService from "./services/createPersonal.service";
 
@@ -13,7 +14,7 @@ import CreatePersonalService from "./services/createPersonal.service";
 @Controller("personal")
 export class PersonalController {
     constructor(
-        private PersonalRepository: PersonalRepositoryI,
+        private PrismaService: PrismaService,
         private CreatePersonalService: CreatePersonalService,
         private UpdateUserService: UpdateUserService,
         private AttachAlunoService: AttachAlunoService
@@ -21,19 +22,25 @@ export class PersonalController {
 
     @Get('/')
     async all(){
-        return this.PersonalRepository.findAll()
+        return this.PrismaService.user.findMany({
+            where: {
+                users_permissions : {
+                    every: {
+                        permission_id: permission.PERSONAL
+                    }
+                }
+            }
+        })
     }
 
     @Post('/') 
     @HttpCode(201)
     @Header('Content-Type', 'application/json')
     async create(@Body() body: CreateUserDto) {
-        await this.CreatePersonalService.main(body as UserE)
+        await this.CreatePersonalService.main(body as User)
         return {
             message:"created",
-            personal: Mapper.mapToHttp(
-                this.CreatePersonalService.getUser()
-            ) 
+            personal: await this.CreatePersonalService.main(body as User)
         };
     }
 
@@ -53,10 +60,8 @@ export class PersonalController {
     @Header('Content-Type', 'application/json')
     async attachAluno(@Body() args:AttachAlunoDto) {
         await this.AttachAlunoService.main(args.aluno_id, args.personal_id)
-        const aluno = this.AttachAlunoService.getAluno()
         return {
             message: 'attached',
-            aluno: Mapper.mapToHttp(aluno)
         }
     }
 }

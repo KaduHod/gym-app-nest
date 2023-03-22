@@ -1,43 +1,34 @@
-import { UserE } from "src/domain/entitys";
-import { UpdateUserDto } from "../user.validator";
 import { UserNotFound } from "src/errors/app.errors";
 import { Injectable } from "@nestjs/common";
-import { UserRepositoryI } from "src/knex/repository";
-import ValidateUserDtoService from './validateUserDto.service'
+import { PrismaService } from "src/prisma/prisma.service";
+import { User } from "@prisma/client";
 
 @Injectable()
 export default class UpdateUserService {
-    private user:UserE
+    private user:User
     constructor(
-        private UserRepository: UserRepositoryI,
-        private ValidateUserDtoService: ValidateUserDtoService,
-        private UpdateUserDto: UpdateUserDto
+        private PrismaService: PrismaService,
+       
     ){}
 
-    async main(): Promise<UserE> {
-        const [_,userDb] = await Promise.all([
-            this.ValidateUserDtoService
-                .setDto<UpdateUserDto>(this.UpdateUserDto)
-                .setArgs(this.user)
-                .validate(), 
-            this.exists()
-        ])
-        await this.updateUser(this.user)
-        return {...userDb,...this.user} as UserE;
+    async main(): Promise<User> {
+       await this.exists();
+       const {id, ...updateArgs} = this.user
+       return this.updateUser(updateArgs)
     }
 
     /**
      * Seta novos valores
      */
-    setUser(user: UserE): void {
+    setUser(user: User): void {
         this.user = user
     }
 
     /**
      * Verifica se o usuario existe
      */
-    async exists(): Promise<UserE> {
-        const user = await this.UserRepository.first({id:this.user.id} as UserE)
+    async exists(): Promise<User> {
+        const user = await this.PrismaService.user.findFirst({where:{id:this.user.id}})
         if(!user) {
             throw new UserNotFound()
         }
@@ -47,7 +38,10 @@ export default class UpdateUserService {
     /**
      * Atualiza o usuario
      */
-    async updateUser(user: UserE): Promise<any> {
-        return this.UserRepository.update(user)
+    async updateUser(updateArgs: Omit<User, "id">): Promise<any> {
+        return this.PrismaService.user.update({
+            where:{id: this.user.id},
+            data:updateArgs
+        })
     }
 }

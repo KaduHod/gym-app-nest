@@ -1,43 +1,38 @@
 import { Injectable } from "@nestjs/common";
-import { UserE } from "src/domain/entitys";
-import { UserRepositoryI } from "src/knex/repository";
-import { CreateUserDto } from "../user.validator";
-import ValidateUserDtoService from "./validateUserDto.service";
+import { User } from "@prisma/client";
+import { PrismaService } from "src/prisma/prisma.service";
+import { permission } from "src/utils/enums";
 
 @Injectable()
 export default class CreateUserService {
-    private userArgs: UserE
+    private user: User
     constructor(
-        private UserRepository: UserRepositoryI,
-        private CreateUserDto: CreateUserDto,
-        private ValidateUserDtoService: ValidateUserDtoService
+        private PrismaService: PrismaService
     ) {}
 
-    async main(userArgs:UserE) {
-        await this.setUser(userArgs)
-        await this.saveUser()
+    async main(userArgs:User) {
+        await this.createuser(userArgs)
         return this.getUser()
     }
 
-    async setUser(args: UserE): Promise<this> {
-        this.userArgs = (await this
-                            .ValidateUserDtoService
-                            .setArgs(args)
-                            .setDto(this.CreateUserDto)
-                            .validate()
-                        ).getValidatedArgs() as UserE;
+    async createuser(data: User): Promise<this> {
+        this.user = await this.PrismaService.user.create({ data })
         return this
     }
 
-    async saveUser(): Promise<this> {
-        if (!this.userArgs) {
-            throw new Error("userArgs not defined in CreateUserService.")
+    getUser(): User {
+        return this.user;
+    }
+
+    async setPermission(permission: permission) {
+        if(!this.user){
+            throw new Error("Must create user before set permission!")
         }
-        this.userArgs = await this.UserRepository.create(this.userArgs)
-        return this
-    }
-
-    getUser(): UserE {
-        return this.userArgs;
+        await this.PrismaService.users_permissions.create({
+            data: {
+                user_id: this.user.id,
+                permission_id: permission
+            }
+        })
     }
 }

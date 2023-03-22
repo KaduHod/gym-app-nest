@@ -1,9 +1,9 @@
-import { UserE } from "./entitys";
 import { IsNumber, Length, IsNotEmpty, IsString, IsEmail, IsOptional, IsPhoneNumber, validate } from 'class-validator'
 import { Expose } from 'class-transformer'
 import Model, { Mapped } from "./Entity";
+import { PrismaClient, User } from '@prisma/client';
 
-export default class User extends Model implements UserE  {
+export default class UserModel extends Model implements User  {
     @IsNumber()
     public id:number
 
@@ -36,8 +36,11 @@ export default class User extends Model implements UserE  {
     @Expose()
     @IsPhoneNumber("BR")
     public cellphone: string
+
+    public createdAt: Date;
+    public updatedAt: Date;
      
-    constructor(args:UserE){
+    constructor(args:User){
         super()
         this.id = args.id
         this.name = args.name
@@ -46,4 +49,5 @@ export default class User extends Model implements UserE  {
         this.password = args.password
         this.cellphone = args.cellphone
     } 
+    
 }

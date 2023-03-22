@@ -9,6 +9,7 @@ import ErrorModule from './errors/error.module';
 import DomainModule from './domain/domain.module';
 import { PersonalModule } from './personal/personal.module';
 import AlunoModule from './aluno/aluno.module';
+import { PrismaService } from './prisma/prisma.service';
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import AlunoModule from './aluno/aluno.module';
     })
   ],
   controllers: [],
-  providers: [AppService] 
+  providers: [AppService, PrismaService] 
 })
 export class AppModule {
   configure(consumer:MiddlewareConsumer){

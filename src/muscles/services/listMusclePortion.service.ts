@@ -1,75 +1,53 @@
 import { Injectable } from "@nestjs/common";
-import { ArticulationE, MuscleGroupE, MusclePortionE } from "src/domain/entitys";
-import MusclePortion from "src/domain/MusclePortion.entity";
-import { ArticulationRepositoryI, MuscleGroupRepositoryI, MusclePortionRepositoryI } from "src/knex/repository";
+import { PrismaService } from "src/prisma/prisma.service";
 import { QueryMusclePortionDto } from "../muscle.validator";
-import ValidateMuscleDto from "./validateMuscleDto.service";
+import { Prisma, PrismaClient } from '@prisma/client';
 
 @Injectable()
 export default class ListMusclePortionService {
     public query: QueryMusclePortionDto
-    public portions: MusclePortionE[] | MusclePortionE
-    public articulations: ArticulationE[] | ArticulationE
-    public groups: MusclePortionE[] | MuscleGroupE
 
     constructor(
-        private MusclePortionRepository: MusclePortionRepositoryI,
-        private MuscleGroupRepository: MuscleGroupRepositoryI,
-        private ArticulationRepository: ArticulationRepositoryI,
-        private ValidateMuscleQueryDto: ValidateMuscleDto,
-        private QueryMusclePortionDto: QueryMusclePortionDto
+        private PrismaService: PrismaService
     ){}
 
-    async main(args: QueryMusclePortionDto){
-        this.query = (await this
-                            .ValidateMuscleQueryDto
-                            .setDto(this.QueryMusclePortionDto)
-                            .setArgs(args)
-                            .validate())
-                            .getValidatedArgs();
+    async main(query: QueryMusclePortionDto){
+        const {articulations, group, name ,...portionArgs} = query
 
-        await this.setPortions()      
+        console.log(query);
+        
+        const where = portionArgs as Prisma.MusclePortionWhereInput
+
+        if(Array.isArray(name)) {
+            where.name = {in: name}
+        }
+
+        const portions = await this.PrismaService.musclePortion.findMany({
+            where: portionArgs
+        })
 
         const promises = [];
-        
-        if(this.query.articulations) {
-            promises.push(this.setArticulations())
+        if(!!articulations) {
+            portions.forEach( portion => {
+                portion
+            })
         }
 
-        if(this.query.group) {
-            promises.push(this.setGroups())
+        const portions = await this.PrismaService.musclePortion.findMany({
+            where: portionArgs
+        })
+
+
+        // i have this code in typescript and prisma.
+// 
+// 
+        // is possible to i get recordos that relate to each portion like that, "portions[0].getUser()"?
+        // ok, i know that. but i would like to get the relation after the first query. 
+
+        if(!!group) {
+
         }
 
-        await Promise.all(promises)
-
-        return this.portions
-    }
-
-    async setPortions(): Promise<void> {
-        const {articulations, group, image,...query} = this.query
-        
-        this.portions = (await this.MusclePortionRepository
-                                .findBy(query))
-                                .map((portion:MusclePortionE) => new MusclePortion(portion))
-    }
-
-    async setArticulations(): Promise<void> {
-        const promises = []
-        for (const portion of this.portions) {
-            portion.setArticulationRepository(this.ArticulationRepository)
-            promises.push(portion.getArticulations())
-        }
-
-        await Promise.all(promises)
-    }
-
-    async setGroups() {
-        const promises = []
-        for (const portion of this.portions) {
-            portion.setMuscleGroupRepository(this.MuscleGroupRepository)
-            promises.push(portion.getMuscleGroup())
-        }
-
-        await Promise.all(promises)
+        return 
     }
 }

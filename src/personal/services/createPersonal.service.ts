@@ -1,37 +1,19 @@
 import { Injectable } from "@nestjs/common";
-import { UserE } from "src/domain/entitys";
-import { PermissionRepositoryI } from "src/knex/repository";
+import { User } from "@prisma/client";
 import CreateUserService from "src/user/services/createUser.service";
+import { permission } from "src/utils/enums";
+
 @Injectable()
 export default class CreatePersonalService {
-    private userArgs: UserE
+    private personal: User
     constructor(
         private CreateUserService: CreateUserService,
-        private PermissionRepository: PermissionRepositoryI,
     ){}
 
-    async createUser(): Promise<void> {
-        this.userArgs = await this.CreateUserService.main(this.userArgs)
-    }
 
-    setUserArgs(userArgs:UserE): this {
-        this.userArgs = userArgs
-        return this
-    }
-
-    async main(userArgs:UserE): Promise<this> {
-        this.setUserArgs(userArgs)
-        await this.createUser();
-        await this.setUserPermission();
-        return this
-    }
-
-    getUser(): UserE {
-        return this.userArgs;
-    }
-
-    /* Register user permission of personal in database */
-    async setUserPermission(): Promise<any> {
-        return this.PermissionRepository.createPersonal(this.userArgs)    
-    }
+    async main(personal:User): Promise<User> {
+        this.personal = await this.CreateUserService.main(personal)
+        await this.CreateUserService.setPermission(permission.PERSONAL)
+        return this.personal;
+    }  
 }
