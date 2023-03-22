@@ -12,42 +12,25 @@ export default class ListMusclePortionService {
     ){}
 
     async main(query: QueryMusclePortionDto){
-        const {articulations, group, name ,...portionArgs} = query
-
-        console.log(query);
-        
+        const {articulations, group, name ,...portionArgs} = query        
         const where = portionArgs as Prisma.MusclePortionWhereInput
+        const include = {} as Prisma.MusclePortionInclude
 
         if(Array.isArray(name)) {
             where.name = {in: name}
         }
 
-        const portions = await this.PrismaService.musclePortion.findMany({
-            where: portionArgs
-        })
-
-        const promises = [];
-        if(!!articulations) {
-            portions.forEach( portion => {
-                portion
-            })
+        if ( articulations ) {
+            include.Articulations = !!articulations
+        }
+        
+        if ( group ) {
+            include.Group = !!group
         }
 
-        const portions = await this.PrismaService.musclePortion.findMany({
-            where: portionArgs
+        return await this.PrismaService.musclePortion.findMany({
+            where: portionArgs, include
         })
 
-
-        // i have this code in typescript and prisma.
-// 
-// 
-        // is possible to i get recordos that relate to each portion like that, "portions[0].getUser()"?
-        // ok, i know that. but i would like to get the relation after the first query. 
-
-        if(!!group) {
-
-        }
-
-        return 
     }
 }

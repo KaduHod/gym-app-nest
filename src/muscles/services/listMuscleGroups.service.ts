@@ -12,9 +12,7 @@ export default class ListMuscleGroupService {
     ){}
 
     async main(query: QueryMuscleGroupDto): Promise<MuscleGroup | MuscleGroup[]> {
-        console.log(query)
         const {portions, ...q} = query
-        console.log(portions);
         
         this.groups = await this.PrismaService.muscleGroup.findMany({
             where: q,
