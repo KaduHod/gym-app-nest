@@ -1,10 +1,7 @@
+import { MusclePortion, MuscleGroup } from '@prisma/client';
 import {IsNumber, IsString} from 'class-validator'
-import { MusclePortionRepositoryI } from 'src/knex/repository';
-import Model, { Mapped } from "./Entity";
-import { MuscleGroupE, MusclePortionE } from "./entitys";
-import MusclePortion from './MusclePortion.entity';
 
-export default class MuscleGroup extends Model implements MuscleGroupE, Mapped {
+export default class MuscleGroupModel implements MuscleGroup  {
     @IsNumber()
     public id:number
 
@@ -14,35 +11,17 @@ export default class MuscleGroup extends Model implements MuscleGroupE, Mapped {
     @IsString()
     public image: string
 
-    public portions?: MusclePortionE[]
+    public portions?: MusclePortion[]
 
-    private musclePortionRepository:MusclePortionRepositoryI
+    created_at: Date;
+    updated_at: Date;
 
-    constructor(args:MuscleGroupE){
-        super()
+
+    constructor(args:any){
         this.id = args.id
         this.name = args.name
         this.image = args.image
         this.portions = args.portions
     }
-
-
-    setMusclePortionRepository(musclePortionRepository:MusclePortionRepositoryI) {
-        this.musclePortionRepository = musclePortionRepository 
-    }
-
-    async getPortions() {
-        this.portions = (await this.musclePortionRepository
-                            .findByMuscleGroupId(this.id))
-                            .map((portion:MusclePortionE) => new MusclePortion(portion))
-        return this.portions;
-    }
-
-    mapToHttp() {
-        const {
-            musclePortionRepository, ...rest
-        } = this
-
-        return rest
-    }
+    
 }

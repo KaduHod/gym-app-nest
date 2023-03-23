@@ -1,7 +1,6 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
-import KnexModule from './knex/knex.module';
 import { ConfigModule } from '@nestjs/config';
 import MusclesModule from './muscles/muscle.module';
 import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
@@ -14,7 +13,6 @@ import { PrismaService } from './prisma/prisma.service';
 @Module({
   imports: [
     UserModule, 
-    KnexModule, 
     MusclesModule,
     PersonalModule,
     AlunoModule,
