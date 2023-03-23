@@ -49,19 +49,6 @@ model articulation_movement {
   @@index([movement_id], map: "movement_articulations_movement_id_foreign")
 }
 
-model ArticulationMuscle {
-  id              Int           @id @default(autoincrement()) @db.UnsignedInt
-  muscle_id       Int
-  articulation_id Int           @db.UnsignedInt
-  createdAt       DateTime?     @default(now()) @db.DateTime(0)
-  updatedAt       DateTime?     @db.DateTime(0)
-  Articulation    Articulation  @relation(fields: [articulation_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "muscle_articulation_articulation_id_foreign")
-  MusclePortion   MusclePortion @relation(fields: [muscle_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "muscle_portion_articulation_CONSTRAINT")
-
-  @@index([articulation_id], map: "muscle_articulation_articulation_id_foreign")
-  @@index([muscle_id], map: "muscle_articulation_muscle_id_foreign")
-  @@map(name: "articulation_muscle")
-}
 
 model Articulation {
   id                    Int                     @id @default(autoincrement()) @db.UnsignedInt
@@ -69,9 +56,7 @@ model Articulation {
   createdAt             DateTime?               @default(now()) @db.DateTime(0)
   updatedAt             DateTime?               @db.DateTime(0)
   articulation_movement articulation_movement[] @relation()
-  Portions              MusclePortion[] @relation("articulation_muscle")
-  ArticulationMuscle    ArticulationMuscle[]
-
+  Portions              MusclePortion[] 
   @@map(name: "articulations")
 }
 
@@ -82,9 +67,9 @@ model MusclePortion {
   muscleGroup_id     Int
   created_at         DateTime?            @default(now()) @db.DateTime(0)
   updated_at         DateTime?            @db.DateTime(0)
-  Articulations      Articulation[] @relation("articulation_muscle")
+  Articulations      Articulation[] 
   Group              MuscleGroup          @relation(fields: [muscleGroup_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "muscle_portion_muscleGRoup")
-  ArticulationMuscle ArticulationMuscle[]
+
 
   @@index([muscleGroup_id], map: "muscle_portion_muscleGRoup")
   @@map(name: "muscle_portion")
