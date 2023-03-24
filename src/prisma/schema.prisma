@@ -36,26 +36,12 @@ model users_permissions {
   @@index([user_id], map: "user_id")
 }
 
-model articulation_movement {
-  id              Int          @id @default(autoincrement()) @db.UnsignedInt
-  articulation_id Int          @db.UnsignedInt
-  movement_id     Int          @db.UnsignedInt
-  createdAt       DateTime?    @default(now()) @db.DateTime(0)
-  updatedAt       DateTime?    @db.DateTime(0)
-  Articulation    Articulation @relation(fields: [articulation_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "movement_articulations_articulation_id_foreign")
-  Movements       Movements    @relation(fields: [movement_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "movement_articulations_movement_id_foreign")
-
-  @@index([articulation_id], map: "movement_articulations_articulation_id_foreign")
-  @@index([movement_id], map: "movement_articulations_movement_id_foreign")
-}
-
 
 model Articulation {
   id                    Int                     @id @default(autoincrement()) @db.UnsignedInt
   name                  String                  @db.VarChar(255)
   createdAt             DateTime?               @default(now()) @db.DateTime(0)
   updatedAt             DateTime?               @db.DateTime(0)
-  articulation_movement articulation_movement[] @relation()
   Portions              MusclePortion[] 
   @@map(name: "articulations")
 }
