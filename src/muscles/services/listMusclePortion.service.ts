@@ -1,7 +1,8 @@
 import { Injectable } from "@nestjs/common";
+import { Prisma } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
 import { QueryMusclePortionDto } from "../muscle.validator";
-import { Prisma, PrismaClient } from '@prisma/client';
+import { PortionMapper } from './muscles.mapper'
 
 @Injectable()
 export default class ListMusclePortionService {
@@ -32,9 +33,10 @@ export default class ListMusclePortionService {
             include.Group = !!group
         }
 
-        return await this.PrismaService.musclePortion.findMany({
+        const portions = await this.PrismaService.musclePortion.findMany({
             where: portionArgs, include
-        })
+        });
 
+        return !!articulations ? PortionMapper.mapArticulations(portions) : portions;
     }
 }
