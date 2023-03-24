@@ -56,7 +56,7 @@ model Articulation {
   createdAt             DateTime?               @default(now()) @db.DateTime(0)
   updatedAt             DateTime?               @db.DateTime(0)
   articulation_movement articulation_movement[] @relation()
-  Portions              MusclePortion[] 
+  Muscles              ArticulationMusclePortion[] 
   @@map(name: "articulations")
 }
 
@@ -67,12 +67,21 @@ model MusclePortion {
   muscleGroup_id     Int
   created_at         DateTime?            @default(now()) @db.DateTime(0)
   updated_at         DateTime?            @db.DateTime(0)
-  Articulations      Articulation[] 
+  Articulations      ArticulationMusclePortion[] 
   Group              MuscleGroup          @relation(fields: [muscleGroup_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "muscle_portion_muscleGRoup")
 
 
   @@index([muscleGroup_id], map: "muscle_portion_muscleGRoup")
   @@map(name: "muscle_portion")
+}
+
+model ArticulationMusclePortion {
+  id                 Int                  @id @default(autoincrement())
+  muscle_id          Int
+  articulation_id    Int
+  MusclePortion MusclePortion @relation(fields: [muscle_id], references: [id])
+  Articulation Articulation @relation(fields: [articulation_id], references: [id])
+  @@map(name: "articulation_muscle")
 }
 
 model Exercicio {

@@ -13,6 +13,10 @@ export default class ListMuscleGroupService {
 
     async main(query: QueryMuscleGroupDto): Promise<MuscleGroup | MuscleGroup[]> {
         const {portions, ...q} = query
+
+        if(q.id && typeof q.id === 'string') {
+            q.id = parseInt(q.id);
+        }
         
         this.groups = await this.PrismaService.muscleGroup.findMany({
             where: q,

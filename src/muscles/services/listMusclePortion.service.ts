@@ -20,8 +20,12 @@ export default class ListMusclePortionService {
             where.name = {in: name}
         }
 
-        if ( articulations ) {
-            include.Articulations = !!articulations
+        if ( !!articulations ) {
+            include.Articulations = {
+                include: {
+                    Articulation: true
+                }
+            }
         }
         
         if ( group ) {
