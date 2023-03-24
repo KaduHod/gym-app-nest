@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Header, HttpCode, Query } from "@nestjs/common";
+import EntityMapper from "src/domain/domain.mapper";
 import { Mapper } from "src/utils/mappers.helper";
 import { QueryMuscleGroupDto, QueryMusclePortionDto } from "./muscle.validator";
 import ListMuscleGroupService from "./services/listMuscleGroups.service";
@@ -19,7 +20,9 @@ export default class MuscleController {
         @Query() query:QueryMuscleGroupDto
     ){
         const groups = await this.ListMuscleGroupsService.main(query) 
-        return groups
+        return {
+            groups: groups.map(EntityMapper.removeCommonFields)
+        }
     }
 
     @Get('/portion')
@@ -29,6 +32,8 @@ export default class MuscleController {
         @Query() query:QueryMusclePortionDto
     ){
         const portions = await this.ListMusclePortionService.main(query)
-        return portions
+        return {
+            portions: portions.map(EntityMapper.removeCommonFields)
+        }
     }
 }

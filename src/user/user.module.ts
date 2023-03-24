@@ -31,8 +31,4 @@ import { PrismaService } from 'src/prisma/prisma.service';
         PrismaService
     ]
 })
-export class UserModule {
-    configure(consumer: MiddlewareConsumer) {
-        
-    }
-}
+export class UserModule {}

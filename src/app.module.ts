@@ -6,6 +6,7 @@ import MusclesModule from './muscles/muscle.module';
 import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
 import ErrorModule from './errors/error.module';
 import DomainModule from './domain/domain.module';
+import ExerciseModule from './exercicios/exercise.module';
 import { PersonalModule } from './personal/personal.module';
 import AlunoModule from './aluno/aluno.module';
 import { PrismaService } from './prisma/prisma.service';
@@ -13,17 +14,21 @@ import { PrismaService } from './prisma/prisma.service';
 @Module({
   imports: [
     UserModule, 
-    MusclesModule,
-    PersonalModule,
     AlunoModule,
     ErrorModule,
     DomainModule,
+    MusclesModule,
+    ExerciseModule,
+    PersonalModule,
     ConfigModule.forRoot({
       isGlobal: true,
     })
   ],
   controllers: [],
-  providers: [AppService, PrismaService] 
+  providers: [
+    AppService, 
+    PrismaService
+  ] 
 })
 export class AppModule {
   configure(consumer:MiddlewareConsumer){

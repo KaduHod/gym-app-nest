@@ -5,13 +5,12 @@ import { MuscleGroup } from "@prisma/client";
 
 @Injectable()
 export default class ListMuscleGroupService {
-    private query:QueryMuscleGroupDto
     private groups: MuscleGroup[] 
     constructor(
         private PrismaService: PrismaService,
     ){}
 
-    async main(query: QueryMuscleGroupDto): Promise<MuscleGroup | MuscleGroup[]> {
+    async main(query: QueryMuscleGroupDto): Promise<MuscleGroup[]> {
         const {portions, ...q} = query
 
         if(q.id && typeof q.id === 'string') {

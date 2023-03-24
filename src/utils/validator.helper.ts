@@ -1,6 +1,6 @@
 import { ValidationError } from 'class-validator'
 import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator';
-import { isString } from './string.helper';
+import { isString, stringIsNumber } from './string.helper';
 export type errorFormated = {
     field: string,
     errors: string[]
@@ -52,6 +52,25 @@ export class IsStringOrArrayOfStrings implements ValidatorConstraintInterface  {
     }
     defaultMessage?(validationArguments?: ValidationArguments): string {
         return 'must be string or string[]'
+    }
+
+}
+
+@ValidatorConstraint({name:'IsNumberString', async: false})
+export class IsNumberString implements ValidatorConstraintInterface  {
+    validate(value: any, validationArguments?: ValidationArguments): boolean {
+        if(Array.isArray(value)) {
+            for (const val of value) {
+                if(!stringIsNumber(val)) {
+                    return false
+                }
+            }
+            return true
+        }
+        return stringIsNumber(value)
+    }
+    defaultMessage?(validationArguments?: ValidationArguments): string {
+        return `${validationArguments.property} must be a number`
     }
 
 }

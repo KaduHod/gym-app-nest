@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Header, HttpCode, Post, Put } from "@nestjs/common";
 import { User } from "@prisma/client";
+import EntityMapper from "src/domain/domain.mapper";
 import { UserE } from "src/domain/entitys";
 import { PrismaService } from "src/prisma/prisma.service";
 import UpdateUserService from "src/user/services/updateUser.service";
@@ -20,27 +21,14 @@ export class PersonalController {
         private AttachAlunoService: AttachAlunoService
     ) {}
 
-    @Get('/')
-    async all(){
-        return this.PrismaService.user.findMany({
-            where: {
-                users_permissions : {
-                    every: {
-                        permission_id: permission.PERSONAL
-                    }
-                }
-            }
-        })
-    }
-
     @Post('/') 
     @HttpCode(201)
     @Header('Content-Type', 'application/json')
     async create(@Body() body: CreateUserDto) {
-        await this.CreatePersonalService.main(body as User)
+        const personal = await this.CreatePersonalService.main(body as User)
         return {
             message:"created",
-            personal: await this.CreatePersonalService.main(body as User)
+            personal: EntityMapper.removeCommonFields(personal)
         };
     }
 
