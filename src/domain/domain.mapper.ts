@@ -1,10 +1,12 @@
 export interface CommonFields {
     createdAt: Date;
     updatedAt: Date;
+    created_at: Date;
+    updated_at: Date;
 }
 
 export default class EntityMapper {
-    static commonFields = ["createdAt", "updatedAt"];
+    static commonFields = ["createdAt", "updatedAt", "created_at", "updated_at"];
     static mapCommonFields<T, K extends keyof T>(entity: T, ...fields: K[]): Pick<T, K> {
         const result = {} as Pick<T, K>;
         for (const field of fields) {
@@ -12,12 +14,8 @@ export default class EntityMapper {
         }
         return result;
     }
-    static mapToDto<T extends CommonFields & {[key: string]: any}>(entity: T): T {
-        const commonFields = this.mapCommonFields(entity, ...this.commonFields);
-        return { ...entity, ...commonFields };
-    }
-    static removeCommonFields<T extends {[key:string]: any}>(entity:T): Omit<T, keyof CommonFields> {
-        const {createdAt, updatedAt, ...rest } = entity
+    static removeCommonFields<T extends {[key:string]: any}>(entity:T): Omit<T, "createdAt" | "updatedAt" | "created_at" | "updated_at"> {
+        const {createdAt, updatedAt,created_at, updated_at,  ...rest } = entity
         return rest
     }
 } 

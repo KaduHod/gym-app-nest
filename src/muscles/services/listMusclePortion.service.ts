@@ -13,30 +13,64 @@ export default class ListMusclePortionService {
     ){}
 
     async main(query: QueryMusclePortionDto){
-        const {articulations, group, name ,...portionArgs} = query        
+        const {articulations, group, name, exercises,...portionArgs} = query    
+        
         const where = portionArgs as Prisma.MusclePortionWhereInput
-        const include = {} as Prisma.MusclePortionInclude
+        
+        const select:Prisma.MusclePortionSelect = { id: true, name: true, image: true } 
 
         if(Array.isArray(name)) {
             where.name = {in: name}
         }
 
-        if ( !!articulations ) {
-            include.Articulations = {
-                include: {
-                    Articulation: true
+        if(portionArgs.id) {            
+            where.id = Array.isArray(portionArgs.id) 
+                ? {in: portionArgs.id.map(Number)} 
+                : {in:[Number(portionArgs.id)]}
+        }
+
+        if( !!articulations ) {
+            select.Articulations = {
+                select: {
+                    Articulation: {
+                        select: {
+                            id: true,
+                            name: true
+                        }
+                    }
                 }
             }
         }
-        
-        if ( group ) {
-            include.Group = !!group
+
+        if(!!exercises) {
+            select.Exercises = {
+                select: {
+                    Exercicio: {
+                        select : {
+                            id: true,
+                            name: true,
+                            force: true,
+                            link: true,
+                            execution: true,
+                            mechanic: true
+                        }
+                    }
+                }
+            }
         }
 
-        const portions = await this.PrismaService.musclePortion.findMany({
-            where: portionArgs, include
-        });
+        if(!!group) {
+            select.Group = {
+                select: {
+                    id: true,
+                    name: true,
+                    image: true
+                }
+            }
+        }
 
-        return !!articulations ? PortionMapper.mapArticulations(portions) : portions;
+        return await this.PrismaService.musclePortion.findMany({
+            where, select
+        });;
     }
 }

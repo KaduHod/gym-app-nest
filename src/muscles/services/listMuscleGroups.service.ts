@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { QueryMuscleGroupDto } from "../muscle.validator";
 import { PrismaService } from "src/prisma/prisma.service";
-import { MuscleGroup } from "@prisma/client";
+import { MuscleGroup, Prisma } from "@prisma/client";
 
 @Injectable()
 export default class ListMuscleGroupService {
@@ -16,13 +16,28 @@ export default class ListMuscleGroupService {
         if(q.id && typeof q.id === 'string') {
             q.id = parseInt(q.id);
         }
+
+        const select:Prisma.MuscleGroupSelect = {
+            id: true,
+            name: true,
+            image: true,
+        } 
+
+        if(!!portions) {
+            select.MusclePortion = {
+                select: {
+                    id: true,
+                    name: true,
+                    image: true,
+                }
+            }
+        }
         
         this.groups = await this.PrismaService.muscleGroup.findMany({
             where: q,
-            include: {
-                MusclePortion: !!portions
-            }
-        })
+            select    
+            
+        }) as MuscleGroup[]
 
         return this.groups
     }

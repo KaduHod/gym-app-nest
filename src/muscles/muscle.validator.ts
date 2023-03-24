@@ -24,7 +24,7 @@ export class QueryMuscleGroupDto {
 export class QueryMusclePortionDto {
     @IsOptional()
     @Expose()
-    id?:number
+    id?:number | number []
 
     @IsOptional()
     @Validate(IsStringOrArrayOfStrings)
@@ -45,5 +45,10 @@ export class QueryMusclePortionDto {
     @Expose()
     @Validate(Bool)
     group?: boolean
+
+    @IsOptional()
+    @Expose()
+    @Validate(Bool)
+    exercises?: boolean
 
 }
