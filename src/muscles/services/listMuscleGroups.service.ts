@@ -32,6 +32,10 @@ export default class ListMuscleGroupService {
                 }
             }
         }
+
+        console.log(await this.PrismaService.user.findMany())
+
+        return await this.PrismaService.muscleGroup.findMany()
         
         this.groups = await this.PrismaService.muscleGroup.findMany({
             where: q,

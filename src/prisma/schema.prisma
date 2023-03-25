@@ -8,19 +8,36 @@ generator client {
 }
 
 model User {
-  id                                               Int                 @id @default(autoincrement()) @db.UnsignedInt
-  name                                             String?             @db.VarChar(55)
-  nickname                                         String?             @unique(map: "users_nickname_unique") @db.VarChar(30)
-  email                                            String?             @unique(map: "users_email_unique") @db.VarChar(100)
-  password                                         String?             @db.VarChar(255)
-  cellphone                                        String?             @db.VarChar(20)
-  createdAt                                        DateTime?           @default(now()) @db.DateTime(0)
-  updatedAt                                        DateTime?           @db.DateTime(0)
-  personal_aluno_personal_aluno_personal_idTousers personal_aluno[]    @relation("personal_aluno_personal_idTousers")
-  personal_aluno_personal_aluno_aluno_idTousers    personal_aluno[]    @relation("personal_aluno_aluno_idTousers")
-  users_permissions                                users_permissions[]
+  id                Int                 @id @default(autoincrement()) @db.UnsignedInt
+  name              String?             @db.VarChar(55)
+  nickname          String?             @unique(map: "users_nickname_unique") @db.VarChar(30)
+  email             String?             @unique(map: "users_email_unique") @db.VarChar(100)
+  password          String?             @db.VarChar(255)
+  cellphone         String?             @db.VarChar(20)
+  createdAt         DateTime?           @default(now()) @db.DateTime(0)
+  updatedAt         DateTime?           @db.DateTime(0)
+  Personal         Personal[] @relation("personalUser")
+  Aluno         Aluno[] @relation("personalAluno")
+  users_permissions users_permissions[]
 
-  @@map(name: "users")
+  @@map(name: "users")     
+}
+
+model Personal {
+  id                Int                 @id @default(autoincrement()) @db.UnsignedInt
+  userId            Int @db.UnsignedInt
+  User              User @relation("personalUser", fields: [userId], references: [id]) 
+  Alunos     Aluno[]  @relation("personalToAluno")
+  @@map(name: "personais")        
+}
+
+model Aluno {
+  id                Int                 @id @default(autoincrement()) @db.UnsignedInt
+  userId            Int @db.UnsignedInt
+  User              User @relation("personalAluno", fields: [userId], references: [id])  
+  personalId Int? @db.UnsignedInt @map(name:"personal_id")
+  Personal Personal? @relation("personalToAluno", fields: [personalId],references: [id])
+  @@map(name: "alunos")
 }
 
 model users_permissions {
@@ -36,28 +53,25 @@ model users_permissions {
   @@index([user_id], map: "user_id")
 }
 
-model articulation_movement {
-  id              Int          @id @default(autoincrement()) @db.UnsignedInt
-  articulation_id Int          @db.UnsignedInt
-  movement_id     Int          @db.UnsignedInt
-  createdAt       DateTime?    @default(now()) @db.DateTime(0)
-  updatedAt       DateTime?    @db.DateTime(0)
-  Articulation    Articulation @relation(fields: [articulation_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "movement_articulations_articulation_id_foreign")
-  Movements       Movements    @relation(fields: [movement_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "movement_articulations_movement_id_foreign")
-
-  @@index([articulation_id], map: "movement_articulations_articulation_id_foreign")
-  @@index([movement_id], map: "movement_articulations_movement_id_foreign")
-}
-
 
 model Articulation {
   id                    Int                     @id @default(autoincrement()) @db.UnsignedInt
   name                  String                  @db.VarChar(255)
   createdAt             DateTime?               @default(now()) @db.DateTime(0)
   updatedAt             DateTime?               @db.DateTime(0)
-  articulation_movement articulation_movement[] @relation()
-  Muscles              MusclePortion[] 
+  Movements             Movements[] @relation()
+  Muscles               MusclePortion[] 
   @@map(name: "articulations")
+}
+
+model Movements {
+  id                           Int                            @id @default(autoincrement()) @db.UnsignedInt
+  name                         String                         @db.VarChar(255)
+  createdAt                    DateTime?                      @default(now()) @db.DateTime(0)
+  updatedAt                    DateTime?                      @db.DateTime(0)
+  Articulations        Articulation[]
+
+  @@map(name: "movements")
 }
 
 model MusclePortion {
@@ -69,20 +83,11 @@ model MusclePortion {
   updated_at         DateTime?            @db.DateTime(0)
   Articulations      Articulation[] 
   Group              MuscleGroup          @relation(fields: [muscleGroup_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "muscle_portion_muscleGRoup")
-  Exercises         exercise_muscle_portions[]
+  Exercises          Exercicio[]
 
   @@index([muscleGroup_id], map: "muscle_portion_muscleGRoup")
   @@map(name: "muscle_portion")
 }
-
-// model ArticulationMusclePortion {
-//   id                 Int                  @id @default(autoincrement())
-//   muscle_id          Int
-//   articulation_id    Int
-//   MusclePortion MusclePortion @relation(fields: [muscle_id], references: [id])
-//   Articulation Articulation @relation(fields: [articulation_id], references: [id])
-//   @@map(name: "articulation_muscle")
-// }
 
 model Exercicio {
   id                       Int                        @id @default(autoincrement()) @db.UnsignedInt
@@ -93,50 +98,12 @@ model Exercicio {
   link                     String?                    @db.VarChar(255)
   execution                String?                    @db.Text
   mechanic                 String?                    @db.Text
-  exercise_muscle          exercise_muscle[]
-  exercise_muscle_portions exercise_muscle_portions[]
+  muscles MusclePortion[]
 
   @@map(name: "exercicios")
 }
 
-model exercise_muscle_portions {
-  id                Int                            @id @default(autoincrement())
-  muscle_portion_id Int
-  exercise_id       Int                            @db.UnsignedInt
-  createdAt         DateTime?                      @default(now()) @db.DateTime(0)
-  updatedAt         DateTime?                      @db.DateTime(0)
-  role              exercise_muscle_portions_role?
-  Exercicio         Exercicio                      @relation(fields: [exercise_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "exercise_muscle_portions_exercise_id_foreign")
-  Portion           MusclePortion               @relation(fields: [muscle_portion_id], references: [id], onDelete: Cascade, onUpdate: NoAction)    
 
-  @@index([muscle_portion_id], map: "exercise_exercise_muscle_portions_id_foreign")
-  @@index([exercise_id], map: "exercise_muscle_portions_exercise_id_foreign")
-}
-
-model movement_muscle {
-  id          Int       @id @default(autoincrement()) @db.UnsignedInt
-  muscle_id   Int       @db.UnsignedInt
-  createdAt   DateTime? @default(now()) @db.DateTime(0)
-  updatedAt   DateTime? @db.DateTime(0)
-  movement_id Int       @db.UnsignedInt
-  Movements   Movements @relation(fields: [movement_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_Movements_id")
-  Muscle      Muscle    @relation(fields: [muscle_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "muscle_articulation_Movements_muscle_id_foreign")
-
-  @@index([movement_id], map: "FK_Movements_id")
-  @@index([muscle_id], map: "muscle_articulation_Movements_muscle_id_foreign")
-}
-
-model Movements {
-  id                           Int                            @id @default(autoincrement()) @db.UnsignedInt
-  name                         String                         @db.VarChar(255)
-  createdAt                    DateTime?                      @default(now()) @db.DateTime(0)
-  updatedAt                    DateTime?                      @db.DateTime(0)
-  articulation_movement        articulation_movement[]
-  articulation_movement_muscle articulation_movement_muscle[]
-  movement_muscle              movement_muscle[]
-
-  @@map(name: "movements")
-}
 
 model MuscleGroup {
   id            Int             @id @default(autoincrement())
@@ -149,27 +116,6 @@ model MuscleGroup {
   @@map(name: "muscle_group")
 }
 
-model Muscle {
-  id                           Int                            @id @default(autoincrement()) @db.UnsignedInt
-  name                         String                         @db.VarChar(255)
-  image                        String?                        @db.VarChar(255)
-  createdAt                    DateTime?                      @default(now()) @db.DateTime(0)
-  updatedAt                    DateTime?                      @db.DateTime(0)
-  articulation_movement_muscle articulation_movement_muscle[]
-  exercise_muscle              exercise_muscle[]
-  movement_muscle              movement_muscle[]
-
-  @@map(name: "muscles")
-}
-
-model Periodizacoes {
-  id        Int       @id @default(autoincrement()) @db.UnsignedInt
-  createdAt DateTime? @default(now()) @db.DateTime(0)
-  updatedAt DateTime? @db.DateTime(0)
-
-  @@map(name: "periodizacoes")
-}
-
 model Permission {
   id                Int                 @id @default(autoincrement()) @db.UnsignedInt
   title             String              @db.VarChar(45)
@@ -180,19 +126,6 @@ model Permission {
   @@map(name: "permissions")
 }
 
-model personal_aluno {
-  id                                      Int       @id @default(autoincrement()) @db.UnsignedInt
-  personal_id                             Int       @db.UnsignedInt
-  aluno_id                                Int       @db.UnsignedInt
-  createdAt                               DateTime? @default(now()) @db.DateTime(0)
-  updatedAt                               DateTime? @db.DateTime(0)
-  users_personal_aluno_personal_idTousers User      @relation("personal_aluno_personal_idTousers", fields: [personal_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "personal_aluno_ibfk_1")
-  users_personal_aluno_aluno_idTousers    User      @relation("personal_aluno_aluno_idTousers", fields: [aluno_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "personal_aluno_ibfk_2")
-
-  @@index([aluno_id], map: "aluno_id")
-  @@index([personal_id], map: "personal_id")
-}
-
 model Treino {
   id        Int       @id @default(autoincrement()) @db.UnsignedInt
   createdAt DateTime? @default(now()) @db.DateTime(0)
@@ -201,19 +134,6 @@ model Treino {
   @@map(name: "treinos")
 }
 
-model exercise_muscle {
-  id          Int                   @id @default(autoincrement()) @db.UnsignedInt
-  muscle_id   Int                   @db.UnsignedInt
-  exercise_id Int                   @db.UnsignedInt
-  createdAt   DateTime?             @default(now()) @db.DateTime(0)
-  updatedAt   DateTime?             @db.DateTime(0)
-  role        exercise_muscle_role?
-  Exercicio   Exercicio             @relation(fields: [exercise_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "exercise_muscle_exercise_id_foreign")
-  Muscle      Muscle                @relation(fields: [muscle_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "exercise_muscle_muscle_id_foreign")
-
-  @@index([exercise_id], map: "exercise_muscle_exercise_id_foreign")
-  @@index([muscle_id], map: "exercise_muscle_muscle_id_foreign")
-}
 
 enum exercise_muscle_portions_role {
   agonist
@@ -237,20 +157,4 @@ enum articulation_movement_muscle_role {
   stabilizer
   antagonist_stabilizer @map("antagonist stabilizer")
   dynamic_stabilizer    @map("dynamic stabilizer")
-}
-
-model articulation_movement_muscle {
-  id              Int                                @id @default(autoincrement()) @db.UnsignedInt
-  createdAt       DateTime?                          @default(now()) @db.DateTime(0)
-  updatedAt       DateTime?                          @db.DateTime(0)
-  muscle_id       Int                                @db.UnsignedInt
-  movement_id     Int                                @db.UnsignedInt
-  articulation_id Int                                @db.UnsignedInt
-  role            articulation_movement_muscle_role?
-  Movements       Movements                          @relation(fields: [movement_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "FK_movement_id")
-  Muscle          Muscle                             @relation(fields: [muscle_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "FK_muscle_id")
-
-  @@index([articulation_id], map: "articulation_movement_muscle_articulation_id_foreign")
-  @@index([movement_id], map: "articulation_movement_muscle_movement_id_foreign")
-  @@index([muscle_id], map: "articulation_movement_muscle_muscle_id_foreign")
 }

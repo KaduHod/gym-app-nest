@@ -32,12 +32,8 @@ export default class ListMusclePortionService {
         if( !!articulations ) {
             select.Articulations = {
                 select: {
-                    Articulation: {
-                        select: {
-                            id: true,
-                            name: true
-                        }
-                    }
+                    id: true,
+                    name: true
                 }
             }
         }
@@ -45,16 +41,12 @@ export default class ListMusclePortionService {
         if(!!exercises) {
             select.Exercises = {
                 select: {
-                    Exercicio: {
-                        select : {
-                            id: true,
-                            name: true,
-                            force: true,
-                            link: true,
-                            execution: true,
-                            mechanic: true
-                        }
-                    }
+                    id: true,
+                    name: true,
+                    force: true,
+                    link: true,
+                    execution: true,
+                    mechanic: true
                 }
             }
         }

@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { User } from "@prisma/client";
+import { Prisma, User } from "@prisma/client";
 import { AlunoAlreadyBelongsToPersonal, AlunoNotFound, PersonalNotFound } from "src/errors/app.errors";
 import { PrismaService } from "src/prisma/prisma.service";
 import { permission } from "src/utils/enums";
@@ -59,22 +59,29 @@ export default class AttachAlunoService {
         if(!this.personal){
             throw new Error("Must set personal before search for aluno personal")
         }
-        const personalIdFinded = await this.PrismaService.personal_aluno.findFirst({
-            select:{personal_id: true},
+
+        const personalIdFinded = await this.PrismaService.aluno.findFirst({
             where: {
-                personal_id: this.personal.id
+                personalId:this.personal.id
             }
         })
+        
         if (personalIdFinded) {
             throw new AlunoAlreadyBelongsToPersonal(personalIdFinded)
         }
     }
 
     async attach() {
-        await this.PrismaService.personal_aluno.create({
+        await this.PrismaService.aluno.update({
+            where: {
+                id: this.aluno.id
+            },
             data: {
-                aluno_id: this.aluno.id,
-                personal_id: this.personal.id
+                Personal: {
+                    connect: {
+                        id: this.personal.id
+                    }
+                }
             }
         })
     }
