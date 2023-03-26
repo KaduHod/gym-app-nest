@@ -96,8 +96,8 @@ export class InvalidMuscleError extends Error {
 }
 
 export class AlunoAlreadyBelongsToPersonal extends Error {
-    constructor(personal:PersonalE){
-        super(`Aluno already belongs to personal ${personal.name}`)
+    constructor(personal:any){
+        super(`Aluno already belongs to personal ${personal.user.name}`)
     }
 }
 

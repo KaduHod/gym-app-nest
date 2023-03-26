@@ -6,8 +6,8 @@ import { permission } from "src/utils/enums";
 
 @Injectable()
 export default class AttachAlunoService {
-    private aluno:User
-    private personal:User
+    private aluno:any
+    private personal:any
     constructor(
         private PrismaService: PrismaService
     ){}
@@ -17,17 +17,24 @@ export default class AttachAlunoService {
             this.setAluno(alunoId),
             this.setPersonal(personalId)
         ])
+
         await this.alunoHasPersonal()
         await this.attach()
     }
 
     async setAluno(id:number):Promise<void> {
-        this.aluno = await this.PrismaService.user.findFirst({
-            where: {
-                id,
-                users_permissions: {
-                    every: {
-                        permission_id: permission.ALUNO
+        this.aluno = await this.PrismaService.aluno.findFirst({
+            where: { id },
+            select: { 
+                id:true,
+                personal: {
+                    select: {
+                        id:true,
+                        user:{
+                            select: {
+                                name: true
+                            }
+                        }
                     }
                 }
             }
@@ -39,15 +46,9 @@ export default class AttachAlunoService {
     }
 
     async setPersonal(id:number) {
-        this.personal = await this.PrismaService.user.findFirst({
-            where: {
-                id,
-                users_permissions: {
-                    every: {
-                        permission_id: permission.PERSONAL
-                    }
-                }
-            }
+        this.personal = await this.PrismaService.personal.findFirst({
+            where: { id },
+            select: { id:true }
         })
         
         if(!this.personal) {
@@ -59,15 +60,9 @@ export default class AttachAlunoService {
         if(!this.personal){
             throw new Error("Must set personal before search for aluno personal")
         }
-
-        const personalIdFinded = await this.PrismaService.aluno.findFirst({
-            where: {
-                personalId:this.personal.id
-            }
-        })
         
-        if (personalIdFinded) {
-            throw new AlunoAlreadyBelongsToPersonal(personalIdFinded)
+        if (this.aluno.personal) {
+            throw new AlunoAlreadyBelongsToPersonal(this.aluno.personal)
         }
     }
 
