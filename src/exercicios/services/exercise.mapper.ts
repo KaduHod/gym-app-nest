@@ -1,12 +1,21 @@
-import { Exercicio } from "@prisma/client";
+import { Exercicio, ExerciseToMusclePortion, exercise_muscle_portions_role, MusclePortion } from "@prisma/client";
 
 export default class ExerciseMapper {
-    static mapPortions<T extends Exercicio & {exercise_muscle_portions:any[]}>(item: T): Omit<T, "exercise_muscle_portions">{
-        const {exercise_muscle_portions, ...rest} = item
-        //item.Portions
-
+    static mapPortions(
+        exercise: Exercicio & {
+            muscles: Array<ExerciseToMusclePortion & {musclePortion: MusclePortion}> 
+        }
+    ){
+        const {muscles, ...rest} = exercise
         return {
-            ...rest
+            ...rest,
+            muscles: muscles.map( muscle => {
+                const {role, musclePortion} = muscle
+                return {
+                    ...musclePortion,
+                    role
+                }
+            })
         }
     }
 }

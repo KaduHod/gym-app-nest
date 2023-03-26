@@ -1,6 +1,5 @@
 import { Controller, Get, Query } from "@nestjs/common";
-import EntityMapper from "src/domain/domain.mapper";
-import { PortionMapper } from "src/muscles/services/muscles.mapper";
+import ExerciseMapper from "./services/exercise.mapper";
 import { QueryExerciseDto } from "./exercise.dto";
 import ListExerciseService from "./services/listExercises.service";
 
@@ -16,7 +15,7 @@ export default class ExerciseControler {
         let exercises = await this.ListExerciseService.main(query)
         
         return {
-            exercises: exercises.map(EntityMapper.removeCommonFields)
+            exercises: exercises.map(ExerciseMapper.mapPortions)
         }
     }
 }
