@@ -26,7 +26,7 @@ CREATE TABLE `personais` (
 CREATE TABLE `alunos` (
     `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `userId` INTEGER UNSIGNED NOT NULL,
-    `personal_id` INTEGER UNSIGNED NOT NULL,
+    `personal_id` INTEGER UNSIGNED NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -79,7 +79,7 @@ CREATE TABLE `muscle_portion` (
 
 -- CreateTable
 CREATE TABLE `exercicios` (
-    `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `createdAt` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
     `updatedAt` DATETIME(0) NULL,
     `name` VARCHAR(255) NOT NULL,
@@ -87,6 +87,16 @@ CREATE TABLE `exercicios` (
     `link` VARCHAR(255) NULL,
     `execution` TEXT NULL,
     `mechanic` TEXT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `exercise_muscle_portion` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `muscle_portion_id` INTEGER NOT NULL,
+    `exercise_id` INTEGER NOT NULL,
+    `role` ENUM('agonist', 'synergist', 'stabilizer', 'antagonist stabilizer', 'dynamic stabilizer') NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -139,15 +149,6 @@ CREATE TABLE `_ArticulationToMusclePortion` (
     INDEX `_ArticulationToMusclePortion_B_index`(`B`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
-CREATE TABLE `_ExercicioToMusclePortion` (
-    `A` INTEGER UNSIGNED NOT NULL,
-    `B` INTEGER NOT NULL,
-
-    UNIQUE INDEX `_ExercicioToMusclePortion_AB_unique`(`A`, `B`),
-    INDEX `_ExercicioToMusclePortion_B_index`(`B`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
 -- AddForeignKey
 ALTER TABLE `personais` ADD CONSTRAINT `personais_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -155,7 +156,7 @@ ALTER TABLE `personais` ADD CONSTRAINT `personais_userId_fkey` FOREIGN KEY (`use
 ALTER TABLE `alunos` ADD CONSTRAINT `alunos_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `alunos` ADD CONSTRAINT `alunos_personal_id_fkey` FOREIGN KEY (`personal_id`) REFERENCES `personais`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `alunos` ADD CONSTRAINT `alunos_personal_id_fkey` FOREIGN KEY (`personal_id`) REFERENCES `personais`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `users_permissions` ADD CONSTRAINT `users_permissions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -165,6 +166,12 @@ ALTER TABLE `users_permissions` ADD CONSTRAINT `users_permissions_ibfk_2` FOREIG
 
 -- AddForeignKey
 ALTER TABLE `muscle_portion` ADD CONSTRAINT `muscle_portion_muscleGRoup` FOREIGN KEY (`muscleGroup_id`) REFERENCES `muscle_group`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE `exercise_muscle_portion` ADD CONSTRAINT `exercise_muscle_portion_exercise_id_fkey` FOREIGN KEY (`exercise_id`) REFERENCES `exercicios`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `exercise_muscle_portion` ADD CONSTRAINT `exercise_muscle_portion_muscle_portion_id_fkey` FOREIGN KEY (`muscle_portion_id`) REFERENCES `muscle_portion`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `_ArticulationToMovements` ADD CONSTRAINT `_ArticulationToMovements_A_fkey` FOREIGN KEY (`A`) REFERENCES `articulations`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
@@ -177,9 +184,3 @@ ALTER TABLE `_ArticulationToMusclePortion` ADD CONSTRAINT `_ArticulationToMuscle
 
 -- AddForeignKey
 ALTER TABLE `_ArticulationToMusclePortion` ADD CONSTRAINT `_ArticulationToMusclePortion_B_fkey` FOREIGN KEY (`B`) REFERENCES `muscle_portion`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_ExercicioToMusclePortion` ADD CONSTRAINT `_ExercicioToMusclePortion_A_fkey` FOREIGN KEY (`A`) REFERENCES `exercicios`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `_ExercicioToMusclePortion` ADD CONSTRAINT `_ExercicioToMusclePortion_B_fkey` FOREIGN KEY (`B`) REFERENCES `muscle_portion`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;

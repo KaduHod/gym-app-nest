@@ -16,8 +16,8 @@ model User {
   cellphone         String?             @db.VarChar(20)
   createdAt         DateTime?           @default(now()) @db.DateTime(0)
   updatedAt         DateTime?           @db.DateTime(0)
-  Personal         Personal[] @relation("personalUser")
-  Aluno         Aluno[] @relation("personalAluno")
+  personal         Personal[] @relation("personalUser")
+  aluno         Aluno[] @relation("personalAluno")
   users_permissions users_permissions[]
 
   @@map(name: "users")     
@@ -26,17 +26,17 @@ model User {
 model Personal {
   id                Int                 @id @default(autoincrement()) @db.UnsignedInt
   userId            Int @db.UnsignedInt
-  User              User @relation("personalUser", fields: [userId], references: [id]) 
-  Alunos     Aluno[]  @relation("personalToAluno")
+  user              User @relation("personalUser", fields: [userId], references: [id]) 
+  alunos     Aluno[]  @relation("personalToAluno")
   @@map(name: "personais")        
 }
 
 model Aluno {
   id                Int                 @id @default(autoincrement()) @db.UnsignedInt
   userId            Int @db.UnsignedInt
-  User              User @relation("personalAluno", fields: [userId], references: [id])  
+  user              User @relation("personalAluno", fields: [userId], references: [id])  
   personalId Int? @db.UnsignedInt @map(name:"personal_id")
-  Personal Personal? @relation("personalToAluno", fields: [personalId],references: [id])
+  personal Personal? @relation("personalToAluno", fields: [personalId],references: [id])
   @@map(name: "alunos")
 }
 
@@ -46,7 +46,7 @@ model users_permissions {
   permission_id Int        @db.UnsignedInt
   createdAt     DateTime?  @default(now()) @db.DateTime(0)
   updatedAt     DateTime?  @db.DateTime(0)
-  User          User       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_permissions_ibfk_1")
+  user          User       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_permissions_ibfk_1")
   permissions   Permission @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_permissions_ibfk_2")
 
   @@index([permission_id], map: "permission_id")
@@ -59,8 +59,8 @@ model Articulation {
   name                  String                  @db.VarChar(255)
   createdAt             DateTime?               @default(now()) @db.DateTime(0)
   updatedAt             DateTime?               @db.DateTime(0)
-  Movements             Movements[] @relation()
-  Muscles               MusclePortion[] 
+  movements             Movements[] @relation()
+  muscles               MusclePortion[] 
   @@map(name: "articulations")
 }
 
@@ -69,7 +69,7 @@ model Movements {
   name                         String                         @db.VarChar(255)
   createdAt                    DateTime?                      @default(now()) @db.DateTime(0)
   updatedAt                    DateTime?                      @db.DateTime(0)
-  Articulations        Articulation[]
+  articulations        Articulation[]
 
   @@map(name: "movements")
 }
@@ -82,15 +82,15 @@ model MusclePortion {
   created_at         DateTime?            @default(now()) @db.DateTime(0)
   updated_at         DateTime?            @db.DateTime(0)
   Articulations      Articulation[] 
-  Group              MuscleGroup          @relation(fields: [muscleGroup_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "muscle_portion_muscleGRoup")
-  Exercises          Exercicio[]
+  group              MuscleGroup          @relation(fields: [muscleGroup_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "muscle_portion_muscleGRoup")
+  exercises         ExerciseToMusclePortion[] @relation("muscleToExercise")
 
   @@index([muscleGroup_id], map: "muscle_portion_muscleGRoup")
   @@map(name: "muscle_portion")
 }
 
 model Exercicio {
-  id                       Int                        @id @default(autoincrement()) @db.UnsignedInt
+  id                       Int                        @id @default(autoincrement())
   createdAt                DateTime?                  @default(now()) @db.DateTime(0)
   updatedAt                DateTime?                  @db.DateTime(0)
   name                     String                     @db.VarChar(255)
@@ -98,12 +98,20 @@ model Exercicio {
   link                     String?                    @db.VarChar(255)
   execution                String?                    @db.Text
   mechanic                 String?                    @db.Text
-  muscles MusclePortion[]
+  muscles ExerciseToMusclePortion[] @relation("exerciseToMuscle")
 
   @@map(name: "exercicios")
 }
 
-
+model ExerciseToMusclePortion {
+  id Int @id @default(autoincrement())
+  muscle_portion_id Int 
+  exercise_id Int  
+  role              exercise_muscle_portions_role?
+  exercise Exercicio @relation("exerciseToMuscle", fields: [exercise_id], references: [id])
+  musclePortion MusclePortion @relation("muscleToExercise", fields: [muscle_portion_id], references: [id])
+  @@map(name:"exercise_muscle_portion")
+}
 
 model MuscleGroup {
   id            Int             @id @default(autoincrement())
@@ -111,7 +119,7 @@ model MuscleGroup {
   image         String?         @db.VarChar(255)
   created_at    DateTime        @default(now()) @db.DateTime(0)
   updated_at    DateTime?       @db.DateTime(0)
-  MusclePortion MusclePortion[]
+  musclePortion MusclePortion[]
 
   @@map(name: "muscle_group")
 }
