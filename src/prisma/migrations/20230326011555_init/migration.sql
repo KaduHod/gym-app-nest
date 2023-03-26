@@ -96,7 +96,7 @@ CREATE TABLE `exercise_muscle_portion` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `muscle_portion_id` INTEGER NOT NULL,
     `exercise_id` INTEGER NOT NULL,
-    `role` ENUM('agonist', 'synergist', 'stabilizer', 'antagonist stabilizer', 'dynamic stabilizer') NULL,
+    `role` ENUM('agonist', 'synergist', 'stabilizer', 'antagonist','antagonist stabilizer', 'dynamic stabilizer') NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

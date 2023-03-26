@@ -30,18 +30,19 @@ export default class ListExerciseService {
         if( !!muscles ) {
             prismaQueryArgs.select.muscles = {
                 select: {
-                    id: true,
-                    name: true,
-                    image: true,
+                    role:true,
+                    exercise: {
+                        select : {
+                            id:true, 
+                            name:true, 
+                            force:true, 
+                            link:true 
+                        }
+                    }
                 }
             }
             
-        }
-
-        console.log("ajlsakdjkj")
-
-        console.log(await this.PrismaService.exercicio.findMany());
-        
+        }       
 
         return this.PrismaService.exercicio.findMany(prismaQueryArgs)
     }

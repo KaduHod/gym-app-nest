@@ -17,9 +17,7 @@ INSERT INTO muscle_group (name,image,created_at,updated_at) VALUES
 	 ('Core',NULL,'2023-02-18 19:56:28',NULL),
 	 ('Isquiotibials',NULL,'2023-02-18 19:56:28',NULL),
 	 ('Quadríceps',NULL,'2023-02-18 19:56:28',NULL),
-	 ('Calf',NULL,'2023-02-18 19:56:28',NULL);
-	 
-INSERT INTO muscle_group (name,image,created_at,updated_at) VALUES
+	 ('Calf',NULL,'2023-02-18 19:56:28',NULL),
 	 ('Deltoids',NULL,'2023-02-18 20:08:02',NULL),
 	 ('Neck',NULL,'2023-02-19 21:25:38',NULL),
 	 ('Hip',NULL,'2023-02-19 21:25:38',NULL);

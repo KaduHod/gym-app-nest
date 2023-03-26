@@ -24,7 +24,7 @@ export default class ListMuscleGroupService {
         } 
 
         if(!!portions) {
-            select.MusclePortion = {
+            select.musclePortion = {
                 select: {
                     id: true,
                     name: true,
@@ -32,15 +32,10 @@ export default class ListMuscleGroupService {
                 }
             }
         }
-
-        console.log(await this.PrismaService.user.findMany())
-
-        return await this.PrismaService.muscleGroup.findMany()
         
         this.groups = await this.PrismaService.muscleGroup.findMany({
             where: q,
             select    
-            
         }) as MuscleGroup[]
 
         return this.groups

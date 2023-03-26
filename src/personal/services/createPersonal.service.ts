@@ -18,7 +18,7 @@ export default class CreatePersonalService {
         this.user = await this.CreateUserService.main(personal)
         this.personal = await this.PrismaService.personal.create({
             data: {
-                User: {
+                user: {
                     connect: {
                         id: this.user.id
                     }

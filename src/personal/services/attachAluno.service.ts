@@ -77,7 +77,7 @@ export default class AttachAlunoService {
                 id: this.aluno.id
             },
             data: {
-                Personal: {
+                personal: {
                     connect: {
                         id: this.personal.id
                     }

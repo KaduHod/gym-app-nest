@@ -39,20 +39,23 @@ export default class ListMusclePortionService {
         }
 
         if(!!exercises) {
-            select.Exercises = {
+            select.exercises = {
                 select: {
-                    id: true,
-                    name: true,
-                    force: true,
-                    link: true,
-                    execution: true,
-                    mechanic: true
+                    role:true,
+                    exercise: {
+                        select : {
+                            id:true, 
+                            name:true, 
+                            force:true, 
+                            link:true 
+                        }
+                    }
                 }
             }
         }
 
         if(!!group) {
-            select.Group = {
+            select.group = {
                 select: {
                     id: true,
                     name: true,

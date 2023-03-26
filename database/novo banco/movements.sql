@@ -16,9 +16,7 @@ INSERT INTO movements (name,createdAt,updatedAt) VALUES
 	 ('Flexion','2022-11-20 22:12:07','2022-11-20 22:12:07'),
 	 ('Extension','2022-11-20 22:12:07','2022-11-20 22:12:07'),
 	 ('Adduction','2022-11-20 22:12:07','2022-11-20 22:12:07'),
-	 ('Abduction','2022-11-20 22:12:07','2022-11-20 22:12:07');
-	 
-INSERT INTO movements (name,createdAt,updatedAt) VALUES
+	 ('Abduction','2022-11-20 22:12:07','2022-11-20 22:12:07'),
 	 ('Transverse Adduction','2022-11-20 22:12:07','2022-11-20 22:12:07'),
 	 ('Transverse Flexion','2022-11-20 22:12:07','2022-11-20 22:12:07'),
 	 ('Transverse Abduction','2022-11-20 22:12:07','2022-11-20 22:12:07'),
@@ -28,9 +26,7 @@ INSERT INTO movements (name,createdAt,updatedAt) VALUES
 	 ('Pronation','2022-11-20 22:12:07','2022-11-20 22:12:07'),
 	 ('Supination','2022-11-20 22:12:08','2022-11-20 22:12:08'),
 	 ('Extension / Hyperextension','2022-11-20 22:12:08','2022-11-20 22:12:08'),
-	 ('Adduction (Ulna Deviation)','2022-11-20 22:12:08','2022-11-20 22:12:08');
-
-INSERT INTO movements (name,createdAt,updatedAt) VALUES
+	 ('Adduction (Ulna Deviation)','2022-11-20 22:12:08','2022-11-20 22:12:08'),
 	 ('Abduction (Radial Deviation)','2022-11-20 22:12:08','2022-11-20 22:12:08'),
 	 ('Opposition','2022-11-20 22:12:08','2022-11-20 22:12:08'),
 	 ('Lateral Flexion (Abduction)','2022-11-20 22:12:08','2022-11-20 22:12:08'),

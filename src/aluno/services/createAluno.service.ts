@@ -17,7 +17,7 @@ export default class CreateAlunoServiceV2 {
         this.user = await this.CreateUserService.main(aluno)
         this.aluno = await this.PrismaService.aluno.create({
             data: {
-                User: {
+                user: {
                     connect: {
                         id: this.user.id
                     }

@@ -21,8 +21,7 @@ INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VAL
 	 ('Latisimus dorsi',NULL,2,'2023-02-18 20:17:23','2023-03-19 21:36:32'),
 	 ('Posterior Serratus',NULL,2,'2023-02-18 20:17:23','2023-02-18 20:24:17'),
 	 ('Lumbar',NULL,2,'2023-02-18 20:17:23',NULL),
-	 ('Upper Trapezius',NULL,2,'2023-02-18 20:21:20',NULL);
-INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VALUES
+	 ('Upper Trapezius',NULL,2,'2023-02-18 20:21:20',NULL),
 	 ('Medial Trapezius',NULL,2,'2023-02-18 20:21:20',NULL),
 	 ('Lower Trapezius',NULL,2,'2023-02-18 20:21:20',NULL),
 	 ('Minor Rhomboid',NULL,2,'2023-02-18 20:21:20',NULL),
@@ -32,8 +31,7 @@ INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VAL
 	 ('Bíceps Short head',NULL,3,'2023-02-18 20:27:11','2023-03-19 08:19:24'),
 	 ('Bíceps Brachialis',NULL,3,'2023-02-18 20:27:11','2023-03-19 08:19:24'),
 	 ('Tríceps Long head',NULL,4,'2023-02-18 20:29:04','2023-03-19 08:20:17'),
-	 ('Tríceps Short head',NULL,4,'2023-02-18 20:29:04','2023-03-19 08:20:17');
-INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VALUES
+	 ('Tríceps Short head',NULL,4,'2023-02-18 20:29:04','2023-03-19 08:20:17'),
 	 ('Tríceps Lateral head',NULL,4,'2023-02-18 20:29:04','2023-03-19 08:20:17'),
 	 ('Forearm Pronator teres',NULL,5,'2023-02-18 20:31:13','2023-03-19 08:21:06'),
 	 ('Forearm Flexor carpi radials',NULL,5,'2023-02-18 20:31:13','2023-03-19 08:21:06'),
@@ -43,8 +41,7 @@ INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VAL
 	 ('Glúteos minimus',NULL,6,'2023-02-18 20:32:35',NULL),
 	 ('Glúteos maximus',NULL,6,'2023-02-18 20:32:35',NULL),
 	 ('Pelvic floor',NULL,7,'2023-02-18 20:35:37',NULL),
-	 ('Transversus Abdominis',NULL,7,'2023-02-18 20:35:37','2023-02-18 20:36:12');
-INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VALUES
+	 ('Transversus Abdominis',NULL,7,'2023-02-18 20:35:37','2023-02-18 20:36:12'),
 	 ('Multifidus',NULL,7,'2023-02-18 20:35:37',NULL),
 	 ('Internal Obliques',NULL,7,'2023-02-18 20:35:37',NULL),
 	 ('External Obliques',NULL,7,'2023-02-18 20:35:37',NULL),
@@ -54,8 +51,7 @@ INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VAL
 	 ('Semitendinosus',NULL,8,'2023-02-18 20:37:28',NULL),
 	 ('Semimembranosus',NULL,8,'2023-02-18 20:37:28',NULL),
 	 ('Vastus lateralis',NULL,9,'2023-02-18 20:39:39',NULL),
-	 ('Vastus medials',NULL,9,'2023-02-18 20:39:39',NULL);
-INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VALUES
+	 ('Vastus medials',NULL,9,'2023-02-18 20:39:39',NULL),
 	 ('Vastus intermedius',NULL,9,'2023-02-18 20:39:39',NULL),
 	 ('Rectus Femoris',NULL,9,'2023-02-18 20:39:39',NULL),
 	 ('Gastrocnemius',NULL,10,'2023-02-18 20:40:41',NULL),
@@ -65,8 +61,7 @@ INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VAL
 	 ('Deltoid Lateral',NULL,11,'2023-02-18 20:41:36','2023-03-19 08:21:37'),
 	 ('Sternocleidomastoid',NULL,12,'2023-02-19 21:27:00',NULL),
 	 ('Splenius',NULL,12,'2023-02-20 13:56:18',NULL),
-	 ('Tensor Fasciae Latae',NULL,9,'2023-02-20 14:03:41',NULL);
-INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VALUES
+	 ('Tensor Fasciae Latae',NULL,9,'2023-02-20 14:03:41',NULL),
 	 ('Sartorius',NULL,9,'2023-02-20 14:03:45',NULL),
 	 ('Supraspinatus',NULL,2,'2023-02-20 14:03:48',NULL),
 	 ('Extensor Carpi Radialis Longus',NULL,5,'2023-02-20 14:03:51',NULL),
@@ -76,8 +71,7 @@ INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VAL
 	 ('Adductor brevis',NULL,13,'2023-02-20 14:07:20','2023-02-20 14:11:08'),
 	 ('Adductor magnus',NULL,13,'2023-02-20 14:07:20','2023-02-20 14:11:08'),
 	 ('Gracillis',NULL,13,'2023-02-20 14:07:20','2023-02-20 14:11:08'),
-	 ('Infraspinatus',NULL,2,'2023-02-20 14:09:07',NULL);
-INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VALUES
+	 ('Infraspinatus',NULL,2,'2023-02-20 14:09:07',NULL),
 	 ('Teres Minor',NULL,2,'2023-02-20 14:09:41',NULL),
 	 ('Teres Major',NULL,2,'2023-02-20 14:13:41',NULL),
 	 ('Pectineus',NULL,7,'2023-02-20 14:13:54','2023-03-19 21:06:16'),
@@ -87,8 +81,7 @@ INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VAL
 	 ('Obturator internus',NULL,13,'2023-02-20 14:17:56',NULL),
 	 ('Superior Gemellus',NULL,13,'2023-02-20 14:17:56',NULL),
 	 ('Tibialis Anterior',NULL,10,'2023-02-20 14:19:58',NULL),
-	 ('Subscapularis',NULL,2,'2023-02-20 14:21:20',NULL);
-INSERT INTO muscle_portion (name,image,muscleGroup_id,created_at,updated_at) VALUES
+	 ('Subscapularis',NULL,2,'2023-02-20 14:21:20',NULL),
 	 ('Iliopsoas',NULL,13,'2023-02-20 14:21:20',NULL),
 	 ('Popliteus',NULL,9,'2023-02-20 14:21:20',NULL),
 	 ('Deltoid Posterior',NULL,11,'2023-03-19 20:37:48',NULL),

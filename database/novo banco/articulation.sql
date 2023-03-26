@@ -17,9 +17,7 @@ INSERT INTO articulations (name,createdAt,updatedAt) VALUES
 	 ('Finger Interphalangeal','2022-11-20 03:00:00','2022-11-20 03:00:00'),
 	 ('Thumb Carpometacarpal','2022-11-20 03:00:00','2022-11-20 03:00:00'),
 	 ('Thumb Metacarpophalangeal','2022-11-20 03:00:00','2022-11-20 03:00:00'),
-	 ('Thumb Interphalangeal','2022-11-20 03:00:00','2022-11-20 03:00:00'); 
-
-INSERT INTO articulations (name,createdAt,updatedAt) VALUES
+	 ('Thumb Interphalangeal','2022-11-20 03:00:00','2022-11-20 03:00:00'),
 	 ('Neck Atlantoccipital & Antlantoaxial','2022-11-20 03:00:00','2022-11-20 03:00:00'),
 	 ('Spine Cervical','2022-11-20 03:00:00','2022-11-20 03:00:00'),
 	 ('Spine Thoracic, Lumbar','2022-11-20 03:00:00','2022-11-20 03:00:00'),
@@ -29,9 +27,7 @@ INSERT INTO articulations (name,createdAt,updatedAt) VALUES
 	 ('Foot Intertarsal','2022-11-20 03:00:00','2022-11-20 03:00:00'),
 	 ('Toe Metatarsophalangeal','2022-11-20 03:00:00','2022-11-20 03:00:00'),
 	 ('Toe Interphalangeal','2022-11-20 03:00:00','2022-11-20 03:00:00'),
-	 ('Sternoclavicular','2023-03-17 14:28:06',NULL); 
-
-INSERT INTO articulations (name,createdAt,updatedAt) VALUES
+	 ('Sternoclavicular','2023-03-17 14:28:06',NULL),
 	 ('Costochondral','2023-03-17 14:28:38',NULL),
 	 ('Acromioclavicular','2023-03-17 14:29:16',NULL),
 	 ('Scapulothoracic','2023-03-17 14:30:11',NULL),
@@ -41,8 +37,6 @@ INSERT INTO articulations (name,createdAt,updatedAt) VALUES
 	 ('Sacroiliac','2023-03-17 14:53:09',NULL),
 	 ('Pubic crest','2023-03-17 14:54:29',NULL),
 	 ('Vertebrae','2023-03-17 14:58:36',NULL),
-	 ('Ribs','2023-03-17 15:00:23',NULL); 
-
-INSERT INTO articulations (name,createdAt,updatedAt) VALUES
+	 ('Ribs','2023-03-17 15:00:23',NULL),
 	 ('Xiphoid process','2023-03-17 18:34:45','2023-03-17 18:34:52'),
 	 ('temporomandibular','2023-03-17 18:48:35',NULL); 

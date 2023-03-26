@@ -147,6 +147,7 @@ enum exercise_muscle_portions_role {
   agonist
   synergist
   stabilizer
+  antagonist
   antagonist_stabilizer @map("antagonist stabilizer")
   dynamic_stabilizer    @map("dynamic stabilizer")
 }
@@ -155,6 +156,7 @@ enum exercise_muscle_role {
   agonist
   synergist
   stabilizer
+  antagonist
   antagonist_stabilizer @map("antagonist stabilizer")
   dynamic_stabilizer    @map("dynamic stabilizer")
 }
@@ -163,6 +165,7 @@ enum articulation_movement_muscle_role {
   agonist
   synergist
   stabilizer
+  antagonist
   antagonist_stabilizer @map("antagonist stabilizer")
   dynamic_stabilizer    @map("dynamic stabilizer")
 }
