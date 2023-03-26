@@ -22,6 +22,18 @@ export default class CreateAlunoServiceV2 {
                         id: this.user.id
                     }
                 }
+            },
+            select: {
+                id:true, 
+                user: {
+                    select: {
+                        id:true,
+                        name:true,
+                        nickname: true,
+                        email: true,
+                        cellphone: true,
+                    }
+                }
             }
         })
         await this.CreateUserService.setPermission(permission.ALUNO)

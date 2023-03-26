@@ -14,7 +14,6 @@ export default class ExerciseControler {
     @Get("")
     async list(@Query() query:QueryExerciseDto) {
         let exercises = await this.ListExerciseService.main(query)
-        console.log("aqui", exercises);
         
         return {
             exercises: exercises.map(EntityMapper.removeCommonFields)

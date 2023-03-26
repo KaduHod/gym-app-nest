@@ -31,12 +31,11 @@ export default class ListExerciseService {
             prismaQueryArgs.select.muscles = {
                 select: {
                     role:true,
-                    exercise: {
-                        select : {
-                            id:true, 
-                            name:true, 
-                            force:true, 
-                            link:true 
+                    musclePortion: {
+                        select: {
+                            id: true,
+                            name: true,
+                            image: true,
                         }
                     }
                 }
