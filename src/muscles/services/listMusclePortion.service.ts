@@ -13,7 +13,9 @@ export default class ListMusclePortionService {
     ){}
 
     async main(query: QueryMusclePortionDto){
-        const {articulations, group, name, exercises,...portionArgs} = query    
+        const {articulations, group, name, exercises,...portionArgs} = query 
+        
+        console.log(query)
         
         const where = portionArgs as Prisma.MusclePortionWhereInput
         
@@ -21,6 +23,8 @@ export default class ListMusclePortionService {
 
         if(Array.isArray(name)) {
             where.name = {in: name}
+        } else {
+            where.name = name
         }
 
         if(portionArgs.id) {            

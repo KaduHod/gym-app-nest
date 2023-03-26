@@ -8,7 +8,6 @@ export default class UpdateUserService {
     private user:User
     constructor(
         private PrismaService: PrismaService,
-       
     ){}
 
     async main(): Promise<User> {
