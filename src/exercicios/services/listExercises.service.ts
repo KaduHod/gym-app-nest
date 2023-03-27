@@ -27,10 +27,10 @@ export default class ListExerciseService {
             mechanic: true,
         } as Prisma.ExercicioSelect
 
-        if( !!muscles ) {
+        if( !!muscles ) {            
             prismaQueryArgs.select.muscles = {
                 select: {
-                    role:true,
+                    role: true,
                     musclePortion: {
                         select: {
                             id: true,
@@ -53,6 +53,8 @@ export default class ListExerciseService {
         }
 
         for (const key in query) {
+            if(key === "role") continue;
+
             prismaQueryArgs.where[
                 key as keyof Prisma.ExercicioWhereInput
             ] = Array.isArray(query[key])

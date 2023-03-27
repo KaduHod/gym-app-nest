@@ -1,6 +1,7 @@
 import { ArgumentsHost, BadRequestException, Catch, ExceptionFilter, NotFoundException } from "@nestjs/common";
 import { UnhandledError } from "./app.errors";
 import { Response } from "express";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 
 
 @Catch()
@@ -26,6 +27,13 @@ export default class GlobalErrorHandler implements ExceptionFilter {
             return response.status(400).json(exception.getResponse())
         }
 
+        if(exception.constructor.name === "PrismaClientKnownRequestError") {
+            let error = exception as PrismaClientKnownRequestError
+            return response.status(400).json({
+                error: error.meta.target,
+            })
+        }
+       
         response.status(400).json({
             message: exception.message,
             ...exception

@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { Prisma } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
 import { QueryMusclePortionDto } from "../muscle.validator";
-import { PortionMapper } from './muscles.mapper'
 
 @Injectable()
 export default class ListMusclePortionService {
@@ -14,8 +13,6 @@ export default class ListMusclePortionService {
 
     async main(query: QueryMusclePortionDto){
         const {articulations, group, name, exercises,...portionArgs} = query 
-        
-        console.log(query)
         
         const where = portionArgs as Prisma.MusclePortionWhereInput
         
@@ -70,6 +67,6 @@ export default class ListMusclePortionService {
 
         return await this.PrismaService.musclePortion.findMany({
             where, select
-        });;
+        });
     }
 }

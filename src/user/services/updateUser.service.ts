@@ -2,6 +2,7 @@ import { UserNotFound } from "src/errors/app.errors";
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { User } from "@prisma/client";
+import { UpdateUserDto } from "../user.validator";
 
 @Injectable()
 export default class UpdateUserService {
@@ -19,8 +20,8 @@ export default class UpdateUserService {
     /**
      * Seta novos valores
      */
-    setUser(user: User): void {
-        this.user = user
+    setUser(user: UpdateUserDto): void {
+        this.user = user as User
     }
 
     /**

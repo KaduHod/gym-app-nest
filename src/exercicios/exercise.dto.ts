@@ -1,6 +1,6 @@
 import { IsString, Validate, IsOptional } from 'class-validator'
 import { Expose } from 'class-transformer';
-import { Bool, IsNumberString } from 'src/utils/validator.helper';
+import { Bool, IsNumberString, IsValidRole } from 'src/utils/validator.helper';
 
 export class QueryExerciseDto {
     @IsOptional()
@@ -36,5 +36,10 @@ export class QueryExerciseDto {
     @Expose()
     @IsOptional()
     @Validate(Bool)
-    muscles: boolean
+    muscles?: boolean
+
+    @Expose()
+    @IsOptional()
+    @Validate(IsValidRole)
+    role?: string
 }

@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Put } from '@nestjs/common';
 import UpdateUserService from './services/updateUser.service';
+import { UpdateUserDto } from './user.validator';
 
 @Controller('user')
 export default class UserController {
@@ -8,8 +9,8 @@ export default class UserController {
     ){}
     
     @Put('/')
-    async update(@Body() body: any) {
-        this.UpdateUserService.setUser(body)
+    async update(@Body() args: UpdateUserDto) {
+        this.UpdateUserService.setUser(args)
         const updatedUser = await this.UpdateUserService.main()
         return {
             message:"Updated",
