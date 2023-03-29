@@ -16,9 +16,9 @@ export default class ListExerciseService {
 
         const {muscles, ...queryArgs} = query  
 
-        const prismaQueryArgs = this.buildPrismaQueryArgs(queryArgs)
+        const where = this.buildPrismaQueryArgs(queryArgs)
 
-        prismaQueryArgs.select = {
+        const select = {
             id: true,
             name: true,
             force: true,
@@ -28,7 +28,7 @@ export default class ListExerciseService {
         } as Prisma.ExercicioSelect
 
         if( !!muscles ) {            
-            prismaQueryArgs.select.muscles = {
+            select.muscles = {
                 select: {
                     role: true,
                     musclePortion: {
@@ -43,11 +43,12 @@ export default class ListExerciseService {
             
         }       
 
-        return this.PrismaService.exercicio.findMany(prismaQueryArgs)
+        return this.PrismaService.exercicio.findMany({select, where})
     }
 
-    private buildPrismaQueryArgs<T extends Omit<QueryExerciseDto, "muscles">>(query: T): Prisma.ExercicioFindManyArgs {
-        const prismaQueryArgs: Prisma.ExercicioFindManyArgs = { where: {} };
+    private buildPrismaQueryArgs<T extends Omit<QueryExerciseDto, "muscles">>(query: T): Prisma.ExercicioWhereInput {
+        const where = {} as Prisma.ExercicioWhereInput
+
         if(query.hasOwnProperty("id") && query.id) {
             query.id = Array.isArray(query.id) ? query.id.map(Number) : Number(query.id);
         }
@@ -55,14 +56,14 @@ export default class ListExerciseService {
         for (const key in query) {
             if(key === "role") continue;
 
-            prismaQueryArgs.where[
+            where[
                 key as keyof Prisma.ExercicioWhereInput
             ] = Array.isArray(query[key])
                 ? {in:query[key]} as Prisma.ExercicioWhereInput
                 : {in:[query[key]]} as Prisma.ExercicioWhereInput;
         }
 
-        return prismaQueryArgs;
+        return where
     }
 }
 
