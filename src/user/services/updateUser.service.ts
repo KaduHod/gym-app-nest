@@ -6,29 +6,20 @@ import * as UserDto from "../user.dto";
 
 @Injectable()
 export default class UpdateUserService {
-    private user:User
     constructor(
         private PrismaService: PrismaService,
     ){}
 
-    async main(): Promise<User> {
-       await this.exists();
-       const {id, ...updateArgs} = this.user
-       return this.updateUser(updateArgs)
-    }
-
-    /**
-     * Seta novos valores
-     */
-    setUser(user: UserDto.UpdateUser): void {
-        this.user = user as User
+    async main(args: UserDto.UpdateUser): Promise<User> {
+       await this.exists(args.id);
+       return this.updateUser(args)
     }
 
     /**
      * Verifica se o usuario existe
      */
-    async exists(): Promise<User> {
-        const user = await this.PrismaService.user.findFirst({where:{id:this.user.id}})
+    async exists(id: number): Promise<User> {
+        const user = await this.PrismaService.user.findFirst({where:{id}})
         if(!user) {
             throw new UserNotFound()
         }
@@ -38,10 +29,8 @@ export default class UpdateUserService {
     /**
      * Atualiza o usuario
      */
-    async updateUser(updateArgs: Omit<User, "id">): Promise<any> {
-        return this.PrismaService.user.update({
-            where:{id: this.user.id},
-            data:updateArgs
-        })
+    async updateUser(updateArgs: UserDto.UpdateUser): Promise<any> {
+        const data = UserDto.UpdateUser.toPrismaUpdateInput(updateArgs)
+        return this.PrismaService.user.update({ where:{id: updateArgs.id}, data })
     }
 }

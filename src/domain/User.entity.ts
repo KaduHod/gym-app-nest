@@ -49,5 +49,6 @@ export default class UserModel extends Model implements User  {
         this.password = args.password
         this.cellphone = args.cellphone
     } 
+    birthday: Date;
     
 }

@@ -10,8 +10,7 @@ export default class UserController {
     
     @Put('/')
     async update(@Body() args: UserDto.UpdateUser) {
-        this.UpdateUserService.setUser(args)
-        const updatedUser = await this.UpdateUserService.main()
+        const updatedUser = await this.UpdateUserService.main(args)
         return {
             message:"Updated",
             user: updatedUser

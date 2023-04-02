@@ -1,6 +1,8 @@
 # Equação de densidade coporal e gordura corporal
 - Densidade corporal = 1,10938 - (0,0008267 x soma das dobras cutâneas) + (0,0000016 x soma das dobras cutâneas ao quadrado) - (0,0002574 x idade)
 
+Gordura corporal = (495 / densidade corporal) - 450
+
  ## Dobras necessárias
 - tríceps, subescapular, peitoral, axilar média, abdominal, supra-ilíaca e coxa
 - 7 - Triceps, subscapular, chest, midaxillary, abdominal, suprailiac, and thigh.

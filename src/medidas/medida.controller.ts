@@ -1,8 +1,12 @@
-import { Controller } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 
-@Controller()
+@Controller("medidas")
 export default class MedidaController {
     constructor(
-
     ) {}
+    
+    @Get()
+    async teste() {
+        return {"message":"message"}
+    }
 }

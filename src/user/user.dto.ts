@@ -1,9 +1,11 @@
-import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber, IsPhoneNumber } from 'class-validator'
+import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber, IsPhoneNumber, IsDateString } from 'class-validator'
 import { Expose } from 'class-transformer'
 import { Injectable } from '@nestjs/common'
+import { Prisma, User } from '@prisma/client'
+
 
 @Injectable()
-export class CreateUser {
+export class CreateUser implements Partial<User> {
     @Length(5, 100)
     @IsNotEmpty()
     @IsString()
@@ -28,15 +30,30 @@ export class CreateUser {
     @Expose()
     email: string
 
+    @IsDateString()
+    @Expose()
+    @IsOptional()
+    birthday?: Date
+
     @IsOptional()
     @IsString()
     @Expose()
     @IsPhoneNumber("BR")
     cellphone: string
+
+
+    static toPrismaCreateInput(args:CreateUser): Prisma.UserCreateInput {
+        return {
+            ...args,
+            ...(args?.birthday && {
+                birthday: (new Date(args.birthday))
+            })
+        }
+    }
 }
 
 @Injectable()
-export class UpdateUser {
+export class UpdateUser implements Partial<User> {    
     @IsNumber()
     @IsNotEmpty()
     @Expose()
@@ -75,6 +92,21 @@ export class UpdateUser {
     @Expose()
     @IsPhoneNumber("BR")
     cellphone?: string = undefined
+
+    @IsDateString()
+    @Expose()
+    @IsOptional()
+    birthday?: Date
+
+    static toPrismaUpdateInput(args:UpdateUser):Prisma.UserUpdateInput {
+        const {id, ...rest} = args
+        return {
+            ...rest,
+            ...(rest?.birthday && {
+                birthday: (new Date(rest.birthday))
+            })
+        }
+    }
 }
 
 @Injectable()

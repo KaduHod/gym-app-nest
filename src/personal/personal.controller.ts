@@ -3,7 +3,7 @@ import { User } from "@prisma/client";
 import { UserE } from "src/domain/entitys";
 import { PrismaService } from "src/prisma/prisma.service";
 import UpdateUserService from "src/user/services/updateUser.service";
-import AttachAlunoDto, { CreateUserDto, UpdateUserDto } from "src/user/user.dto";
+import * as UserDto from "src/user/user.dto";
 import AttachAlunoService from "./services/attachAluno.service";
 import CreatePersonalService from "./services/createPersonal.service";
 
@@ -22,7 +22,7 @@ export class PersonalController {
     @Post('/') 
     @HttpCode(201)
     @Header('Content-Type', 'application/json')
-    async create(@Body() body: CreateUserDto) {
+    async create(@Body() body: UserDto.CreateUser) {
         const personal = await this.CreatePersonalService.main(body as User)
         return {
             message:"created",
@@ -33,18 +33,17 @@ export class PersonalController {
     @Put()
     @HttpCode(200)
     @Header('Content-Type', 'application/json')
-    async update(@Body() args: UpdateUserDto) {
-        this.UpdateUserService.setUser(args as UserE)
+    async update(@Body() args: UserDto.UpdateUser) {
         return {
             message:"updated", 
-            personal: await this.UpdateUserService.main()
+            personal: await this.UpdateUserService.main(args)
         }
     }
 
     @Post("/attach-aluno")
     @HttpCode(200)
     @Header('Content-Type', 'application/json')
-    async attachAluno(@Body() args:AttachAlunoDto) {
+    async attachAluno(@Body() args: UserDto.AttachAluno) {
         await this.AttachAlunoService.main(args.aluno_id, args.personal_id)
         return {
             message: 'attached',
