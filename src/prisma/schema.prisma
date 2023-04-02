@@ -168,7 +168,7 @@ model DobrasCutaneas {
   coxa Float?
   cintura Float? 
   quadril Float?
-  medidaId Int @unique
+  medidaId Int @unique @db.UnsignedInt
   medida Medidas @relation("dobrasDoUsuario", fields: [medidaId], references: [id])
   createdAt DateTime? @default(now()) @db.DateTime(0)
   updatedAt DateTime? @db.DateTime(0)
@@ -181,7 +181,7 @@ model Circunferencias {
   coxa Float? 
   abdomen Float?
   torax Float?
-  medidaId Int @unique
+  medidaId Int @unique @db.UnsignedInt
   medida Medidas @relation("circunferenciasDoUsuario", fields: [medidaId], references: [id])
   createdAt DateTime? @default(now()) @db.DateTime(0)
   updatedAt DateTime? @db.DateTime(0)
