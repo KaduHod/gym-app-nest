@@ -13,12 +13,12 @@ model User {
   nickname          String?             @unique(map: "users_nickname_unique") @db.VarChar(30)
   email             String?             @unique(map: "users_email_unique") @db.VarChar(100)
   password          String?             @db.VarChar(255)
-  cellphone         String?             @db.VarChar(20)
+  medidas Medidas[] @relation("medidasUsuario")
   birthday          DateTime?
+  cellphone         String?             @db.VarChar(20)
   createdAt         DateTime?           @default(now()) @db.DateTime(0)
   updatedAt         DateTime?           @db.DateTime(0)
   personal         Personal[] @relation("personalUser")
-  medidas Medidas[] @relation("medidasUsuario")
   aluno         Aluno[] @relation("personalAluno")
   users_permissions users_permissions[]
 
@@ -146,12 +146,43 @@ model Treino {
 
 model Medidas {
   id Int @id @default(autoincrement()) @db.UnsignedInt
-  userId Int 
+  userId Int @db.UnsignedInt
   weight Float
   height Float
-  waist Float 
-  hip Float
-  user User @relation("medidasUsuario", fields: [userId], references: [id]) 
+  data DateTime
+  user User @relation("medidasUsuario", fields: [userId], references: [id])
+  dobras DobrasCutaneas? @relation("dobrasDoUsuario")
+  circunferencias Circunferencias? @relation("circunferenciasDoUsuario") 
+  createdAt DateTime? @default(now()) @db.DateTime(0)
+  updatedAt DateTime? @db.DateTime(0)
+}
+
+model DobrasCutaneas {
+  id Int @id @default(autoincrement()) @db.UnsignedInt
+  triceps Float?
+  subscapular Float?
+  peito Float? 
+  axilar Float? 
+  abdominal Float? 
+  supraIliaca Float? 
+  coxa Float?
+  cintura Float? 
+  quadril Float?
+  medidaId Int @unique
+  medida Medidas @relation("dobrasDoUsuario", fields: [medidaId], references: [id])
+  createdAt DateTime? @default(now()) @db.DateTime(0)
+  updatedAt DateTime? @db.DateTime(0)
+}
+
+model Circunferencias {
+  id Int @id @default(autoincrement()) @db.UnsignedInt
+  braco Float?
+  panturrilha Float?
+  coxa Float? 
+  abdomen Float?
+  torax Float?
+  medidaId Int @unique
+  medida Medidas @relation("circunferenciasDoUsuario", fields: [medidaId], references: [id])
   createdAt DateTime? @default(now()) @db.DateTime(0)
   updatedAt DateTime? @db.DateTime(0)
 }
