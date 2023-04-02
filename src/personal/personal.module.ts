@@ -13,7 +13,7 @@ import AttachAlunoService from './services/attachAluno.service';
     ],
     exports:[]
 })
-export class PersonalModule {
+export default class PersonalModule {
     configure(consumer: MiddlewareConsumer) {
         
     }

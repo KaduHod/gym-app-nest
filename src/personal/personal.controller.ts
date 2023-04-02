@@ -3,7 +3,7 @@ import { User } from "@prisma/client";
 import { UserE } from "src/domain/entitys";
 import { PrismaService } from "src/prisma/prisma.service";
 import UpdateUserService from "src/user/services/updateUser.service";
-import AttachAlunoDto, { CreateUserDto, UpdateUserDto } from "src/user/user.validator";
+import AttachAlunoDto, { CreateUserDto, UpdateUserDto } from "src/user/user.dto";
 import AttachAlunoService from "./services/attachAluno.service";
 import CreatePersonalService from "./services/createPersonal.service";
 

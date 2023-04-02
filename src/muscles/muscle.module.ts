@@ -1,7 +1,7 @@
-import { MiddlewareConsumer, Module, RequestMethod } from "@nestjs/common";
+import { MiddlewareConsumer, Module } from "@nestjs/common";
 import MuscleController  from "./muscle.controller";
 import ListMuscleGroupService from "./services/listMuscleGroups.service";
-import { QueryMuscleGroupDto, QueryMusclePortionDto } from "./muscle.validator";
+import * as Dto from "./muscle.validator";
 import ListMusclePortionService from "./services/listMusclePortion.service";
 import { PrismaService } from "src/prisma/prisma.service";
 
@@ -12,8 +12,8 @@ import { PrismaService } from "src/prisma/prisma.service";
         ListMuscleGroupService,
         ListMusclePortionService,
         PrismaService,
-        QueryMuscleGroupDto,
-        QueryMusclePortionDto
+        Dto.QueryMuscleGroupDto,
+        Dto.QueryMusclePortionDto
     ],
     exports: []
 })

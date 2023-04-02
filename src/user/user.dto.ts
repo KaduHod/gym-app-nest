@@ -3,7 +3,7 @@ import { Expose } from 'class-transformer'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()
-export class CreateUserDto{
+export class CreateUser {
     @Length(5, 100)
     @IsNotEmpty()
     @IsString()
@@ -36,7 +36,7 @@ export class CreateUserDto{
 }
 
 @Injectable()
-export class UpdateUserDto {
+export class UpdateUser {
     @IsNumber()
     @IsNotEmpty()
     @Expose()
@@ -78,7 +78,7 @@ export class UpdateUserDto {
 }
 
 @Injectable()
-export class QueryUserDto {
+export class QueryUser {
     @IsNumber()
     @IsNotEmpty()
     @Expose()
@@ -111,7 +111,7 @@ export class QueryUserDto {
 }
 
 @Injectable()
-export default class AttachAlunoDto {
+export class AttachAluno {
     @IsNumber()
     @IsNotEmpty()
     @Expose()

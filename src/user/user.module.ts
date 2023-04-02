@@ -2,10 +2,9 @@ import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import UpdateUserService  from './services/updateUser.service';
 import UserController  from './user.controller';
-import AttachAlunoDto, { CreateUserDto, QueryUserDto, UpdateUserDto } from './user.validator';
+import * as UserDto from './user.dto';
 import CreateUserService from './services/createUser.service';
 import { PrismaService } from 'src/prisma/prisma.service';
-
 @Module({
     imports:[
         ConfigModule, 
@@ -16,16 +15,16 @@ import { PrismaService } from 'src/prisma/prisma.service';
     providers: [ 
         UpdateUserService,
         CreateUserService,
-        UpdateUserDto,
-        CreateUserDto,
-        QueryUserDto,
-        AttachAlunoDto,
+        UserDto.UpdateUser,
+        UserDto.CreateUser,
+        UserDto.QueryUser,
+        UserDto.AttachAluno,
         PrismaService
     ],
     exports:[
-        UpdateUserDto, 
-        CreateUserDto, 
-        AttachAlunoDto,
+        UserDto.UpdateUser, 
+        UserDto.CreateUser, 
+        UserDto.AttachAluno,
         CreateUserService,
         UpdateUserService,
         PrismaService

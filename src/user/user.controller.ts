@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Put } from '@nestjs/common';
+import { Body, Controller, Put } from '@nestjs/common';
 import UpdateUserService from './services/updateUser.service';
-import { UpdateUserDto } from './user.validator';
+import * as UserDto from './user.dto';
 
 @Controller('user')
 export default class UserController {
@@ -9,7 +9,7 @@ export default class UserController {
     ){}
     
     @Put('/')
-    async update(@Body() args: UpdateUserDto) {
+    async update(@Body() args: UserDto.UpdateUser) {
         this.UpdateUserService.setUser(args)
         const updatedUser = await this.UpdateUserService.main()
         return {

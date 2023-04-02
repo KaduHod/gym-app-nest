@@ -1,7 +1,7 @@
 import { Body, Controller, Header, HttpCode, Post, Put } from "@nestjs/common";
 import { User } from "@prisma/client";
 import UpdateUserService from "src/user/services/updateUser.service";
-import { CreateUserDto, UpdateUserDto } from "src/user/user.validator";
+import { CreateUserDto, UpdateUserDto } from "src/user/user.dto";
 import CreateAlunoService from "./services/createAluno.service";
 
 @Controller("/aluno")

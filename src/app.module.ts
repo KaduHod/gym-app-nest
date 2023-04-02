@@ -1,18 +1,20 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { PrismaService } from './prisma/prisma.service';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
-import MusclesModule from './muscles/muscle.module';
 import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
+import MusclesModule from './muscles/muscle.module';
 import ErrorModule from './errors/error.module';
 import DomainModule from './domain/domain.module';
 import ExerciseModule from './exercicios/exercise.module';
-import { PersonalModule } from './personal/personal.module';
+import PersonalModule from './personal/personal.module';
 import AlunoModule from './aluno/aluno.module';
-import { PrismaService } from './prisma/prisma.service';
+import MedidaModule from './medidas/medida.module';
 
 @Module({
   imports: [
+    MedidaModule,
     UserModule, 
     AlunoModule,
     ErrorModule,
