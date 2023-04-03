@@ -46,7 +46,7 @@ export class CreateUser implements Partial<User> {
         return {
             ...args,
             ...(args?.birthday && {
-                birthday: (new Date(args.birthday))
+                birthday: new Date(args.birthday)
             })
         }
     }
@@ -103,7 +103,7 @@ export class UpdateUser implements Partial<User> {
         return {
             ...rest,
             ...(rest?.birthday && {
-                birthday: (new Date(rest.birthday))
+                birthday: new Date(rest.birthday)
             })
         }
     }
@@ -153,4 +153,73 @@ export class AttachAluno {
     @IsNotEmpty()
     @Expose()
     personal_id:number
+}
+
+@Injectable()
+export class CreateBasicBasicAnthropometry {
+    @IsNumber()
+    @IsNotEmpty()
+    userId: number 
+
+    @IsNotEmpty()
+    @IsNumber()
+    weight: number 
+
+    @IsNotEmpty()
+    @IsNumber()
+    height: number 
+
+    @IsNotEmpty()
+    @IsDateString()
+    data: Date
+
+
+    static toPrismaCreateInput(args: CreateBasicBasicAnthropometry): Prisma.MedidasCreateInput {
+        const {userId, ...rest} = args
+        return {
+            ...rest,
+            ...(rest?.data && {
+                data: new Date(rest.data)
+            }),
+            user: {
+                connect: {
+                    id: userId
+                }
+            }
+        }
+    }
+}
+
+export class UpdateBasicBasicAnthropometry {
+    @IsNumber()
+    @IsNotEmpty()
+    id: number 
+
+    @IsOptional()
+    @IsNumber()
+    weight?: number 
+
+    @IsOptional()
+    @IsNumber()
+    height?: number 
+
+    @IsOptional()
+    @IsDateString()
+    data?: Date
+
+
+    static toPrismaUpdateInput(args: UpdateBasicBasicAnthropometry): Prisma.MedidasUpdateInput {
+        const {id, ...rest} = args
+
+        if(rest["userId"]) {
+            delete rest["userId"]
+        }
+        
+        return {
+            ...rest,
+            ...(rest?.data && {
+                data: new Date(rest.data)
+            })
+        }
+    }
 }

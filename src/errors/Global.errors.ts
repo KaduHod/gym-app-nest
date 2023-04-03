@@ -8,8 +8,6 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 export default class GlobalErrorHandler implements ExceptionFilter {
     catch(exception: Error, host: ArgumentsHost) {
         this.log(exception)
-
-        
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
         if (exception instanceof UnhandledError) {
@@ -17,20 +15,21 @@ export default class GlobalErrorHandler implements ExceptionFilter {
         }
 
         if (exception instanceof NotFoundException) {
-            return response.status(404).json({
-                stack: exception.stack,
-                message: exception.message,
-            })
+            return response.status(404).json({message:"Not Found"})
+            // .json({
+            //     stack: exception.stack,
+            //     message: exception.message,
+            // })
         }
-
+        
         if (exception instanceof BadRequestException) {           
             return response.status(400).json(exception.getResponse())
         }
-
-        if(exception.constructor.name === "PrismaClientKnownRequestError") {
+        
+        if(exception instanceof PrismaClientKnownRequestError || exception.constructor.name === "PrismaClientKnownRequestError") {
             let error = exception as PrismaClientKnownRequestError
             return response.status(400).json({
-                error: error.meta.target,
+                error: error.meta.cause,
             })
         }
        
