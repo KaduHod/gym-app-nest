@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import UpdateUserService  from './services/updateUser.service';
 import UserController  from './user.controller';
@@ -9,6 +9,7 @@ import RegisterBasicAnthropometryService from './services/anthropometry/Register
 import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasic.service';
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
+import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
 @Module({
     imports:[
         ConfigModule, 
@@ -39,4 +40,12 @@ import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
         PrismaService
     ]
 })
-export class UserModule {}
+export class UserModule {
+    configure(consumer:MiddlewareConsumer){
+        consumer.apply(NotEmptyBodyMiddleware).forRoutes(
+          {path:"/user/*", method: RequestMethod.POST},
+          {path:"/user/*", method: RequestMethod.PUT},
+          {path:"/user/*", method: RequestMethod.PATCH}
+        )
+    }
+}
