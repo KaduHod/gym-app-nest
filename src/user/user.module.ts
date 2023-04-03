@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import UpdateUserService  from './services/updateUser.service';
 import UserController  from './user.controller';
@@ -24,7 +24,7 @@ import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
         UserDto.CreateUser,
         UserDto.QueryUser,
         UserDto.AttachAluno,
-        UserDto.CreateBasicBasicAnthropometry,
+        UserDto.CreateBasicAnthropometry,
         UpdateBasicAnthropometryService,
         RegisterDobrasService,
         UpdateDobrasService,

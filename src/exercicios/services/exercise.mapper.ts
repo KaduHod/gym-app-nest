@@ -1,4 +1,4 @@
-import { Exercicio, ExerciseToMusclePortion, exercise_muscle_portions_role, MusclePortion } from "@prisma/client";
+import { Exercicio, ExerciseToMusclePortion, MusclePortion } from "@prisma/client";
 
 export default class ExerciseMapper {
     static mapPortions(

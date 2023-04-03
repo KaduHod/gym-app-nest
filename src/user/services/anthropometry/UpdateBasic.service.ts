@@ -8,8 +8,8 @@ export default class UpdateBasicAnthropometryService {
         private PrismaService: PrismaService
     ){}
 
-    async main(args: UserDto.UpdateBasicBasicAnthropometry) {
-        const data = UserDto.UpdateBasicBasicAnthropometry.toPrismaUpdateInput(args)
+    async main(args: UserDto.UpdateBasicAnthropometry) {
+        const data = UserDto.UpdateBasicAnthropometry.toPrismaUpdateInput(args)
         return await this.PrismaService.medidas.update({
             data,
             where: {

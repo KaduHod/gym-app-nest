@@ -157,7 +157,7 @@ export class AttachAluno {
 }
 
 @Injectable()
-export class CreateBasicBasicAnthropometry implements Omit<Medidas, OmitTable> {
+export class CreateBasicAnthropometry implements Omit<Medidas, OmitTable> {
     @IsNumber()
     @IsNotEmpty()
     userId: number 
@@ -175,7 +175,7 @@ export class CreateBasicBasicAnthropometry implements Omit<Medidas, OmitTable> {
     data: Date
 
 
-    static toPrismaCreateInput(args: CreateBasicBasicAnthropometry): Prisma.MedidasCreateInput {
+    static toPrismaCreateInput(args: CreateBasicAnthropometry): Prisma.MedidasCreateInput {
         const {userId, ...rest} = args
         return {
             ...rest,
@@ -191,7 +191,7 @@ export class CreateBasicBasicAnthropometry implements Omit<Medidas, OmitTable> {
     }
 }
 @Injectable()
-export class UpdateBasicBasicAnthropometry implements Partial<Omit<Medidas, OmitTable>> {
+export class UpdateBasicAnthropometry implements Partial<Omit<Medidas, OmitTable>> {
     @IsNumber()
     @IsNotEmpty()
     id: number 
@@ -209,7 +209,7 @@ export class UpdateBasicBasicAnthropometry implements Partial<Omit<Medidas, Omit
     data?: Date
 
 
-    static toPrismaUpdateInput(args: UpdateBasicBasicAnthropometry): Prisma.MedidasUpdateInput {
+    static toPrismaUpdateInput(args: UpdateBasicAnthropometry): Prisma.MedidasUpdateInput {
         const {id, ...rest} = args
 
         if(rest["userId"]) {

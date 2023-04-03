@@ -8,8 +8,8 @@ export default class RegisterBasicAnthropometryService {
         private PrismaService: PrismaService
     ){}
 
-    async main(args: UserDto.CreateBasicBasicAnthropometry) {
-        const data = UserDto.CreateBasicBasicAnthropometry.toPrismaCreateInput(args)
+    async main(args: UserDto.CreateBasicAnthropometry) {
+        const data = UserDto.CreateBasicAnthropometry.toPrismaCreateInput(args)
         return await this.PrismaService.medidas.create({
             data,
             select: {

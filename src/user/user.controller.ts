@@ -26,7 +26,7 @@ export default class UserController {
     }
 
     @Post("/anthropometry")
-    async setBasicAnthropometry(@Body() args: UserDto.CreateBasicBasicAnthropometry) {
+    async setBasicAnthropometry(@Body() args: UserDto.CreateBasicAnthropometry) {
         return  {
             message: "Created",
             medida: await this.RegisterBasicAnthropometryService.main(args)
@@ -34,7 +34,7 @@ export default class UserController {
     }
 
     @Put("/anthropometry")
-    async updateBasicAnthropometry(@Body() args: UserDto.UpdateBasicBasicAnthropometry) {
+    async updateBasicAnthropometry(@Body() args: UserDto.UpdateBasicAnthropometry) {
         const medida =  await this.UpdateBasicAnthropometryService.main(args)
         console.log({medida})
         return {
