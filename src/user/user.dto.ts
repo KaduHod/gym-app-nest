@@ -1,8 +1,9 @@
 import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber, IsPhoneNumber, IsDateString } from 'class-validator'
 import { Expose } from 'class-transformer'
 import { Injectable } from '@nestjs/common'
-import { Prisma, User } from '@prisma/client'
+import { DobrasCutaneas, Medidas, Prisma, User } from '@prisma/client'
 
+type OmitTable =  "id" | "createdAt" | "updatedAt"
 
 @Injectable()
 export class CreateUser implements Partial<User> {
@@ -156,7 +157,7 @@ export class AttachAluno {
 }
 
 @Injectable()
-export class CreateBasicBasicAnthropometry {
+export class CreateBasicBasicAnthropometry implements Omit<Medidas, OmitTable> {
     @IsNumber()
     @IsNotEmpty()
     userId: number 
@@ -189,8 +190,8 @@ export class CreateBasicBasicAnthropometry {
         }
     }
 }
-
-export class UpdateBasicBasicAnthropometry {
+@Injectable()
+export class UpdateBasicBasicAnthropometry implements Partial<Omit<Medidas, OmitTable>> {
     @IsNumber()
     @IsNotEmpty()
     id: number 
@@ -214,12 +215,116 @@ export class UpdateBasicBasicAnthropometry {
         if(rest["userId"]) {
             delete rest["userId"]
         }
-        
+
         return {
             ...rest,
             ...(rest?.data && {
                 data: new Date(rest.data)
             })
+        }
+    }
+}
+
+@Injectable()
+export class CreateDobras implements Partial<Omit<DobrasCutaneas, OmitTable>> {
+    @IsNumber()
+    @IsOptional()
+    triceps?: number
+
+    @IsNumber()
+    @IsOptional()
+    subscapular?: number
+
+    @IsNumber()
+    @IsOptional()
+    peito?: number
+
+    @IsNumber()
+    @IsOptional()
+    axilar?: number
+
+    @IsNumber()
+    @IsOptional()
+    abdominal?: number
+
+    @IsNumber()
+    @IsOptional()
+    supraIliaca?: number
+
+    @IsNumber()
+    @IsOptional()
+    coxa?: number
+
+    @IsNumber()
+    @IsOptional()
+    cintura?: number
+
+    @IsNumber()
+    @IsOptional()
+    quadril?: number
+
+    @IsNumber()
+    @IsNotEmpty()
+    medidaId: number
+
+    static toPrismaCreateInput(args: CreateDobras): Prisma.DobrasCutaneasCreateInput {
+        const {medidaId, ...rest} = args
+        return {
+            ...rest,
+            medida: {
+                connect: {
+                    id: medidaId
+                }
+            }
+        }
+    }
+}
+
+export class UpdateDobras implements Partial<Omit<DobrasCutaneas, OmitTable | "medidaId">> {
+    @IsNumber()
+    @IsNotEmpty()
+    id:number
+    
+    @IsNumber()
+    @IsOptional()
+    triceps?: number
+
+    @IsNumber()
+    @IsOptional()
+    subscapular?: number
+
+    @IsNumber()
+    @IsOptional()
+    peito?: number
+
+    @IsNumber()
+    @IsOptional()
+    axilar?: number
+
+    @IsNumber()
+    @IsOptional()
+    abdominal?: number
+
+    @IsNumber()
+    @IsOptional()
+    supraIliaca?: number
+
+    @IsNumber()
+    @IsOptional()
+    coxa?: number
+
+    @IsNumber()
+    @IsOptional()
+    cintura?: number
+
+    @IsNumber()
+    @IsOptional()
+    quadril?: number
+
+    static toPrismaUpdateInput(args: UpdateDobras): Prisma.DobrasCutaneasUpdateInput {
+        const {id, ...rest} = args
+        return {
+            ...args
         }
     }
 }

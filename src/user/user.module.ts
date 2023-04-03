@@ -7,6 +7,8 @@ import CreateUserService from './services/createUser.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import RegisterBasicAnthropometryService from './services/anthropometry/RegisterBasic.service';
 import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasic.service';
+import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
+import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 @Module({
     imports:[
         ConfigModule, 
@@ -24,6 +26,8 @@ import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasi
         UserDto.AttachAluno,
         UserDto.CreateBasicBasicAnthropometry,
         UpdateBasicAnthropometryService,
+        RegisterDobrasService,
+        UpdateDobrasService,
         PrismaService
     ],
     exports:[

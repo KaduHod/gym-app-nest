@@ -2,14 +2,18 @@ import { Body, Controller, Post, Put } from '@nestjs/common';
 import UpdateUserService from './services/updateUser.service';
 import RegisterBasicAnthropometryService from './services/anthropometry/RegisterBasic.service'
 import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasic.service';
+import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import * as UserDto from './user.dto';
+import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 
 @Controller('user')
 export default class UserController {
     constructor(
         private UpdateUserService: UpdateUserService,
         private RegisterBasicAnthropometryService: RegisterBasicAnthropometryService,
-        private UpdateBasicAnthropometryService: UpdateBasicAnthropometryService
+        private UpdateBasicAnthropometryService: UpdateBasicAnthropometryService,
+        private RegisterDobrasService: RegisterDobrasService,
+        private UpdateDobrasService: UpdateDobrasService
     ){}
     
     @Put('/')
@@ -36,6 +40,22 @@ export default class UserController {
         return {
             message: "Updated",
             medida
+        }
+    }
+
+    @Post("/anthropometry/skinfold")
+    async registerSkinfoldThickness(@Body() args: UserDto.CreateDobras) {
+        return {
+            message: "Created",
+            skinfold: await this.RegisterDobrasService.main(args)
+        }
+    }
+
+    @Put("/anthropometry/skinfold")
+    async updateSkinfoldThickness(@Body() args: UserDto.UpdateDobras) {
+        return {
+            message: "Updated",
+            skinfold: await this.UpdateDobrasService.main(args)
         }
     }
 }
