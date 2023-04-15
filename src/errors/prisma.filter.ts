@@ -54,10 +54,9 @@ export class PrismaExceptionFilter implements ExceptionFilter{
                 msg:'Erro ao tentar gravar no banco', 
             })
         }
-
-        const {status, ...info} = this.getMessageForCode(exception)
         console.log({exception})
-
+        const {status, ...info} = this.getMessageForCode(exception)
+        
         return response.status(status).send(info)
     }
 

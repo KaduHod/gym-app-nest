@@ -10,9 +10,12 @@ import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasi
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
+import { userProviders } from './user.provider';
+import TypeOrmModule from 'src/typeorm/typeorm.module';
 @Module({
     imports:[
         ConfigModule, 
+        TypeOrmModule
     ],
     controllers: [
         UserController
@@ -29,7 +32,8 @@ import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
         UpdateBasicAnthropometryService,
         RegisterDobrasService,
         UpdateDobrasService,
-        PrismaService
+        PrismaService,
+        ...userProviders
     ],
     exports:[
         UserDto.UpdateUser, 

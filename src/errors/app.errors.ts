@@ -1,6 +1,4 @@
-import { PersonalE } from "src/domain/entitys"
 import { errorFormated } from "src/utils/validator.helper"
-
 
 export class PersonalAlreadyRegistered extends Error {
     public message: string

@@ -1,10 +1,13 @@
-import { Body, Controller, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Put } from '@nestjs/common';
 import UpdateUserService from './services/updateUser.service';
 import RegisterBasicAnthropometryService from './services/anthropometry/RegisterBasic.service'
 import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasic.service';
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import * as UserDto from './user.dto';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
+import { Repository } from 'typeorm';
+import User from 'src/domain/user.entity';
+
 
 @Controller('user')
 export default class UserController {
@@ -13,7 +16,9 @@ export default class UserController {
         private RegisterBasicAnthropometryService: RegisterBasicAnthropometryService,
         private UpdateBasicAnthropometryService: UpdateBasicAnthropometryService,
         private RegisterDobrasService: RegisterDobrasService,
-        private UpdateDobrasService: UpdateDobrasService
+        private UpdateDobrasService: UpdateDobrasService,
+        @Inject("USER_REPOSITORY")
+        private userRepository: Repository<User>
     ){}
     
     @Put('/')
@@ -57,5 +62,20 @@ export default class UserController {
             message: "Updated",
             skinfold: await this.UpdateDobrasService.main(args)
         }
+    }
+
+    @Post("/teste")
+    async teste(@Body() args: any) {
+        const user = new User()
+        user.name = args.name
+        user.nickname = args.nickname
+        user.email = args.email
+        user.password = args.password
+        user.cellphone = args.cellphone
+        user.createdAt = args.createdAt
+        user.updatedAt = args.updatedAt
+        user.birthday = args.birthday
+        // return user
+        return await this.userRepository.save(args)
     }
 }

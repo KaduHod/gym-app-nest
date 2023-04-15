@@ -6,7 +6,6 @@ import { ConfigModule } from '@nestjs/config';
 import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
 import MusclesModule from './muscles/muscle.module';
 import ErrorModule from './errors/error.module';
-import DomainModule from './domain/domain.module';
 import ExerciseModule from './exercicios/exercise.module';
 import PersonalModule from './personal/personal.module';
 import AlunoModule from './aluno/aluno.module';
@@ -18,7 +17,6 @@ import MedidaModule from './medidas/medida.module';
     UserModule, 
     AlunoModule,
     ErrorModule,
-    DomainModule,
     MusclesModule,
     ExerciseModule,
     PersonalModule,

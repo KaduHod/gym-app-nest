@@ -1,54 +1,61 @@
-import { IsNumber, Length, IsNotEmpty, IsString, IsEmail, IsOptional, IsPhoneNumber, validate } from 'class-validator'
-import { Expose } from 'class-transformer'
-import Model, { Mapped } from "./Entity";
-import { PrismaClient, User } from '@prisma/client';
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from 'typeorm'
+import * as crypt from 'bcrypt'
 
-export default class UserModel extends Model implements User  {
-    @IsNumber()
-    public id:number
+export type userT = {
+    id:number
+    name:string
+    nickname:string
+    email:string
+    password:string
+    cellphone?:number
+    createdAt:Date
+    updatedAt?:Date
+    birthday:Date
+}
 
-    @Length(5, 100)
-    @IsNotEmpty()
-    @IsString()
-    @Expose()
+@Entity({name: "users"})
+export default class User {
+    @PrimaryColumn()
+    public id:number;
+
+    @Column({ length: 55 })
     public name: string
 
-    @Length(5, 20)
-    @IsNotEmpty()
-    @IsString()
-    @Expose()
-    public nickname: string
+    @Column({ length: 55 })
+    public nickname:string
 
-    @Length(8, 20)
-    @IsNotEmpty()
-    @IsString()
-    @Expose()
-    public password: string
+    @Column()
+    public email:string
 
-    @IsEmail()
-    @IsNotEmpty()
-    @IsString()
-    @Expose()
-    public email: string
+    @Column({ length: 255 })
+    public password:string
 
-    @IsOptional()
-    @IsString()
-    @Expose()
-    @IsPhoneNumber("BR")
-    public cellphone: string
+    @Column('int')
+    public cellphone:number
 
-    public createdAt: Date;
-    public updatedAt: Date;
-     
-    constructor(args:User){
-        super()
-        this.id = args.id
-        this.name = args.name
-        this.nickname = args.nickname
-        this.email = args.email
-        this.password = args.password
-        this.cellphone = args.cellphone
-    } 
-    birthday: Date;
-    
+    @Column({ type: 'date', default: () => 'CURRENT_DATE' })
+    public createdAt:Date
+
+    @Column({ type: 'date'})
+    public updatedAt:Date
+
+    @Column({ type: 'date'})
+    public birthday:Date
+
+    // constructor(props:userT) {
+        // this.name = props.name
+        // this.nickname = props.nickname
+        // this.email = props.email
+        // this.password = props.password
+        // this.cellphone = props.cellphone
+        // this.createdAt = props.createdAt
+        // this.updatedAt = props.updatedAt
+        // this.birthday = props.birthday
+        // this.hashPassword(this.password)
+    // }
+
+    private hashPassword(pass: string) {
+        const salt = crypt.genSaltSync(10);
+        this.password = crypt.hashSync(pass, salt) as string;
+    }
 }

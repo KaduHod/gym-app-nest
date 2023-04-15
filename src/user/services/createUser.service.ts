@@ -1,14 +1,17 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { User } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
 import { permission } from "src/utils/enums";
+import { Repository } from "typeorm";
 import * as UserDto from '../user.dto'
 
 @Injectable()
 export default class CreateUserService {
     private user: User
     constructor(
-        private PrismaService: PrismaService
+        private PrismaService: PrismaService,
+        @Inject("USER_REPOSITORY")
+        private userRepository: Repository<User>
     ) {}
 
     async main(userArgs: UserDto.CreateUser) {
@@ -18,7 +21,8 @@ export default class CreateUserService {
 
     async createuser(args: UserDto.CreateUser): Promise<this> {
         const data = UserDto.CreateUser.toPrismaCreateInput(args)
-        this.user = await this.PrismaService.user.create({ data })
+        // this.user = await this.PrismaService.user.create({ data })
+        this.user = await this.userRepository.create(args)
         return this
     }
 
