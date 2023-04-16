@@ -5,6 +5,8 @@ import { Personal } from "src/domain/Personais";
 import { Medidas } from "src/domain/Medidas";
 import { Circunferencias } from "src/domain/Circunferencias";
 import { Dobrascutaneas } from "src/domain/Dobrascutaneas";
+import { Permissions } from "src/domain/Permissions";
+import { UsersPermission } from "src/domain/UsersPermission";
 
 
 export const databaseProviders = [
@@ -20,7 +22,13 @@ export const databaseProviders = [
                 password: process.env.DATABASE_PWD,
                 database: process.env.GYM_DATABASE_NAME,
                 entities: [
-                    User, Personal, Medidas, Circunferencias, Dobrascutaneas
+                    User, 
+                    Personal, 
+                    Medidas, 
+                    Circunferencias, 
+                    Dobrascutaneas,
+                    Permissions,
+                    UsersPermission
                 ],
                 synchronize: true,
             })
