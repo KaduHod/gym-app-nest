@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { AlunoAlreadyBelongsToPersonal, AlunoNotFound, PersonalNotFound } from "src/errors/app.errors";
 import { PrismaService } from "src/prisma/prisma.service";
+import {InjectRepository} from '@nestjs/typeorm'
 
 @Injectable()
 export default class AttachAlunoService {

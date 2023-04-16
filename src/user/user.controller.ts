@@ -7,6 +7,7 @@ import * as UserDto from './user.dto';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import { Repository } from 'typeorm';
 import { User } from 'src/domain/Users.entity';
+import {InjectRepository} from '@nestjs/typeorm'
 
 
 
@@ -18,7 +19,7 @@ export default class UserController {
         private UpdateBasicAnthropometryService: UpdateBasicAnthropometryService,
         private RegisterDobrasService: RegisterDobrasService,
         private UpdateDobrasService: UpdateDobrasService,
-        @Inject("USER_REPOSITORY")
+        @InjectRepository(User)
         private userRepository: Repository<User>
     ){}
     

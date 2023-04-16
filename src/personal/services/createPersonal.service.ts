@@ -5,6 +5,7 @@ import { PrismaService } from "src/prisma/prisma.service";
 import CreateUserService from "src/user/services/createUser.service";
 import { permission } from "src/utils/enums";
 import { Repository } from "typeorm";
+import {InjectRepository} from '@nestjs/typeorm'
 
 @Injectable()
 export default class CreatePersonalService {
@@ -12,8 +13,7 @@ export default class CreatePersonalService {
     private personal: any
     constructor(
         private CreateUserService: CreateUserService,
-        private PrismaService: PrismaService,
-        @Inject("PERSONAL_REPOSITORY")
+        @InjectRepository(Personal)
         private personalRepository: Repository<Personal>
     ){}
 

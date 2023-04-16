@@ -5,23 +5,19 @@ import CreateAlunoService from "./services/createAluno.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { DataSource } from "typeorm";
 import { Aluno } from "src/domain/Alunos.entity";
-import TypeOrmModule from "src/typeorm/typeorm.module";
+import {TypeOrmModule} from "@nestjs/typeorm"
+
 
 @Module({
     imports:[ 
         UserModule,
-        TypeOrmModule
+        TypeOrmModule.forFeature([Aluno])
     ],
     controllers:[AlunoController],
     providers:[
         CreateAlunoService,
         PrismaService,
-        {
-            provide:"ALUNO_REPOSITORY",
-            useFactory: (dataSource: DataSource) => dataSource.getRepository(Aluno),
-            inject: ['DATA_SOURCE'],
-        }
     ],
-    exports:[]
+    exports:[TypeOrmModule]
 })
 export default class AlunoModule {}

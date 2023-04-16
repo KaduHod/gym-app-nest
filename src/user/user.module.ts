@@ -10,14 +10,13 @@ import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasi
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
-import TypeOrmModule from 'src/typeorm/typeorm.module';
-import { DataSource } from 'typeorm';
 import { UsersPermission } from 'src/domain/UsersPermission.entity';
 import { User } from 'src/domain/Users.entity';
+import {TypeOrmModule} from '@nestjs/typeorm'
 @Module({
     imports:[
         ConfigModule, 
-        TypeOrmModule
+        TypeOrmModule.forFeature([User, UsersPermission])
     ],
     controllers: [
         UserController
@@ -26,30 +25,13 @@ import { User } from 'src/domain/Users.entity';
         UpdateUserService,
         CreateUserService,
         RegisterBasicAnthropometryService,
-        UserDto.UpdateUser,
-        UserDto.CreateUser,
-        UserDto.QueryUser,
-        UserDto.AttachAluno,
         UserDto.CreateBasicAnthropometry,
         UpdateBasicAnthropometryService,
         RegisterDobrasService,
         UpdateDobrasService,
         PrismaService,
-        {
-            provide: 'USER_REPOSITORY',
-            useFactory: (dataSource: DataSource) => dataSource.getRepository(User),
-            inject: ['DATA_SOURCE'],
-        },
-        {
-            provide: 'USERS_PERMISSION_REPOSIOTRY',
-            useFactory: (dataSource: DataSource) => dataSource.getRepository(UsersPermission),
-            inject: ['DATA_SOURCE'],
-        },
     ],
     exports:[
-        UserDto.UpdateUser, 
-        UserDto.CreateUser, 
-        UserDto.AttachAluno,
         CreateUserService,
         UpdateUserService,
         PrismaService
