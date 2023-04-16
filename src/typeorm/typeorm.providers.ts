@@ -7,6 +7,7 @@ import { Circunferencias } from "src/domain/Circunferencias";
 import { Dobrascutaneas } from "src/domain/Dobrascutaneas";
 import { Permissions } from "src/domain/Permissions";
 import { UsersPermission } from "src/domain/UsersPermission";
+import { Aluno } from "src/domain/Alunos";
 
 
 export const databaseProviders = [
@@ -24,6 +25,7 @@ export const databaseProviders = [
                 entities: [
                     User, 
                     Personal, 
+                    Aluno,
                     Medidas, 
                     Circunferencias, 
                     Dobrascutaneas,
