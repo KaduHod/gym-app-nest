@@ -1,6 +1,11 @@
 import { DataSource } from "typeorm";
 import * as dotenv from 'dotenv'
-import User from "src/domain/user.entity";
+import { User } from "src/domain/Users";
+import { Personal } from "src/domain/Personais";
+import { Medidas } from "src/domain/Medidas";
+import { Circunferencias } from "src/domain/Circunferencias";
+import { Dobrascutaneas } from "src/domain/Dobrascutaneas";
+
 
 export const databaseProviders = [
     {
@@ -15,7 +20,7 @@ export const databaseProviders = [
                 password: process.env.DATABASE_PWD,
                 database: process.env.GYM_DATABASE_NAME,
                 entities: [
-                    User,
+                    User, Personal, Medidas, Circunferencias, Dobrascutaneas
                 ],
                 synchronize: true,
             })

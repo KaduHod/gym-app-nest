@@ -6,7 +6,8 @@ import RegisterDobrasService from './services/anthropometry/RegisterDobras.servi
 import * as UserDto from './user.dto';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import { Repository } from 'typeorm';
-import User from 'src/domain/user.entity';
+import { User } from 'src/domain/Users';
+
 
 
 @Controller('user')
@@ -75,7 +76,7 @@ export default class UserController {
         user.createdAt = args.createdAt
         user.updatedAt = args.updatedAt
         user.birthday = args.birthday
-        // return user
-        return await this.userRepository.save(args)
+        await this.userRepository.save(user)
+        return user
     }
 }
