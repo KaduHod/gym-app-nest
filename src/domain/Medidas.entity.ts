@@ -7,9 +7,9 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Circunferencias } from "./Circunferencias";
-import { Dobrascutaneas } from "./Dobrascutaneas";
-import { User } from "./Users";
+import { Circunferencias } from "./Circunferencias.entity";
+import { Dobrascutaneas } from "./Dobrascutaneas.entity";
+import { User } from "./Users.entity";
 
 @Index("Medidas_userId_fkey", ["userId"], {})
 @Entity("medidas", { schema: "gymapp2" })

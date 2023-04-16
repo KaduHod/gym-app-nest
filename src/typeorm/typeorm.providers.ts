@@ -1,13 +1,6 @@
 import { DataSource } from "typeorm";
 import * as dotenv from 'dotenv'
-import { User } from "src/domain/Users";
-import { Personal } from "src/domain/Personais";
-import { Medidas } from "src/domain/Medidas";
-import { Circunferencias } from "src/domain/Circunferencias";
-import { Dobrascutaneas } from "src/domain/Dobrascutaneas";
-import { Permissions } from "src/domain/Permissions";
-import { UsersPermission } from "src/domain/UsersPermission";
-import { Aluno } from "src/domain/Alunos";
+import { join } from "path";
 
 
 export const databaseProviders = [
@@ -23,20 +16,12 @@ export const databaseProviders = [
                 password: process.env.DATABASE_PWD,
                 database: process.env.GYM_DATABASE_NAME,
                 entities: [
-                    User, 
-                    Personal, 
-                    Aluno,
-                    Medidas, 
-                    Circunferencias, 
-                    Dobrascutaneas,
-                    Permissions,
-                    UsersPermission
+                    join(__dirname, '/../**/**.entity{.ts,.js}')
                 ],
-                synchronize: true,
+                migrations:[],
+                synchronize: false,
             })
-
-
             return source.initialize()
         }
-    }
+    },
 ]

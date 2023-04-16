@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ExerciseMusclePortion } from "./ExerciseMusclePortion";
+import { ExerciseMusclePortion } from "./ExerciseMusclePortion.entity";
 
 @Entity("exercicios", { schema: "gymapp2" })
 export class Exercicio {

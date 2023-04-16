@@ -7,9 +7,9 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Articulationtomuscleportion } from "./Articulationtomuscleportion";
-import { ExerciseMusclePortion } from "./ExerciseMusclePortion";
-import { MuscleGroup } from "./MuscleGroup";
+import { Articulationtomuscleportion } from "./Articulationtomuscleportion.entity";
+import { ExerciseMusclePortion } from "./ExerciseMusclePortion.entity";
+import { MuscleGroup } from "./MuscleGroup.entity";
 
 @Index("muscle_portion_muscleGRoup", ["muscleGroupId"], {})
 @Entity("muscle_portion", { schema: "gymapp2" })

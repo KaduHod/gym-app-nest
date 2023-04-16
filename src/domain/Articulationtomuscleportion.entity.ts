@@ -1,11 +1,13 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
-import { Articulation } from "./Articulations";
-import { MusclePortion } from "./MusclePortion";
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Articulation } from "./Articulations.entity";
+import { MusclePortion } from "./MusclePortion.entity";
 
 @Index("_ArticulationToMusclePortion_AB_unique", ["a", "b"], { unique: true })
 @Index("_ArticulationToMusclePortion_B_index", ["b"], {})
 @Entity("_articulationtomuscleportion", { schema: "gymapp2" })
 export class Articulationtomuscleportion {
+  @PrimaryColumn({ type: 'int', generated: 'increment' }) // define a dummy primary column
+  id: number;
   @Column("int", { name: "A", unsigned: true })
   a: number;
 

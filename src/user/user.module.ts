@@ -10,8 +10,10 @@ import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasi
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
-import { userProviders } from './user.provider';
 import TypeOrmModule from 'src/typeorm/typeorm.module';
+import { DataSource } from 'typeorm';
+import { UsersPermission } from 'src/domain/UsersPermission.entity';
+import { User } from 'src/domain/Users.entity';
 @Module({
     imports:[
         ConfigModule, 
@@ -33,7 +35,16 @@ import TypeOrmModule from 'src/typeorm/typeorm.module';
         RegisterDobrasService,
         UpdateDobrasService,
         PrismaService,
-        ...userProviders
+        {
+            provide: 'USER_REPOSITORY',
+            useFactory: (dataSource: DataSource) => dataSource.getRepository(User),
+            inject: ['DATA_SOURCE'],
+        },
+        {
+            provide: 'USERS_PERMISSION_REPOSIOTRY',
+            useFactory: (dataSource: DataSource) => dataSource.getRepository(UsersPermission),
+            inject: ['DATA_SOURCE'],
+        },
     ],
     exports:[
         UserDto.UpdateUser, 

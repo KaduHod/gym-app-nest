@@ -6,8 +6,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Exercicio } from "./Exercicios";
-import { MusclePortion } from "./MusclePortion";
+import { Exercicio } from "./Exercicios.entity";
+import { MusclePortion } from "./MusclePortion.entity";
 
 @Index("exercise_muscle_portion_exercise_id_fkey", ["exerciseId"], {})
 @Index(

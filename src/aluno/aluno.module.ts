@@ -4,7 +4,7 @@ import AlunoController from "./aluno.controller";
 import CreateAlunoService from "./services/createAluno.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { DataSource } from "typeorm";
-import { Aluno } from "src/domain/Alunos";
+import { Aluno } from "src/domain/Alunos.entity";
 import TypeOrmModule from "src/typeorm/typeorm.module";
 
 @Module({

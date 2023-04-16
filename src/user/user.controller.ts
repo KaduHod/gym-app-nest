@@ -6,7 +6,7 @@ import RegisterDobrasService from './services/anthropometry/RegisterDobras.servi
 import * as UserDto from './user.dto';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import { Repository } from 'typeorm';
-import { User } from 'src/domain/Users';
+import { User } from 'src/domain/Users.entity';
 
 
 

@@ -1,8 +1,9 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Articulationtomovements } from "./Articulationtomovements";
+import { Articulationtomovements } from "./Articulationtomovements.entity";
+import { Articulationtomuscleportion } from "./Articulationtomuscleportion.entity";
 
-@Entity("movements", { schema: "gymapp2" })
-export class Movements {
+@Entity("articulations", { schema: "gymapp2" })
+export class Articulation {
   @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
   id: number;
 
@@ -21,7 +22,13 @@ export class Movements {
 
   @OneToMany(
     () => Articulationtomovements,
-    (articulationtomovements) => articulationtomovements.b2
+    (articulationtomovements) => articulationtomovements.a2
   )
   articulationtomovements: Articulationtomovements[];
+
+  @OneToMany(
+    () => Articulationtomuscleportion,
+    (articulationtomuscleportion) => articulationtomuscleportion.a2
+  )
+  articulationtomuscleportions: Articulationtomuscleportion[];
 }

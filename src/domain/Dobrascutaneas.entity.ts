@@ -6,7 +6,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Medidas } from "./Medidas";
+import { Medidas } from "./Medidas.entity";
 
 @Index("DobrasCutaneas_medidaId_key", ["medidaId"], { unique: true })
 @Entity("dobrascutaneas", { schema: "gymapp2" })

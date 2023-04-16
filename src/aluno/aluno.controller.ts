@@ -16,6 +16,7 @@ export default class AlunoController {
     @Header('Content-Type', 'application/json')
     async create(@Body() args: UserDto.CreateUser) {
         const aluno = await this.CreateAlunoService.main(args as User);
+        console.log(__dirname + "../domain/**.ts")
         return {
             message:"created", 
             aluno

@@ -1,11 +1,14 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
-import { Articulation } from "./Articulations";
-import { Movements } from "./Movements";
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Articulation } from "./Articulations.entity";
+import { Movements } from "./Movements.entity";
 
 @Index("_ArticulationToMovements_AB_unique", ["a", "b"], { unique: true })
 @Index("_ArticulationToMovements_B_index", ["b"], {})
 @Entity("_articulationtomovements", { schema: "gymapp2" })
 export class Articulationtomovements {
+  @PrimaryColumn({ type: 'int', generated: 'increment' }) // define a dummy primary column
+  id: number;
+  
   @Column("int", { name: "A", unsigned: true })
   a: number;
 

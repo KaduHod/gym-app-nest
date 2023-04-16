@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Medidas } from "./Medidas";
+import { Medidas } from "./Medidas.entity";
 
 @Entity("users", { schema: "gymapp2" })
 export class User {
