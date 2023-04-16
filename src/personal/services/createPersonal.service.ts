@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { User } from "@prisma/client";
-import { Personal } from "src/domain/Personais.entity";
+import { Personal } from "src/entitys/Personais.entity";
 import { PrismaService } from "src/prisma/prisma.service";
 import CreateUserService from "src/user/services/createUser.service";
 import { permission } from "src/utils/enums";

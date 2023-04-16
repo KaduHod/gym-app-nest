@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { User } from "@prisma/client";
-import { Aluno } from "src/domain/Alunos.entity";
+import { Aluno } from "src/entitys/Alunos.entity";
 import { PrismaService } from "src/prisma/prisma.service";
 import CreateUserService from "src/user/services/createUser.service";
 import { permission } from "src/utils/enums";

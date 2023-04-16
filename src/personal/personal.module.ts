@@ -5,7 +5,7 @@ import { UserModule } from 'src/user/user.module';
 import AttachAlunoService from './services/attachAluno.service';
 import { personalProviders } from './personal.providers';
 import {TypeOrmModule} from "@nestjs/typeorm"
-import { Personal } from 'src/domain/Personais.entity';
+import { Personal } from 'src/entitys/Personais.entity';
 
 @Module({
     imports:[

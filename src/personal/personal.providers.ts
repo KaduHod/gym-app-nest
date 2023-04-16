@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
-import { User } from '../domain/Users.entity';
-import { Permissions } from 'src/domain/Permissions.entity';
-import { Personal } from 'src/domain/Personais.entity';
+import { User } from '../entitys/Users.entity';
+import { Permissions } from 'src/entitys/Permissions.entity';
+import { Personal } from 'src/entitys/Personais.entity';
 
 
 export const personalProviders = [

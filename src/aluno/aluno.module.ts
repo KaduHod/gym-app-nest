@@ -4,7 +4,7 @@ import AlunoController from "./aluno.controller";
 import CreateAlunoService from "./services/createAluno.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { DataSource } from "typeorm";
-import { Aluno } from "src/domain/Alunos.entity";
+import { Aluno } from "src/entitys/Alunos.entity";
 import {TypeOrmModule} from "@nestjs/typeorm"
 
 

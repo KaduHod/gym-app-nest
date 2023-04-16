@@ -10,8 +10,8 @@ import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasi
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
-import { UsersPermission } from 'src/domain/UsersPermission.entity';
-import { User } from 'src/domain/Users.entity';
+import { UsersPermission } from 'src/entitys/UsersPermission.entity';
+import { User } from 'src/entitys/Users.entity';
 import {TypeOrmModule} from '@nestjs/typeorm'
 @Module({
     imports:[

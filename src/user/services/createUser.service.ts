@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { User } from "src/domain/Users.entity";
-import { Permissions } from "src/domain/Permissions.entity";
-import { UsersPermission } from "src/domain/UsersPermission.entity";
+import { User } from "src/entitys/Users.entity";
+import { Permissions } from "src/entitys/Permissions.entity";
+import { UsersPermission } from "src/entitys/UsersPermission.entity";
 import { PrismaService } from "src/prisma/prisma.service";
 import { Repository } from "typeorm";
 import { permission } from "src/utils/enums";
