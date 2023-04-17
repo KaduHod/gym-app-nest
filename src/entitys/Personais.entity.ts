@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Aluno } from "./Alunos.entity";
 
 @Entity("personais", { schema: "gymapp2" })
 export class Personal {
@@ -7,4 +8,7 @@ export class Personal {
 
   @Column("int", { name: "user_id", nullable: true })
   userId: number | null;
+
+  @OneToMany(() => Aluno, (aluno) => aluno.personal)
+  alunos:Aluno[]
 }

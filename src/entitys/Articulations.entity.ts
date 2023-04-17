@@ -1,5 +1,4 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Articulationtomovements } from "./Articulationtomovements.entity";
 import { Articulationtomuscleportion } from "./Articulationtomuscleportion.entity";
 
 @Entity("articulations", { schema: "gymapp2" })
@@ -20,11 +19,6 @@ export class Articulation {
   @Column("datetime", { name: "updatedAt", nullable: true })
   updatedAt: Date | null;
 
-  @OneToMany(
-    () => Articulationtomovements,
-    (articulationtomovements) => articulationtomovements.a2
-  )
-  articulationtomovements: Articulationtomovements[];
 
   @OneToMany(
     () => Articulationtomuscleportion,

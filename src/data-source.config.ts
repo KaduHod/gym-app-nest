@@ -1,4 +1,10 @@
 import { DataSource, DataSourceOptions } from 'typeorm'
+import { Aluno } from './entitys/Alunos.entity';
+import { Circunferencias } from './entitys/Circunferencias.entity';
+import { Dobrascutaneas } from './entitys/Dobrascutaneas.entity';
+import { Medidas } from './entitys/Medidas.entity';
+import { Personal } from './entitys/Personais.entity';
+import { User } from './entitys/Users.entity';
 
 export const config: DataSourceOptions = {
     type: 'mysql',

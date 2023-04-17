@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Personal } from "./Personais.entity";
 
 @Entity("alunos", { schema: "gymapp2" })
 export class Aluno {
@@ -7,4 +8,11 @@ export class Aluno {
 
   @Column("int", { name: "user_id", nullable: false })
   userId: number | null;
+
+
+  personalId?: number
+
+  @ManyToOne(() => Personal, (personal) => personal.alunos)
+  @JoinColumn({ name: "personal_id" })
+  personal?:Personal
 }

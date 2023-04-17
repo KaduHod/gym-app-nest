@@ -36,8 +36,6 @@ export default class CreateUserService {
         if(!this.user){
             throw new Error("Must create user before set permission!")
         }
-    
-        console.log(this.user)
         await this.userPermissionRepository.save({
             permissionId: permission,
             userId: this.user.id

@@ -43,7 +43,7 @@ export class PersonalController {
     @HttpCode(200)
     @Header('Content-Type', 'application/json')
     async attachAluno(@Body() args: UserDto.AttachAluno) {
-        await this.AttachAlunoService.main(args.aluno_id, args.personal_id)
+        await this.AttachAlunoService.main(args)
         return {
             message: 'attached',
         }

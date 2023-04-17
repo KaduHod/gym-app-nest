@@ -1,4 +1,4 @@
-import { Column, Entity, Index } from "typeorm";
+import { Column, Entity, Index, JoinColumn } from "typeorm";
 
 @Index("IDX_c58e29c10f3cbafe54bba1a79d", ["userId"], {})
 @Entity("users_permission", { schema: "gymapp2" })
