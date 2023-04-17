@@ -7,7 +7,7 @@ services:
     container_name: gym-nest
     hostname: gym-nest
     ports:
-      - 3000:3000
+      - ${APP_PORT}:3000
     working_dir: /usr/src/app
     volumes: 
       - ./:/usr/src/app    
@@ -25,7 +25,7 @@ services:
     container_name: gym-db
     hostname: gym-db
     ports:
-      - 3307:3306
+      - ${DATABASE_PORT}:${DATABASE_PORT}
     environment:
       MYSQL_ROOT_PASSWORD: ${DATABASE_PWD}
       MYSQL_DATABASE: ${GYM_DATABASE_NAME}
