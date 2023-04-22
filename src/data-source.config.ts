@@ -1,10 +1,4 @@
 import { DataSource, DataSourceOptions } from 'typeorm'
-import { Aluno } from './entitys/Alunos.entity';
-import { Circunferencias } from './entitys/Circunferencias.entity';
-import { Dobrascutaneas } from './entitys/Dobrascutaneas.entity';
-import { Medidas } from './entitys/Medidas.entity';
-import { Personal } from './entitys/Personais.entity';
-import { User } from './entitys/Users.entity';
 import * as env from 'dotenv'
 env.config()
 
@@ -15,9 +9,9 @@ export const config: DataSourceOptions = {
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PWD,
     database: process.env.GYM_DATABASE_NAME,
-    migrationsRun: true,
+    migrationsRun: false,
     synchronize: false,
-    migrations: ['dist/database/migrations/*.js'],
+    migrations: [__dirname + '\\database\\migrations\\**\\*.js'],
     entities: ['dist/**/*.entity.js'],
 } 
 

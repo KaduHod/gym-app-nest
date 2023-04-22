@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber, IsPhoneNumber, IsDateString } from 'class-validator'
+import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber, IsPhoneNumber, IsDateString, IsNumberString } from 'class-validator'
 import { Expose } from 'class-transformer'
 import { Injectable } from '@nestjs/common'
 import { DobrasCutaneas, Medidas, Prisma, User } from '@prisma/client'
@@ -327,4 +327,10 @@ export class UpdateDobras implements Partial<Omit<DobrasCutaneas, OmitTable | "m
             ...args
         }
     }
+}
+
+export class GetUser {
+    @IsNotEmpty()
+    @IsNumberString()
+    id:number |  string
 }

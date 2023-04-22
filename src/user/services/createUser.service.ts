@@ -1,7 +1,6 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { User } from "src/entitys/Users.entity";
 import { Permissions } from "src/entitys/Permissions.entity";
-import { UsersPermission } from "src/entitys/UsersPermission.entity";
 import { PrismaService } from "src/prisma/prisma.service";
 import { Repository } from "typeorm";
 import { permission } from "src/utils/enums";
@@ -14,8 +13,8 @@ export default class CreateUserService {
     constructor(
         @InjectRepository(User)
         private userRepository: Repository<User>,
-        @InjectRepository(UsersPermission)
-        private userPermissionRepository: Repository<UsersPermission>,
+        @InjectRepository(Permissions)
+        private permissionRepository: Repository<Permissions>,
     ) {}
 
     async main(userArgs: UserDto.CreateUser) {
@@ -36,9 +35,15 @@ export default class CreateUserService {
         if(!this.user){
             throw new Error("Must create user before set permission!")
         }
-        await this.userPermissionRepository.save({
-            permissionId: permission,
-            userId: this.user.id
+        const targetPremission = await this.permissionRepository.findOne({
+            where: {id: permission}
         })
+
+        if(!permission) {
+            throw new NotFoundException(`Permission ${permission} does not exist!`)
+        };
+        
+        this.user.permissions = [targetPremission]
+        await this.userRepository.save(this.user)
     }
 }

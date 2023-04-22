@@ -10,13 +10,14 @@ import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasi
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
-import { UsersPermission } from 'src/entitys/UsersPermission.entity';
 import { User } from 'src/entitys/Users.entity';
 import {TypeOrmModule} from '@nestjs/typeorm'
+import GetUserService from './services/getUser.service';
+import { Permissions } from 'src/entitys/Permissions.entity';
 @Module({
     imports:[
         ConfigModule, 
-        TypeOrmModule.forFeature([User, UsersPermission])
+        TypeOrmModule.forFeature([User, Permissions])
     ],
     controllers: [
         UserController
@@ -30,6 +31,7 @@ import {TypeOrmModule} from '@nestjs/typeorm'
         RegisterDobrasService,
         UpdateDobrasService,
         PrismaService,
+        GetUserService
     ],
     exports:[
         CreateUserService,

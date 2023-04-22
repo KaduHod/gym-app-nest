@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post, Put } from '@nestjs/common';
 import UpdateUserService from './services/updateUser.service';
 import RegisterBasicAnthropometryService from './services/anthropometry/RegisterBasic.service'
 import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasic.service';
@@ -8,6 +8,7 @@ import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
 import { Repository } from 'typeorm';
 import { User } from 'src/entitys/Users.entity';
 import {InjectRepository} from '@nestjs/typeorm'
+import GetUserService from './services/getUser.service';
 
 
 
@@ -20,8 +21,14 @@ export default class UserController {
         private RegisterDobrasService: RegisterDobrasService,
         private UpdateDobrasService: UpdateDobrasService,
         @InjectRepository(User)
-        private userRepository: Repository<User>
+        private userRepository: Repository<User>,
+        private getUserService: GetUserService
     ){}
+
+    @Get(":id")
+    async GetUser(@Param("") args:UserDto.GetUser) {
+        return await this.getUserService.main(args)
+    }
     
     @Put('/')
     async update(@Body() args: UserDto.UpdateUser) {

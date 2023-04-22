@@ -1,5 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, JoinTableOptions, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Medidas } from "./Medidas.entity";
+import { Permissions } from "./Permissions.entity";
 
 @Entity("users", { schema: "gymapp2" })
 export class User {
@@ -36,4 +37,16 @@ export class User {
 
   @OneToMany(() => Medidas, (medidas) => medidas.user)
   medidas: Medidas[];
+
+  @ManyToMany(() => Permissions, _ => _.users)
+  @JoinTable({
+    name: "users_permission",
+    joinColumn: {
+      name:"user_id", referencedColumnName:"id"
+    },
+    inverseJoinColumn: {
+      name:"permission_id", referencedColumnName:"id"
+    }
+  })
+  permissions: Permissions[]
 }
