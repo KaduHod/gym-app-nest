@@ -15,7 +15,8 @@ export default class GetUserService {
             take:1,
             where: {id: Number(id)},
             relations: {
-                permissions: true
+                permissions: true,
+                medidas:true
             }
         }) 
         return user
