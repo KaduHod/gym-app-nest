@@ -1,30 +1,30 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Medidas } from "src/entitys/Medidas.entity";
+import { Repository } from "typeorm";
 import * as UserDto from '../../user.dto'
 
 @Injectable()
 export default class UpdateBasicAnthropometryService {
     constructor(
-        private PrismaService: PrismaService
+        @InjectRepository(Medidas) private medidasRepository: Repository<Medidas>
     ){}
 
     async main(args: UserDto.UpdateBasicAnthropometry) {
-        const data = UserDto.UpdateBasicAnthropometry.toPrismaUpdateInput(args)
-        return await this.PrismaService.medidas.update({
-            data,
-            where: {
-                id: args.id
-            },
-            select: {
-                user:{
-                    select:{
-                        name: true
-                    }
-                },
-                weight: true,
-                height: true,
-                data: true
+        const {
+            weight, height, data, id
+        } = args
+        const {affected} = await this.medidasRepository.update(
+            id, 
+            {
+                weight, 
+                height, 
+                data : data ?? new Date()
             }
-        })
+        )
+
+        if(!affected) throw new NotFoundException(`${id} does not exist!`)
+
+        return this.medidasRepository.findOneBy({id})
     }
 } 

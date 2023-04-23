@@ -5,9 +5,6 @@ import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasi
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import * as UserDto from './user.dto';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
-import { Repository } from 'typeorm';
-import { User } from 'src/entitys/Users.entity';
-import {InjectRepository} from '@nestjs/typeorm'
 import GetUserService from './services/getUser.service';
 import RegisterCircunferencias from './services/anthropometry/RegisterCircunferencias.service';
 import UpdateCircunferenciasService from './services/anthropometry/UpdateCircunferencias.service';

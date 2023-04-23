@@ -1,24 +1,23 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import UpdateUserService  from './services/updateUser.service';
+import { TypeOrmModule } from '@nestjs/typeorm'
 import UserController  from './user.controller';
-import * as UserDto from './user.dto';
-import CreateUserService from './services/createUser.service';
 import { PrismaService } from 'src/prisma/prisma.service';
+import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
+import { User } from 'src/entitys/Users.entity';
+import { Permissions } from 'src/entitys/Permissions.entity';
+import { Medidas } from 'src/entitys/Medidas.entity';
+import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity';
+import { Circunferencias } from 'src/entitys/Circunferencias.entity';
+import RegisterCircunferenciasService from './services/anthropometry/RegisterCircunferencias.service';
+import GetUserService from './services/getUser.service';
+import CreateUserService from './services/createUser.service';
+import UpdateUserService  from './services/updateUser.service';
+import UpdateCircunferenciasService from './services/anthropometry/UpdateCircunferencias.service';
 import RegisterBasicAnthropometryService from './services/anthropometry/RegisterBasic.service';
 import UpdateBasicAnthropometryService from './services/anthropometry/UpdateBasic.service';
 import RegisterDobrasService from './services/anthropometry/RegisterDobras.service';
 import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
-import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
-import { User } from 'src/entitys/Users.entity';
-import {TypeOrmModule} from '@nestjs/typeorm'
-import GetUserService from './services/getUser.service';
-import { Permissions } from 'src/entitys/Permissions.entity';
-import { Medidas } from 'src/entitys/Medidas.entity';
-import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity';
-import RegisterCircunferenciasService from './services/anthropometry/RegisterCircunferencias.service';
-import { Circunferencias } from 'src/entitys/Circunferencias.entity';
-import UpdateCircunferenciasService from './services/anthropometry/UpdateCircunferencias.service';
 @Module({
     imports:[
         ConfigModule, 

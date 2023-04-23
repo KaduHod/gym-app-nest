@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Medidas } from "src/entitys/Medidas.entity";
-import { PrismaService } from "src/prisma/prisma.service";
 import { Repository } from "typeorm";
 import * as UserDto from '../../user.dto'
 

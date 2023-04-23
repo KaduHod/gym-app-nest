@@ -190,22 +190,6 @@ export class UpdateBasicAnthropometry implements Partial<Omit<Medidas, OmitTable
     @IsOptional()
     @IsDateString()
     data?: Date
-
-
-    static toPrismaUpdateInput(args: UpdateBasicAnthropometry): Prisma.MedidasUpdateInput {
-        const {id, ...rest} = args
-
-        if(rest["userId"]) {
-            delete rest["userId"]
-        }
-
-        return {
-            ...rest,
-            ...(rest?.data && {
-                data: new Date(rest.data)
-            })
-        }
-    }
 }
 
 
@@ -291,13 +275,6 @@ export class UpdateDobras implements Partial<Omit<DobrasCutaneas, OmitTable | "m
     @IsNumber()
     @IsOptional()
     quadril?: number
-
-    static toPrismaUpdateInput(args: UpdateDobras): Prisma.DobrasCutaneasUpdateInput {
-        const {id, ...rest} = args
-        return {
-            ...args
-        }
-    }
 }
 
 export class CreateCircunferencias {
