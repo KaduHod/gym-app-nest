@@ -22,11 +22,6 @@ export class Articulationtomuscleportion {
   @JoinColumn([{ name: "A", referencedColumnName: "id" }])
   a2: Articulation;
 
-  @ManyToOne(
-    () => MusclePortion,
-    (musclePortion) => musclePortion.articulationtomuscleportions,
-    { onDelete: "CASCADE", onUpdate: "CASCADE" }
-  )
   @JoinColumn([{ name: "B", referencedColumnName: "id" }])
   b2: MusclePortion;
 }

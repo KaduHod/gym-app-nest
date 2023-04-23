@@ -1,43 +1,35 @@
 import { Injectable } from "@nestjs/common";
 import { QueryMuscleGroupDto } from "../muscle.validator";
 import { PrismaService } from "src/prisma/prisma.service";
-import { MuscleGroup, Prisma } from "@prisma/client";
+import { InjectRepository } from "@nestjs/typeorm";
+import { MuscleGroup } from "src/entitys/MuscleGroup.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export default class ListMuscleGroupService {
-    private groups: MuscleGroup[] 
     constructor(
-        private PrismaService: PrismaService,
+        @InjectRepository(MuscleGroup) private groupRepository:Repository<MuscleGroup>
     ){}
 
-    async main(query: QueryMuscleGroupDto): Promise<MuscleGroup[]> {
+    async main(query: QueryMuscleGroupDto) {
         const {portions, ...q} = query
 
         if(q.id && typeof q.id === 'string') {
             q.id = parseInt(q.id);
         }
 
-        const select:Prisma.MuscleGroupSelect = {
-            id: true,
-            name: true,
-            image: true,
-        } 
+        const builder = this.groupRepository.createQueryBuilder("group")
 
-        if(!!portions) {
-            select.musclePortion = {
-                select: {
-                    id: true,
-                    name: true,
-                    image: true,
-                }
-            }
+        if(q.name) {
+            Array.isArray(q.name) 
+            ? builder.where("group.name IN (:...names)", {names: q.name})
+            : builder.where("group.name = :name", {name: q.name}); 
         }
         
-        this.groups = await this.PrismaService.muscleGroup.findMany({
-            where: q,
-            select    
-        }) as MuscleGroup[]
-
-        return this.groups
+        if(portions) {
+            builder.leftJoinAndSelect("group.musclePortions", "musclePortions")
+        }
+       
+        return builder.getMany()
     }
 }

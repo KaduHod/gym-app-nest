@@ -11,7 +11,6 @@ import { Articulationtomuscleportion } from "./Articulationtomuscleportion.entit
 import { ExerciseMusclePortion } from "./ExerciseMusclePortion.entity";
 import { MuscleGroup } from "./MuscleGroup.entity";
 
-@Index("muscle_portion_muscleGRoup", ["muscleGroupId"], {})
 @Entity("muscle_portion", { schema: "gymapp2" })
 export class MusclePortion {
   @PrimaryGeneratedColumn({ type: "int", name: "id" })
@@ -23,7 +22,7 @@ export class MusclePortion {
   @Column("varchar", { name: "image", nullable: true, length: 255 })
   image: string | null;
 
-  @Column("int", { name: "muscleGroup_id" })
+  @Column("int", { name: "muscle_group_id" })
   muscleGroupId: number;
 
   @Column("datetime", {
@@ -36,22 +35,10 @@ export class MusclePortion {
   @Column("datetime", { name: "updated_at", nullable: true })
   updatedAt: Date | null;
 
-  @OneToMany(
-    () => Articulationtomuscleportion,
-    (articulationtomuscleportion) => articulationtomuscleportion.b2
-  )
-  articulationtomuscleportions: Articulationtomuscleportion[];
-
-  @OneToMany(
-    () => ExerciseMusclePortion,
-    (exerciseMusclePortion) => exerciseMusclePortion.musclePortion
-  )
-  exerciseMusclePortions: ExerciseMusclePortion[];
-
   @ManyToOne(() => MuscleGroup, (muscleGroup) => muscleGroup.musclePortions, {
     onDelete: "CASCADE",
     onUpdate: "NO ACTION",
   })
-  @JoinColumn([{ name: "muscleGroup_id", referencedColumnName: "id" }])
+  @JoinColumn([{ name: "muscle_group_id", referencedColumnName: "id" }])
   muscleGroup: MuscleGroup;
 }
