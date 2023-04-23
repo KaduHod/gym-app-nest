@@ -1,5 +1,4 @@
 import { Controller, Get, Query } from "@nestjs/common";
-import ExerciseMapper from "./services/exercise.mapper";
 import { QueryExerciseDto } from "./exercise.dto";
 import ListExerciseService from "./services/listExercises.service";
 
@@ -11,11 +10,7 @@ export default class ExerciseControler {
     ){}
 
     @Get("")
-    async list(@Query() query:QueryExerciseDto) {
-        let exercises = await this.ListExerciseService.main(query)
-        
-        return {
-            exercises: exercises.map(ExerciseMapper.mapPortions)
-        }
+    async list(@Query() query:QueryExerciseDto) {        
+        return await this.ListExerciseService.main(query)
     }
 }

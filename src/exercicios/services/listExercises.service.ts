@@ -1,69 +1,23 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
 import { QueryExerciseDto } from "../exercise.dto";
-import { Prisma } from '@prisma/client';
+import { InjectRepository } from "@nestjs/typeorm";
+import { Exercicio } from "src/entitys/Exercicios.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export default class ListExerciseService {
     constructor(
-        private PrismaService: PrismaService
+        @InjectRepository(Exercicio) private exerciseRepository: Repository<Exercicio>
     ){}
 
-    async main<T extends QueryExerciseDto>(query: T) {
+    async main(query: QueryExerciseDto) {
         if(!Object.keys(query).length) {
-            return this.PrismaService.exercicio.findMany()
+            return this.exerciseRepository.find();
         }
-
-        const {muscles, ...queryArgs} = query  
-
-        const where = this.buildPrismaQueryArgs(queryArgs)
-
-        const select = {
-            id: true,
-            name: true,
-            force: true,
-            link: true,
-            execution: true,
-            mechanic: true,
-        } as Prisma.ExercicioSelect
-
-        if( !!muscles ) {            
-            select.muscles = {
-                select: {
-                    role: true,
-                    musclePortion: {
-                        select: {
-                            id: true,
-                            name: true,
-                            image: true,
-                        }
-                    }
-                }
-            }
-            
-        }       
-
-        return this.PrismaService.exercicio.findMany({select, where})
-    }
-
-    private buildPrismaQueryArgs<T extends Omit<QueryExerciseDto, "muscles">>(query: T): Prisma.ExercicioWhereInput {
-        const where = {} as Prisma.ExercicioWhereInput
-
-        if(query.hasOwnProperty("id") && query.id) {
-            query.id = Array.isArray(query.id) ? query.id.map(Number) : Number(query.id);
-        }
-
-        for (const key in query) {
-            if(key === "role") continue;
-
-            where[
-                key as keyof Prisma.ExercicioWhereInput
-            ] = Array.isArray(query[key])
-                ? {in:query[key]} as Prisma.ExercicioWhereInput
-                : {in:[query[key]]} as Prisma.ExercicioWhereInput;
-        }
-
-        return where
+        const {muscles, role,...queryArgs} = query  
+        const builder = this.exerciseRepository.createQueryBuilder("exercise")
+        QueryExerciseDto.toWhereArgs(builder, queryArgs, "exercise")        
+        return builder.getMany()
     }
 }
 
