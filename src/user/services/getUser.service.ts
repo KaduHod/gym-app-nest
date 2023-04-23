@@ -16,7 +16,10 @@ export default class GetUserService {
             where: {id: Number(id)},
             relations: {
                 permissions: true,
-                medidas:true
+                medidas: {
+                    dobrascutaneas: true,
+                    circunferencias: true
+                },
             }
         }) 
         return user

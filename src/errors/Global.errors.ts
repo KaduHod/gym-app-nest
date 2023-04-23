@@ -15,7 +15,7 @@ export default class GlobalErrorHandler implements ExceptionFilter {
         }
 
         if (exception instanceof NotFoundException) {
-            return response.status(404).json({message:"Not Found"})
+            return response.status(404).json({message: exception.message ?? "Not Found"})
         }
         
         if (exception instanceof BadRequestException) {           

@@ -10,7 +10,7 @@ export default class TypeOrmExceptionFilter {
         const response = ctx.getResponse<Response>();
         const { errno, code } = exception.driverError 
 
-        console.log(exception)
+        console.error(exception)
         
         if(!errno) return response.status(500).json("query failed")
 
@@ -18,7 +18,6 @@ export default class TypeOrmExceptionFilter {
 
         if(!info) return response.status(500).json("query failed")
 
-        return response.status(400).json(info())
-        
+        return response.status(400).json(info(exception))
     }
-}
+} 

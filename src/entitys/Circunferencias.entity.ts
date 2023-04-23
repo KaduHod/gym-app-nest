@@ -8,7 +8,6 @@ import {
 } from "typeorm";
 import { Medidas } from "./Medidas.entity";
 
-@Index("Circunferencias_medidaId_key", ["medidaId"], { unique: true })
 @Entity("circunferencias", { schema: "gymapp2" })
 export class Circunferencias {
   @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
@@ -29,7 +28,7 @@ export class Circunferencias {
   @Column("double", { name: "torax", nullable: true, precision: 22 })
   torax: number | null;
 
-  @Column("int", { name: "medidaId", unique: true, unsigned: true })
+  @Column("int", { name: "medida_id", unique: true, unsigned: true })
   medidaId: number;
 
   @Column("datetime", {
@@ -46,6 +45,6 @@ export class Circunferencias {
     onDelete: "RESTRICT",
     onUpdate: "CASCADE",
   })
-  @JoinColumn([{ name: "medidaId", referencedColumnName: "id" }])
+  @JoinColumn([{ name: "medida_id", referencedColumnName: "id" }])
   medida: Medidas;
 }

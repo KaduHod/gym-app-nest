@@ -1,27 +1,18 @@
 import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Medidas } from "src/entitys/Medidas.entity";
 import { PrismaService } from "src/prisma/prisma.service";
+import { Repository } from "typeorm";
 import * as UserDto from '../../user.dto'
 
 @Injectable()
 export default class RegisterBasicAnthropometryService {
     constructor(
-        private PrismaService: PrismaService
+        @InjectRepository(Medidas) private medidaRepository: Repository<Medidas>
     ){}
 
     async main(args: UserDto.CreateBasicAnthropometry) {
-        const data = UserDto.CreateBasicAnthropometry.toPrismaCreateInput(args)
-        return await this.PrismaService.medidas.create({
-            data,
-            select: {
-                user:{
-                    select:{
-                        name: true
-                    }
-                },
-                weight: true,
-                height: true,
-                data: true
-            }
-        })
+        const {userId, weight, height, data} = args
+        return await this.medidaRepository.save({userId, weight, height, data})
     }
 } 

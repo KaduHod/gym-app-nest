@@ -11,13 +11,12 @@ import { Circunferencias } from "./Circunferencias.entity";
 import { Dobrascutaneas } from "./Dobrascutaneas.entity";
 import { User } from "./Users.entity";
 
-@Index("Medidas_userId_fkey", ["userId"], {})
 @Entity("medidas", { schema: "gymapp2" })
 export class Medidas {
   @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
   id: number;
 
-  @Column("int", { name: "userId", unsigned: true })
+  @Column("int", { name: "user_id", unsigned: true })
   userId: number;
 
   @Column("double", { name: "weight", precision: 22 })
@@ -49,6 +48,6 @@ export class Medidas {
     onDelete: "RESTRICT",
     onUpdate: "CASCADE",
   })
-  @JoinColumn([{ name: "userId", referencedColumnName: "id" }])
+  @JoinColumn([{ name: "user_id", referencedColumnName: "id" }])
   user: User;
 }

@@ -1,15 +1,21 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Dobrascutaneas } from "src/entitys/Dobrascutaneas.entity";
+import { Repository } from "typeorm";
 import * as UserDto from '../../user.dto'
 
 @Injectable()
 export default class RegisterDobrasService {
     constructor(
-        private PrismaService: PrismaService
+        @InjectRepository(Dobrascutaneas) private dobrasRepository: Repository<Dobrascutaneas>
     ){}
 
     async main(args: UserDto.CreateDobras) {
-        const data = UserDto.CreateDobras.toPrismaCreateInput(args)
-        return await this.PrismaService.dobrasCutaneas.create({ data })
+        const {
+            cintura, triceps, peito, axilar, subscapular, supraIliaca, abdominal, coxa, quadril, medidaId
+        } = args
+        return await this.dobrasRepository.save({
+            cintura, triceps, peito, axilar, subscapular, supraIliaca, abdominal, coxa, quadril, medidaId
+        })
     }
 }

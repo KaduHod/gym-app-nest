@@ -9,20 +9,22 @@ import { Repository } from 'typeorm';
 import { User } from 'src/entitys/Users.entity';
 import {InjectRepository} from '@nestjs/typeorm'
 import GetUserService from './services/getUser.service';
+import RegisterCircunferencias from './services/anthropometry/RegisterCircunferencias.service';
+import UpdateCircunferenciasService from './services/anthropometry/UpdateCircunferencias.service';
 
 
 
 @Controller('user')
 export default class UserController {
     constructor(
-        private UpdateUserService: UpdateUserService,
-        private RegisterBasicAnthropometryService: RegisterBasicAnthropometryService,
-        private UpdateBasicAnthropometryService: UpdateBasicAnthropometryService,
-        private RegisterDobrasService: RegisterDobrasService,
-        private UpdateDobrasService: UpdateDobrasService,
-        @InjectRepository(User)
-        private userRepository: Repository<User>,
-        private getUserService: GetUserService
+        private updateUserService: UpdateUserService,
+        private registerBasicAnthropometryService: RegisterBasicAnthropometryService,
+        private updateBasicAnthropometryService: UpdateBasicAnthropometryService,
+        private registerDobrasService: RegisterDobrasService,
+        private updateDobrasService: UpdateDobrasService,
+        private getUserService: GetUserService,
+        private registerCircunferenciasService: RegisterCircunferencias,
+        private updateCircunferenciasService: UpdateCircunferenciasService
     ){}
 
     @Get(":id")
@@ -32,59 +34,38 @@ export default class UserController {
     
     @Put('/')
     async update(@Body() args: UserDto.UpdateUser) {
-        const updatedUser = await this.UpdateUserService.main(args)
-        return {
-            message:"Updated",
-            user: updatedUser
-        }
+        const updatedUser = await this.updateUserService.main(args)
+        return  updatedUser
     }
 
     @Post("/anthropometry")
     async setBasicAnthropometry(@Body() args: UserDto.CreateBasicAnthropometry) {
-        return  {
-            message: "Created",
-            medida: await this.RegisterBasicAnthropometryService.main(args)
-        }
+        return await this.registerBasicAnthropometryService.main(args)
     }
 
     @Put("/anthropometry")
     async updateBasicAnthropometry(@Body() args: UserDto.UpdateBasicAnthropometry) {
-        const medida =  await this.UpdateBasicAnthropometryService.main(args)
-        console.log({medida})
-        return {
-            message: "Updated",
-            medida
-        }
+        const medida =  await this.updateBasicAnthropometryService.main(args)
+        return medida
     }
 
     @Post("/anthropometry/skinfold")
     async registerSkinfoldThickness(@Body() args: UserDto.CreateDobras) {
-        return {
-            message: "Created",
-            skinfold: await this.RegisterDobrasService.main(args)
-        }
+        return await this.registerDobrasService.main(args)
     }
 
     @Put("/anthropometry/skinfold")
     async updateSkinfoldThickness(@Body() args: UserDto.UpdateDobras) {
-        return {
-            message: "Updated",
-            skinfold: await this.UpdateDobrasService.main(args)
-        }
+        return await this.updateDobrasService.main(args)
     }
 
-    @Post("/teste")
-    async teste(@Body() args: any) {
-        const user = new User()
-        user.name = args.name
-        user.nickname = args.nickname
-        user.email = args.email
-        user.password = args.password
-        user.cellphone = args.cellphone
-        user.createdAt = args.createdAt
-        user.updatedAt = args.updatedAt
-        user.birthday = args.birthday
-        await this.userRepository.save(user)
-        return user
+    @Post("/anthropometry/girth")
+    async registerGirth(@Body() args: UserDto.CreateCircunferencias) {
+        return await this.registerCircunferenciasService.main(args)
+    }
+
+    @Put("/anthropometry/girth")
+    async updateGirth(@Body() args: UserDto.UpdateCircunferencias) {
+        return await this.updateCircunferenciasService.main(args)
     }
 }

@@ -14,10 +14,15 @@ import { User } from 'src/entitys/Users.entity';
 import {TypeOrmModule} from '@nestjs/typeorm'
 import GetUserService from './services/getUser.service';
 import { Permissions } from 'src/entitys/Permissions.entity';
+import { Medidas } from 'src/entitys/Medidas.entity';
+import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity';
+import RegisterCircunferenciasService from './services/anthropometry/RegisterCircunferencias.service';
+import { Circunferencias } from 'src/entitys/Circunferencias.entity';
+import UpdateCircunferenciasService from './services/anthropometry/UpdateCircunferencias.service';
 @Module({
     imports:[
         ConfigModule, 
-        TypeOrmModule.forFeature([User, Permissions])
+        TypeOrmModule.forFeature([User, Permissions, Medidas, Dobrascutaneas, Circunferencias])
     ],
     controllers: [
         UserController
@@ -26,10 +31,11 @@ import { Permissions } from 'src/entitys/Permissions.entity';
         UpdateUserService,
         CreateUserService,
         RegisterBasicAnthropometryService,
-        UserDto.CreateBasicAnthropometry,
         UpdateBasicAnthropometryService,
         RegisterDobrasService,
         UpdateDobrasService,
+        RegisterCircunferenciasService,
+        UpdateCircunferenciasService,
         PrismaService,
         GetUserService
     ],
