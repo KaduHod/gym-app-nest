@@ -1,8 +1,8 @@
 import { IsString, Validate, IsOptional } from 'class-validator'
 import { Expose } from 'class-transformer';
-import { Bool, IsNumberString, IsValidRole } from 'src/utils/validator.helper';
+import { Bool, IsNumberString } from 'src/utils/validator.helper';
 import { In, SelectQueryBuilder } from 'typeorm';
-import { Exercicio } from '@prisma/client';
+import { Exercicio } from 'src/entitys/Exercicios.entity';
 
 export class QueryExerciseDto {
     @IsOptional()
@@ -42,7 +42,7 @@ export class QueryExerciseDto {
 
     @Expose()
     @IsOptional()
-    @Validate(IsValidRole)
+    //@Validate(IsValidRole)
     role?: string
 
     static toWhereArgs(

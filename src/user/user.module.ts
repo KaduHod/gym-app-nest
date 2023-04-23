@@ -2,7 +2,6 @@ import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import UserController  from './user.controller';
-import { PrismaService } from 'src/prisma/prisma.service';
 import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
 import { User } from 'src/entitys/Users.entity';
 import { Permissions } from 'src/entitys/Permissions.entity';
@@ -35,13 +34,11 @@ import UpdateDobrasService from './services/anthropometry/UpdateDobras.service';
         UpdateDobrasService,
         RegisterCircunferenciasService,
         UpdateCircunferenciasService,
-        PrismaService,
         GetUserService
     ],
     exports:[
         CreateUserService,
         UpdateUserService,
-        PrismaService
     ]
 })
 export class UserModule {

@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
-import { PrismaService } from './prisma/prisma.service';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
@@ -30,7 +29,6 @@ import { config } from './data-source.config';
   controllers: [],
   providers: [
     AppService, 
-    PrismaService
   ] 
 })
 export class AppModule {

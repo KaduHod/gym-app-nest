@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Header, HttpCode, Post, Put } from "@nestjs/common";
-import { User } from "@prisma/client";
-import { PrismaService } from "src/prisma/prisma.service";
+import { User } from "src/entitys/Users.entity";
 import UpdateUserService from "src/user/services/updateUser.service";
 import * as UserDto from "src/user/user.dto";
 import AttachAlunoService from "./services/attachAluno.service";
@@ -12,7 +11,6 @@ import CreatePersonalService from "./services/createPersonal.service";
 @Controller("personal")
 export class PersonalController {
     constructor(
-        private PrismaService: PrismaService,
         private CreatePersonalService: CreatePersonalService,
         private UpdateUserService: UpdateUserService,
         private AttachAlunoService: AttachAlunoService

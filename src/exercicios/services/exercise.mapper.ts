@@ -1,9 +1,11 @@
-import { Exercicio, ExerciseToMusclePortion, MusclePortion } from "@prisma/client";
+import { Exercicio } from "src/entitys/Exercicios.entity"
+import { MusclePortion } from "src/entitys/MusclePortion.entity"
+
 
 export default class ExerciseMapper {
     static mapPortions(
         exercise: Exercicio & {
-            muscles: Array<ExerciseToMusclePortion & {musclePortion: MusclePortion}> 
+            muscles:any
         }
     ){
         const {muscles, ...rest} = exercise

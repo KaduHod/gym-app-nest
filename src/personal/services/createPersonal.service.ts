@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { User } from "@prisma/client";
 import { Personal } from "src/entitys/Personais.entity";
 import CreateUserService from "src/user/services/createUser.service";
 import { permission } from "src/utils/enums";
 import { Repository } from "typeorm";
 import {InjectRepository} from '@nestjs/typeorm'
+import { User } from "src/entitys/Users.entity";
 
 @Injectable()
 export default class CreatePersonalService {

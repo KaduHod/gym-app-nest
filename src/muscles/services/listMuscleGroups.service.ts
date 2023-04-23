@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
 import { QueryMuscleGroupDto } from "../muscle.validator";
-import { PrismaService } from "src/prisma/prisma.service";
 import { InjectRepository } from "@nestjs/typeorm";
 import { MuscleGroup } from "src/entitys/MuscleGroup.entity";
 import { Repository } from "typeorm";

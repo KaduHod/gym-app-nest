@@ -1,7 +1,6 @@
 import { ValidationError } from 'class-validator'
 import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator';
 import { isString, stringIsNumber } from './string.helper';
-import { exercise_muscle_portions_role } from '@prisma/client';
 
 export type errorFormated = {
     field: string,
@@ -77,25 +76,25 @@ export class IsNumberString implements ValidatorConstraintInterface  {
 
 }
 
-@ValidatorConstraint({name:'IsValidRole', async: false})
-export class IsValidRole implements ValidatorConstraintInterface  {
-    #validRoles = Object.values(exercise_muscle_portions_role);
-
-    validate(value: any, validationArguments?: ValidationArguments): boolean {
-        
-        if(Array.isArray(value)) {
-            value.forEach( v => {
-                if(!this.#validRoles.includes(v)) {
-                    return false
-                }
-            })
-        } else {
-            return this.#validRoles.includes(value)
-        }
-        return true
-    }
-    defaultMessage?(validationArguments?: ValidationArguments): string {
-        return `${validationArguments.property} must be a valid role | ${this.#validRoles.join(" | ")} |`
-    }
-
-}
+// @ValidatorConstraint({name:'IsValidRole', async: false})
+// export class IsValidRole implements ValidatorConstraintInterface  {
+    // #validRoles = Object.values(exercise_muscle_portions_role);
+// 
+    // validate(value: any, validationArguments?: ValidationArguments): boolean {
+        // 
+        // if(Array.isArray(value)) {
+            // value.forEach( v => {
+                // if(!this.#validRoles.includes(v)) {
+                    // return false
+                // }
+            // })
+        // } else {
+            // return this.#validRoles.includes(value)
+        // }
+        // return true
+    // }
+    // defaultMessage?(validationArguments?: ValidationArguments): string {
+        // return `${validationArguments.property} must be a valid role | ${this.#validRoles.join(" | ")} |`
+    // }
+// 
+// }

@@ -1,7 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Exercicio } from "src/entitys/Exercicios.entity";
-import { PrismaService } from "src/prisma/prisma.service";
 import ExerciseControler from "./exercise.controller";
 import { QueryExerciseDto } from "./exercise.dto";
 import ListExerciseService from "./services/listExercises.service";
@@ -11,7 +10,6 @@ import ListExerciseService from "./services/listExercises.service";
     controllers:[ExerciseControler],
     providers:[
         ListExerciseService, 
-        PrismaService,
         QueryExerciseDto
     ]
 })

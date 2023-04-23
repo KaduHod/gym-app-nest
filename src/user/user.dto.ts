@@ -1,6 +1,9 @@
 import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber, IsPhoneNumber, IsDateString, IsNumberString } from 'class-validator'
 import { Expose } from 'class-transformer'
-import { DobrasCutaneas, Medidas, Prisma, User } from '@prisma/client'
+import { User } from 'src/entitys/Users.entity'
+import { Medidas } from 'src/entitys/Medidas.entity'
+import { Circunferencias } from 'src/entitys/Circunferencias.entity'
+import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity'
 
 type OmitTable =  "id" | "createdAt" | "updatedAt"
 
@@ -41,15 +44,6 @@ export class CreateUser implements Partial<User> {
     @IsPhoneNumber("BR")
     cellphone: string
 
-
-    static toPrismaCreateInput(args:CreateUser): Prisma.UserCreateInput {
-        return {
-            ...args,
-            ...(args?.birthday && {
-                birthday: new Date(args.birthday)
-            })
-        }
-    }
 }
 
 
@@ -97,16 +91,6 @@ export class UpdateUser implements Partial<User> {
     @Expose()
     @IsOptional()
     birthday?: Date
-
-    static toPrismaUpdateInput(args:UpdateUser):Prisma.UserUpdateInput {
-        const {id, ...rest} = args
-        return {
-            ...rest,
-            ...(rest?.birthday && {
-                birthday: new Date(rest.birthday)
-            })
-        }
-    }
 }
 
 
@@ -157,6 +141,9 @@ export class AttachAluno {
 
 
 export class CreateBasicAnthropometry implements Omit<Medidas, OmitTable> {
+    circunferencias: Circunferencias
+    dobrascutaneas: Dobrascutaneas
+    user: User
     @IsNumber()
     @IsNotEmpty()
     userId: number 
@@ -193,7 +180,7 @@ export class UpdateBasicAnthropometry implements Partial<Omit<Medidas, OmitTable
 }
 
 
-export class CreateDobras implements Partial<Omit<DobrasCutaneas, OmitTable>> {
+export class CreateDobras implements Partial<Omit<Dobrascutaneas, OmitTable>> {
     @IsNumber()
     @IsOptional()
     triceps?: number
@@ -235,7 +222,7 @@ export class CreateDobras implements Partial<Omit<DobrasCutaneas, OmitTable>> {
     medidaId: number
 }
 
-export class UpdateDobras implements Partial<Omit<DobrasCutaneas, OmitTable | "medidaId">> {
+export class UpdateDobras implements Partial<Omit<Dobrascutaneas, OmitTable | "medidaId">> {
     @IsNumber()
     @IsNotEmpty()
     id:number

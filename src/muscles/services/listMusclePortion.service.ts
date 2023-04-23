@@ -1,9 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Prisma } from "@prisma/client";
-import { Articulation } from "src/entitys/Articulations.entity";
 import { MusclePortion } from "src/entitys/MusclePortion.entity";
-import { PrismaService } from "src/prisma/prisma.service";
 import { Repository } from "typeorm";
 import { QueryMusclePortionDto } from "../muscle.validator";
 
@@ -12,7 +9,6 @@ export default class ListMusclePortionService {
     public query: QueryMusclePortionDto
 
     constructor(
-        private PrismaService: PrismaService,
         @InjectRepository(MusclePortion)
         private portionsRepository:Repository<MusclePortion>
     ){}
