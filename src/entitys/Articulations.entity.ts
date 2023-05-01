@@ -1,5 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Articulationtomuscleportion } from "./Articulationtomuscleportion.entity";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Movements } from "./Movements.entity";
 
 @Entity("articulations", { schema: "gymapp2" })
 export class Articulation {
@@ -19,10 +19,17 @@ export class Articulation {
   @Column("datetime", { name: "updatedAt", nullable: true })
   updatedAt: Date | null;
 
-
-  @OneToMany(
-    () => Articulationtomuscleportion,
-    (articulationtomuscleportion) => articulationtomuscleportion.a2
-  )
-  articulationtomuscleportions: Articulationtomuscleportion[];
+  @ManyToMany(() => Movements, _ => _.articulations)
+  @JoinTable({
+    name: "articulation_movement",
+    joinColumn: {
+      name: "articulation_id",
+      referencedColumnName: "id",
+    },
+    inverseJoinColumn: {
+      name: "movement_id",
+      referencedColumnName: "id",
+    }
+  })
+  movements: Movements[]
 }

@@ -7,8 +7,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Articulationtomuscleportion } from "./Articulationtomuscleportion.entity";
-import { ExerciseMusclePortion } from "./ExerciseMusclePortion.entity";
 import { MuscleGroup } from "./MuscleGroup.entity";
 
 @Entity("muscle_portion", { schema: "gymapp2" })

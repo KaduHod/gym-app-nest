@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
-import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
@@ -11,6 +10,9 @@ import AlunoModule from './aluno/aluno.module';
 import MedidaModule from './medidas/medida.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from './data-source.config';
+import ArticulationController from './articulation/articulation.controller';
+import ArticulationModule from './articulation/articulation.module';
+import MovementsModule from './movements/movements.module';
 
 @Module({
   imports: [
@@ -21,14 +23,16 @@ import { config } from './data-source.config';
     MusclesModule,
     ExerciseModule,
     PersonalModule,
+    ArticulationModule,
+    MovementsModule,
     ConfigModule.forRoot({
-      isGlobal: true,
+      isGlobal: true
     }), 
     TypeOrmModule.forRoot(config)
   ],
   controllers: [],
   providers: [
-    AppService, 
+    
   ] 
 })
 export class AppModule {

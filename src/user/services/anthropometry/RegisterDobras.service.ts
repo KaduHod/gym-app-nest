@@ -12,10 +12,14 @@ export default class RegisterDobrasService {
 
     async main(args: UserDto.CreateDobras) {
         const {
-            cintura, triceps, peito, axilar, subscapular, supraIliaca, abdominal, coxa, quadril, medidaId
+            cintura, triceps, peito, axilar, 
+            subscapular, supraIliaca, abdominal, 
+            coxa, quadril, medidaId
         } = args
         return await this.dobrasRepository.save({
-            cintura, triceps, peito, axilar, subscapular, supraIliaca, abdominal, coxa, quadril, medidaId
+            cintura, triceps, peito, axilar, 
+            subscapular, supraIliaca, abdominal, 
+            coxa, quadril, medidaId
         })
     }
 }

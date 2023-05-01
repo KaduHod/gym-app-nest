@@ -7,7 +7,6 @@ export default class NotEmptyBodyMiddleware implements NestMiddleware {
         if(isEmpty(req.body) || !Object.keys(req.body).length) {
             throw new HttpException("Payload required", HttpStatus.BAD_REQUEST)
         }
-
         next();
     }
 }
