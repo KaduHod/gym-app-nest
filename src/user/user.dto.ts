@@ -6,6 +6,7 @@ import { Circunferencias } from 'src/entitys/Circunferencias.entity'
 import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity'
 import { Injectable } from '@nestjs/common'
 import { Unique } from 'src/validations/rules/unique.validator'
+import { Exists } from 'src/validations/rules/exists.validator'
 
 type OmitTable =  "id" | "createdAt" | "updatedAt"
 
@@ -68,6 +69,7 @@ export class UpdateUser implements Partial<User> {
     @IsNumber()
     @IsNotEmpty()
     @Expose()
+    @Exists(() => User)
     id: number
 
     @Length(5, 100)

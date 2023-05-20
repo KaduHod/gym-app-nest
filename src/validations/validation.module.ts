@@ -1,6 +1,7 @@
 import { Module, Provider } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import {dataSourceFactory} from "src/data-source.config";
+import { ExistsModelRule } from "./rules/exists.validator";
 import { UniqueContraintRule } from "./rules/unique.validator";
 
 const globalConnection:Provider = {
@@ -12,7 +13,10 @@ const globalConnection:Provider = {
 
 const models = []
 const repositorys = []
-const rules = [UniqueContraintRule]
+const rules = [
+    UniqueContraintRule,
+    ExistsModelRule
+]
 
 
 @Module({
