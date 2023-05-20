@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import UserController  from './user.controller';
 import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
-import { User } from 'src/entitys/Users.entity';
+import { User } from 'src/user/Users.entity';
 import { Permissions } from 'src/entitys/Permissions.entity';
 import { Medidas } from 'src/entitys/Medidas.entity';
 import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity';

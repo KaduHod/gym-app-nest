@@ -1,13 +1,23 @@
 import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber, IsPhoneNumber, IsDateString, IsNumberString } from 'class-validator'
 import { Expose } from 'class-transformer'
-import { User } from 'src/entitys/Users.entity'
+import { User } from 'src/user/Users.entity'
 import { Medidas } from 'src/entitys/Medidas.entity'
 import { Circunferencias } from 'src/entitys/Circunferencias.entity'
 import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity'
+import { Injectable } from '@nestjs/common'
+import { Unique } from 'src/validations/rules/unique.validator'
 
 type OmitTable =  "id" | "createdAt" | "updatedAt"
 
-
+@Unique({
+    classConstructor: () => User,
+    fields: ["email"]
+})
+@Unique({
+    classConstructor: () => User,
+    fields: ["nickname"]
+})
+@Injectable()
 export class CreateUser implements Partial<User> {
     @Length(5, 100)
     @IsNotEmpty()
@@ -46,7 +56,14 @@ export class CreateUser implements Partial<User> {
 
 }
 
-
+@Unique({
+    classConstructor: () => User,
+    fields: ["email"]
+})
+@Unique({
+    classConstructor: () => User,
+    fields: ["nickname"]
+})
 export class UpdateUser implements Partial<User> {    
     @IsNumber()
     @IsNotEmpty()

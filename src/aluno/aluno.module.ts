@@ -5,11 +5,10 @@ import CreateAlunoService from "./services/createAluno.service";
 import { Aluno } from "src/entitys/Alunos.entity";
 import {TypeOrmModule} from "@nestjs/typeorm"
 
-
 @Module({
     imports:[ 
         UserModule,
-        TypeOrmModule.forFeature([Aluno])
+        TypeOrmModule.forFeature([Aluno]),
     ],
     controllers:[AlunoController],
     providers:[

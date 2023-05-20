@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { Circunferencias } from "./Circunferencias.entity";
 import { Dobrascutaneas } from "./Dobrascutaneas.entity";
-import { User } from "./Users.entity";
+import { User } from "../user/Users.entity";
 
 @Entity("medidas", { schema: "gymapp2" })
 export class Medidas {

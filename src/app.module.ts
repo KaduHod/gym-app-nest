@@ -10,9 +10,9 @@ import AlunoModule from './aluno/aluno.module';
 import MedidaModule from './medidas/medida.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from './data-source.config';
-import ArticulationController from './articulation/articulation.controller';
 import ArticulationModule from './articulation/articulation.module';
 import MovementsModule from './movements/movements.module';
+import ValidationModule from './validations/validation.module';
 
 @Module({
   imports: [
@@ -28,7 +28,8 @@ import MovementsModule from './movements/movements.module';
     ConfigModule.forRoot({
       isGlobal: true
     }), 
-    TypeOrmModule.forRoot(config)
+    TypeOrmModule.forRoot(config),
+    ValidationModule
   ],
   controllers: [],
   providers: [

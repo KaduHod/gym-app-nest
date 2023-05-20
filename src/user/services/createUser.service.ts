@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { User } from "src/entitys/Users.entity";
+import { User } from "src/user/Users.entity";
 import { Permissions } from "src/entitys/Permissions.entity";
 import { Repository } from "typeorm";
 import { permission } from "src/utils/enums";
@@ -17,7 +17,6 @@ export default class CreateUserService {
     ) {}
 
     async main(userArgs: UserDto.CreateUser) {
-        await this.validate(userArgs)
         await this.createuser(userArgs)
         return this.getUser()
     }
@@ -25,25 +24,6 @@ export default class CreateUserService {
     async createuser(args: UserDto.CreateUser): Promise<this> {
         this.user = await this.userRepository.save(args)
         return this
-    }
-
-    async validate(userArgs: UserDto.CreateUser) {
-        await Promise.all([
-            this.checkEmail(userArgs.email),
-            this.checkNickname(userArgs.nickname),
-        ])
-    }
-
-    async checkEmail(email:string) {
-        const exists = await this.userRepository.findOneBy({email})
-        if(!exists) return 
-        throw { error: `${email} not available!` }
-    }
-
-    async checkNickname(nickname:string) {
-        const exists = await this.userRepository.findOneBy({nickname})
-        if(!exists) return 
-        throw { error: `${nickname} not available!` }
     }
 
     getUser(): User {

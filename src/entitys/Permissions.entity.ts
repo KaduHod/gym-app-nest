@@ -1,5 +1,5 @@
 import { Column, Entity, JoinTable, JoinTableOptions, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "./Users.entity";
+import { User } from "../user/Users.entity";
 
 @Entity("permissions", { schema: "gymapp2" })
 export class Permissions {

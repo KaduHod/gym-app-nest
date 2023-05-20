@@ -1,5 +1,5 @@
 import { Body, Controller, Header, HttpCode, Post, Put } from "@nestjs/common";
-import { User } from "src/entitys/Users.entity";
+import { User } from "src/user/Users.entity";
 import UpdateUserService from "src/user/services/updateUser.service";
 import * as UserDto from "src/user/user.dto";
 import CreateAlunoService from "./services/createAluno.service";

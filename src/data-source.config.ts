@@ -19,4 +19,8 @@ console.log(config)
 
 const dataSource = new DataSource(config);
 
+export const dataSourceFactory = () => {
+    return new DataSource(config)
+}
+
 export default dataSource;

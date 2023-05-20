@@ -1,9 +1,9 @@
-import { Column, Entity, JoinTable, JoinTableOptions, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Medidas } from "./Medidas.entity";
-import { Permissions } from "./Permissions.entity";
+import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Medidas } from "../entitys/Medidas.entity";
+import { Permissions } from "../entitys/Permissions.entity";
 
 @Entity("users", { schema: "gymapp2" })
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
   id: number;
 
