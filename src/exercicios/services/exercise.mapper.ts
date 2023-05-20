@@ -13,10 +13,7 @@ export default class ExerciseMapper {
             ...rest,
             muscles: muscles.map( muscle => {
                 const {role, musclePortion} = muscle
-                return {
-                    ...musclePortion,
-                    role
-                }
+                return {...musclePortion, role }
             })
         }
     }

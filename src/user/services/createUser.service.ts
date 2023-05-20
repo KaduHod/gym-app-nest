@@ -32,7 +32,6 @@ export default class CreateUserService {
             this.checkEmail(userArgs.email),
             this.checkNickname(userArgs.nickname),
         ])
-        
     }
 
     async checkEmail(email:string) {
