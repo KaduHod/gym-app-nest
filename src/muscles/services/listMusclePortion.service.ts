@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { MusclePortion } from "src/entitys/MusclePortion.entity";
+import { MusclePortion } from "src/muscles/MusclePortion.entity";
 import { Repository } from "typeorm";
 import { QueryMusclePortionDto } from "../muscle.validator";
 

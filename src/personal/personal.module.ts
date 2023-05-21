@@ -4,8 +4,8 @@ import { PersonalController } from './personal.controller';
 import { UserModule } from 'src/user/user.module';
 import AttachAlunoService from './services/attachAluno.service';
 import {TypeOrmModule} from "@nestjs/typeorm"
-import { Personal } from 'src/entitys/Personais.entity';
-import { Aluno } from 'src/entitys/Alunos.entity';
+import { Personal } from 'src/personal/Personais.entity';
+import { Aluno } from 'src/aluno/Alunos.entity';
 
 @Module({
     imports:[

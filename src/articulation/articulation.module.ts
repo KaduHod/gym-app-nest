@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Articulation } from "src/entitys/Articulations.entity";
+import { Articulation } from "src/articulation/Articulations.entity";
 import ArticulationController from "./articulation.controller";
 
 @Module({

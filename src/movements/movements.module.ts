@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Movements } from "src/entitys/Movements.entity";
+import { Movements } from "src/movements/Movements.entity";
 import MovementsController from "./movements.controller";
 
 @Module({

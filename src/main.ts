@@ -13,8 +13,8 @@ async function bootstrap() {
   .useGlobalFilters(new GlobalErrorHandler())
   .useGlobalPipes(new ValidationPipe())
   .useGlobalFilters(new TypeOrmExceptionFilter());
-
   useContainer(app.select(ValidationModule), {fallbackOnErrors: true})
+
   await app.listen(3000);
 }
 bootstrap();

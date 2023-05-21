@@ -3,9 +3,9 @@ import MuscleController  from "./muscle.controller";
 import ListMuscleGroupService from "./services/listMuscleGroups.service";
 import ListMusclePortionService from "./services/listMusclePortion.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Articulation } from "src/entitys/Articulations.entity";
-import { MusclePortion } from "src/entitys/MusclePortion.entity";
-import { MuscleGroup } from "src/entitys/MuscleGroup.entity";
+import { Articulation } from "src/articulation/Articulations.entity";
+import { MusclePortion } from "src/muscles/MusclePortion.entity";
+import { MuscleGroup } from "src/muscles/MuscleGroup.entity";
 
 @Module({
     imports:[TypeOrmModule.forFeature([Articulation, MusclePortion, MuscleGroup])],

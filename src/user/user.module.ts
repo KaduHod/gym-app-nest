@@ -4,10 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import UserController  from './user.controller';
 import NotEmptyBodyMiddleware from 'src/notEmptyBody.middleware';
 import { User } from 'src/user/Users.entity';
-import { Permissions } from 'src/entitys/Permissions.entity';
-import { Medidas } from 'src/entitys/Medidas.entity';
-import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity';
-import { Circunferencias } from 'src/entitys/Circunferencias.entity';
+import { Permissions } from 'src/user/Permissions.entity';
+import { Medidas } from 'src/medidas/Medidas.entity';
+import { Dobrascutaneas } from 'src/medidas/Dobrascutaneas.entity';
+import { Circunferencias } from 'src/medidas/Circunferencias.entity';
 import RegisterCircunferenciasService from './services/anthropometry/RegisterCircunferencias.service';
 import GetUserService from './services/getUser.service';
 import CreateUserService from './services/createUser.service';

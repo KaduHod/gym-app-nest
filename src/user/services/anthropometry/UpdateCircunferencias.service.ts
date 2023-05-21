@@ -1,6 +1,6 @@
 import { NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Circunferencias } from "src/entitys/Circunferencias.entity";
+import { Circunferencias } from "src/medidas/Circunferencias.entity";
 import { UpdateCircunferencias } from "src/user/user.dto";
 import { Repository } from "typeorm";
 

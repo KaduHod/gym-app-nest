@@ -1,5 +1,5 @@
-import { Exercicio } from "src/entitys/Exercicios.entity"
-import { MusclePortion } from "src/entitys/MusclePortion.entity"
+import { Exercicio } from "src/exercicios/Exercicios.entity"
+import { MusclePortion } from "src/muscles/MusclePortion.entity"
 
 
 export default class ExerciseMapper {

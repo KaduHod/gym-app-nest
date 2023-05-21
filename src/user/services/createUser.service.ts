@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { User } from "src/user/Users.entity";
-import { Permissions } from "src/entitys/Permissions.entity";
+import { Permissions } from "src/user/Permissions.entity";
 import { Repository } from "typeorm";
 import { permission } from "src/utils/enums";
 import * as UserDto from '../user.dto';

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Medidas } from "src/entitys/Medidas.entity";
+import { Medidas } from "src/medidas/Medidas.entity";
 import { Repository } from "typeorm";
 import * as UserDto from '../../user.dto'
 

@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { UserModule } from "src/user/user.module";
 import AlunoController from "./aluno.controller";
 import CreateAlunoService from "./services/createAluno.service";
-import { Aluno } from "src/entitys/Alunos.entity";
+import { Aluno } from "src/aluno/Alunos.entity";
 import {TypeOrmModule} from "@nestjs/typeorm"
 
 @Module({

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Dobrascutaneas } from "src/entitys/Dobrascutaneas.entity";
+import { Dobrascutaneas } from "src/medidas/Dobrascutaneas.entity";
 import { Repository } from "typeorm";
 import * as UserDto from '../../user.dto'
 

@@ -1,6 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Articulation } from "src/entitys/Articulations.entity";
+import { Articulation } from "src/articulation/Articulations.entity";
 import { Repository } from "typeorm";
 
 @Controller("articulations")

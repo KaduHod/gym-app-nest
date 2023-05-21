@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Personal } from "src/entitys/Personais.entity";
+import { Personal } from "src/personal/Personais.entity";
 import CreateUserService from "src/user/services/createUser.service";
 import { permission } from "src/utils/enums";
 import { Repository } from "typeorm";

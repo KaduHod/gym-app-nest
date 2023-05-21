@@ -1,6 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Movements } from "src/entitys/Movements.entity";
+import { Movements } from "src/movements/Movements.entity";
 import { Repository } from "typeorm";
 
 @Controller("movements")

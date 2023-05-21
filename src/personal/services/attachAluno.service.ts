@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import {InjectRepository} from '@nestjs/typeorm'
 import * as UserDto from "src/user/user.dto";
-import { Personal } from "src/entitys/Personais.entity";
+import { Personal } from "src/personal/Personais.entity";
 import { Repository } from "typeorm";
-import { Aluno } from "src/entitys/Alunos.entity";
+import { Aluno } from "src/aluno/Alunos.entity";
 
 @Injectable()
 export default class AttachAlunoService {
@@ -21,8 +21,6 @@ export default class AttachAlunoService {
             this.setAluno(aluno_id),
             this.setPersonal(personal_id)
         ])
-
-        console.log(this.personal, this.aluno)
         
         await this.alunoHasPersonal()
         await this.attach()

@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Aluno } from "src/entitys/Alunos.entity";
+import { Aluno } from "src/aluno/Alunos.entity";
 import CreateUserService from "src/user/services/createUser.service";
 import { permission } from "src/utils/enums";
 import { Repository } from "typeorm";

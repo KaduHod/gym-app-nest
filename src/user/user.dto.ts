@@ -1,12 +1,13 @@
 import { IsEmail, IsNotEmpty, Length, IsOptional, IsString, IsNumber, IsPhoneNumber, IsDateString, IsNumberString } from 'class-validator'
 import { Expose } from 'class-transformer'
 import { User } from 'src/user/Users.entity'
-import { Medidas } from 'src/entitys/Medidas.entity'
-import { Circunferencias } from 'src/entitys/Circunferencias.entity'
-import { Dobrascutaneas } from 'src/entitys/Dobrascutaneas.entity'
+import { Medidas } from 'src/medidas/Medidas.entity'
+import { Circunferencias } from 'src/medidas/Circunferencias.entity'
+import { Dobrascutaneas } from 'src/medidas/Dobrascutaneas.entity'
 import { Injectable } from '@nestjs/common'
 import { Unique } from 'src/validations/rules/unique.validator'
 import { Exists } from 'src/validations/rules/exists.validator'
+import { Aluno } from 'src/aluno/Alunos.entity'
 
 type OmitTable =  "id" | "createdAt" | "updatedAt"
 
@@ -150,6 +151,7 @@ export class AttachAluno {
     @IsNumber()
     @IsNotEmpty()
     @Expose()
+    @Exists(() => Aluno)
     aluno_id:number 
     
     @IsNumber()

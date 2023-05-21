@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Medidas } from "../entitys/Medidas.entity";
-import { Permissions } from "../entitys/Permissions.entity";
+import { Medidas } from "../medidas/Medidas.entity";
+import { Permissions } from "./Permissions.entity";
 
 @Entity("users", { schema: "gymapp2" })
 export class User extends BaseEntity {

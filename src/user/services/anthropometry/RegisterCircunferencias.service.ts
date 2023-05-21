@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Circunferencias } from "src/entitys/Circunferencias.entity";
+import { Circunferencias } from "src/medidas/Circunferencias.entity";
 import { Repository } from "typeorm";
 import { CreateCircunferencias } from '../../user.dto'
 

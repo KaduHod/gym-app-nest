@@ -2,7 +2,7 @@ import { IsString, Validate, IsOptional } from 'class-validator'
 import { Expose } from 'class-transformer';
 import { Bool, IsNumberString } from 'src/utils/validator.helper';
 import { In, SelectQueryBuilder } from 'typeorm';
-import { Exercicio } from 'src/entitys/Exercicios.entity';
+import { Exercicio } from 'src/exercicios/Exercicios.entity';
 
 export class QueryExerciseDto {
     @IsOptional()

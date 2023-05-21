@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Exercicio } from "src/entitys/Exercicios.entity";
+import { Exercicio } from "src/exercicios/Exercicios.entity";
 import ExerciseControler from "./exercise.controller";
 import { QueryExerciseDto } from "./exercise.dto";
 import ListExerciseService from "./services/listExercises.service";

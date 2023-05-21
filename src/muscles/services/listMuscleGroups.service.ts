@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { QueryMuscleGroupDto } from "../muscle.validator";
 import { InjectRepository } from "@nestjs/typeorm";
-import { MuscleGroup } from "src/entitys/MuscleGroup.entity";
+import { MuscleGroup } from "src/muscles/MuscleGroup.entity";
 import { Repository } from "typeorm";
 
 @Injectable()
