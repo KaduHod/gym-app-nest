@@ -1,6 +1,8 @@
 import { Module, Provider } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import {dataSourceFactory} from "src/data-source.config";
+import { Aluno } from "src/aluno/Alunos.entity";
+import { dataSourceFactory } from "src/data-source.config";
+import { AlunoHasPersonalRule } from "./rules/alunoHasPersonal.validator";
 import { ExistsModelRule } from "./rules/exists.validator";
 import { UniqueContraintRule } from "./rules/unique.validator";
 
@@ -11,11 +13,12 @@ const globalConnection:Provider = {
     }
 }
 
-const models = []
+const models = [Aluno]
 const repositorys = []
 const rules = [
     UniqueContraintRule,
-    ExistsModelRule
+    ExistsModelRule,
+    AlunoHasPersonalRule
 ]
 
 

@@ -7,8 +7,8 @@ import { Aluno } from "src/aluno/Alunos.entity";
 
 @Injectable()
 export default class AttachAlunoService {
-    private aluno:any
-    private personal:any
+    private aluno:Aluno
+    private personal:Personal
     constructor(
         @InjectRepository(Personal)
         private personalRepository: Repository<Personal>,
@@ -21,8 +21,6 @@ export default class AttachAlunoService {
             this.setAluno(aluno_id),
             this.setPersonal(personal_id)
         ])
-        
-        await this.alunoHasPersonal()
         await this.attach()
     }
 
@@ -34,11 +32,8 @@ export default class AttachAlunoService {
         this.personal = await this.personalRepository.findOne({where:{id}})
     }
 
-    async alunoHasPersonal() {
-        
-    }
-
     async attach() {
-        
+        this.aluno.personal = this.personal 
+        await this.aluno.save()
     }
 }

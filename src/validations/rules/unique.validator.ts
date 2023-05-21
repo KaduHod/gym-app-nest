@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { registerDecorator, ValidationArguments, ValidatorConstraint ,ValidatorConstraintInterface  } from 'class-validator'
-import { BaseEntity, DataSource, FindOptions, In } from 'typeorm'
+import { BaseEntity, DataSource, FindOptions, In, Not } from 'typeorm'
 
 const name = "Unique constraint validator"
 const async = true
@@ -17,15 +17,24 @@ export class UniqueContraintRule implements ValidatorConstraintInterface {
         const values = validationArguments.object
         const targetModelConstructor = validationArguments.constraints[0]
         const uniqueFields = validationArguments.constraints[1] as string[]
+
         if(!uniqueFields.length) return true;
-        const repository = this.conn.getRepository(targetModelConstructor())
+
+        const repository = this.conn.getRepository(targetModelConstructor());
+
         const where:FindOptions<any> = uniqueFields.reduce((acc,key) => {
             if(!values[key]) return acc;
             const value = values[key]
-            Object.defineProperty(acc, key, {value})
+            acc[key] = value
             return acc
         }, {})
+
+        if(values["id"]) {
+            where["id"] = Not(values["id"])
+        }
+
         const exists = await repository.exist({where})
+
         return !exists
     }
 
@@ -35,14 +44,13 @@ export class UniqueContraintRule implements ValidatorConstraintInterface {
     }
 }
 
-export type UniqueConstraintArgs<T extends BaseEntity> = {
-    classConstructor: () => { new (): T},
-    fields : Extract<keyof T, string>[]
-}
 
 export function Unique
     <T extends BaseEntity>
-    ({classConstructor, fields}:UniqueConstraintArgs<T>):ClassDecorator
+    (
+        classConstructor: () => { new (): T},
+        fields: Extract<keyof T, string>[]
+    ): ClassDecorator
 {
     return (target:Function) => {
         registerDecorator({

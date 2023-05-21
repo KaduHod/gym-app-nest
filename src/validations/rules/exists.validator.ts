@@ -5,7 +5,7 @@ import { Inject, Injectable } from "@nestjs/common";
 const name = "Exsits constraint validator";
 const async = true
 
-@ValidatorConstraint({name, async})
+@ValidatorConstraint({name: "Exsits constraint validator", async: true})
 @Injectable()
 export class ExistsModelRule implements ValidatorConstraintInterface {
     constructor(
@@ -19,7 +19,7 @@ export class ExistsModelRule implements ValidatorConstraintInterface {
         const exists = await repository.exist({where:{id}})
         if(mustExists) return exists
         return !exists
-    }
+    } 
     defaultMessage?(validationArguments?: ValidationArguments): string {
         const [targetClassConstructor, mustExists] = validationArguments.constraints;
         const msg = `${targetClassConstructor().name} `
@@ -36,11 +36,11 @@ export function Exists
     (
         targetModelConstructor: () => {new ():T},
         mustExists: boolean = false
-    ):PropertyDecorator
+    ): PropertyDecorator
 {
     return (target: any, propertyName:string) => {
         registerDecorator({
-            validator:() => true,
+            validator: ExistsModelRule,
             name,
             async,
             target: target.constructor,

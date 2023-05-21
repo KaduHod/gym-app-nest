@@ -9,6 +9,9 @@ export class Aluno extends BaseEntity {
   @Column("int", { name: "user_id", nullable: false })
   userId: number | null;
 
+  @Column("int", {name: "personal_id", nullable: false})
+  personal_id:number
+
   @ManyToOne(() => Personal, (personal) => personal.alunos)
   @JoinColumn({ name: "personal_id" })
   personal?:Personal

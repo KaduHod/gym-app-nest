@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, BaseEntity } from "typeorm";
 import { Aluno } from "../aluno/Alunos.entity";
 
 @Entity("personais", { schema: "gymapp2" })
-export class Personal {
+export class Personal extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
   id: number;
 

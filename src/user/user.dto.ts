@@ -8,17 +8,13 @@ import { Injectable } from '@nestjs/common'
 import { Unique } from 'src/validations/rules/unique.validator'
 import { Exists } from 'src/validations/rules/exists.validator'
 import { Aluno } from 'src/aluno/Alunos.entity'
+import { Personal } from 'src/personal/Personais.entity'
+import { AlunoHasPersonal } from 'src/validations/rules/alunoHasPersonal.validator'
 
 type OmitTable =  "id" | "createdAt" | "updatedAt"
 
-@Unique({
-    classConstructor: () => User,
-    fields: ["email"]
-})
-@Unique({
-    classConstructor: () => User,
-    fields: ["nickname"]
-})
+@Unique(() => User, ["email"])
+@Unique(() => User, ["nickname"])
 @Injectable()
 export class CreateUser implements Partial<User> {
     @Length(5, 100)
@@ -58,19 +54,15 @@ export class CreateUser implements Partial<User> {
 
 }
 
-@Unique({
-    classConstructor: () => User,
-    fields: ["email"]
-})
-@Unique({
-    classConstructor: () => User,
-    fields: ["nickname"]
-})
+
+@Unique(() => User, ["email"])
+@Unique(() => User, ["nickname"])
+@Injectable()
 export class UpdateUser implements Partial<User> {    
     @IsNumber()
     @IsNotEmpty()
     @Expose()
-    @Exists(() => User)
+    @Exists(() => User, true)
     id: number
 
     @Length(5, 100)
@@ -146,27 +138,27 @@ export class QueryUser {
     cellphone?: string = undefined
 }
 
-
+@Injectable()
 export class AttachAluno {
     @IsNumber()
     @IsNotEmpty()
     @Expose()
-    @Exists(() => Aluno)
+    @Exists(() => Aluno, true)
+    @AlunoHasPersonal(false)
     aluno_id:number 
     
     @IsNumber()
     @IsNotEmpty()
     @Expose()
+    @Exists(() => Personal, true)
     personal_id:number
 }
 
-
-export class CreateBasicAnthropometry implements Omit<Medidas, OmitTable> {
-    circunferencias: Circunferencias
-    dobrascutaneas: Dobrascutaneas
-    user: User
+@Injectable()
+export class CreateBasicAnthropometry implements Partial<Omit<Medidas, OmitTable>> {
     @IsNumber()
     @IsNotEmpty()
+    @Exists(() => User, true)
     userId: number 
 
     @IsNotEmpty()
@@ -182,9 +174,11 @@ export class CreateBasicAnthropometry implements Omit<Medidas, OmitTable> {
     data: Date
 }
 
+@Injectable()
 export class UpdateBasicAnthropometry implements Partial<Omit<Medidas, OmitTable>> {
     @IsNumber()
     @IsNotEmpty()
+    @Exists(() => Medidas, true)
     id: number 
 
     @IsOptional()
@@ -200,7 +194,7 @@ export class UpdateBasicAnthropometry implements Partial<Omit<Medidas, OmitTable
     data?: Date
 }
 
-
+@Injectable()
 export class CreateDobras implements Partial<Omit<Dobrascutaneas, OmitTable>> {
     @IsNumber()
     @IsOptional()
@@ -240,12 +234,15 @@ export class CreateDobras implements Partial<Omit<Dobrascutaneas, OmitTable>> {
 
     @IsNumber()
     @IsNotEmpty()
+    @Exists(() => Medidas, true)
     medidaId: number
 }
 
+@Injectable()
 export class UpdateDobras implements Partial<Omit<Dobrascutaneas, OmitTable | "medidaId">> {
     @IsNumber()
     @IsNotEmpty()
+    @Exists(() => Dobrascutaneas, true)
     id:number
     
     @IsNumber()
@@ -285,9 +282,11 @@ export class UpdateDobras implements Partial<Omit<Dobrascutaneas, OmitTable | "m
     quadril?: number
 }
 
+@Injectable()
 export class CreateCircunferencias {
     @IsNotEmpty()
     @IsNumber()
+    @Exists(() => Medidas, true)
     medidaId: number
 
     @IsNumber()
@@ -311,9 +310,11 @@ export class CreateCircunferencias {
     abdomen: number
 }
 
+@Injectable()
 export class UpdateCircunferencias {
     @IsNotEmpty()
     @IsNumber()
+    @Exists(() => Circunferencias, true)
     id: number
 
     @IsNumber()

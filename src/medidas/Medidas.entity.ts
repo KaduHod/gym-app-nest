@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   Entity,
   Index,
@@ -12,7 +13,7 @@ import { Dobrascutaneas } from "./Dobrascutaneas.entity";
 import { User } from "../user/Users.entity";
 
 @Entity("medidas", { schema: "gymapp2" })
-export class Medidas {
+export class Medidas extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
   id: number;
 

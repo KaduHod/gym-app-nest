@@ -1,7 +1,7 @@
 import {
+  BaseEntity,
   Column,
   Entity,
-  Index,
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -9,7 +9,7 @@ import {
 import { Medidas } from "./Medidas.entity";
 
 @Entity("circunferencias", { schema: "gymapp2" })
-export class Circunferencias {
+export class Circunferencias extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "int", name: "id", unsigned: true })
   id: number;
 
