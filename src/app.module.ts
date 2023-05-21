@@ -13,6 +13,7 @@ import { config } from './data-source.config';
 import ArticulationModule from './articulation/articulation.module';
 import MovementsModule from './movements/movements.module';
 import ValidationModule from './validations/validation.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -31,7 +32,9 @@ import ValidationModule from './validations/validation.module';
     TypeOrmModule.forRoot(config),
     ValidationModule
   ],
-  controllers: [],
+  controllers: [
+    AppController
+  ],
   providers: [
     
   ] 
