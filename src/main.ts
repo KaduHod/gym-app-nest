@@ -7,6 +7,8 @@ import TypeOrmExceptionFilter from './errors/typeOrm.fitler';
 import ValidationModule from './validations/validation.module';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { getEnv } from './config/env'
+import * as hbs from 'express-handlebars';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
@@ -15,12 +17,20 @@ async function bootstrap() {
   .useGlobalFilters(new GlobalErrorHandler())
   .useGlobalPipes(new ValidationPipe())
   .useGlobalFilters(new TypeOrmExceptionFilter())
-  .useStaticAssets(join(__dirname, "..", "public"))
-  .setBaseViewsDir(join(__dirname, "..", "public/views"))
-  .setViewEngine('ejs');
+  .useStaticAssets(join(__dirname, "..", "/public"))
+  .useStaticAssets(join(__dirname, "..","/public/styles"))
+  .setBaseViewsDir(join(__dirname, "..", "/public/views"))
+  .setViewEngine('hbs');
+
+  app.engine('hbs', hbs.engine({
+    layoutsDir: "public/views",
+    partialsDir: "public/views/components",
+    defaultLayout: "templates/default",
+    extname: 'hbs',
+  }))
   
   useContainer(app.select(ValidationModule), {fallbackOnErrors: true})
 
-  await app.listen(3000);
+  await app.listen(getEnv()['APP_PORT']);
 }
 bootstrap();
