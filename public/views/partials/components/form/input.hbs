@@ -2,6 +2,9 @@
     type="{{ type }}" 
     name="{{ name }}" 
     placeholder="{{ placeholder }}"
+    {{#if id}}
+        id="{{id}}"
+    {{/if}}
     {{#if pattern}}
         pattern={{ pattern }}
     {{/if}}

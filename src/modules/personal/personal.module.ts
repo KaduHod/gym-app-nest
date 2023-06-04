@@ -6,11 +6,12 @@ import AttachAlunoService from './services/attachAluno.service';
 import {TypeOrmModule} from "@nestjs/typeorm"
 import { Personal } from 'src/modules/personal/Personais.entity';
 import { Aluno } from 'src/modules/aluno/Alunos.entity';
+import { User } from '../user/Users.entity';
 
 @Module({
     imports:[
         UserModule,
-        TypeOrmModule.forFeature([Personal, Aluno])
+        TypeOrmModule.forFeature([Personal, Aluno, User])
     ],
     controllers:[PersonalController],
     providers:[

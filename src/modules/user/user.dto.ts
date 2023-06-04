@@ -13,8 +13,8 @@ import { Circunferencias } from '../medidas/Circunferencias.entity'
 
 type OmitTable =  "id" | "createdAt" | "updatedAt"
 
-@Unique(() => User, ["email"])
-@Unique(() => User, ["nickname"])
+// @Unique(() => User, ["email"])
+// @Unique(() => User, ["nickname"])
 @Injectable()
 export class CreateUser implements Partial<User> {
     @Length(5, 100)

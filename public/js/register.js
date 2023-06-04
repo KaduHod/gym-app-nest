@@ -10,6 +10,8 @@ const registerButton = document.getElementById('register-button')
 const registerToLogin = document.getElementById('register-to-login')
 const registerContainer = document.getElementById('register-container')
 const loginContainer = document.getElementById('login-container')
+const spinModal = document.getElementById("register-spin")
+const messageContainer = document.getElementById('message-container')
 
 const validate = () => {
     const fields = new FormFields(registerForm)
@@ -133,10 +135,9 @@ const validate = () => {
 let onSubmitRegisterForm = async (e) => {
     if(e.target !== registerButton) return
     const fields = new FormFields(registerForm)
-    const valid = validate();
-    console.log({valid})
+    // const valid = validate();
 
-    if(!valid) return;
+    // if(!valid) return;
 
     const {userType, ...body} = fields.getData()
 
@@ -157,14 +158,23 @@ let onSubmitRegisterForm = async (e) => {
         headers: {
             'Content-type':"application/json"
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(bodyMock)
     })
 
-    const response = await request.json()
-    console.log({response})
+    spinModal.classList.toggle('hidden')
+
+    setTimeout(async () => {
+        const response = await request.json()
+        console.log(response)
+        if(request.status < 299) {
+            registerToLogin.click()
+            messageContainer.innerHTML = 'Registered! Now you can log in.'
+            messageContainer.classList.remove('hidden')
+        }
+        spinModal.classList.toggle('hidden')
+    }, 1000 * 1)   
+
 }
-
-
 
 let onClickRegisterButton = (e) => {
     console.log("Register button press", {e})

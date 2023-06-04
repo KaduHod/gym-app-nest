@@ -1,13 +1,13 @@
 <div class="w-full flex justify-center" >
     <form action="" id="register-form" method="post" class="
         flex-col 
-        bg-slate-300
-        w-3/5
+        w-2/5
         rounded
+        bg-slate-300
         flex
+        p-5
         items-center
         min-h-46
-        p-5
         animate-translate-y
     ">
         <h1>Register</h1>
@@ -28,6 +28,8 @@
             {{> components/button title='register' type=true id="register-button"}}
             {{> components/button title='login' id="register-to-login"}}    
         </div>
+        {{> components/loading-modal id="register-spin"}}
+
         <ul id="register-form-errors" class="errors-list list-disc hidden text-sm flex-col flex items-start w-full mt-1 text-red-600">
             
         </ul>

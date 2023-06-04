@@ -1,5 +1,5 @@
-import { Controller, Get, Render, Res } from '@nestjs/common';
-import { Response } from 'express';
+import { Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
+import { Response, Request } from 'express';
 
 @Controller("/")
 export class AppController {
@@ -11,8 +11,9 @@ export class AppController {
     return res.render('index')
   }
 
-  @Get('home')
-  register(@Res() res:Response) {
-    return res.render('register')
+  @Post('home')
+  home(@Req() req: Request,@Res() res:Response) {
+    console.log(req.body)
+    return res.render('home')
   }
 }

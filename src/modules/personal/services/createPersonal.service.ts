@@ -5,6 +5,7 @@ import { permission } from "src/utils/enums";
 import { Repository } from "typeorm";
 import {InjectRepository} from '@nestjs/typeorm'
 import { User } from "src/modules/user/Users.entity";
+import { encrypt } from "src/utils/hash.helper";
 
 @Injectable()
 export default class CreatePersonalService {
@@ -13,11 +14,24 @@ export default class CreatePersonalService {
     constructor(
         private CreateUserService: CreateUserService,
         @InjectRepository(Personal)
-        private personalRepository: Repository<Personal>
+        private personalRepository: Repository<Personal>,
+        @InjectRepository(User)
+        private userRepository: Repository<User>
     ){}
 
 
-    async main(personal:User): Promise<User> {
+    async main(personal:User): Promise<User | any>  {
+        const userDB = await this.userRepository.find({
+            take:1,
+            relations: {
+                permissions:true
+            },
+            where: {
+                id: 81
+            }
+        })
+        console.log(encrypt("12345678"))
+        return userDB;
         this.user = await this.CreateUserService.main(personal)
         this.personal = await this.personalRepository.save({
             userId: this.user.id
