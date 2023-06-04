@@ -5,20 +5,19 @@ import { FormFields } from "./validate.js"
 /**
  * REGISTER
  */
- const registerForm = document.getElementById('register-form')
- const registerButton = document.getElementById('register-button')
- const registerToLogin = document.getElementById('register-to-login')
- const registerContainer = document.getElementById('register-container')
- const loginContainer = document.getElementById('login-container')
+const registerForm = document.getElementById('register-form')
+const registerButton = document.getElementById('register-button')
+const registerToLogin = document.getElementById('register-to-login')
+const registerContainer = document.getElementById('register-container')
+const loginContainer = document.getElementById('login-container')
 
- let onSubmitRegisterForm = (e) => {
-    if(e.target !== registerButton) return
+const validate = () => {
     const fields = new FormFields(registerForm)
     fields.resetErrors();
 
     const {
         name, 
-        username, 
+        nickname, 
         email, 
         password, 
         passwordconf, 
@@ -40,15 +39,15 @@ import { FormFields } from "./validate.js"
         ]
     ])
 
-    const userNameValidations = fields.validateAllFromField(username,[
+    const userNameValidations = fields.validateAllFromField(nickname,[
         [
             validator.isEmpty, 
-            `Username must not me empty`,
+            `nickname must not me empty`,
             false
         ],
         [
             validator.isLength,
-            `Username must have at between 5 and 20 characters`,
+            `nickname must have at between 5 and 20 characters`,
             true,
             {min:5, max:20}
         ]
@@ -68,7 +67,7 @@ import { FormFields } from "./validate.js"
     ]) 
     
     const passwordValidationOptions = {
-        minLength:6,
+        minLength:8,
         minLowercase:1,
         minUppercase:1,
         minNumbers:0,
@@ -78,7 +77,7 @@ import { FormFields } from "./validate.js"
     const passwordValidation = fields.validateAllFromField(password,[
         [
             validator.isStrongPassword,
-            "Password must have at lest 6 carachters, 1 uppercase letter, 1 lowercase letter and 1 special caracter",
+            "Password must have at lest 6 caracters, 1 uppercase letter, 1 lowercase letter and 1 special caracter",
             true,
             passwordValidationOptions
         ]
@@ -99,6 +98,11 @@ import { FormFields } from "./validate.js"
             `Cellphone must not be empty`,
             false
         ],
+        [
+            (value) => /^\d{2,3} \d{4,5}-\d{4}$/.test(value),
+            "Cellphone must be valid (021 9999-4444)",
+            true
+        ]
     ])
 
     const birthdateValidation = fields.validateAllFromField(birthdate,[
@@ -116,10 +120,51 @@ import { FormFields } from "./validate.js"
     
     const messages = [nameValidations, userNameValidations, emailValidations, passwordValidation, passwordconfValidation, cellphoneValidation, birthdateValidation];
 
-    if(messages.length) {
+    const messagesFlat = messages.map(({messages}) => messages).flat()
+    
+    if(messagesFlat.length) {
         fields.displayErrors(messages)
+        return false
     }
+
+    return true
 }
+
+let onSubmitRegisterForm = async (e) => {
+    if(e.target !== registerButton) return
+    const fields = new FormFields(registerForm)
+    const valid = validate();
+    console.log({valid})
+
+    if(!valid) return;
+
+    const {userType, ...body} = fields.getData()
+
+    const route = `${window.location.href}${userType}` 
+    
+    const bodyMock = {
+        birthdate: "1998-10-12",
+        cellphone: "041 99999-4444",
+        email: "Carl324osjr.app2e@gmail.com",
+        name: "CARLOS ALBERTO ",
+        password: "Senha123!",
+        passwordconf: "Senha123!",
+        nickname: "carlosadsjrs"
+    }
+
+    const request = await fetch(route, {
+        method: 'POST',
+        headers: {
+            'Content-type':"application/json"
+        },
+        body: JSON.stringify(body)
+    })
+
+    const response = await request.json()
+    console.log({response})
+}
+
+
 
 let onClickRegisterButton = (e) => {
     console.log("Register button press", {e})

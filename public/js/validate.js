@@ -69,4 +69,11 @@ export function FormFields(form){
         this.errorsList.classList.add('hidden');
         this.errorsList.innerHTML = null;
     }
+
+    this.getData = () => {
+        return this.fields.reduce((acc, field) => {
+            acc[field.name] = field.value
+            return acc
+        }, {})
+    }
 }

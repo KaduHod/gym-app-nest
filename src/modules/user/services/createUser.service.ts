@@ -5,6 +5,7 @@ import { Repository } from "typeorm";
 import { permission } from "src/utils/enums";
 import * as UserDto from '../user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
+import { encrypt } from "src/utils/hash.helper";
 
 @Injectable()
 export default class CreateUserService {
@@ -17,6 +18,8 @@ export default class CreateUserService {
     ) {}
 
     async main(userArgs: UserDto.CreateUser) {
+        const {password} = userArgs
+        userArgs.password = encrypt(password)
         await this.createuser(userArgs)
         return this.getUser()
     }

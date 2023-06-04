@@ -1,0 +1,15 @@
+@keyframes translate-y {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+  
+.animate-translate-y {
+    animation-name: translate-y;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
