@@ -1,0 +1,20 @@
+<div class="w-full flex justify-center">
+    <form action="" id="login-form" method="post" class="
+        flex-col 
+        bg-slate-300
+        w-fit
+        rounded
+        flex
+        items-center
+        min-h-46
+        p-5
+    ">
+    <h1>LOGIN</h1>
+        {{> components/form/input type='email' name='email' placeholder='email' req=true}}
+        {{> components/form/input type='password' name='password' placeholder='password' req=true}}
+        <div class="flex mt-1 justify-around w-full">
+            {{> components/button title='login' type='submit' id="login-button"}}
+            {{> components/button title='register' id="login-to-register"}}
+        </div>
+    </form>
+</div>

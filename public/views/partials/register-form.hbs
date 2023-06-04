@@ -1,0 +1,26 @@
+<div class="w-full flex justify-center" >
+    <form action="" id="register-form" method="post" class="
+        flex-col 
+        bg-slate-300
+        w-fit
+        rounded
+        flex
+        items-center
+        min-h-46
+        p-5
+    ">
+    <h1>Register</h1>
+        {{> components/form/input type='text' name='name' placeholder='name' req=true}}
+        {{> components/form/input type='text' name='username' placeholder='username' req=true}}
+        {{> components/form/input type='email' name='email' placeholder='email' req=true}}
+        {{> components/form/input type='text' name='celphone' placeholder='celphone' req=true pattern="/^(\+55|55)?(\d{2})?(\d{2})(\d{4,5})(\d{4})$/" }} 
+        {{> components/form/input type='password' name='password' placeholder='password' req=true}}
+        {{> components/form/input type='password' name='passwordconf' req=true placeholder='password confirmation'}}
+        {{> components/form/input type='date' name='bithdate' req=true placeholder='bithdate'}}
+        <div class="flex mt-1 justify-around w-full">
+            {{> components/button title='register' type=true id="register-button"}}
+            {{> components/button title='login' id="register-to-login"}}    
+        </div>
+        
+    </form>
+</div>

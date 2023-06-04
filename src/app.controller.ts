@@ -8,7 +8,11 @@ export class AppController {
 
   @Get()
   getHello(@Res() res:Response) {
-    return res.render('main', { layout: "templates/default" })
+    return res.render('index')
   }
 
+  @Get('home')
+  register(@Res() res:Response) {
+    return res.render('register')
+  }
 }

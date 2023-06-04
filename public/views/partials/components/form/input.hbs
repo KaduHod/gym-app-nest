@@ -1,0 +1,14 @@
+<input 
+    type="{{ type }}" 
+    name="{{ name }}" 
+    placeholder="{{ placeholder }}"
+    {{#if pattern}}
+        pattern={{ pattern }}
+    {{/if}}
+    {{#if req}}
+        required="true"
+    {{/if}}
+    class="
+        focus:outline-none
+        p-1
+    ">

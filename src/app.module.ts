@@ -1,23 +1,25 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
-import { UserModule } from './user/user.module';
+import { UserModule } from './modules/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import NotEmptyBodyMiddleware from './notEmptyBody.middleware';
-import MusclesModule from './muscles/muscle.module';
 import ErrorModule from './errors/error.module';
-import ExerciseModule from './exercicios/exercise.module';
-import PersonalModule from './personal/personal.module';
-import AlunoModule from './aluno/aluno.module';
-import MedidaModule from './medidas/medida.module';
+import ExerciseModule from './modules/exercicios/exercise.module';
+import PersonalModule from './modules/personal/personal.module';
+import AlunoModule from './modules/aluno/aluno.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from './data-source.config';
-import ArticulationModule from './articulation/articulation.module';
-import MovementsModule from './movements/movements.module';
-import ValidationModule from './validations/validation.module';
+import ArticulationModule from './modules/articulation/articulation.module';
+import MovementsModule from './modules/movements/movements.module';
+import ValidationModule from './modules/validations/validation.module';
 import { AppController } from './app.controller';
+import MusclesModule from './modules/muscles/muscle.module';
+import MedidasModule from './modules/medidas/medida.module';
+import * as express from 'express';
+import { join } from 'path';
 
 @Module({
   imports: [
-    MedidaModule,
+    MedidasModule,
     UserModule, 
     AlunoModule,
     ErrorModule,
@@ -46,5 +48,10 @@ export class AppModule {
       {path:"*", method: RequestMethod.PUT},
       {path:"*", method: RequestMethod.PATCH}
     )
+    .apply(
+      express.static(
+        join(__dirname, '..', 'public')
+      )
+    ).forRoutes("*")
   }
 }

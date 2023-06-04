@@ -1,19 +1,19 @@
 import { DataSource, DataSourceOptions } from 'typeorm'
-import { Aluno } from './aluno/Alunos.entity';
-import { Articulation } from './articulation/Articulations.entity';
+import { Aluno } from './modules/aluno/Alunos.entity';
+import { Articulation } from './modules/articulation/Articulations.entity';
 import { getEnv } from './config/env';
 import { ExerciseMusclePortion } from './entitys/ExerciseMusclePortion.entity';
 import { Treinos } from './entitys/Treinos.entity';
-import { Exercicio } from './exercicios/Exercicios.entity';
-import { Circunferencias } from './medidas/Circunferencias.entity';
-import { Dobrascutaneas } from './medidas/Dobrascutaneas.entity';
-import { Medidas } from './medidas/Medidas.entity';
-import { Movements } from './movements/Movements.entity';
-import { MuscleGroup } from './muscles/MuscleGroup.entity';
-import { MusclePortion } from './muscles/MusclePortion.entity';
-import { Personal } from './personal/Personais.entity';
-import { Permissions } from './user/Permissions.entity';
-import { User } from './user/Users.entity';
+import { Exercicio } from './modules/exercicios/Exercicios.entity';
+import { Movements } from './modules/movements/Movements.entity';
+import { Personal } from './modules/personal/Personais.entity';
+import { Permissions } from './modules/user/Permissions.entity';
+import { User } from './modules/user/Users.entity';
+import { MusclePortion } from './modules/muscles/MusclePortion.entity';
+import { MuscleGroup } from './modules/muscles/MuscleGroup.entity';
+import { Medidas } from './modules/medidas/Medidas.entity';
+import { Circunferencias } from './modules/medidas/Circunferencias.entity';
+import { Dobrascutaneas } from './modules/medidas/Dobrascutaneas.entity';
 const env = getEnv()
 
 export const config: DataSourceOptions = {
