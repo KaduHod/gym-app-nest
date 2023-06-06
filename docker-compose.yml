@@ -7,7 +7,7 @@ services:
     container_name: gym-nest
     hostname: gym-nest
     ports:
-      - ${APP_PORT}:3000
+      - ${DEV_APP_PORT}:${DEV_APP_PORT}
     working_dir: /usr/src/app
     volumes: 
       - ./:/usr/src/app    
@@ -17,7 +17,7 @@ services:
     depends_on:
       - gym-db
     networks:
-      - app
+      - gym
   gym-db:
     image: mysql:latest
     env_file:
@@ -25,17 +25,18 @@ services:
     container_name: gym-db
     hostname: gym-db
     ports:
-      - ${DATABASE_PORT}:${DATABASE_PORT}
+      - ${DEV_DATABASE_PORT}:${DEV_DATABASE_PORT}
     environment:
-      MYSQL_ROOT_PASSWORD: ${DATABASE_PWD}
-      MYSQL_DATABASE: ${GYM_DATABASE_NAME}
-      MYSQL_USERNAME: ${DATABASE_USER}
-      MYSQL_PASSWORD: ${DATABASE_PWD}
+      MYSQL_ROOT_PASSWORD: ${DEV_DATABASE_PWD}
+      MYSQL_DATABASE: ${DEV_GYM_DATABASE_NAME}
+      MYSQL_USERNAME: ${DEV_DATABASE_USER}
+      MYSQL_PASSWORD: ${DEV_DATABASE_PWD}
     volumes:
       - ./database/:/docker-entrypoint-initdb.d
     restart: unless-stopped
     networks:
-      - app
+      - gym
 networks:
-  app: 
+  gym:
+    external: true 
     driver: bridge
