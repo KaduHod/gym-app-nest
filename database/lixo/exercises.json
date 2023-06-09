@@ -1,0 +1,67 @@
+[
+  {
+    "1": [
+        {
+            "exercise_name": "Barbell Bench Press",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Dumbbell Fly",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Incline Bench Press",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Push-Ups",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Chest Dips",
+            "agonist": "1",
+            "antagonist": "3",
+            "synergist": "2, 4, 5, 6, 7, 8, 10"
+        }
+    ],
+    "2": [
+        {
+            "exercise_name": "Incline Dumbbell Fly",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Incline Bench Press",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Dumbbell Bench Press",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Push-Ups",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        },
+        {
+            "exercise_name": "Cable Crossover",
+            "agonist": "2",
+            "antagonist": "1, 3",
+            "synergist": "4, 5, 6, 7, 8, 10"
+        }
+    ]
+]
