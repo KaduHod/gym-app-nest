@@ -9,5 +9,5 @@ export const getEnv = () => {
         const newKey = key.split(`${stage}_`)[1]
         acc[newKey] = process.env[key]
         return acc
-    }, {})
+    }, {}) as Record<string, string>
 }

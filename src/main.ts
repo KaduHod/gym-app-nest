@@ -9,11 +9,13 @@ import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { getEnv } from './config/env'
 import * as hbs from 'express-handlebars';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
 
   app
+  .use(cookieParser())
   .useGlobalFilters(new GlobalErrorHandler())
   .useGlobalPipes(new ValidationPipe())
   .useGlobalFilters(new TypeOrmExceptionFilter())
@@ -21,14 +23,19 @@ async function bootstrap() {
   .setBaseViewsDir(join(__dirname, "..", "/public/views"))
   .setViewEngine('hbs');
 
+  const engine = hbs.engine({
+    layoutsDir: "public/views/layouts",
+    partialsDir: "public/views/partials",
+    defaultLayout: "logged-default",
+    extname: 'hbs',
+    helpers:{
+      isError: (arg) => arg === "error"
+    }
+  })
+
   app.engine(
     'hbs', 
-    hbs.engine({
-      layoutsDir: "public/views/layouts",
-      partialsDir: "public/views/partials",
-      defaultLayout: "default",
-      extname: 'hbs',
-    }),
+    engine,
   )
 
   console.log(join(__dirname, '..', 'public'))

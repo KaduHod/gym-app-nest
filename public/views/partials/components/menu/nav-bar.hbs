@@ -1,0 +1,36 @@
+<nav class="fixed top-0 left-0 flex p-1">
+    <div class="bg-red-700 text-white p-2 rounded-md flex-col">
+        <div class="flex items-center justify-center">
+            <img src="/images/icons/hamburguer.svg" id="menu-hamburguer" alt="dumbell" class="w-10 h-10 flex cursor-pointer items-center justify-center">
+            <img src="/images/icons/close.svg" id="menu-close" alt="dumbell" class="w-10 h-10 flex cursor-pointer items-center justify-center hidden">
+        </div>
+        <ul class="hidden" id="list-menu">
+            {{> components/menu/li title='Home' link='/home' icon='home' classes="my-2"}}
+            {{> components/menu/li title='Schedule' icon='schedule' classes="my-2"}}
+            {{> components/menu/li title='Workouts' icon='dumbell' classes="my-2"}}
+            {{> components/menu/li title='Exercises' link='/exercise' icon='yoga' classes="my-2"}}
+            {{> components/menu/li title='Personal' icon='personal' classes="my-2"}}
+            {{> components/menu/li title='Costumers' icon='peaple-group' classes="my-2"}}
+            {{> components/menu/li title='Settings' icon='settings' classes="my-2"}}
+        </ul>
+    </div>
+</nav>
+<script>
+    const menu = document.getElementById('menu-hamburguer')
+    const closeMenu = document.getElementById('menu-close')
+    const menuItems = document.getElementById('list-menu')
+    menu.onclick = function() {
+        menuItems.classList.toggle('hidden');
+        toggleMenuIcon()
+    }
+
+    closeMenu.onclick = function(){
+        toggleMenuIcon()
+        menuItems.classList.toggle('hidden');
+    }
+
+    const toggleMenuIcon = () => {
+        menu.classList.toggle('hidden')
+        closeMenu.classList.toggle('hidden')
+    }
+</script>

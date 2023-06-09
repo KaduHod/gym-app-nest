@@ -1,7 +1,7 @@
 <div class="w-full flex justify-center">
-    <form action="/home" id="login-form" method="post" class="
+    <form action="/login" id="login-form" method="post" class="
         flex-col 
-        bg-slate-300
+        bg-red-700
         w-2/5
         rounded
         flex
@@ -11,15 +11,8 @@
         animate-translate-y
     ">
     <h1>LOGIN</h1>
-        {{> components/form/input type="hidden" name="token" id="login-token"}}
         {{> components/form/input type='email' name='email' placeholder='email' req=true}}
         {{> components/form/input type='password' name='password' placeholder='password' req=true}}
-        <div class="flex mt-4 justify-around w-full">
-            <select name="userTypeLogin" id="selectUserType">
-                <option value="personal">Personal</option>
-                <option value="aluno">Aluno</option>
-            </select>
-        </div>
         <div class="flex mt-4 justify-around w-full">
             {{> components/button title='login' type='submit' id="login-button"}}
             {{> components/button title='register' id="login-to-register"}}

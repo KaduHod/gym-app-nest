@@ -1,0 +1,20 @@
+<div class="
+    flex 
+    items-center 
+    animate-translate-y 
+    mb-4 
+    justify-center 
+    w-full 
+    {{#unless message}}
+        hidden 
+    {{/unless}}
+    rounded 
+    {{#if bg}}
+        {{ bg }}
+    {{/if}}
+    p-2" id="message-container">
+    {{#if message}}
+        {{message.message}}
+    {{/if}}
+    {{message}}
+</div>

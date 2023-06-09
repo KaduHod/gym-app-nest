@@ -3,7 +3,7 @@
         flex-col 
         w-2/5
         rounded
-        bg-slate-300
+        bg-red-700
         flex
         p-5
         items-center
@@ -18,7 +18,7 @@
         {{> components/form/input type='password' name='password' placeholder='password' req=true}}
         {{> components/form/input type='password' name='passwordconf' req=true placeholder='password confirmation'}}
         {{> components/form/input type='date' name='birthdate' req=true placeholder='birthdate'}}
-        <div class="flex mt-4 justify-around w-full">
+        <div class="flex mt-4 justify-around w-full text-black">
             <select name="userType" id="selectUserType">
                 <option value="personal">Personal</option>
                 <option value="aluno">Aluno</option>

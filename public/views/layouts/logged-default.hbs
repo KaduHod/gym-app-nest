@@ -25,13 +25,15 @@
   <body>
     <div class="container-main bg-black text-white">
     	{{> header }}
+        {{> components/menu/nav-bar }}
       	<main>
     		{{#if message}}
-          		{{> components/message message=message bg=bg}}
+          		{{> components/message message=message bg=bg }}
         	{{/if}}
         	{{#unless message}}
         		{{> components/message }}
         	{{/unless}}
+
         	{{{ body }}}
       	</main>
       	{{> footer }}

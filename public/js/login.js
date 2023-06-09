@@ -53,30 +53,7 @@ let onSubmitLoginForm = async e => {
 
     if(!valid) return;
 
-    const fields = new FormFields(loginForm)
-
-    const {userTypeLogin, token, ...rest} = fields.getData()
-
-    const body = {
-        ...rest,
-        targetService: 'web app',
-        permission: userTypeLogin
-    }
-
-    const apiAuth = "http://localhost:3001/auth"
-
-    const request = await fetch(apiAuth, {
-        method: 'POST',
-        headers: { 'Content-type':"application/json"},
-        body: JSON.stringify(body)
-    })
-
-    const response = await request.json();
-
-    const tokenReq = response.token;
-
-    loginToken.value = tokenReq
-    loginForm.submit()
+    loginForm.submit();
 }
 
 let onClickLoginButton = e => {

@@ -1,6 +1,7 @@
 import { ArgumentsHost, BadRequestException, Catch, ExceptionFilter, NotFoundException } from "@nestjs/common";
 import { UnhandledError } from "./app.errors";
 import { Response } from "express";
+import { InvalidCredentials } from "src/guards/auth.guard";
 
 
 @Catch()
@@ -19,6 +20,10 @@ export default class GlobalErrorHandler implements ExceptionFilter {
         
         if (exception instanceof BadRequestException) {           
             return response.status(400).json(exception.getResponse())
+        }
+
+        if ( exception instanceof InvalidCredentials) {
+            return response.redirect('/login');
         }
        
         response.status(400).json({

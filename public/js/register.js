@@ -135,9 +135,9 @@ const validate = () => {
 let onSubmitRegisterForm = async (e) => {
     if(e.target !== registerButton) return
     const fields = new FormFields(registerForm)
-    // const valid = validate();
+    const valid = validate();
 
-    // if(!valid) return;
+    if(!valid) return;
 
     const {userType, ...body} = fields.getData()
 

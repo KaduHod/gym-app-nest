@@ -16,6 +16,9 @@ import MusclesModule from './modules/muscles/muscle.module';
 import MedidasModule from './modules/medidas/medida.module';
 import * as express from 'express';
 import { join } from 'path';
+import AuthGuard from './guards/auth.guard';
+import AuthService from './modules/auth/auth.service';
+
 
 @Module({
   imports: [
@@ -38,8 +41,13 @@ import { join } from 'path';
     AppController
   ],
   providers: [
-    
-  ] 
+    AuthGuard,
+    AuthService
+  ],
+  exports: [
+    AuthGuard,
+    AuthService
+  ]
 })
 export class AppModule {
   configure(consumer:MiddlewareConsumer){

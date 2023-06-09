@@ -1,0 +1,41 @@
+<h1>Relate portions with movements and articulations</h1>
+
+<form action="http://localhost:4567/articulation-movements" method="post" id="relate-portions">
+    <select name="portion" class="text-black cursor-pointer">
+    {{#each muscleGroups}}
+        <optgroup label="{{this.name}}" class="text-black">
+        {{#each this.musclePortions}}
+            <option class="cursor-pointer" value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+        </optgroup>
+    {{/each}}
+    </select>
+
+    <select name="articulation-movement" class="text-black cursor-pointer">
+    {{#each articulations}}
+        <optgroup label="{{this.name}}" class="text-black">
+        {{#each this.movements}}
+            <option class="cursor-pointer" value="{{this.id}}-{{../this.id}}">{{this.name}}</option>
+        {{/each}}
+        </optgroup>
+    {{/each}}
+    </select>
+    <button>send</button>
+</form>
+
+<script>
+    const form = document.getElementById('relate-portions');
+    const [muscles, articulationMovement] = [...form.getElementsByTagName('select')];
+    form.onsubmit = function(e) {
+        e.preventDefault()
+        const portionId = Number(muscles.value) 
+        const [movementId, articulationId] = articulationMovement.value.split('-').map(Number)
+
+        const body = {
+            portionId, articulationId, movementId
+        }
+
+        console.log({body})
+    }
+</script>
+
