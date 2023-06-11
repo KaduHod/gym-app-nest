@@ -17,6 +17,12 @@ export class AppController {
   	    	.render('login', { layout: "default" })
   	}
 
+	@Get('')
+  	index(@Res() res:Response, @Req() req:Request) {
+  	  	return res
+  	    	.render('login', { layout: "default" })
+  	}
+
   	@Get('register')
   	register(@Res() res:Response, @Req() req:Request) {
   	  	return res

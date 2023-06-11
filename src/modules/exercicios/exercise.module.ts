@@ -1,6 +1,8 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AppModule } from "src/app.module";
+import { ArticulationMovement } from "src/entitys/articulationMovement.entity";
+import { ArticulationMovementPortion } from "src/entitys/ArticulationMovementMusclePortion.entity";
 import AuthGuard from "src/guards/auth.guard";
 import { Exercicio } from "src/modules/exercicios/Exercicios.entity";
 import { Articulation } from "../articulation/Articulations.entity";
@@ -14,7 +16,15 @@ import ListExerciseService from "./services/listExercises.service";
 
 @Module({
     imports:[
-        TypeOrmModule.forFeature([Exercicio, MuscleGroup, MusclePortion, Articulation, Movements]),
+        TypeOrmModule.forFeature([
+            Exercicio, 
+            MuscleGroup, 
+            MusclePortion, 
+            Articulation, 
+            Movements,
+            ArticulationMovement,
+            ArticulationMovementPortion
+        ]),
     ],
     controllers:[ExerciseControler],
     providers:[

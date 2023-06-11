@@ -1,6 +1,8 @@
-import { Controller, Get, Post, Query, Render, Req, Res, UseGuards } from "@nestjs/common";
+import { Controller, Get, Post, Query, Render, Req, Res, UseGuards, Body } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Response, Request } from "express";
+import { ArticulationMovement } from "src/entitys/articulationMovement.entity";
+import { ArticulationMovementPortion } from "src/entitys/ArticulationMovementMusclePortion.entity";
 import AuthGuard from "src/guards/auth.guard";
 import { Repository } from "typeorm";
 import { Articulation } from "../articulation/Articulations.entity";
@@ -19,6 +21,8 @@ export default class ExerciseControler {
         @InjectRepository(MusclePortion) private readonly musclePortionRepository:Repository<MusclePortion>,
         @InjectRepository(Articulation) private readonly articulationRepository:Repository<Articulation>,
         @InjectRepository(Movements) private readonly movmentsRepository:Repository<Movements>,
+        @InjectRepository(ArticulationMovement) private readonly articulationMovementRepository:Repository<ArticulationMovement>,
+        @InjectRepository(ArticulationMovementPortion) private readonly articulationMovementPortionRepository:Repository<ArticulationMovementPortion>,
     ){}
 
     @Get("search")
@@ -31,7 +35,6 @@ export default class ExerciseControler {
     @UseGuards(AuthGuard)
     @Render('exercises/index')
     async index(@Res() res: Response, @Req() req: Request) {
-        const {accessToken, refreshToken} = req.cookies
         const [muscleGroups, articulations] = await Promise.all([
             this.muscleGroupRepository.find({
                 relations:{
@@ -58,7 +61,26 @@ export default class ExerciseControler {
 
     @UseGuards(AuthGuard)
     @Post("articulation-movements")
-    async articulationsMovements(@Res() res: Response, @Req() req: Request) {
-        
+    async articulationsMovements(@Body() payload:Record<string, any>, @Res() res: Response, @Req() req: Request) {
+        const {movementId, articulationId, role, portionId} = payload
+        const articulationMovement = await this.articulationMovementRepository.findOneBy({
+            articulation_id: articulationId,
+            movement_id: movementId
+        })
+
+        if(!articulationMovement) {
+            return res.status(404).send("Articulation and movement are not related!")
+        }
+
+        const insertResult = await this.articulationMovementPortionRepository.insert({
+            role,
+            muscle_portion_id: portionId,
+            movement_id: movementId,
+            articulation_id: articulationId
+        })
+
+        console.log({insertResult})
+
+        return res.status(201).send("Created")
     }
 }

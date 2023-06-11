@@ -14,6 +14,8 @@ import { MuscleGroup } from './modules/muscles/MuscleGroup.entity';
 import { Medidas } from './modules/medidas/Medidas.entity';
 import { Circunferencias } from './modules/medidas/Circunferencias.entity';
 import { Dobrascutaneas } from './modules/medidas/Dobrascutaneas.entity';
+import { ArticulationMovement } from './entitys/articulationMovement.entity';
+import { ArticulationMovementPortion } from './entitys/ArticulationMovementMusclePortion.entity';
 const env = getEnv()
 
 export const config: DataSourceOptions = {
@@ -42,7 +44,9 @@ export const config: DataSourceOptions = {
         Medidas,
         Circunferencias,
         Dobrascutaneas,
-        Permissions
+        Permissions,
+        ArticulationMovement,
+        ArticulationMovementPortion
     ],
 } 
 
