@@ -18,6 +18,7 @@ import * as express from 'express';
 import { join } from 'path';
 import AuthGuard from './guards/auth.guard';
 import AuthService from './modules/auth/auth.service';
+import WorkoutModule from './modules/workouts/workout.module';
 
 
 @Module({
@@ -35,7 +36,8 @@ import AuthService from './modules/auth/auth.service';
       isGlobal: true
     }), 
     TypeOrmModule.forRoot(config),
-    ValidationModule
+    ValidationModule,
+    WorkoutModule
   ],
   controllers: [
     AppController

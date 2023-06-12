@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Header, HttpCode, Query, Render, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Header, HttpCode, Param, Query, Render, Res, UseGuards } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ArticulationMovement } from "src/entitys/ArticulationMovement.entity";
 import { ArticulationMovementPortion } from "src/entitys/ArticulationMovementMusclePortion.entity";
@@ -12,7 +12,7 @@ import { MusclePortion } from "./MusclePortion.entity";
 import ListMuscleGroupService from "./services/listMuscleGroups.service";
 import ListMusclePortionService from "./services/listMusclePortion.service";
 
-@Controller("muscle")
+@Controller("muscles")
 export default class MuscleController {
 
     constructor(
@@ -48,14 +48,47 @@ export default class MuscleController {
     ){
         const portions = await this.ListMusclePortionService.main(query)
 
-        return {
-            portions
-        }
+        return { portions }
     }
 
     @Get('')
+    @UseGuards(AuthGuard)
     @Render('muscles/index')
     async index() {
+        const muscles = await this.muscleGroupRepository.find({
+            relations: { musclePortions: true },
+            select: { id:true, name:true }
+        })
 
+        return { muscles }
+    }
+
+    @Get(":portionId")
+    @UseGuards(AuthGuard)
+    @Render('muscles/portion-detail')
+    async portionDetail(@Param() args: Record<string, any>, @Res() res:Response) {
+        const portionId = Number(args.portionId);
+        const portionDB = await this.musclePortionRepository.findOne({
+            where: { id: portionId },
+            relations: {
+                articulationMovements: {
+                    articulation: true,
+                    movement: true
+                },
+                muscleGroup: true
+            }
+        })
+
+        if(!portionDB) {
+            throw { message: "Not found" }
+        }
+
+        const {articulationMovements, muscleGroup,...portion} = portionDB;
+
+        return {
+            portion,
+            muscleGroup,
+            articulationsMovements: MusclePortion.MapMovementsByArticulation(articulationMovements)
+        }
     }
 }

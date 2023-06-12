@@ -1,3 +1,4 @@
+import { ArticulationMovementPortion } from "src/entitys/ArticulationMovementMusclePortion.entity";
 import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Movements } from "../movements/Movements.entity";
 
@@ -32,4 +33,7 @@ export class Articulation {
     }
   })
   movements: Movements[]
+
+  @OneToMany(() => ArticulationMovementPortion, amp => amp.articulation)
+  movementsPortions: ArticulationMovementPortion[]
 }

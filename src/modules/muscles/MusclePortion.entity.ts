@@ -1,12 +1,13 @@
+import { ArticulationMovementPortion } from "src/entitys/ArticulationMovementMusclePortion.entity";
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { Articulation } from "../articulation/Articulations.entity";
 import { MuscleGroup } from "./MuscleGroup.entity";
 
 @Entity("muscle_portion", { schema: "gymapp2" })
@@ -39,4 +40,21 @@ export class MusclePortion {
   })
   @JoinColumn([{ name: "muscle_group_id", referencedColumnName: "id" }])
   muscleGroup: MuscleGroup;
+
+  @OneToMany(() => ArticulationMovementPortion, amp => amp.portion)
+  articulationMovements: ArticulationMovementPortion[]
+  
+  static MapMovementsByArticulation(args:ArticulationMovementPortion[]) {
+    const articulations:Array<Record<string, any> & Articulation> = args.reduce((acc, curr) => {
+      const exists = acc.find( articulation => articulation.id === curr.articulation_id )
+      if(!exists) acc.push(curr.articulation); 
+      return acc
+    }, [] as Articulation[]);
+
+    for (const articulation of articulations) {
+      articulation.muscleMovements = args.filter(item => item.articulation.id === articulation.id).map( item => item.movement)
+    }
+    
+    return articulations
+  }
 }
