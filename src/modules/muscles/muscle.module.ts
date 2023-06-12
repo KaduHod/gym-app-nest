@@ -6,13 +6,28 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { Articulation } from "src/modules/articulation/Articulations.entity";
 import { MusclePortion } from "./MusclePortion.entity";
 import { MuscleGroup } from "./MuscleGroup.entity";
+import { Movements } from "../movements/Movements.entity";
+import { ArticulationMovement } from "src/entitys/ArticulationMovement.entity";
+import { ArticulationMovementPortion } from "src/entitys/ArticulationMovementMusclePortion.entity";
+import AuthService from "../auth/auth.service";
+import AuthGuard from "src/guards/auth.guard";
 
 @Module({
-    imports:[TypeOrmModule.forFeature([Articulation, MusclePortion, MuscleGroup])],
+    imports:[TypeOrmModule.forFeature([
+        Articulation, 
+        MusclePortion, 
+        MuscleGroup, 
+        MusclePortion, 
+        Movements,
+        ArticulationMovement,
+        ArticulationMovementPortion
+    ])],
     controllers:[MuscleController],
     providers: [  
         ListMuscleGroupService,
         ListMusclePortionService,
+        AuthService,
+        AuthGuard
     ],
     exports: []
 })

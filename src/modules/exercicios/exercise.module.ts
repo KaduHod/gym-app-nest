@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AppModule } from "src/app.module";
-import { ArticulationMovement } from "src/entitys/articulationMovement.entity";
+import { ArticulationMovement } from "src/entitys/ArticulationMovement.entity";
 import { ArticulationMovementPortion } from "src/entitys/ArticulationMovementMusclePortion.entity";
 import AuthGuard from "src/guards/auth.guard";
 import { Exercicio } from "src/modules/exercicios/Exercicios.entity";

@@ -14,8 +14,9 @@ import { MuscleGroup } from './modules/muscles/MuscleGroup.entity';
 import { Medidas } from './modules/medidas/Medidas.entity';
 import { Circunferencias } from './modules/medidas/Circunferencias.entity';
 import { Dobrascutaneas } from './modules/medidas/Dobrascutaneas.entity';
-import { ArticulationMovement } from './entitys/articulationMovement.entity';
+
 import { ArticulationMovementPortion } from './entitys/ArticulationMovementMusclePortion.entity';
+import { ArticulationMovement } from './entitys/ArticulationMovement.entity';
 const env = getEnv()
 
 export const config: DataSourceOptions = {

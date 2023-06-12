@@ -9,8 +9,7 @@ export default class ListMusclePortionService {
     public query: QueryMusclePortionDto
 
     constructor(
-        @InjectRepository(MusclePortion)
-        private portionsRepository:Repository<MusclePortion>
+        @InjectRepository(MusclePortion) private readonly portionsRepository:Repository<MusclePortion>
     ){}
 
     async main(query: QueryMusclePortionDto){

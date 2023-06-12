@@ -2,8 +2,6 @@ version: '3.8'
 services: 
   gym-nest: 
     image: node:latest
-    env_file:
-      - ./.env
     container_name: gym-nest
     hostname: gym-nest
     ports:
@@ -20,8 +18,6 @@ services:
       - gym
   gym-db:
     image: mysql:latest
-    env_file:
-      - ./.env
     container_name: gym-db
     hostname: gym-db
     ports:
