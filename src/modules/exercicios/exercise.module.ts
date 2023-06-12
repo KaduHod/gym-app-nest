@@ -26,7 +26,9 @@ import ListExerciseService from "./services/listExercises.service";
             ArticulationMovementPortion
         ]),
     ],
-    controllers:[ExerciseControler],
+    controllers:[
+        ExerciseControler
+    ],
     providers:[
         ListExerciseService, 
         QueryExerciseDto,

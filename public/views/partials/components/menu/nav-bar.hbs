@@ -1,5 +1,5 @@
 <nav class="fixed top-0 left-0 flex p-1 z-10">
-    <div class="bg-red-700 text-white p-2 rounded-md flex-col">
+    <div class="bg-red-700 text-white p-2 rounded flex-col duration-100 ease-in" id="background-menu">
         <div class="flex items-center justify-center">
             <img src="/images/icons/hamburguer.svg" id="menu-hamburguer" alt="dumbell" class="w-10 h-10 flex cursor-pointer items-center justify-center">
             <img src="/images/icons/close.svg" id="menu-close" alt="dumbell" class="w-10 h-10 flex cursor-pointer items-center justify-center hidden">
@@ -18,9 +18,11 @@
     </div>
 </nav>
 <script>
-    const menu = document.getElementById('menu-hamburguer')
-    const closeMenu = document.getElementById('menu-close')
-    const menuItems = document.getElementById('list-menu')
+    const menu = document.getElementById('menu-hamburguer');
+    const closeMenu = document.getElementById('menu-close');
+    const menuItems = document.getElementById('list-menu');
+    const bcMenu = document.getElementById('background-menu');
+
     menu.onclick = function() {
         menuItems.classList.toggle('hidden');
         toggleMenuIcon()

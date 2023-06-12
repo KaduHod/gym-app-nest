@@ -1,0 +1,8 @@
+<form action="" class="flex flex-col text-black">
+    {{> components/form/input type='text' name='name' placeholder="Exercise name"}}
+    <select name="hello[]" id="" multiple="true">
+        {{#each portions}}
+            <option value={{this.id}}>{{this.name}}</option>
+        {{/each}}
+    </select>
+</form>

@@ -36,20 +36,25 @@ async function bootstrap() {
         return string.charAt(0).toUpperCase() + string.slice(1);
       },
       dropDown: function(){
-        const [title, classes, options] = arguments
+        const [id ,title, classes, options] = arguments
         const content = options.fn(this)
         return `
-        <div class="${classes || ""} select-none hover:cursor-pointer h-fit" 
+        <div id='${id}' class="${classes || ""} select-none hover:cursor-pointer h-fit" 
           data-drop-container="true"
+          data-drop-down-allow-close="true"
           >
-          <div class="flex justify-between">
-            <h2>${title || ""}</h2>
-            <img src="/images/icons/drop-down.svg" class="app-icon drop-down-icon ease-in duration-100">
+          <div class="flex justify-between" data-drop-down-allow-close="true">
+            <h2 data-drop-down-allow-close="true">${title || ""}</h2>
+            <img src="/images/icons/drop-down.svg" class="app-icon drop-down-icon ease-in duration-100" data-drop-down-allow-close="true">
           </div>
-          <div class="overflow-hidden flex flex-col ease-in duration-100 hidden" data-drop-down="true">
+          <div class="overflow-hidden flex flex-col ease-in duration-100 hidden" data-drop-down="true" data-drop-down-allow-close="true">
             ${content || ""}
           </div>
         </div>
+        <script type="module">
+          import { setDropEvents } from '/js/drop-down.js'
+          setDropEvents('${id}');
+        </script>
       `
       }
     }
