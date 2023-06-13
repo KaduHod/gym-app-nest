@@ -8,6 +8,11 @@ export const toggleSize = (dropContainer) => {
     target.classList.toggle('hidden')
 }
 
+export const toogleBG = (container) => {
+    container.classList.toggle('bg-stone-900')
+    container.classList.toggle('bg-red-700')
+}
+
 export const setDropEvents = (id) => {
     const dropContainer = document.getElementById(id);
     dropContainer.addEventListener('click', (e) => {
@@ -15,5 +20,6 @@ export const setDropEvents = (id) => {
         if(!dropDownAllowClose) return;
         toggleIcon(dropContainer);
         toggleSize(dropContainer);
+        toogleBG(dropContainer)
     })
 }
