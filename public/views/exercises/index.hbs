@@ -1,14 +1,13 @@
 <div class="flex flex-col items-center select-none p-2">
-    <div class="flex flex-col w-2/5">
-    {{#dropDown "my-exercises-container" "My exercises" "p-2 m-1 border hover:shadow-2xl hover:shadow-red-950 hover:scale-95 border-red-900 duration-100 rounded"}}
+    <div class="flex flex-col w-3/5">
+    {{#dropDown "my-exercises-container" "List" "p-2 m-1 border hover:shadow-2xl hover:shadow-red-950 border-red-900 duration-100 rounded"}}
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium mollitia reiciendis, atque ad temporibus tempore perferendis. Ratione blanditiis debitis quasi molestias et dolorem? Facere aspernatur similique architecto quisquam alias consequatur!
     {{/dropDown}}
 
-    {{#dropDown "create-exercises-container" "Create exercise" "p-2 m-1 border hover:shadow-2xl hover:shadow-red-950 hover:scale-95 border-red-900 duration-100 rounded"}}
-        {{> components/exercises/create portions=portions}}
+    {{#dropDown "create-exercises-container" "New" "p-2 m-1 border hover:shadow-2xl hover:shadow-red-950 border-red-900 duration-100 rounded"}}
+        {{> components/exercises/create muscles=muscles}}
     {{/dropDown}}
     </div>
-    
 </div>
 <script src="/js/drop-down.js" type='module'></script>
 

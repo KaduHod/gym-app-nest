@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Response, Request } from "express";
 import AuthGuard from "src/guards/auth.guard";
 import { Repository } from "typeorm";
+import { MuscleGroup } from "../muscles/MuscleGroup.entity";
 import { MusclePortion } from "../muscles/MusclePortion.entity";
 import { QueryExerciseDto } from "./exercise.dto";
 import ListExerciseService from "./services/listExercises.service";
@@ -12,6 +13,7 @@ export default class ExerciseControler {
 
     constructor(
         private readonly ListExerciseService: ListExerciseService,
+        @InjectRepository(MuscleGroup) private readonly muscleGroupRepository: Repository<MuscleGroup>,
         @InjectRepository(MusclePortion) private readonly musclePortionRepository: Repository<MusclePortion>
     ){}
 
@@ -25,10 +27,11 @@ export default class ExerciseControler {
     @UseGuards(AuthGuard)
     @Render("exercises/index")
     async index() {
-        const portions = await this.musclePortionRepository.find({
-            select: {name:true, id:true}
-        });
-        return {portions} 
+        const muscles = await this.muscleGroupRepository.find({
+            select:{ name:true, id:true }, relations: { musclePortions: true }
+        })
+
+        return {muscles} 
     }
 
     async articulationMovementsFromPortion() {

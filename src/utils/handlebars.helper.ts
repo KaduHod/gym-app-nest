@@ -5,6 +5,10 @@ export function concat() {
     return Array.prototype.slice.call(arguments, 0, -1).join('');
 }
 
+export function equal(one:any, two:any) {
+    return one === two;
+}
+
 export function capitalizeFirstLetter(string:string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

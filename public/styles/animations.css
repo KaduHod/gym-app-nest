@@ -18,6 +18,21 @@
     transform: translateX(-105%);
 }
 
+.-hover-translate-x-full-full:hover {
+    transform: translateX(-105%);
+}
+
 .translate-x-full-full {
     transform: translateX(105%);
+}
+
+.hover-translate-x-full-full:hover {
+    transform: translateX(105%);
+}
+
+.scale-99 {
+    transform: scale(.98);
+}
+.hover-scale-99:hover {
+    transform: scale(.98);
 }

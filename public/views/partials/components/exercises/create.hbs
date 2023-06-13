@@ -1,4 +1,79 @@
-<form action="" class="flex flex-col text-black">
-    {{> components/form/input type='text' name='name' placeholder="Name"}}
-    {{> components/form/text-area type='text-area' name="descricao" placeholder="Description"}}
+<form action="" id="create-exercise-form" class="flex flex-col text-white">
+    <div class="flex flex-col p-2">
+        <h1>1 - Chose the name and description</h1>
+        <div class="w-full flex flex-1 flex-col items-start m-1">
+            {{> components/form/label for="name" title="Name" classes="text-white" }}
+            {{> components/form/input type='text' id="name" name='name' placeholder="" classes="p-1 w-full" }}
+        </div>
+        <div class="w-full flex flex-1 flex-col items-start m-1">
+            {{> components/form/label for="descricao" title="Description" classes="text-white" }}
+            {{> components/form/text-area type='text-area' id="descricao" name="descricao" value="Your description..." placeholder="Description" classes="p-1 w-full text-black" }}
+        </div>
+    </div>
+    <div class="flex flex-col p-2">
+        <h1>2 - Chose the muscles, articulation and movements for the exercise</h1>
+        <div class="flex flex-col p-2">
+            <div class="flex m-1 flex-wrap">
+                {{#each muscles}}
+                    <div class="flex flex-col flex-1">
+                        <div 
+                            data-muscle-group="true" 
+                            data-muscle-group-id="{{this.id}}"
+                            class="text-white text-center"
+                        >
+                            {{this.name}} {{this.id}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="flex m-1">
+                {{#each muscles}}
+                <select 
+                    name="muscle-portion" 
+                    data-portion-select="true"
+                    data-muscle-group-id="{{ ../this.id }}"
+                    class="
+                        text-black 
+                        w-full
+                        {{#unless (equal @index 0) }}
+                            hidden
+                        {{/unless}}
+                    "
+                >
+                    {{#each this.musclePortions}}
+                        <option value="{{this.id}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+                {{/each}}
+            </div>
+            
+            <div>
+            
+            </div>
+            <div>
+            
+            </div>            
+        </div>
+    </div>
 </form>
+<script type="module">
+    const groups = [...document.querySelectorAll('[data-muscle-group="true"]')];
+    const portionsSelects = [...document.querySelectorAll('[data-portion-select="true"]')];
+
+    const groupClick = (e) => {
+        const groupId = e.target.dataset.muscleGroupId;
+        hideAllPortions();
+        const [selectTarget] = [...document.querySelectorAll(`[data-muscle-group-id="${groupId}"]`)]
+       selectTarget.classList.remove('hidden');
+       console.log({selectTarget})
+    }
+
+    const hideAllPortions = () => {
+        portionsSelects.forEach(el => el.classList.add('hidden'))
+    }
+
+    const events = () => {
+        groups.forEach( el => el.addEventListener('click', groupClick))
+    }
+     events()
+</script>

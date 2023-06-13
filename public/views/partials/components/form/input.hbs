@@ -3,7 +3,7 @@
     name="{{ name }}" 
     placeholder="{{ placeholder }}"
     {{#if id}}
-        id="{{id}}"
+        id="{{ id }}"
     {{/if}}
     {{#if value}}
         value="{{ value }}"
@@ -16,9 +16,7 @@
     {{/if}}
     class="
         focus:outline-none
-        p-1
-        m-1
         rounded
         text-black
-        {{classes}}
+        {{ classes }}
     ">

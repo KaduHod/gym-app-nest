@@ -1,8 +1,8 @@
 import { toggle } from "/js/utils.js";
 
-const menu = document.getElementById('menu-hamburguer');
-const closeMenu = document.getElementById('menu-close');
 const menuItems = document.getElementById('list-menu');
+const closeMenu = document.getElementById('menu-close');
+const menu = document.getElementById('menu-hamburguer');
 const bcMenu = document.getElementById('background-menu');
 
 menu.onclick = function() {

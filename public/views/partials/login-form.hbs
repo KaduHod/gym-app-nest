@@ -7,7 +7,7 @@
         border
         border-red-950
         hover:shadow-2xl
-        hover:shadow-red-800
+        hover:shadow-red-950
         duration-100
         flex
         items-center
@@ -16,8 +16,8 @@
         animate-translate-y
     ">
     <h1>LOGIN</h1>
-        {{> components/form/input type='email' name='email' placeholder='email' req=true}}
-        {{> components/form/input type='password' name='password' placeholder='password' req=true}}
+        {{> components/form/input type='email' name='email' placeholder='email' req=true classes="p-1 m-1"}}
+        {{> components/form/input type='password' name='password' placeholder='password' req=true classes="p-1 m-1"}}
         <div class="flex mt-4 justify-around w-full">
             {{> components/button title='login' classes="border border-red-950 hover:bg-red-950 duration-75"  type='submit' id="login-button"}}
             {{> components/button title='register' classes="border border-red-950 hover:bg-red-950 duration-75"  id="login-to-register"}}

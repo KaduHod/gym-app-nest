@@ -7,7 +7,6 @@ const loginButton = document.getElementById('login-button')
 const loginContainer = document.getElementById('login-container')
 const loginToRegister = document.getElementById('login-to-register')
 const registerContainer = document.getElementById('register-container')
-const loginToken = document.getElementById('login-token')
 
 let validateLogin = () => {
     const fields = new FormFields(loginForm)
