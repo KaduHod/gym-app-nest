@@ -3,7 +3,12 @@
         flex-col 
         w-2/5
         rounded
-        bg-red-700
+        bg-black
+        border
+        border-red-950
+        hover:shadow-2xl
+        hover:shadow-red-800
+        duration-100
         flex
         p-5
         items-center
@@ -25,8 +30,8 @@
             </select>
         </div>
         <div class="flex mt-4 justify-around w-full">
-            {{> components/button title='register' type=true id="register-button"}}
-            {{> components/button title='login' id="register-to-login"}}    
+            {{> components/button title='register' classes="border border-red-950 hover:bg-red-950 duration-75" type=true id="register-button"}}
+            {{> components/button title='login' classes="border border-red-950 hover:bg-red-950 duration-75" id="register-to-login"}}    
         </div>
         {{> components/loading-modal id="register-spin"}}
 

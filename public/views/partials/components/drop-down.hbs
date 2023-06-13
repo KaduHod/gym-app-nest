@@ -1,0 +1,13 @@
+<div id='{{id}}' 
+    class="{{ classes }} select-none hover:cursor-pointer h-fit" 
+    data-drop-container="true"
+    data-drop-down-allow-close="true"
+  >
+  <div class="flex w-full justify-between" data-drop-down-allow-close="true">
+    <h2 data-drop-down-allow-close="true">{{ title }}</h2>
+    <img src="/images/icons/drop-down.svg" class="app-icon hover:scale-150 drop-down-icon ease-in duration-100" data-drop-down-allow-close="true">
+  </div>
+  <div class="overflow-hidden flex flex-col ease-in duration-100 hidden" data-drop-down="true" data-drop-down-allow-close="true">
+    {{ content }}
+  </div>
+</div>

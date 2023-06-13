@@ -1,5 +1,7 @@
 export const toggleHidden = (htmlElmement) => htmlElmement.classList.toggle('hidden')
 
+export const toggle = (el, classes) => classes.forEach( _class => el.classList.toggle(_class));
+
 export const switchContainer = (containers) => {
     containers.forEach(toggleHidden)
 }

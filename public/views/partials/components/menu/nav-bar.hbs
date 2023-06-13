@@ -1,40 +1,58 @@
-<nav class="fixed top-0 left-0 flex p-1 z-10">
-    <div class="bg-red-700 text-white p-2 rounded flex-col duration-100 ease-in" id="background-menu">
-        <div class="flex items-center justify-center">
-            <img src="/images/icons/hamburguer.svg" id="menu-hamburguer" alt="dumbell" class="w-10 h-10 flex cursor-pointer items-center justify-center">
-            <img src="/images/icons/close.svg" id="menu-close" alt="dumbell" class="w-10 h-10 flex cursor-pointer items-center justify-center hidden">
-        </div>
-        <ul class="hidden" id="list-menu">
-            {{> components/menu/li title='Home' link='/home' icon='home' classes="my-2"}}
-            {{> components/menu/li title='Schedule' icon='schedule' classes="my-2"}}
-            {{> components/menu/li title='Workouts' link="/workouts" icon='dumbell' classes="my-2"}}
-            {{> components/menu/li title='Muscles' link='/muscles' icon='skeleton' classes="my-2"}}
-            {{> components/menu/li title='Exercises' link='/exercise' icon='yoga' classes="my-2"}}
-            {{> components/menu/li title='Personal' icon='personal' classes="my-2"}}
-            {{> components/menu/li title='Costumers' icon='peaple-group' classes="my-2"}}
-            {{> components/menu/li title='Measures' icon='balança' classes="my-2"}}
-            {{> components/menu/li title='Settings' icon='settings' classes="my-2"}}
-        </ul>
+<nav class="fixed top-0 left-0 flex flex-col p-1 z-20 select-none">
+    <div class="
+        self-center
+        border 
+        z-30 
+        w-10 
+        h-10 
+        m-0 
+        p-1
+        justify-center 
+        flex 
+        cursor-pointer 
+        items-center 
+        relative 
+        border 
+        border-red-950 
+        text-white 
+        bg-black 
+        rounded-full 
+        flex-col 
+        duration-100 
+        hover:shadow-red-950
+        ease-in
+        " 
+        id="background-menu"
+    >
+        <img src="/images/icons/hamburguer.svg" id="menu-hamburguer" alt="dumbell" class="w-full h-full  items-center justify-center">
+        <img src="/images/icons/close.svg" id="menu-close" alt="dumbell" class="w-full h-full flex items-center justify-center hidden">
     </div>
+    <ul 
+        class="
+            -translate-x-full-full  
+            duration-200 
+            ease-in-out
+            relative 
+            z-30 
+            bg-black 
+            border 
+            rounded 
+            border-red-900 
+            hover:shadow-red-950 
+            hover:shadow-2xl 
+            mt-2 
+            p-2
+        " 
+        id="list-menu"
+    >
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Home' link='/home' icon='home' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Schedule' icon='schedule' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Workouts' link="/workouts" icon='dumbell' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Muscles' link='/muscles' icon='skeleton' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Exercises' link='/exercise' icon='yoga' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Personal' icon='personal' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Costumers' icon='peaple-group' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Measures' icon='balança' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Settings' icon='settings' classes="my-3"}}
+    </ul>
 </nav>
-<script>
-    const menu = document.getElementById('menu-hamburguer');
-    const closeMenu = document.getElementById('menu-close');
-    const menuItems = document.getElementById('list-menu');
-    const bcMenu = document.getElementById('background-menu');
-
-    menu.onclick = function() {
-        menuItems.classList.toggle('hidden');
-        toggleMenuIcon()
-    }
-
-    closeMenu.onclick = function(){
-        toggleMenuIcon()
-        menuItems.classList.toggle('hidden');
-    }
-
-    const toggleMenuIcon = () => {
-        menu.classList.toggle('hidden')
-        closeMenu.classList.toggle('hidden')
-    }
-</script>

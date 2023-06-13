@@ -1,9 +1,14 @@
 <div class="w-full flex justify-center">
     <form action="/login" id="login-form" method="post" class="
         flex-col 
-        bg-red-700
         w-2/5
         rounded
+        bg-black
+        border
+        border-red-950
+        hover:shadow-2xl
+        hover:shadow-red-800
+        duration-100
         flex
         items-center
         min-h-46
@@ -14,8 +19,8 @@
         {{> components/form/input type='email' name='email' placeholder='email' req=true}}
         {{> components/form/input type='password' name='password' placeholder='password' req=true}}
         <div class="flex mt-4 justify-around w-full">
-            {{> components/button title='login' type='submit' id="login-button"}}
-            {{> components/button title='register' id="login-to-register"}}
+            {{> components/button title='login' classes="border border-red-950 hover:bg-red-950 duration-75"  type='submit' id="login-button"}}
+            {{> components/button title='register' classes="border border-red-950 hover:bg-red-950 duration-75"  id="login-to-register"}}
         </div>
         <ul id="login-form-errors" class="errors-list list-disc hidden text-sm flex-col flex items-start w-full mt-1 text-red-600">
             

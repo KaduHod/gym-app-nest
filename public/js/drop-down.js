@@ -1,25 +1,36 @@
+import { toggle } from "/js/utils.js";
+
 export const toggleIcon = (dropContainer) => {
     const [icon] = [... dropContainer.getElementsByClassName('drop-down-icon')];
-    icon.classList.toggle('rotate-180')
+    toggle(icon, ['rotate-180']);
 }
 
 export const toggleSize = (dropContainer) => {
     const [target] = [... dropContainer.querySelectorAll('[data-drop-down="true"]')]
-    target.classList.toggle('hidden')
+    toggle(target, ['hidden']);
 }
 
 export const toogleBG = (container) => {
-    container.classList.toggle('bg-stone-900')
-    container.classList.toggle('bg-red-700')
+    toggle(container, [
+        'border-red-900',
+        'border-red-950', 
+        'shadow-2xl',
+    ]);
 }
 
-export const setDropEvents = (id) => {
-    const dropContainer = document.getElementById(id);
+export const setDropEvent = (dropContainer) => {
     dropContainer.addEventListener('click', (e) => {
         const {dropDownAllowClose} = e.target.dataset
         if(!dropDownAllowClose) return;
         toggleIcon(dropContainer);
         toggleSize(dropContainer);
         toogleBG(dropContainer)
-    })
+    });
 }
+
+export const init = () => {
+    const containers = [...document.querySelectorAll('[data-drop-container="true"]')];
+    containers.forEach(setDropEvent);
+}
+
+init();

@@ -1,0 +1,22 @@
+import { toggle } from "/js/utils.js";
+
+const menu = document.getElementById('menu-hamburguer');
+const closeMenu = document.getElementById('menu-close');
+const menuItems = document.getElementById('list-menu');
+const bcMenu = document.getElementById('background-menu');
+
+menu.onclick = function() {
+    toggleMenuIcon();
+    toggle(menuItems, ['-translate-x-full-full']);
+}
+
+closeMenu.onclick = function(){
+    toggleMenuIcon();
+    toggle(menuItems, ["-translate-x-full-full"]);
+}
+
+const toggleMenuIcon = () => {
+    toggle(menu, ['hidden']);
+    toggle(closeMenu, ['hidden']);
+    toggle(bcMenu, ['border-red-950','border-red-800','shadow-2xl']);
+}

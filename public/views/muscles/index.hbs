@@ -1,13 +1,14 @@
 <div class="flex flex-col w-100 h-100 px-2 z-20 items-center">
     <div class="w-2/5 flex flex-col">
     {{#each muscles}}
-        {{#dropDown (concat this.id "-container") this.name "p-2 mb-1 bg-stone-900 border-2 border-red-700 duration-100 rounded" }}
+        {{#dropDown (concat this.id "-container") this.name "p-2 border hover:scale-95 m-2 hover:shadow-2xl hover:shadow-red-800 border-red-900 duration-100 rounded" }}
             {{#each this.musclePortions}}
                 <div class="p-1" id="{{this.id}}-portion" data-muscle-portion="true" data-drop-down-allow-close="true">
-                    {{> components/link link=(concat "http://localhost:4567/muscles/" this.id) classes="translate-y-0.5 hover:text-red-900"  title=this.name }}    
+                    {{> components/link link=(concat "http://localhost:4567/muscles/" this.id) classes="hover:text-red-900 underline-offset-8 decoration-red-950 underline decoration-solid decoration-1 duration-75 hover:decoration-red-800 w-full"  title=this.name }}    
                 </div>
             {{/each}}
         {{/dropDown }}
     {{/each}} 
     </div> 
 </div>
+<script src="/js/drop-down.js" type="module"></script>
