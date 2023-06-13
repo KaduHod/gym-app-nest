@@ -18,10 +18,10 @@
                     <div class="flex flex-col flex-1">
                         <div 
                             data-muscle-group="true" 
-                            data-muscle-group-id="{{this.id}}"
+                            data-group-id="{{this.id}}"
                             class="text-white text-center"
                         >
-                            {{this.name}} {{this.id}}
+                            {{this.name}}
                         </div>
                     </div>
                 {{/each}}
@@ -31,7 +31,7 @@
                 <select 
                     name="muscle-portion" 
                     data-portion-select="true"
-                    data-muscle-group-id="{{ ../this.id }}"
+                    data-muscle-group-id="{{ this.id }}"
                     class="
                         text-black 
                         w-full
@@ -61,11 +61,10 @@
     const portionsSelects = [...document.querySelectorAll('[data-portion-select="true"]')];
 
     const groupClick = (e) => {
-        const groupId = e.target.dataset.muscleGroupId;
+        const { groupId } = e.target.dataset;
         hideAllPortions();
-        const [selectTarget] = [...document.querySelectorAll(`[data-muscle-group-id="${groupId}"]`)]
-       selectTarget.classList.remove('hidden');
-       console.log({selectTarget})
+        const [ selectTarget ] = [...document.querySelectorAll(`[data-muscle-group-id="${groupId}"]`)]
+        selectTarget.classList.remove('hidden');
     }
 
     const hideAllPortions = () => {
@@ -73,7 +72,7 @@
     }
 
     const events = () => {
-        groups.forEach( el => el.addEventListener('click', groupClick))
+        groups.forEach(el => el.addEventListener('click', groupClick))
     }
      events()
 </script>

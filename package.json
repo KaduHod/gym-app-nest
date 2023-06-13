@@ -25,7 +25,7 @@
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert",
     "migration:create": "npx typeorm migration:create ",
-    "build:css": "npx tailwind -i ./public/styles/global.css -o ./public/styles/global.build.css --watch"
+    "build:css": "npx tailwind -i ./public/styles/global.css -o ./public/styles/styles.css --watch"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",

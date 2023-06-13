@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Post, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { Response, Request } from 'express';
-import ms from 'ms';
 import AuthGuard from './guards/auth.guard';
 import LoginRequest from './login.validator';
 import AuthService from './modules/auth/auth.service';
