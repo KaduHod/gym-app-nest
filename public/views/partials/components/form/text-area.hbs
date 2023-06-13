@@ -1,0 +1,26 @@
+<textarea 
+    rows="{{ rows }}" 
+    cols="{{ cols }}"
+    name="{{ name }}" 
+    placeholder="{{ placeholder }}"
+    {{#if id}}
+        id="{{id}}"
+    {{/if}}
+    {{#if value}}
+        value="{{ value }}"
+    {{/if}}
+    {{#if pattern}}
+        pattern={{ pattern }}
+    {{/if}}
+    {{#if req}}
+        required="true"
+    {{/if}}
+    class="
+        focus:outline-none
+        p-1
+        m-1
+        rounded
+        text-black
+        {{ classes }}
+    ">
+    </textarea>
