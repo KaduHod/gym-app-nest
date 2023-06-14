@@ -14,10 +14,10 @@ export function capitalizeFirstLetter(string:string) {
 }
 
 export function dropDown(){
-    const [id ,title, classes, options] = arguments
+    const [id ,title, classes, _default, options] = arguments
     const dropDown = component('drop-down')
     const content = new handlebars.SafeString(options.fn(this))
-    return dropDown({ id, title, classes, content })
+    return dropDown({ id, title, classes, default: _default, content })
 }
 
 export function component(componentPath:string) {

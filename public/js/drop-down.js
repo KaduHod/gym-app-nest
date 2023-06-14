@@ -7,15 +7,11 @@ export const toggleIcon = (dropContainer) => {
 
 export const toggleSize = (dropContainer) => {
     const [target] = [... dropContainer.querySelectorAll('[data-drop-down="true"]')]
-    toggle(target, ['hidden']);
+    toggle(target, ['-translate-y', "opacity-100","opacity-0", 'h-0']);
 }
 
-export const toogleBG = (container) => {
-    toggle(container, [
-        'border-red-900',
-        'border-red-950', 
-        'shadow-2xl',
-    ]);
+export const toggleCommon = (container) => {
+    toggle(container, ['shadow-2xl']);
 }
 
 export const setDropEvent = (dropContainer) => {
@@ -24,7 +20,7 @@ export const setDropEvent = (dropContainer) => {
         if(!dropDownAllowClose) return;
         toggleIcon(dropContainer);
         toggleSize(dropContainer);
-        toogleBG(dropContainer)
+        toggleCommon(dropContainer)
     });
 }
 

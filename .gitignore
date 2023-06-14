@@ -11,7 +11,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-public/styles/global.build.css
+public/styles/styles.css
 
 # OS
 .DS_Store

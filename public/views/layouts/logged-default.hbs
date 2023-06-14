@@ -4,26 +4,21 @@
     <meta charset="utf-8" />
     <title>App</title>
   </head>
-  <link rel="stylesheet" href="/styles/animations.css">
-  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" rel="stylesheet" href="/styles/app.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
-  <style>
-    body{
-      height: 100vh;
-      margin: 0;
-      font-family: 'Poppins';
-    }
-    .container-main{
-      display: flex;
-      flex-direction: column; 
-      min-height: 100%;
-    }
-    main{
-      flex: 1;
-    }
-  </style>
-  <body>
-    <div class="container-main bg-black text-white">
+  <body class="bg-fixed">
+    <div 
+      class="
+        container-main 
+        text-white 
+        bg-gradient-to-l 
+        from-red-950
+        to-black
+        via-transparent
+        backdrop-sepia
+      ">
     	{{> header }}
         {{> components/menu/nav-bar }}
       	<main>

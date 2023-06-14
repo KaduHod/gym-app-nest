@@ -17,17 +17,53 @@
 .-translate-x-full-full {
     transform: translateX(-105%);
 }
-
-.-hover-translate-x-full-full:hover {
-    transform: translateX(-105%);
-}
-
 .translate-x-full-full {
     transform: translateX(105%);
 }
-
+.-hover-translate-x-full-full:hover {
+    transform: translateX(-105%);
+}
 .hover-translate-x-full-full:hover {
     transform: translateX(105%);
+}
+
+.-translate-x-md {
+    transform: translateX(-50%);
+}
+.translate-x-md {
+    transform: translateX(50%);
+}
+.-hover-translate-x-md:hover {
+    transform: translateX(-50%);
+}
+.hover-translate-x-md:hover {
+    transform: translateX(50%);
+}
+
+.-translate-y-full-full {
+    transform: translateY(-105%);
+}
+.translate-y-full-full {
+    transform: translateY(105%);
+}
+.-hover-translate-y-full-full:hover {
+    transform: translateY(-105%);
+}
+.hover-translate-y-full-full:hover {
+    transform: translateY(105%);
+}
+
+.-translate-y {
+    transform: translateY(-10%);
+}
+.translate-y {
+    transform: translateY(10%);
+}
+.-hover-translate-y:hover {
+    transform: translateY(-20%);
+}
+.hover-translate-y:hover {
+    transform: translateY(20%);
 }
 
 .scale-99 {

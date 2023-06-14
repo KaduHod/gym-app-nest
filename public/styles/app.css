@@ -1,0 +1,15 @@
+body{
+  height: 100vh;
+  margin: 0;
+  font-family: 'Poppins';
+  background-image: url('/images/backgrounds/bg-principal-grande.jpg');
+}
+.container-main{
+  display: flex;
+  flex-direction: column; 
+  min-height: 100%;
+  background-color: rgba(0, 0, 0, 0.89);
+}
+main{
+  flex: 1;
+}
