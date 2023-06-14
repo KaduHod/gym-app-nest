@@ -26,12 +26,17 @@
 .hover-translate-x-full-full:hover {
     transform: translateX(105%);
 }
-
 .-translate-x-md {
     transform: translateX(-50%);
 }
 .translate-x-md {
     transform: translateX(50%);
+}
+.-translate-x-pq {
+    transform: translateX(-20%);
+}
+.translate-x-pq {
+    transform: translateX(20%);
 }
 .-hover-translate-x-md:hover {
     transform: translateX(-50%);
@@ -39,7 +44,6 @@
 .hover-translate-x-md:hover {
     transform: translateX(50%);
 }
-
 .-translate-x {
     transform: translateX(-10%);
 }
@@ -52,8 +56,6 @@
 .hover-translate-x:hover {
     transform: translateX(20%);
 }
-
-
 .-translate-y-full-full {
     transform: translateY(-150%);
 }

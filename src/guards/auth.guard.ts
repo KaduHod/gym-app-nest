@@ -9,7 +9,6 @@ export class InvalidCredentials extends Error {
     }
 }
 
-
 @Injectable()
 export default class AuthGuard implements CanActivate {
     constructor(
@@ -25,6 +24,7 @@ export default class AuthGuard implements CanActivate {
         if(!accessToken || !refreshToken) {
             response.cookie('accessToken', '', {expires: new Date(0)});
             response.cookie('refreshToken', '', {expires: new Date(0)});
+
             throw new InvalidCredentials()
         }
 

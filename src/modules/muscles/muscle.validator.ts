@@ -43,6 +43,10 @@ export class QueryMusclePortionDto {
 
     @IsOptional()
     @Expose()
+    group_id?:number
+
+    @IsOptional()
+    @Expose()
     @Validate(Bool)
     group?: boolean
 
@@ -50,5 +54,4 @@ export class QueryMusclePortionDto {
     @Expose()
     @Validate(Bool)
     exercises?: boolean
-
 }

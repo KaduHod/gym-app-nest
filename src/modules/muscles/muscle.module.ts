@@ -13,15 +13,17 @@ import AuthService from "../auth/auth.service";
 import AuthGuard from "src/guards/auth.guard";
 
 @Module({
-    imports:[TypeOrmModule.forFeature([
-        Articulation, 
-        MusclePortion, 
-        MuscleGroup, 
-        MusclePortion, 
-        Movements,
-        ArticulationMovement,
-        ArticulationMovementPortion
-    ])],
+    imports:[
+        TypeOrmModule.forFeature([
+            Articulation, 
+            MusclePortion, 
+            MuscleGroup, 
+            MusclePortion, 
+            Movements,
+            ArticulationMovement,
+            ArticulationMovementPortion
+        ])
+    ],
     controllers:[MuscleController],
     providers: [  
         ListMuscleGroupService,

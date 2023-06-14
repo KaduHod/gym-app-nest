@@ -13,7 +13,7 @@ export default class ListMusclePortionService {
     ){}
 
     async main(query: QueryMusclePortionDto){
-        const {articulations, group, name, exercises,...portionArgs} = query 
+        const {articulations, group, name, group_id,exercises,...portionArgs} = query 
         const builder = this.portionsRepository.createQueryBuilder("portion")
 
         Array.isArray(name) 
@@ -26,7 +26,13 @@ export default class ListMusclePortionService {
                 : builder.where("id = :id", {id: portionArgs.id})
         }
 
-        if(!!group) {
+        if(group_id) {
+            Array.isArray(group_id)
+                ? builder.where("muscle_group_id IN (:...group_id)", {group_id: group_id.map(Number)}) 
+                : builder.where("muscle_group_id = :group_id", {group_id : Number(group_id)}) 
+        }
+
+        if(group) {
             builder.leftJoinAndSelect("portion.muscleGroup", "muscleGroup")
         }
 

@@ -19,6 +19,7 @@ import { join } from 'path';
 import AuthGuard from './guards/auth.guard';
 import AuthService from './modules/auth/auth.service';
 import WorkoutModule from './modules/workouts/workout.module';
+import ApiModule from './api/api.module';
 
 
 @Module({
@@ -37,7 +38,8 @@ import WorkoutModule from './modules/workouts/workout.module';
     }), 
     TypeOrmModule.forRoot(config),
     ValidationModule,
-    WorkoutModule
+    WorkoutModule,
+    ApiModule
   ],
   controllers: [
     AppController

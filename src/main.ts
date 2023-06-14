@@ -9,7 +9,7 @@ import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { getEnv } from './config/env'
 import * as hbs from 'express-handlebars';
-import { component, capitalizeFirstLetter, concat, dropDown, equal } from './utils/handlebars.helper';
+import { component, capitalizeFirstLetter, concat, dropDown, equal, safeStr } from './utils/handlebars.helper';
 import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
@@ -29,7 +29,14 @@ async function bootstrap() {
     partialsDir: "public/views/partials",
     defaultLayout: "logged-default",
     extname: 'hbs',
-    helpers:{ concat, capitalizeFirstLetter, component, dropDown, equal }
+    helpers: { 
+      concat, 
+      capitalizeFirstLetter, 
+      component, 
+      dropDown, 
+      equal, 
+      safeStr 
+    }
   })
 
   app.engine('hbs', engine)

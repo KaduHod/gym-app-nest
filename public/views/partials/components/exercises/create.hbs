@@ -13,42 +13,64 @@
     <div class="flex flex-col p-2">
         <h1>2 - Chose the muscles, articulation and movements for the exercise</h1>
         <div class="flex flex items-start p-2">
-            <div class="flex flex-col items-start m-1 flex-wrap">
+            <div class="flex app-border w-1/4 flex-col items-start" data-muscle-group-options-container="true">
                 {{#each muscles}}
-                    <div class="flex flex-col flex-1">
-                        <div 
-                            data-muscle-group="true" 
-                            data-group-id="{{this.id}}"
-                            class="text-white text-center"
-                        >
-                            {{this.name}}
-                        </div>
-                    </div>
+                    {{#if (equal this.id 1)}}
+                        {{> components/group-option
+                            iconClasses="app-duration ease-out translate-x-pq" 
+                            title=this.name
+                            uniqueId=this.id
+                            iconData=(safeStr 'data-icon-muscle-group-option="true"') 
+                            data=(safeStr 'data-muscle-group="true" data-muscle-group-option="true"') 
+                        }}
+                    {{else}}
+                        {{> components/group-option
+                            iconClasses="opacity-0 app-duration ease-out" 
+                            title=this.name
+                            uniqueId=this.id
+                            iconData=(safeStr 'data-icon-muscle-group-option="true"') 
+                            data=(safeStr 'data-muscle-group="true" data-muscle-group-option="true"') 
+                        }}
+                    {{/if}}
                 {{/each}}
             </div>   
-            <div id="result">
-            
-            </div>   
+            <div class="flex app-border w-1/4 flex-col items-start" data-muscle-portions-options-container="true">
+                {{#each portions}}
+                    {{> components/group-option
+                        iconClasses="opacity-0 app-duration ease-out" 
+                        containerClasses=""
+                        title=this.name
+                        uniqueId=this.id
+                        iconData=(safeStr 'data-icon-muscle-portion-option="true"') 
+                        data=(safeStr (concat 'data-group-id="' this.muscleGroupId '" data-muscle-portion="true" data-muscle-portion-option="true"')) 
+                    }}
+                {{/each}}
+            </div>
+            <div class="flex app-border w-1/4 flex-col items-start" data-articulations-options-container="true">
+                {{#each articulations}}
+                    {{> components/group-option
+                        iconClasses="opacity-0 app-duration ease-out" 
+                        containerClasses=""
+                        title=this.name
+                        uniqueId=this.id
+                        iconData=(safeStr 'data-icon-articulations-option="true"') 
+                        data=(safeStr (concat 'data-articulations="true" data-articulations-option="true"')) 
+                    }}
+                {{/each}}
+            </div>
+            <div class="flex app-border w-1/4 flex-col items-start" data-movements-options-container="true">
+                {{#each movements}}
+                    {{> components/group-option
+                        iconClasses="opacity-0 app-duration ease-out" 
+                        containerClasses=""
+                        title=this.name
+                        uniqueId=this.id
+                        iconData=(safeStr 'data-icon-movements-option="true"') 
+                        data=(safeStr (concat 'data-movements="true" data-movements-option="true"')) 
+                    }}
+                {{/each}}
+            </div>
         </div>
     </div>
 </form>
-<script type="module">
-    const groups = [...document.querySelectorAll('[data-muscle-group="true"]')];
-    const portionsSelects = [...document.querySelectorAll('[data-portion-select="true"]')];
-
-    const groupClick = (e) => {
-        const { groupId } = e.target.dataset;
-        hideAllPortions();
-       // const [ selectTarget ] = [...document.querySelectorAll(`[data-muscle-group-id="${groupId}"]`)]
-       // selectTarget.classList.remove('hidden');
-    }
-
-    const hideAllPortions = () => {
-        portionsSelects.forEach(el => el.classList.add('hidden'))
-    }
-
-    const events = () => {
-        groups.forEach(el => el.addEventListener('click', groupClick))
-    }
-     events()
-</script>
+<script src="/js/exercises/muscle-group-option.js" type="module"></script>

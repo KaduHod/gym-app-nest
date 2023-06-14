@@ -1,0 +1,16 @@
+<div 
+    class="flex {{ containerClasses }}"
+    {{ data }}
+    data-option="true"
+    data-unique-id={{ uniqueId }}
+>
+    <div class="{{ iconClasses }}"
+        {{ iconData }}
+        data-option-icon="true"
+    >
+        {{> components/icon icon="arrow-r" }}
+    </div>
+    <div class="flex items-center justify-center">
+        {{ title }}
+    </div>
+</div>

@@ -13,6 +13,10 @@ export function capitalizeFirstLetter(string:string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+export function safeStr(str:string){
+    return new handlebars.SafeString(str);
+}
+
 export function dropDown(){
     const [id ,title, classes, _default, options] = arguments
     const dropDown = component('drop-down')
