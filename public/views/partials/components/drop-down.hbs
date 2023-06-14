@@ -1,7 +1,7 @@
 <div id='{{id}}' 
     class="
     {{#if default}}
-      hover:shadow-2xl bg-opacity-70 border hover:shadow-black duration-300 rounded
+      drop-down-default
     {{/if}}
     {{ classes }} 
     select-none hover:cursor-pointer h-fit
@@ -11,9 +11,9 @@
   >
   <div class="flex w-full justify-between" data-drop-down-allow-close="true">
     <h2 data-drop-down-allow-close="true" class="text-xl text-center w-full self-center m-1">{{ title }}</h2>
-    <img src="/images/icons/drop-down.svg" class="app-icon hover:scale-150 drop-down-icon ease-in duration-100" data-drop-down-allow-close="true">
+    <img src="/images/icons/drop-down.svg" class="app-icon hover:scale-150 drop-down-icon ease-in app-duration" data-drop-down-allow-close="true">
   </div>
-  <div class="overflow-hidden flex flex-col ease-in duration-500 ease-out h-0 -translate-y opacity-0" data-drop-down="true" data-drop-down-allow-close="true">
+  <div class="overflow-hidden flex flex-col ease-in app-duration ease-out h-0 -translate-y opacity-0" data-drop-down="true" data-drop-down-allow-close="true">
     {{ content }}
   </div>
 </div>

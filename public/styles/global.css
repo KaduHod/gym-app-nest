@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .app-duration {
+        @apply duration-300
+    }
+    .app-red-bg {
+        @apply bg-red-950 bg-opacity-70
+    }
+    .app-border {
+        @apply border border-red-950
+    }
+    .drop-down-default {
+        @apply bg-opacity-70 border duration-300 rounded
+    }
+    .drop-down-default:hover {
+        @apply shadow-black shadow-2xl
+    }
+}

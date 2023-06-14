@@ -1,6 +1,7 @@
 <nav class="fixed top-0 left-0 flex flex-col p-1 z-20 select-none">
     <div class="
         self-center
+        fixed
         border 
         z-30 
         w-10 
@@ -12,13 +13,12 @@
         cursor-pointer 
         items-center 
         relative 
-        border 
-        border-red-950 
+        app-border
+        app-red-bg 
         text-white 
-        bg-black 
         rounded-full 
         flex-col 
-        duration-100 
+        app-duration
         hover:shadow-red-950
         ease-in
         " 
@@ -29,30 +29,32 @@
     </div>
     <ul 
         class="
-            -translate-x-full-full  
-            duration-200 
-            ease-in-out
+            fixed
+            -translate-x
+            opacity-0 
+            app-duration
+            ease-out
             relative 
             z-30 
-            bg-black 
-            border 
+            app-red-bg
             rounded 
             border-red-900 
-            hover:shadow-red-950 
+            hover:shadow-black 
             hover:shadow-2xl 
             mt-2 
             p-2
+            text-white
         " 
         id="list-menu"
     >
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Home' link='/home' icon='home' classes="my-3"}}
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Schedule' icon='schedule' classes="my-3"}}
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Workouts' link="/workouts" icon='dumbell' classes="my-3"}}
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Muscles' link='/muscles' icon='skeleton' classes="my-3"}}
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Exercises' link='/exercise' icon='yoga' classes="my-3"}}
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Personal' icon='personal' classes="my-3"}}
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Costumers' icon='peaple-group' classes="my-3"}}
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Measures' icon='balança' classes="my-3"}}
-        {{> components/menu/li linkClasses="hover:text-red-800 duration-75" title='Settings' icon='settings' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Home' link='/home' icon='home' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Schedule' icon='schedule' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Workouts' link="/workouts" icon='dumbell' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Muscles' link='/muscles' icon='skeleton' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Exercises' link='/exercise' icon='yoga' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Personal' icon='personal' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Costumers' icon='peaple-group' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Measures' icon='balança' classes="my-3"}}
+        {{> components/menu/li linkClasses="hover:text-red-800 app-duration" title='Settings' icon='settings' classes="my-3"}}
     </ul>
 </nav>

@@ -1,7 +1,7 @@
 <div class="flex flex-col w-100 h-100 px-2 z-20 items-center">
-    <div class="w-2/5 flex flex-col">
+    <div class="w-1/5 flex flex-col">
     {{#each muscles}}
-        {{#dropDown (concat this.id "-container") this.name "p-1 mb-1 bg-red-950 border-red-950" true }}
+        {{#dropDown (concat this.id "-container") this.name "p-1 mb-1 app-red-bg app-border" true }}
             {{#each this.musclePortions}}
                 <div class="p-1" id="{{this.id}}-portion" data-muscle-portion="true" data-drop-down-allow-close="true">
                     {{> components/link link=(concat "http://localhost:4567/muscles/" this.id) classes="hover:text-red-900 decoration-1 duration-75 w-full"  title=this.name }}    

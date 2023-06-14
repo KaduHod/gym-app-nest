@@ -9,7 +9,7 @@
   
 .animate-translate-y {
     animation-name: translate-y;
-    animation-duration: 500ms;
+    animation-duration: 300ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -40,17 +40,38 @@
     transform: translateX(50%);
 }
 
+.-translate-x {
+    transform: translateX(-10%);
+}
+.translate-x {
+    transform: translateX(10%);
+}
+.-hover-translate-x:hover {
+    transform: translateX(-20%);
+}
+.hover-translate-x:hover {
+    transform: translateX(20%);
+}
+
+
 .-translate-y-full-full {
-    transform: translateY(-105%);
+    transform: translateY(-150%);
 }
 .translate-y-full-full {
-    transform: translateY(105%);
+    transform: translateY(150%);
 }
 .-hover-translate-y-full-full:hover {
     transform: translateY(-105%);
 }
 .hover-translate-y-full-full:hover {
     transform: translateY(105%);
+}
+
+.-hover-translate-y:hover {
+    transform: translateY(-10%);
+}
+.hover-translate-y:hover {
+    transform: translateY(10%);
 }
 
 .-translate-y {

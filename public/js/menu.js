@@ -7,12 +7,12 @@ const bcMenu = document.getElementById('background-menu');
 
 menu.onclick = function() {
     toggleMenuIcon();
-    toggle(menuItems, ['-translate-x-full-full']);
+    toggle(menuItems, ['-translate-x', 'opacity-0']);
 }
 
 closeMenu.onclick = function(){
     toggleMenuIcon();
-    toggle(menuItems, ["-translate-x-full-full"]);
+    toggle(menuItems, ["-translate-x", 'opacity-0']);
 }
 
 const toggleMenuIcon = () => {
