@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+    .app-delay {
+        @apply delay-200
+    }
     .app-duration {
         @apply duration-300
     }

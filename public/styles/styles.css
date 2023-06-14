@@ -556,6 +556,10 @@ video {
   }
 }
 
+.app-delay {
+  transition-delay: 200ms;
+}
+
 .app-duration {
   transition-duration: 300ms;
 }
@@ -947,12 +951,16 @@ video {
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
-.duration-100 {
-  transition-duration: 100ms;
+.delay-200 {
+  transition-delay: 200ms;
 }
 
-.duration-300 {
-  transition-duration: 300ms;
+.delay-75 {
+  transition-delay: 75ms;
+}
+
+.delay-100 {
+  transition-delay: 100ms;
 }
 
 .duration-75 {
