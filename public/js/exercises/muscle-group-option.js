@@ -23,13 +23,36 @@ const getOptionsByContainer = container => {
     return [...container.querySelectorAll('[data-option="true"]')]
 }
 
-function initGroupPortionEvents(container) {
+function initEvents(container) {
     const options = getOptionsByContainer(container)
     options.forEach( option => option.addEventListener('click', () => { groupClick(option,container) }));
 }
 
-initGroupPortionEvents(groupContainer)
-initGroupPortionEvents(portionContainer)
-initGroupPortionEvents(movementContainer)
-initGroupPortionEvents(articulationContainer)
+const getPortionsOptions = () => [...portionContainer.querySelectorAll('[data-icon-muscle-portion-option="true"]')]
 
+const getOptionsGroups = () => [...groupContainer.querySelectorAll('[data-icon-muscle-group-option="true"]')]
+
+
+function initSelectEvents() {
+    console.log(getOptionsGroups())
+    getOptionsGroups().forEach( el => el.addEventListener('click', (e) => {
+        const { uniqueId } = el.target.dataset 
+        filterSelectedPortions(uniqueId);
+    }))
+}
+
+function filterSelectedPortions(groupID) {
+    const portions = getPortionsOptions();
+    console.log({portions})
+    portions.forEach( portion => {
+        const { groupId } = portion.dataset
+        if(groupId === groupID) portion.classList.remove('hidden')
+        else portion.classList.add('hidden')
+    })
+}
+
+initEvents(groupContainer)
+initEvents(portionContainer)
+initEvents(movementContainer)
+initEvents(articulationContainer)
+initSelectEvents()

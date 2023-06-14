@@ -29,3 +29,7 @@ export function component(componentPath:string) {
     const template = readFileSync(`${componentFilePath}/${componentPath}.hbs`, 'utf8');
     return handlebars.compile(template); 
 }
+
+export function json(value:any){
+    return JSON.stringify(value)
+}

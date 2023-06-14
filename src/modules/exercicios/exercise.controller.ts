@@ -55,7 +55,7 @@ export default class ExerciseControler {
                 select: { id:true, name:true }
             }),
             this.articulationMovementPortionRepository.find({
-                select: {articulation_id:true, muscle_portion_id:true, movement_id:true}
+                select: {articulation_id:true, muscle_portion_id:true, movement_id:true, id:true}
             })
         ])
 
