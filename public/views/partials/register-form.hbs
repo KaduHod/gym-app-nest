@@ -3,9 +3,9 @@
         flex-col 
         w-2/5
         rounded
-        bg-black
+        app-red-bg
         hover:shadow-2xl
-        hover:shadow-red-950
+        hover:shadow-black
         app-duration
         flex
         p-5
@@ -28,8 +28,8 @@
             </select>
         </div>
         <div class="flex mt-4 justify-around w-full">
-            {{> components/button title='register' classes="bg-red-950 duration-75 hover:scale-105" type=true id="register-button"}}
-            {{> components/button title='login' classes="bg-red-950 duration-75 hover:scale-105" id="register-to-login"}}    
+            {{> components/button title='register' classes="bg-black duration-75 hover:scale-105" type=true id="register-button"}}
+            {{> components/button title='login' classes="bg-black duration-75 hover:scale-105" id="register-to-login"}}    
         </div>
         {{> components/loading-modal id="register-spin"}}
 

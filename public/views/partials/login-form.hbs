@@ -3,9 +3,9 @@
         flex-col 
         w-2/5
         rounded
-        bg-black
+        app-red-bg
         hover:shadow-2xl
-        hover:shadow-red-950
+        hover:shadow-black
         app-duration
         flex
         items-center
@@ -17,8 +17,8 @@
         {{> components/form/input type='email' name='email' placeholder='email' req=true classes="p-1 m-1"}}
         {{> components/form/input type='password' name='password' placeholder='password' req=true classes="p-1 m-1"}}
         <div class="flex mt-4 justify-around w-full">
-            {{> components/button title='login' classes="bg-red-950 app-duration hover:scale-105"  type='submit' id="login-button"}}
-            {{> components/button title='register' classes="bg-red-950 app-duration hover:scale-105"  id="login-to-register"}}
+            {{> components/button title='login' classes="bg-black app-duration hover:scale-105"  type='submit' id="login-button"}}
+            {{> components/button title='register' classes="bg-black app-duration hover:scale-105"  id="login-to-register"}}
         </div>
         <ul id="login-form-errors" class="errors-list list-disc hidden text-sm flex-col flex items-start w-full mt-1 text-red-600">
             
