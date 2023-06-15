@@ -41,3 +41,7 @@ export const contentType = (type) => {
     }
     return {"Content-type": contentType}
 }
+
+export const hide = el => el.classList.add('hidden');
+
+export const show = el => el.classList.remove('hidden');

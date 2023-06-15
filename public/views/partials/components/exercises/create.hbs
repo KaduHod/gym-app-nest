@@ -29,7 +29,7 @@
                 {{#each portions}}
                     {{> components/group-option
                         iconClasses="opacity-0 app-duration ease-out" 
-                        containerClasses=""
+                        containerClasses="hidden"
                         title=this.name
                         uniqueId=this.id
                         iconData=(safeStr 'data-icon-muscle-portion-option="true"') 
@@ -37,11 +37,11 @@
                     }}
                 {{/each}}
             </div>
-            <div class="flex app-border w-1/4 hidden flex-col items-start" data-articulations-options-container="true">
+            <div class="flex app-border w-1/4 flex-col items-start" data-articulations-options-container="true">
                 {{#each articulations}}
                     {{> components/group-option
                         iconClasses="opacity-0 app-duration ease-out" 
-                        containerClasses=""
+                        containerClasses="hidden"
                         title=this.name
                         uniqueId=this.id
                         iconData=(safeStr 'data-icon-articulations-option="true"') 
@@ -49,11 +49,11 @@
                     }}
                 {{/each}}
             </div>
-            <div class="flex app-border w-1/4 hidden flex-col items-start" data-movements-options-container="true">
+            <div class="flex app-border w-1/4 flex-col items-start" data-movements-options-container="true">
                 {{#each movements}}
                     {{> components/group-option
                         iconClasses="opacity-0 app-duration ease-out" 
-                        containerClasses=""
+                        containerClasses="hidden"
                         title=this.name
                         uniqueId=this.id
                         iconData=(safeStr 'data-icon-movements-option="true"') 
