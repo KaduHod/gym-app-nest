@@ -11,34 +11,45 @@ const articulationOptions = getOptionsByContainer(articulationContainer);
 const movementsOptions = getOptionsByContainer(movementContainer);
 const ARM = JSON.parse(document.getElementById('AMP').value)
 
-const getSelected = (container) => container.querySelector('[data-selected="true"]');
+const resetOptionSeletec = option => option.setAttribute('selected', 'false')
 
-const resetSelectionOption = (container, option) => {
+const getSelectedByContainer = (container) => container.querySelector('[selected="true"]');
+
+const resetSelectsByContainer = (container) => getOptionsByContainer(container).forEach( el => el.setAttribute('selected', 'false'))
+
+const resetIconsByContainer = (container) => {
+
+}
+
+const resetSelectionOption = (container) => {
     const icons = getIconsFromContainer(container)
-    option.dataset.selected = 'false';
+    resetSelectsByContainer(container)
     icons.forEach( icon => {
         icon.classList.add('opacity-0');
         icon.classList.remove('translate-x-pq');
     });
 }
 
-const initEvents = (container, fn) => {
+
+
+const initOptions = (container, fn) => {
     const options = getOptionsByContainer(container)
     options.forEach( option => option.addEventListener('click', () => { 
-        return fn ? fn(option,container) : optionClick(option,container) 
+        return fn 
+            ? fn(option,container) 
+            : optionClick(option,container) 
     }));
 }
 
 let optionClick = (option, container) => {
-    resetSelectionOption(container, option);
+    resetSelectionOption(container);
     toggle(getIconFromOption(option), ['opacity-0', 'translate-x-pq']);
-    option.dataset.selected = 'true'
+    option.setAttribute('selected',"true")
 }
 
 let optionClickDecorator = (customHandler) => {
     return (option, container) => {
         optionClick(option, container);
-        console.log(option.dataset,option.dataset.uniqueId)
         return customHandler(option, container);
     }
 }
@@ -75,10 +86,11 @@ let portionClick = (option) => {
 portionClick = optionClickDecorator(portionClick)
 
 let articulationClick = (option) => {
-    const articulationID = option.dataset.uniqueId;
-    const portionID = getSelected(portionContainer).dataset.uniqueId;
+    const articulationID = Number(option.dataset.uniqueId);
+    const portionID = Number(getSelectedByContainer(portionContainer).dataset.uniqueId);
+    
     const movementsIdsFromArticulationAndPortion = ARM.filter(({muscle_portion_id, articulation_id}) => {
-        return muscle_portion_id === Number(portionID) && articulation_id === Number(articulationID);
+        return muscle_portion_id === portionID && articulation_id === articulationID;
     }).map(({movement_id}) => movement_id);
 
     const movementsOptionsFromArticulationAndPortion = movementsOptions.filter(
@@ -92,7 +104,7 @@ let articulationClick = (option) => {
 articulationClick = optionClickDecorator(articulationClick);
 
 
-initEvents(groupContainer, groupClick);
-initEvents(portionContainer, portionClick);
-initEvents(movementContainer);
-initEvents(articulationContainer, articulationClick);
+initOptions(groupContainer, groupClick);
+initOptions(portionContainer, portionClick);
+initOptions(movementContainer);
+initOptions(articulationContainer, articulationClick);
