@@ -11,14 +11,34 @@ const articulationOptions = getOptionsByContainer(articulationContainer);
 const movementsOptions = getOptionsByContainer(movementContainer);
 const ARM = JSON.parse(document.getElementById('AMP').value)
 
+const getSelected = (container) => container.querySelector('[data-selected="true"]');
+
+const resetSelectionOption = (container, option) => {
+    const icons = getIconsFromContainer(container)
+    option.dataset.selected = 'false';
+    icons.forEach( icon => {
+        icon.classList.add('opacity-0');
+        icon.classList.remove('translate-x-pq');
+    });
+}
+
+const initEvents = (container, fn) => {
+    const options = getOptionsByContainer(container)
+    options.forEach( option => option.addEventListener('click', () => { 
+        return fn ? fn(option,container) : optionClick(option,container) 
+    }));
+}
+
 let optionClick = (option, container) => {
-    resetSelectionOption(container);
+    resetSelectionOption(container, option);
     toggle(getIconFromOption(option), ['opacity-0', 'translate-x-pq']);
+    option.dataset.selected = 'true'
 }
 
 let optionClickDecorator = (customHandler) => {
     return (option, container) => {
         optionClick(option, container);
+        console.log(option.dataset,option.dataset.uniqueId)
         return customHandler(option, container);
     }
 }
@@ -30,6 +50,7 @@ let groupClick = (option) => {
         return groupId === groupID;
     })
 
+    movementsOptions.forEach(hide);
     portionsOptions.forEach(hide);
     articulationOptions.forEach(hide);
     portionsOptionsFromGroup.forEach(show);
@@ -46,32 +67,32 @@ let portionClick = (option) => {
     const articulationOptionsFromPortion = articulationOptions
         .filter( el => articulationsIdsFromPortion.includes(Number(el.dataset.uniqueId)))
 
+    movementsOptions.forEach(hide);
     articulationOptions.forEach(hide);
     articulationOptionsFromPortion.forEach(show);
 }
 
 portionClick = optionClickDecorator(portionClick)
 
-let movementClick = (option) => {
-    const movementID = 
+let articulationClick = (option) => {
+    const articulationID = option.dataset.uniqueId;
+    const portionID = getSelected(portionContainer).dataset.uniqueId;
+    const movementsIdsFromArticulationAndPortion = ARM.filter(({muscle_portion_id, articulation_id}) => {
+        return muscle_portion_id === Number(portionID) && articulation_id === Number(articulationID);
+    }).map(({movement_id}) => movement_id);
+
+    const movementsOptionsFromArticulationAndPortion = movementsOptions.filter(
+        el => movementsIdsFromArticulationAndPortion.includes(Number(el.dataset.uniqueId))
+    )
+
+    movementsOptions.forEach(hide);
+    movementsOptionsFromArticulationAndPortion.forEach(show);
 } 
 
-function resetSelectionOption(container){
-    const icons = getIconsFromContainer(container)
-    icons.forEach( icon => {
-        icon.classList.add('opacity-0');
-        icon.classList.remove('translate-x-pq');
-    });
-}
+articulationClick = optionClickDecorator(articulationClick);
 
-function initEvents(container, fn) {
-    const options = getOptionsByContainer(container)
-    options.forEach( option => option.addEventListener('click', () => { 
-        return fn ? fn(option,container) : optionClick(option,container) 
-    }));
-}
 
 initEvents(groupContainer, groupClick);
 initEvents(portionContainer, portionClick);
 initEvents(movementContainer);
-initEvents(articulationContainer);
+initEvents(articulationContainer, articulationClick);
