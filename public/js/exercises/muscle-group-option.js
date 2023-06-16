@@ -3,12 +3,12 @@ const groupContainer = document.querySelector('[data-muscle-group-options-contai
 const portionContainer = document.querySelector('[data-muscle-portions-options-container="true"]');
 const articulationContainer = document.querySelector('[data-articulations-options-container="true"]');
 const movementContainer = document.querySelector('[data-movements-options-container="true"]');
-const getIconFromOption = (option) => option.querySelector('[data-option-icon="true"]'); 
-const getOptionsByContainer = (container) => [...container.querySelectorAll('[data-option="true"]')];
 const portionsOptions = getOptionsByContainer(portionContainer);
 const articulationOptions = getOptionsByContainer(articulationContainer);
 const movementsOptions = getOptionsByContainer(movementContainer);
-const ARM = JSON.parse(document.getElementById('AMP').value)
+const AMP = JSON.parse(document.getElementById('AMP').value);
+const getIconFromOption = (option) => option.querySelector('[data-option-icon="true"]'); 
+const getOptionsByContainer = (container) => [...container.querySelectorAll('[data-option="true"]')];
 
 const resetIcon = (icon) => {
     icon.classList.add('opacity-0')
@@ -36,17 +36,20 @@ const initOptions = (container, fn) => {
             : optionClick(option,container) 
     }));
 }
+
 let optionClick = (option, container) => {
     resetContainer(container);
     toggle(getIconFromOption(option), ['opacity-0', 'translate-x-pq']);
     option.setAttribute('selected',"true")
 }
+
 let optionClickDecorator = (customHandler) => {
     return (option, container) => {
         optionClick(option, container);
         return customHandler(option, container);
     }
 }
+
 let groupClick = (option) => {
     const groupID = option.dataset.uniqueId
     const portionsOptionsFromGroup = portionsOptions.filter( portionOption => {
@@ -62,9 +65,10 @@ let groupClick = (option) => {
     articulationOptions.forEach(hide);
     portionsOptionsFromGroup.forEach(show);
 }
+
 let portionClick = (option) => {
     const portionID = option.dataset.uniqueId;
-    const articulationsIdsFromPortion = ARM
+    const articulationsIdsFromPortion = AMP
         .filter(({muscle_portion_id}) => muscle_portion_id === Number(portionID))
         .map(({articulation_id}) => articulation_id);
 
@@ -77,11 +81,12 @@ let portionClick = (option) => {
     articulationOptions.forEach(hide);
     articulationOptionsFromPortion.forEach(show);
 }
+
 let articulationClick = (option) => {
     const articulationID = Number(option.dataset.uniqueId);
     const portionID = Number(getOptionSelectedByContainer(portionContainer).dataset.uniqueId);
     
-    const movementsIdsFromArticulationAndPortion = ARM.filter(({muscle_portion_id, articulation_id}) => {
+    const movementsIdsFromArticulationAndPortion = AMP.filter(({muscle_portion_id, articulation_id}) => {
         return muscle_portion_id === portionID && articulation_id === articulationID;
     }).map(({movement_id}) => movement_id);
 
