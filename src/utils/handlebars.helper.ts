@@ -24,6 +24,13 @@ export function dropDown(){
     return dropDown({ id, title, classes, default: _default, content })
 }
 
+export function optionContainer(){
+    const [name, classes, options] = arguments;
+    const optionContainer = component('options/container');
+    const content = new handlebars.SafeString(options.fn(this));
+    return optionContainer({ name, classes, content })
+}
+
 export function component(componentPath:string) {
     const componentFilePath = "public/views/partials/components";
     const template = readFileSync(`${componentFilePath}/${componentPath}.hbs`, 'utf8');

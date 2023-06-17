@@ -14,9 +14,9 @@
     <div class="flex flex-col p-2">
         <h1>2 - Chose the muscles, articulation and movements for the exercise</h1>
         <div class="flex flex items-start p-2">
-            <div class="flex app-border w-1/4 flex-col items-start" data-muscle-group-options-container="true">
+            {{#optionContainer "muscle-group" "flex app-border w-1/4 flex-col items-start"}}
                 {{#each muscles}}
-                    {{> components/group-option
+                    {{> components/options/option
                         iconClasses="opacity-0 app-duration ease-out" 
                         title=this.name
                         uniqueId=this.id
@@ -24,10 +24,11 @@
                         data=(safeStr 'data-muscle-group="true" data-muscle-group-option="true"') 
                     }}
                 {{/each}}
-            </div>   
-            <div class="flex app-border w-1/4 flex-col items-start" data-muscle-portions-options-container="true">
+            {{/optionContainer}}
+            
+            {{#optionContainer "muscle-portion" "flex app-border w-1/4 flex-col items-start"}}
                 {{#each portions}}
-                    {{> components/group-option
+                    {{> components/options/option
                         iconClasses="opacity-0 app-duration ease-out" 
                         containerClasses="hidden"
                         title=this.name
@@ -36,10 +37,11 @@
                         data=(safeStr (concat 'data-group-id="' this.muscleGroupId '" data-muscle-portion="true" data-muscle-portion-option="true"')) 
                     }}
                 {{/each}}
-            </div>
-            <div class="flex app-border w-1/4 flex-col items-start" data-articulations-options-container="true">
+            {{/optionContainer}}
+
+            {{#optionContainer "articulation" "flex app-border w-1/4 flex-col items-start"}}
                 {{#each articulations}}
-                    {{> components/group-option
+                    {{> components/options/option
                         iconClasses="opacity-0 app-duration ease-out" 
                         containerClasses="hidden"
                         title=this.name
@@ -48,10 +50,11 @@
                         data=(safeStr (concat 'data-articulations="true" data-articulations-option="true"')) 
                     }}
                 {{/each}}
-            </div>
-            <div class="flex app-border w-1/4 flex-col items-start" data-movements-options-container="true">
+            {{/optionContainer}}
+
+            {{#optionContainer "movement" "flex app-border w-1/4 flex-col items-start"}}
                 {{#each movements}}
-                    {{> components/group-option
+                    {{> components/options/option
                         iconClasses="opacity-0 app-duration ease-out" 
                         containerClasses="hidden"
                         title=this.name
@@ -60,10 +63,11 @@
                         data=(safeStr (concat 'data-movements="true" data-movements-option="true"')) 
                     }}
                 {{/each}}
-            </div>
+            {{/optionContainer}}
         </div>
     </div>
 </form>
+<script src="/js/select/main.js" type="module"></script>
 <script src="/js/exercises/muscle-group-option.js" type="module">
 
 </script>

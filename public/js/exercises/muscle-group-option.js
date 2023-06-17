@@ -1,47 +1,13 @@
-import { toggle, hide, show } from '/js/utils.js';
-const groupContainer = document.querySelector('[data-muscle-group-options-container="true"'); 
-const portionContainer = document.querySelector('[data-muscle-portions-options-container="true"]');
-const articulationContainer = document.querySelector('[data-articulations-options-container="true"]');
-const movementContainer = document.querySelector('[data-movements-options-container="true"]');
+import { show } from '/js/utils.js';
+import { getContainer, getOptionsByContainer, resetContainer, optionClick, setOptionEvents, getOptionSelectedByContainer } from '/js/select/main.js'
+const groupContainer = getContainer('muscle-group');
+const portionContainer = getContainer('muscle-portion');
+const articulationContainer = getContainer('articulation');
+const movementContainer = getContainer('movement');
 const portionsOptions = getOptionsByContainer(portionContainer);
 const articulationOptions = getOptionsByContainer(articulationContainer);
 const movementsOptions = getOptionsByContainer(movementContainer);
 const AMP = JSON.parse(document.getElementById('AMP').value);
-const getIconFromOption = (option) => option.querySelector('[data-option-icon="true"]'); 
-const getOptionsByContainer = (container) => [...container.querySelectorAll('[data-option="true"]')];
-
-const resetIcon = (icon) => {
-    icon.classList.add('opacity-0')
-    icon.classList.remove('translate-x-pq')
-}
-const resetIconFromOption = (option) => resetIcon(getIconFromOption(option));
-
-const resetOption = (option) => {
-    option.setAttribute('selected', 'false');
-    resetIconFromOption(option);
-}
-
-const getOptionSelectedByContainer = (container) => container.querySelector('[selected="true"]');
-
-const resetContainer = (container) => getOptionsByContainer(container).forEach(resetOption);
-
-/**
- * EVENTS
- */
-const initOptions = (container, fn) => {
-    const options = getOptionsByContainer(container)
-    options.forEach( option => option.addEventListener('click', () => { 
-        return fn 
-            ? fn(option,container) 
-            : optionClick(option,container) 
-    }));
-}
-
-let optionClick = (option, container) => {
-    resetContainer(container);
-    toggle(getIconFromOption(option), ['opacity-0', 'translate-x-pq']);
-    option.setAttribute('selected',"true")
-}
 
 let optionClickDecorator = (customHandler) => {
     return (option, container) => {
@@ -50,7 +16,7 @@ let optionClickDecorator = (customHandler) => {
     }
 }
 
-let groupClick = (option) => {
+let groupClick = (option) => { 
     const groupID = option.dataset.uniqueId
     const portionsOptionsFromGroup = portionsOptions.filter( portionOption => {
         const { groupId } = portionOption.dataset;
@@ -60,9 +26,6 @@ let groupClick = (option) => {
     resetContainer(movementContainer);
     resetContainer(articulationContainer);
     resetContainer(portionContainer);
-    movementsOptions.forEach(hide);
-    portionsOptions.forEach(hide);
-    articulationOptions.forEach(hide);
     portionsOptionsFromGroup.forEach(show);
 }
 
@@ -77,8 +40,6 @@ let portionClick = (option) => {
 
     resetContainer(movementContainer);
     resetContainer(articulationContainer);
-    movementsOptions.forEach(hide);
-    articulationOptions.forEach(hide);
     articulationOptionsFromPortion.forEach(show);
 }
 
@@ -95,14 +56,13 @@ let articulationClick = (option) => {
     )
 
     resetContainer(movementContainer);
-    movementsOptions.forEach(hide);
     movementsOptionsFromArticulationAndPortion.forEach(show);
 } 
 
 articulationClick = optionClickDecorator(articulationClick);
 portionClick = optionClickDecorator(portionClick);
 groupClick = optionClickDecorator(groupClick);
-initOptions(groupContainer, groupClick);
-initOptions(portionContainer, portionClick);
-initOptions(movementContainer);
-initOptions(articulationContainer, articulationClick);
+setOptionEvents(groupContainer, groupClick);
+setOptionEvents(portionContainer, portionClick);
+setOptionEvents(articulationContainer, articulationClick);
+setOptionEvents(movementContainer);
