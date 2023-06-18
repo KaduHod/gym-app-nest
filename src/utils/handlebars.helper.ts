@@ -25,10 +25,10 @@ export function dropDown(){
 }
 
 export function optionContainer(){
-    const [name, classes, options] = arguments;
+    const [name, classes, title, options] = arguments;
     const optionContainer = component('options/container');
     const content = new handlebars.SafeString(options.fn(this));
-    return optionContainer({ name, classes, content })
+    return optionContainer({ name, classes, title, content })
 }
 
 export function component(componentPath:string) {

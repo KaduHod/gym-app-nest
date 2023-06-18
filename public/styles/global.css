@@ -21,4 +21,7 @@
     .drop-down-default:hover {
         @apply shadow-black shadow-2xl
     }
+    .app-button{
+        @apply bg-black app-duration hover:scale-105
+    }
 }

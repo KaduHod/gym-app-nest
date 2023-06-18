@@ -43,7 +43,7 @@ export const setOptionEvents = (container, fn) => {
     const options = getOptionsByContainer(container)
     options.forEach( option => option.addEventListener('click', () => { 
         return fn 
-            ? fn(option,container) 
-            : optionClick(option,container) 
+            ? fn(option, container) 
+            : optionClick(option, container) 
     }));
 }

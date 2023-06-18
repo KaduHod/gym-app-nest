@@ -2,13 +2,13 @@
     class="flex {{ containerClasses }}"
     {{ data }}
     data-option="true"
-    data-unique-id={{ uniqueId }}
     selected="false"
+    data-name="{{ name }}"
+    data-value="{{ value }}"
 >
     <div class="{{ iconClasses }}"
         {{ iconData }}
         data-option-icon="true"
-        data-unique-id={{ uniqueId }}
     >
         {{> components/icon icon="arrow-r" }}
     </div>

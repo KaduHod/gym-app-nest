@@ -12,62 +12,64 @@
         </div>
     </div>
     <div class="flex flex-col p-2">
-        <h1>2 - Chose the muscles, articulation and movements for the exercise</h1>
+        <h1>2 - Chose the AMP (muscle, articulation and movements for the exercise)</h1>
+        <div id="amp-result" >
+            <ul>
+
+            </ul>
+        </div>
         <div class="flex flex items-start p-2">
-            {{#optionContainer "muscle-group" "flex app-border w-1/4 flex-col items-start"}}
+            {{#optionContainer "muscle-group" "flex app-border w-1/4 pb-1 flex-col items-start" "Chose the muscle group"}}
                 {{#each muscles}}
                     {{> components/options/option
                         iconClasses="opacity-0 app-duration ease-out" 
                         title=this.name
-                        uniqueId=this.id
-                        iconData=(safeStr 'data-icon-muscle-group-option="true"') 
-                        data=(safeStr 'data-muscle-group="true" data-muscle-group-option="true"') 
+                        value=this.id 
+                        name=this.name
                     }}
                 {{/each}}
             {{/optionContainer}}
-            
-            {{#optionContainer "muscle-portion" "flex app-border w-1/4 flex-col items-start"}}
+
+            {{#optionContainer "muscle-portion" "flex app-border w-1/4 pb-1 flex-col items-start" "Chose the muscle portion"}}
                 {{#each portions}}
                     {{> components/options/option
                         iconClasses="opacity-0 app-duration ease-out" 
                         containerClasses="hidden"
                         title=this.name
-                        uniqueId=this.id
-                        iconData=(safeStr 'data-icon-muscle-portion-option="true"') 
+                        value=this.id 
+                        name=this.name
                         data=(safeStr (concat 'data-group-id="' this.muscleGroupId '" data-muscle-portion="true" data-muscle-portion-option="true"')) 
                     }}
                 {{/each}}
             {{/optionContainer}}
 
-            {{#optionContainer "articulation" "flex app-border w-1/4 flex-col items-start"}}
+            {{#optionContainer "articulation" "flex app-border w-1/4 pb-1 flex-col items-start" "Chose the articulation"}}
                 {{#each articulations}}
                     {{> components/options/option
                         iconClasses="opacity-0 app-duration ease-out" 
                         containerClasses="hidden"
                         title=this.name
-                        uniqueId=this.id
-                        iconData=(safeStr 'data-icon-articulations-option="true"') 
-                        data=(safeStr (concat 'data-articulations="true" data-articulations-option="true"')) 
+                        value=this.id 
+                        name=this.name
                     }}
                 {{/each}}
             {{/optionContainer}}
 
-            {{#optionContainer "movement" "flex app-border w-1/4 flex-col items-start"}}
+            {{#optionContainer "movement" "flex app-border w-1/4 pb-1 flex-col items-start" "Chose the movement"}}
                 {{#each movements}}
                     {{> components/options/option
                         iconClasses="opacity-0 app-duration ease-out" 
                         containerClasses="hidden"
                         title=this.name
-                        uniqueId=this.id
-                        iconData=(safeStr 'data-icon-movements-option="true"') 
-                        data=(safeStr (concat 'data-movements="true" data-movements-option="true"')) 
+                        value=this.id 
+                        name=this.name
                     }}
                 {{/each}}
             {{/optionContainer}}
         </div>
+        {{> components/button type="button" classes="app-button hidden" title="add" id="add-amp" }}
     </div>
 </form>
 <script src="/js/select/main.js" type="module"></script>
-<script src="/js/exercises/muscle-group-option.js" type="module">
-
-</script>
+<script src="/js/exercises/create.js" type="module"></script>
+<script src="/js/exercises/exercise-options.js" type="module"></script>
