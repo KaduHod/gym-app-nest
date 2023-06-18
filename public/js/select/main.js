@@ -25,9 +25,9 @@ export const resetOption = (option) => {
 }
 
 export const optionClick = (option, container) => {
-    getOptionsByContainer(container).forEach(resetOption)
+    getOptionsByContainer(container).forEach(resetOption);
     toggle(getIconFromOption(option), ['opacity-0', 'translate-x-pq']);
-    option.setAttribute('selected',"true")
+    option.setAttribute('selected',"true");
 }
 
 export let optionClickDecorator = (customHandler) => {
@@ -38,6 +38,8 @@ export let optionClickDecorator = (customHandler) => {
 }
 
 export const getOptionSelectedByContainer = (container) => container.querySelector('[selected="true"]');
+
+export const unselectContainer = (container) => resetOption(getOptionSelectedByContainer(container));
 
 export const setOptionEvents = (container, fn) => {
     const options = getOptionsByContainer(container)

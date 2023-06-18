@@ -1,5 +1,8 @@
-const screenModal = document.getElementById('screen-modal');
-export function GlobalErrorHandler(message, source, lineno, colno, error) {
-    console.log("sdhasjdh", {error, message}, error.constructor.name)
-    screenModal.classList.remove('hidden')
+import { AppError } from "./app.error.js";
+
+const appErrors = ["UserError","AppError"]
+export function GlobalErrorHandler({error}) {
+    if(appErrors.includes(error.constructor.name)) {
+        throw new AppError(error.message)
+    }
 }

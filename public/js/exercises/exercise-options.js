@@ -1,10 +1,24 @@
 import { show, hide } from '/js/utils.js';
 import { data } from '/js/exercises/create.js';
-import { getContainer, getOptionsByContainer, resetContainer, optionClick, setOptionEvents, getOptionSelectedByContainer } from '/js/select/main.js'
+import { 
+    unselectContainer, 
+    getContainer, 
+    getOptionsByContainer, 
+    resetContainer, 
+    optionClick, 
+    setOptionEvents, 
+    getOptionSelectedByContainer 
+} from '/js/select/main.js';
+
 const groupContainer = getContainer('muscle-group');
 const portionContainer = getContainer('muscle-portion');
 const articulationContainer = getContainer('articulation');
 const movementContainer = getContainer('movement');
+const containers = [
+    portionContainer,
+    articulationContainer,
+    movementContainer,
+];
 const portionsOptions = getOptionsByContainer(portionContainer);
 const articulationOptions = getOptionsByContainer(articulationContainer);
 const movementsOptions = getOptionsByContainer(movementContainer);
@@ -33,7 +47,7 @@ export class AmpItem {
         }).id;
 
         if(!this.id) {
-            throw { message: "Invalid combination of portion, articulation and movement. Please report the error!"}
+            throw { message: "Invalid combination of portion, articulation and movement!"}
         }
     }
 }
@@ -100,6 +114,8 @@ const addAmpButtonClick = (e) => {
     data.add(currentAmpItem)
     currentAmpItem = null;
     hide(addAmpButton)
+    containers.forEach(resetContainer)
+    unselectContainer(groupContainer)
 }
 
 groupClick = optionClickDecorator(groupClick);

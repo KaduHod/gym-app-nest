@@ -13,10 +13,21 @@
     </div>
     <div class="flex flex-col p-2">
         <h1>2 - Chose the AMP (muscle, articulation and movements for the exercise)</h1>
-        <div id="amp-result" >
-            <ul>
-
-            </ul>
+        <div id="amp-list-container" >
+            <table id="amp-result" class="w-full table-auto">
+                <caption class="caption-top">
+                  List of movements.
+                </caption>
+                <thead>
+                    <th>Portion</th>
+                    <th>Articulation</th>
+                    <th>Movement</th>
+                    <th></th>
+                </thead>
+                <tbody id="amp-table-body">
+                    
+                </tbody>
+            </table>
         </div>
         <div class="flex flex items-start p-2">
             {{#optionContainer "muscle-group" "flex app-border w-1/4 pb-1 flex-col items-start" "Chose the muscle group"}}

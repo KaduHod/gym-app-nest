@@ -7,9 +7,12 @@
   <link rel="stylesheet" rel="stylesheet" href="/styles/animations.css">
   <link rel="stylesheet" rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" rel="stylesheet" href="/styles/app.css">
+  <link rel="icon" type="image/png" href="/images/icons/delete.svg">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
   <body class="bg-fixed">
     {{> components/menu/nav-bar }}
+    {{#screenModal "bg-red-900 rounded"}}
+    {{/screenModal}}
     <div 
       class="
         container-main 
@@ -21,7 +24,6 @@
         backdrop-sepia
       ">
     	{{> header }}
-      
       	<main>
     		{{#if message}}
           		{{> components/message message=message bg=bg }}
@@ -42,8 +44,4 @@
   <script src="/js/icons/animation.js" type="module"></script>
   <script src="/js/utils.js" type="module"></script>
   <script src="/js/menu.js" type="module"></script>
-  <script type="module">
-    import { UserError } from '/js/errors/user.error.js'
-    throw new UserError("teste aquiiiiiii")
-</script>
 </html>

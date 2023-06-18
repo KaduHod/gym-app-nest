@@ -24,4 +24,10 @@
     .app-button{
         @apply bg-black app-duration hover:scale-105
     }
+    .app-user-error{
+        @apply bg-red-800
+    }
+    .app-icon{
+        @apply hover:scale-105
+    }
 }
