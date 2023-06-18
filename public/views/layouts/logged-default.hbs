@@ -35,7 +35,15 @@
       	{{> footer }}
     </div>
   </body>
-  <script src="/js/icons/animation.js"></script>
+  <script src="/js/errors/filter.js" type="module"></script>
+  <script src="/js/errors/app.error.js" type="module"></script>
+  <script src="/js/errors/user.error.js" type="module"></script>
+  <script src="/js/globalFilters.js" type="module"></script>
+  <script src="/js/icons/animation.js" type="module"></script>
   <script src="/js/utils.js" type="module"></script>
   <script src="/js/menu.js" type="module"></script>
+  <script type="module">
+    import { UserError } from '/js/errors/user.error.js'
+    throw new UserError("teste aquiiiiiii")
+</script>
 </html>

@@ -1,0 +1,12 @@
+<div class="fixed hidden flex bg-opacity-50 items-center justify-center inset-0 z-50 bg-black" id="screen-modal">
+    <div class="w-52 h-52 flex flex-col {{ errorModalClasses }}">
+        <img src="/images/icons/close.svg" width="10" height="10" id="close-screen-modal" class="hover:scale-105 cursor-pointer w-full w-6 h-6 self-end justify-end">
+        {{ content }}
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('screen-modal');
+    const closeScreenModal = document.getElementById('close-screen-modal');
+    closeScreenModal.onclick = () => modal.classList.add('hidden');
+</script>

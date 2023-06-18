@@ -9,7 +9,7 @@ import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { getEnv } from './config/env'
 import * as hbs from 'express-handlebars';
-import { component, capitalizeFirstLetter, concat, dropDown, equal, safeStr, json, optionContainer } from './utils/handlebars.helper';
+import { component, capitalizeFirstLetter, concat, dropDown, equal, safeStr, json, optionContainer, screenModal } from './utils/handlebars.helper';
 import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
@@ -37,7 +37,8 @@ async function bootstrap() {
       equal, 
       safeStr,
       json,
-      optionContainer
+      optionContainer,
+      screenModal
     }
   })
 

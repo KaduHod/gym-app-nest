@@ -24,6 +24,13 @@ export function dropDown(){
     return dropDown({ id, title, classes, default: _default, content })
 }
 
+export function screenModal(){
+    const [errorModalClasses, options] = arguments
+    const screenModal = component('screen-modal')
+    const content = new handlebars.SafeString(options.fn(this))
+    return screenModal({ errorModalClasses, content })
+}
+
 export function optionContainer(){
     const [name, classes, title, options] = arguments;
     const optionContainer = component('options/container');
