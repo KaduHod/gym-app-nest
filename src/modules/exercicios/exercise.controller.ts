@@ -39,7 +39,7 @@ export default class ExerciseControler {
         return {  }
     }
 
-    @Get("/create")
+    @Get("create")
     @UseGuards(AuthGuard)
     @Render("exercises/index")
     async create() {
