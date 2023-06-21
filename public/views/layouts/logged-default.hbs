@@ -17,24 +17,21 @@
       class="
         container-main 
         text-white 
-        bg-gradient-to-l 
-        from-red-950
-        to-black
-        via-transparent
+        bg-zinc-900
         backdrop-sepia
       ">
     	{{> header }}
-      	<main>
-    		{{#if message}}
-          		{{> components/message message=message bg=bg }}
-        	{{/if}}
-        	{{#unless message}}
-        		{{> components/message }}
-        	{{/unless}}
-
-        	{{{ body }}}
-      	</main>
-      	{{> footer }}
+      {{> components/menu/main-links }}
+      <main>
+    	{{#if message}}
+        		{{> components/message message=message bg=bg }}
+      	{{/if}}
+      	{{#unless message}}
+      		{{> components/message }}
+      	{{/unless}}
+      	{{{ body }}}
+      </main>
+      {{> footer }}
     </div>
   </body>
   <script src="/js/errors/filter.js" type="module"></script>

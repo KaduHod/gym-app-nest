@@ -3,20 +3,29 @@
 @tailwind utilities;
 
 @layer components {
+    .app-rounded{
+        @apply rounded-[2rem]
+    }
     .app-delay {
         @apply delay-200
+    }
+    .app-shadow {
+        @apply shadow-black shadow-2xl
+    }
+    .app-shadow-hover:hover {
+        @apply shadow-black shadow-2xl
     }
     .app-duration {
         @apply duration-300
     }
     .app-red-bg {
-        @apply bg-red-950 bg-opacity-70
+        @apply bg-red-800
     }
     .app-border {
-        @apply border border-red-950
+        @apply border border-red-800
     }
     .drop-down-default {
-        @apply bg-opacity-70 border duration-300 rounded
+        @apply border duration-300 rounded
     }
     .drop-down-default:hover {
         @apply shadow-black shadow-2xl

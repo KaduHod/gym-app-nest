@@ -126,4 +126,4 @@ setOptionEvents(groupContainer, groupClick);
 setOptionEvents(portionContainer, portionClick);
 setOptionEvents(movementContainer, movementClick);
 setOptionEvents(articulationContainer, articulationClick);
-addAmpButton.addEventListener('click', addAmpButtonClick)
+addAmpButton.addEventListener('click', addAmpButtonClick);

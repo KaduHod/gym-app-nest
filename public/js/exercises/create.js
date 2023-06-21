@@ -1,17 +1,3 @@
-const list = document.getElementById('amp-result');
-const tableBody = document.getElementById('amp-table-body');
-const del = ({target}) => {
-    const tr = document.querySelector(`[data-list-tr-id="${Number(target.dataset.id)}"]`)
-    const table = tr.parentNode
-    table.removeChild(tr)
-}
-
-function initDeleteEvents(){
-    const icons = [...document.querySelectorAll('[data-delete-item-list="true"]')];
-    icons.forEach( icon => icon.addEventListener('click', del))
-}
-
-
 export class AmpData {
     constructor(){
         this.data = []
@@ -42,4 +28,18 @@ export class AmpData {
     }
 }
 
-export const data = new AmpData()
+export const data = new AmpData();
+
+const tableBody = document.getElementById('amp-table-body');
+const del = (target, amp) => {
+    const id = Number(target.dataset.id)
+    const tr = document.querySelector(`[data-list-tr-id="${id}"]`)
+    const table = tr.parentNode
+    table.removeChild(tr)
+    amp.remove(id)
+}
+
+function initDeleteEvents(){
+    const icons = [...document.querySelectorAll('[data-delete-item-list="true"]')];
+    icons.forEach( icon => icon.addEventListener('click', (e) => del(e.target, data)))
+}

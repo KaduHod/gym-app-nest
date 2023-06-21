@@ -12,7 +12,7 @@ module.exports = {
         'underline': 'underline', // Add 'underline' class for text-decoration: underline;
         'line-through': 'line-through', // Add 'line-through' class for text-decoration: line-through;
       },
-    },
+    }
   },
   plugins: [],
 }

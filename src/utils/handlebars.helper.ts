@@ -24,6 +24,13 @@ export function dropDown(){
     return dropDown({ id, title, classes, default: _default, content })
 }
 
+export function cardSmall(){
+    const [class_, bc, options] = arguments
+    const dropDown = component('card/small')
+    const content = new handlebars.SafeString(options.fn(this))
+    return dropDown({ class: class_,content, bc })
+}
+
 export function screenModal(){
     const [errorModalClasses, options] = arguments
     const screenModal = component('screen-modal')

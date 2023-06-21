@@ -2,14 +2,29 @@ body{
   height: 100vh;
   margin: 0;
   font-family: 'Poppins';
-  background-image: url('/images/backgrounds/bg-principal-grande.jpg');
+  /* background-image: url('/images/backgrounds/bg-principal-grande.jpg'); */
 }
 .container-main{
   display: flex;
   flex-direction: column; 
   min-height: 100%;
-  background-color: rgba(0, 0, 0, 0.89);
+  /* background-color: rgb(15, 15, 15); */
 }
 main{
   flex: 1;
+}
+
+.exercicios-default-bc {
+  background-image: url("/images/backgrounds/exercicios-default.jpg");
+  background-position: -140px -200px;
+}
+
+.meus-exercicios-bc {
+  background-image: url("/images/backgrounds/meus-exercicios.jpg");
+  background-position: -100px -100px;
+}
+
+.novo-exercicio-bc {
+  background-image: url("/images/backgrounds/create-exercicio.jpg");
+  background-position: -50px -100px;
 }
