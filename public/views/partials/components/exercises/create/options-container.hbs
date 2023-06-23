@@ -1,0 +1,46 @@
+<div class="flex flex items-start p-2 app-border">
+    {{#optionContainer "muscle-group" "flex w-1/4 pb-1 flex-col items-start" "Chose the muscle group"}}
+        {{#each muscles}}
+            {{> components/options/option
+                iconClasses="opacity-0 app-duration ease-out" 
+                title=this.name
+                value=this.id 
+                name=this.name
+            }}
+        {{/each}}
+    {{/optionContainer}}
+    {{#optionContainer "muscle-portion" "flex  w-1/4 pb-1 flex-col items-start" "Chose the muscle portion"}}
+        {{#each portions}}
+            {{> components/options/option
+                iconClasses="opacity-0 app-duration ease-out" 
+                containerClasses="hidden"
+                title=this.name
+                value=this.id 
+                name=this.name
+                data=(safeStr (concat 'data-group-id="' this.muscleGroupId '" data-muscle-portion="true" data-muscle-portion-option="true"')) 
+            }}
+        {{/each}}
+    {{/optionContainer}}
+    {{#optionContainer "articulation" "flex w-1/4 pb-1 flex-col items-start" "Chose the articulation"}}
+        {{#each articulations}}
+            {{> components/options/option
+                iconClasses="opacity-0 app-duration ease-out" 
+                containerClasses="hidden"
+                title=this.name
+                value=this.id 
+                name=this.name
+            }}
+        {{/each}}
+    {{/optionContainer}}
+    {{#optionContainer "movement" "flex w-1/4 pb-1 flex-col items-start" "Chose the movement"}}
+        {{#each movements}}
+            {{> components/options/option
+                iconClasses="opacity-0 app-duration ease-out" 
+                containerClasses="hidden"
+                title=this.name
+                value=this.id 
+                name=this.name
+            }}
+        {{/each}}
+    {{/optionContainer}}
+</div>

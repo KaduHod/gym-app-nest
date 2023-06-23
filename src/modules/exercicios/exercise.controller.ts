@@ -33,7 +33,7 @@ export default class ExerciseControler {
 
     @Get("")
     @UseGuards(AuthGuard)
-    @Render("exercises/index2")
+    @Render("exercises/index")
     async index() {
 
         return {  }
@@ -41,7 +41,7 @@ export default class ExerciseControler {
 
     @Get("create")
     @UseGuards(AuthGuard)
-    @Render("exercises/index")
+    @Render("exercises/create")
     async create() {
         const [
             muscles, 

@@ -1,0 +1,26 @@
+<div class="flex flex-col items-center select-none p-2">
+    <form action="" id="create-exercise-form" class="flex flex-col text-white w-2/3">
+        {{> components/form/input type="hidden" name="AMP" id="AMP" value=(json articulationMovementMuscle) }}
+        
+        <div class="flex w-full flex-col p-2">
+            <h1>2 - Chose the AMP (muscle, articulation and movements for the exercise)</h1>
+            {{#sliderContainer "slider-teste" ""}}
+                {{#sliderItem "true" "0" }}
+                    <h1>teste 0</h1>
+                {{/sliderItem}}
+                {{#sliderItem "false" "1" }}
+                    <h1>teste 1</h1>
+                {{/sliderItem}}
+                {{#sliderItem "false" "2" }}
+                    <h1>teste 2</h1>
+                {{/sliderItem}}
+            {{/sliderContainer}}
+        </div>
+    </form>
+</div>
+
+<script src="/js/slider/main.js" type="module"></script>
+<script type="module">
+    import { Slider } from '/js/slider/main.js' 
+    const slider = new Slider(document.querySelector(`[data-slider-id="slider-teste"]`))
+</script>

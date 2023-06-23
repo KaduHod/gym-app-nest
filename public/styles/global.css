@@ -21,6 +21,12 @@
     .app-red-bg {
         @apply bg-red-800
     }
+    .app-black-bg {
+        @apply bg-zinc-950
+    }
+    .app-input-bg {
+        @apply bg-zinc-900
+    }
     .app-border {
         @apply border border-red-800
     }

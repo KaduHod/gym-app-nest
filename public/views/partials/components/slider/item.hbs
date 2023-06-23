@@ -1,0 +1,16 @@
+<div class="
+    slider-item 
+    app-border 
+    delay-75 
+    w-full 
+    animate-translate-y 
+    ease-in
+    {{#unless active}}
+    hidden
+    {{/unless}} 
+" 
+    data-slider-item="true" 
+    data-slider-item-active="{{#if active}}true{{/if}}" 
+    data-slider-index="{{ index }}">
+    {{ content }} 
+</div>
