@@ -9,6 +9,16 @@ import {
     setOptionEvents, 
     getOptionSelectedByContainer 
 } from '/js/select/main.js';
+import { Slider } from '/js/slider/main.js' 
+
+let changeSlideEventHandler = (e) => {
+    const name = slider.findActive().dataset.sliderName;
+    name === "group" 
+        ? slider.sliderPrevious.classList.add('hidden')
+        : slider.sliderPrevious.classList.remove('hidden')
+}
+
+const slider = new Slider(document.querySelector("[data-slider-id='criar-exercicio']"), changeSlideEventHandler)
 
 const groupContainer = getContainer('muscle-group');
 const portionContainer = getContainer('muscle-portion');
@@ -25,6 +35,7 @@ const movementsOptions = getOptionsByContainer(movementContainer);
 const AMP = JSON.parse(document.getElementById('AMP').value);
 const addAmpButton = document.getElementById('add-amp');
 let currentAmpItem = null;
+const nextButtonSlide = document.querySelector('[data-slider-next="true"]')
 
 export class AmpItem {
     constructor(portionOption, movementOption, articulationOption) {
@@ -49,6 +60,13 @@ export class AmpItem {
         if(!this.id) {
             throw { message: "Invalid combination of portion, articulation and movement!"}
         }
+    }
+}
+
+let moveNextSlide = (customHandler) => {
+    return (option, container) => {
+        nextButtonSlide.click()
+        return customHandler(option, container)
     }
 }
 
@@ -97,9 +115,9 @@ let articulationClick = (option) => {
     const movementsOptionsFromArticulationAndPortion = movementsOptions.filter(
         el => movementsIdsFromArticulationAndPortion.includes(Number(el.dataset.value))
     );
-
     resetContainer(movementContainer);
     movementsOptionsFromArticulationAndPortion.forEach(show);
+    slider.sliderNext.classList.add('hidden');
 } 
 
 let movementClick = (option) => {
@@ -111,17 +129,20 @@ let movementClick = (option) => {
 }
 
 const addAmpButtonClick = (e) => {
+    e.preventDefault();
     data.add(currentAmpItem)
     currentAmpItem = null;
     hide(addAmpButton)
     containers.forEach(resetContainer)
     unselectContainer(groupContainer)
+    slider.reset()
+    slider.sliderPrevious.classList.add('hidden')
 }
 
-groupClick = optionClickDecorator(groupClick);
-portionClick = optionClickDecorator(portionClick);
+groupClick = moveNextSlide(optionClickDecorator(groupClick));
+portionClick = moveNextSlide(optionClickDecorator(portionClick));
+articulationClick = moveNextSlide(optionClickDecorator(articulationClick));
 movementClick = optionClickDecorator(movementClick);
-articulationClick = optionClickDecorator(articulationClick);
 setOptionEvents(groupContainer, groupClick);
 setOptionEvents(portionContainer, portionClick);
 setOptionEvents(movementContainer, movementClick);

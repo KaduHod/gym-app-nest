@@ -6,7 +6,6 @@
         transform: translateY(0);
     }
 }
-  
 .animate-translate-y {
     animation-name: translate-y;
     animation-duration: 300ms;

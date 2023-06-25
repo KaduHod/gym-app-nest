@@ -50,18 +50,18 @@ export function snapContainer(){
 }
 
 export function sliderContainer(){
-    const [id, classes, options] = arguments
+    const [id, classes, previousClasses, nextClasses, options] = arguments
     const snapContainer = component('slider/container')
     const content = getContent(options, this) 
-    return snapContainer({id, classes, content })
+    return snapContainer({id, classes, previousClasses, nextClasses, content })
 }
 
 export function sliderItem(){
-    let [active, index, options] = arguments
+    let [active, index, name, options] = arguments
     active = active === "true" ? true : undefined
     const snapItem = component('slider/item')
     const content = getContent(options, this) 
-    return snapItem({active, index, content })
+    return snapItem({active, index, name, content })
 }
 
 export function snapItem(){

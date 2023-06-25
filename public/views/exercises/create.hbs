@@ -4,23 +4,80 @@
         
         <div class="flex w-full flex-col p-2">
             <h1>2 - Chose the AMP (muscle, articulation and movements for the exercise)</h1>
-            {{#sliderContainer "slider-teste" ""}}
-                {{#sliderItem "true" "0" }}
-                    <h1>teste 0</h1>
+            {{#sliderContainer "criar-exercicio" "" "hidden" "hidden"}}
+                {{#sliderItem "true" "0" "group" }}
+                    {{#optionContainer "muscle-group" "flex pb-1 flex-col items-start" "Chose the muscle group"}}
+                        {{#each muscles}}
+                            {{> components/options/option
+                                iconClasses="opacity-0 app-duration ease-out" 
+                                title=this.name
+                                value=this.id 
+                                name=this.name
+                            }}
+                        {{/each}}
+                    {{/optionContainer}}
                 {{/sliderItem}}
-                {{#sliderItem "false" "1" }}
-                    <h1>teste 1</h1>
+                {{#sliderItem "false" "1" "portion"}}
+                    {{#optionContainer "muscle-portion" "flex  pb-1 flex-col items-start" "Chose the muscle portion"}}
+                        {{#each portions}}
+                            {{> components/options/option
+                                iconClasses="opacity-0 app-duration ease-out" 
+                                containerClasses="hidden"
+                                title=this.name
+                                value=this.id 
+                                name=this.name
+                                data=(safeStr (concat 'data-group-id="' this.muscleGroupId '" data-muscle-portion="true" data-muscle-portion-option="true"')) 
+                            }}
+                        {{/each}}
+                    {{/optionContainer}}
                 {{/sliderItem}}
-                {{#sliderItem "false" "2" }}
-                    <h1>teste 2</h1>
+                {{#sliderItem "false" "2" "articulation"}}
+                    {{#optionContainer "articulation" "flex pb-1 flex-col items-start" "Chose the articulation"}}
+                        {{#each articulations}}
+                            {{> components/options/option
+                                iconClasses="opacity-0 app-duration ease-out" 
+                                containerClasses="hidden"
+                                title=this.name
+                                value=this.id 
+                                name=this.name
+                            }}
+                        {{/each}}
+                    {{/optionContainer}}
+                {{/sliderItem}}
+                {{#sliderItem "false" "3" "movement"}}
+                    {{#optionContainer "movement" "flex pb-1 flex-col items-start" "Chose the movement"}}
+                        {{#each movements}}
+                            {{> components/options/option
+                                iconClasses="opacity-0 app-duration ease-out" 
+                                containerClasses="hidden"
+                                title=this.name
+                                value=this.id 
+                                name=this.name
+                            }}
+                        {{/each}}
+                    {{/optionContainer}}
                 {{/sliderItem}}
             {{/sliderContainer}}
+            {{> components/button id="add-amp" title="add"}}
+            <div>
+                <table >
+                    <thead>
+                        <th>Portion</th>
+                        <th>Articulation</th>
+                        <th>Movement</th>
+                        <th>actions</th>
+                    </thead>
+                    <tbody id="amp-table-body">
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </form>
 </div>
 
+<script src="/js/exercises/exercise-options.js" type="module"></script>
 <script src="/js/slider/main.js" type="module"></script>
-<script type="module">
-    import { Slider } from '/js/slider/main.js' 
-    const slider = new Slider(document.querySelector(`[data-slider-id="slider-teste"]`))
-</script>
