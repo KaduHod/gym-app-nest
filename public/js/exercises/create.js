@@ -15,12 +15,13 @@ export class AmpData {
     updateList(){
         const result = this.data.map(item => {
             const {id, articulation, portion, movement} = item;
-            return `<tr data-list-tr-id="${id}">
-                <td>${portion.name}</td>
-                <td>${articulation.name}</td>
-                <td>${movement.name}</td>
-                <td data-delete-item-list="true" data-id="${id}"> <img data-delete-item-list="true" data-id="${id}" class="app-icon" src="/images/icons/delete.svg"></td>
-                </tr>
+            return `
+            <tr data-list-tr-id="${id}">
+                <td class="px-8 py-4">${portion.name}</td>
+                <td class="px-8 py-4">${articulation.name}</td>
+                <td class="px-8 py-4">${movement.name}</td>
+                <td class="px-8 py-4" data-delete-item-list="true" data-id="${id}"> <img data-delete-item-list="true" data-id="${id}" class="app-icon cursor-pointer" src="/images/icons/delete.svg"></td>
+            </tr>
             `
         })
         tableBody.innerHTML = result.join(' ');

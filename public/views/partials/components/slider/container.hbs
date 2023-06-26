@@ -1,11 +1,17 @@
-<div class="w-full app-border h-fit p-5 flex" data-slider-id="{{ id }}" data-slider-container="true">
-    <div data-slider-previous="true" class="m-1 {{previousClasses}}  cursor-pointer">
-        previous
+<div class="w-full h-fit p-5 flex" data-slider-id="{{ id }}" data-slider-container="true">
+    <div data-slider-previous="true" class="m-1 {{previousClasses}} flex cursor-pointer items-center hover:scale-125 duration-100">
+        <img 
+            src="/images/icons/arrow-l.svg" 
+            alt="{{alt}}" 
+        >
     </div>
-    <div class="flex w-full h-fit m-1 {{ classes }}" data-slider-items-container="true">
+    <div class="flex w-full h-fit m-1 {{ classes }} flex cursor-pointer items-center" data-slider-items-container="true">
         {{ content }}
     </div>
-    <div data-slider-next="true" class="m-1 cursor-pointer {{nextClasses}}">
-        next
+    <div data-slider-next="true" class="m-1 cursor-pointer {{nextClasses}} flex cursor-pointer items-center hover:scale-125 duration-100">
+        <img 
+            src="/images/icons/arrow-r.svg" 
+            alt="{{alt}}" 
+        >
     </div>
 </div>

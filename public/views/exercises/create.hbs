@@ -1,78 +1,83 @@
-<div class="flex flex-col items-center select-none p-2">
+<div class="flex flex-col items-center select-none p-2 self-center">
     <form action="" id="create-exercise-form" class="flex flex-col text-white w-2/3">
         {{> components/form/input type="hidden" name="AMP" id="AMP" value=(json articulationMovementMuscle) }}
         
-        <div class="flex w-full flex-col p-2">
-            <h1>2 - Chose the AMP (muscle, articulation and movements for the exercise)</h1>
+        <div class="flex w-full flex-col p-2 items-center">
             {{#sliderContainer "criar-exercicio" "" "hidden" "hidden"}}
                 {{#sliderItem "true" "0" "group" }}
-                    {{#optionContainer "muscle-group" "flex pb-1 flex-col items-start" "Chose the muscle group"}}
-                        {{#each muscles}}
-                            {{> components/options/option
-                                iconClasses="opacity-0 app-duration ease-out" 
-                                title=this.name
-                                value=this.id 
-                                name=this.name
-                            }}
-                        {{/each}}
+                    {{#optionContainer "muscle-group" "flex pb-1 flex-col items-center" "Chose the muscle group"}}
+                        <div class="flex flex-col app-red-bg rounded-lg p-6">
+                            {{#each muscles}}
+                                {{> components/options/option
+                                    iconClasses="opacity-0 app-duration ease-out hover:scale-105"
+                                    containerClasses="hover:scale-105 duration-100" 
+                                    title=this.name
+                                    value=this.id 
+                                    name=this.name
+                                }}
+                            {{/each}}
+                        </div>
                     {{/optionContainer}}
                 {{/sliderItem}}
                 {{#sliderItem "false" "1" "portion"}}
-                    {{#optionContainer "muscle-portion" "flex  pb-1 flex-col items-start" "Chose the muscle portion"}}
-                        {{#each portions}}
-                            {{> components/options/option
-                                iconClasses="opacity-0 app-duration ease-out" 
-                                containerClasses="hidden"
-                                title=this.name
-                                value=this.id 
-                                name=this.name
-                                data=(safeStr (concat 'data-group-id="' this.muscleGroupId '" data-muscle-portion="true" data-muscle-portion-option="true"')) 
-                            }}
-                        {{/each}}
+                    {{#optionContainer "muscle-portion" "flex  pb-1 flex-col items-center" "Chose the muscle portion"}}
+                        <div class="flex flex-col app-red-bg rounded-lg p-6">
+                            {{#each portions}}
+                                {{> components/options/option
+                                    iconClasses="opacity-0 app-duration ease-out" 
+                                    containerClasses="hidden hover:scale-105 duration-100"
+                                    title=this.name
+                                    value=this.id 
+                                    name=this.name
+                                    data=(safeStr (concat 'data-group-id="' this.muscleGroupId '" data-muscle-portion="true" data-muscle-portion-option="true"')) 
+                                }}
+                            {{/each}}
+                        </div>
                     {{/optionContainer}}
                 {{/sliderItem}}
                 {{#sliderItem "false" "2" "articulation"}}
-                    {{#optionContainer "articulation" "flex pb-1 flex-col items-start" "Chose the articulation"}}
-                        {{#each articulations}}
-                            {{> components/options/option
-                                iconClasses="opacity-0 app-duration ease-out" 
-                                containerClasses="hidden"
-                                title=this.name
-                                value=this.id 
-                                name=this.name
-                            }}
-                        {{/each}}
+                    {{#optionContainer "articulation" "flex pb-1 flex-col items-center" "Chose the articulation"}}
+                        <div class="flex flex-col app-red-bg rounded-lg p-6">
+                            {{#each articulations}}
+                                {{> components/options/option
+                                    iconClasses="opacity-0 app-duration ease-out" 
+                                    containerClasses="hidden hover:scale-105 duration-100"
+                                    title=this.name
+                                    value=this.id 
+                                    name=this.name
+                                }}
+                            {{/each}}
+                        </div>
                     {{/optionContainer}}
                 {{/sliderItem}}
                 {{#sliderItem "false" "3" "movement"}}
-                    {{#optionContainer "movement" "flex pb-1 flex-col items-start" "Chose the movement"}}
-                        {{#each movements}}
-                            {{> components/options/option
-                                iconClasses="opacity-0 app-duration ease-out" 
-                                containerClasses="hidden"
-                                title=this.name
-                                value=this.id 
-                                name=this.name
-                            }}
-                        {{/each}}
+                    {{#optionContainer "movement" "flex pb-1 flex-col items-center" "Chose the movement"}}
+                        <div class="flex flex-col app-red-bg rounded-lg p-6">
+                            {{#each movements}}
+                                {{> components/options/option
+                                    iconClasses="opacity-0 app-duration ease-out" 
+                                    containerClasses="hidden hover:scale-105 duration-100"
+                                    title=this.name
+                                    value=this.id 
+                                    name=this.name
+                                }}
+                            {{/each}}
+                        </div>
                     {{/optionContainer}}
                 {{/sliderItem}}
             {{/sliderContainer}}
-            {{> components/button id="add-amp" title="add"}}
-            <div>
-                <table >
-                    <thead>
-                        <th>Portion</th>
-                        <th>Articulation</th>
-                        <th>Movement</th>
-                        <th>actions</th>
+            {{> components/button id="add-amp" title="add" classes="hidden hover:bg-green-600 hover:scale-125 duration-100 app-red-bg rounded m-1 "}}
+            <div class="m-1 w-full justify-around flex table-auto">
+                <table class="shadow-lg app-red-bg app-rounded">
+                    <thead >
+                        <tr>
+                            <th class="text-left px-8 py-4">Portion</th>
+                            <th class="text-left px-8 py-4">Articulation</th>
+                            <th class="text-left px-8 py-4">Movement</th>
+                            <th class="text-left px-8 py-4">actions</th>
+                        </tr>
                     </thead>
-                    <tbody id="amp-table-body">
-                        <tr></tr>
-                        <tr></tr>
-                        <tr></tr>
-                        <tr></tr>
-                    </tbody>
+                    <tbody id="amp-table-body"></tbody>
                 </table>
             </div>
         </div>
